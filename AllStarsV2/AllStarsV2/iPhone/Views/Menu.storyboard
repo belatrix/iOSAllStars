@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Menu View Controller-->
+        <scene sceneID="JjS-5o-pbL">
+            <objects>
+                <viewController storyboardIdentifier="MenuViewController" id="xZZ-g8-DNw" customClass="MenuViewController" customModule="AllStarsV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aiY-gj-gxP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d92-64-TFz">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="logoBx" translatesAutoresizingMaskIntoConstraints="NO" id="ZHD-8e-7hI">
+                                        <rect key="frame" x="-25" y="11" width="157" height="157"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.46274509800000002" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="h90-Tt-2mf"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIg-Js-sUz">
+                                <rect key="frame" x="0.0" y="140" width="320" height="60"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="7LJ-Bj-xeA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="tintColor" red="0.99607843139999996" green="0.46274509800000002" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Profile" image="menu_1"/>
+                                <connections>
+                                    <action selector="clickBtnMenu:" destination="xZZ-g8-DNw" eventType="touchUpInside" id="uNe-2P-T5k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhJ-fn-gmn">
+                                <rect key="frame" x="0.0" y="200" width="320" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="uh7-c7-fcg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Events" image="menu_2"/>
+                                <connections>
+                                    <action selector="clickBtnMenu:" destination="xZZ-g8-DNw" eventType="touchUpInside" id="SAw-GU-bN5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eL8-L6-XkA">
+                                <rect key="frame" x="0.0" y="260" width="320" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="0ea-sz-3gg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Contacts" image="menu_3"/>
+                                <connections>
+                                    <action selector="clickBtnMenu:" destination="xZZ-g8-DNw" eventType="touchUpInside" id="rsX-bR-kdq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jr8-Z2-Qjx">
+                                <rect key="frame" x="0.0" y="320" width="320" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="ATX-Mb-7Hn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Ranking" image="menu_4"/>
+                                <connections>
+                                    <action selector="clickBtnMenu:" destination="xZZ-g8-DNw" eventType="touchUpInside" id="NvI-gj-iLn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NIg-Js-sUz" firstAttribute="top" secondItem="d92-64-TFz" secondAttribute="bottom" id="0aL-e6-mnF"/>
+                            <constraint firstItem="NIg-Js-sUz" firstAttribute="trailing" secondItem="Z33-tb-zJZ" secondAttribute="trailing" id="3TG-bd-fAC"/>
+                            <constraint firstItem="UhJ-fn-gmn" firstAttribute="top" secondItem="NIg-Js-sUz" secondAttribute="bottom" id="4K5-Hd-hhj"/>
+                            <constraint firstItem="jr8-Z2-Qjx" firstAttribute="trailing" secondItem="Z33-tb-zJZ" secondAttribute="trailing" id="9eR-5L-46x"/>
+                            <constraint firstItem="d92-64-TFz" firstAttribute="trailing" secondItem="Z33-tb-zJZ" secondAttribute="trailing" id="PSi-6y-RjO"/>
+                            <constraint firstItem="d92-64-TFz" firstAttribute="leading" secondItem="Z33-tb-zJZ" secondAttribute="leading" id="Q0a-7V-Lof"/>
+                            <constraint firstItem="jr8-Z2-Qjx" firstAttribute="top" secondItem="eL8-L6-XkA" secondAttribute="bottom" id="QpQ-qP-7dU"/>
+                            <constraint firstItem="NIg-Js-sUz" firstAttribute="leading" secondItem="Z33-tb-zJZ" secondAttribute="leading" id="Rnk-23-hbd"/>
+                            <constraint firstItem="UhJ-fn-gmn" firstAttribute="trailing" secondItem="Z33-tb-zJZ" secondAttribute="trailing" id="TkW-zH-wiW"/>
+                            <constraint firstItem="eL8-L6-XkA" firstAttribute="trailing" secondItem="Z33-tb-zJZ" secondAttribute="trailing" id="d1e-sY-k9G"/>
+                            <constraint firstItem="eL8-L6-XkA" firstAttribute="leading" secondItem="Z33-tb-zJZ" secondAttribute="leading" id="gTz-RT-I3Y"/>
+                            <constraint firstItem="eL8-L6-XkA" firstAttribute="top" secondItem="UhJ-fn-gmn" secondAttribute="bottom" id="kVO-Ch-Vtt"/>
+                            <constraint firstItem="jr8-Z2-Qjx" firstAttribute="leading" secondItem="Z33-tb-zJZ" secondAttribute="leading" id="ohJ-Ye-RF8"/>
+                            <constraint firstItem="UhJ-fn-gmn" firstAttribute="leading" secondItem="Z33-tb-zJZ" secondAttribute="leading" id="pcV-6L-WMV"/>
+                            <constraint firstItem="d92-64-TFz" firstAttribute="top" secondItem="aiY-gj-gxP" secondAttribute="top" id="ywr-1X-73j"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Z33-tb-zJZ"/>
+                    </view>
+                    <connections>
+                        <outletCollection property="arrayButtonsMenu" destination="NIg-Js-sUz" collectionClass="NSMutableArray" id="mz7-7g-16g"/>
+                        <outletCollection property="arrayButtonsMenu" destination="UhJ-fn-gmn" collectionClass="NSMutableArray" id="hVU-hm-0dg"/>
+                        <outletCollection property="arrayButtonsMenu" destination="eL8-L6-XkA" collectionClass="NSMutableArray" id="ZFp-vz-ZUV"/>
+                        <outletCollection property="arrayButtonsMenu" destination="jr8-Z2-Qjx" collectionClass="NSMutableArray" id="Mj2-54-8Re"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FA8-Kw-0Po" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-232.5" y="173.2394366197183"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logoBx" width="333" height="333"/>
+        <image name="menu_1" width="28" height="25"/>
+        <image name="menu_2" width="28" height="25"/>
+        <image name="menu_3" width="28" height="25"/>
+        <image name="menu_4" width="28" height="25"/>
+    </resources>
+</document>

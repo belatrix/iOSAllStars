@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+    </dependencies>
+    <scenes>
+        <!--Reveal View Controller-->
+        <scene sceneID="Pp2-fm-hQX">
+            <objects>
+                <viewController storyboardIdentifier="RevealViewController" id="EDM-pK-DzT" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <connections>
+                        <outlet property="delegate" destination="Vyd-4o-vdu" id="moC-tZ-mWT"/>
+                        <segue destination="bZi-uR-j7w" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="Hhm-Kr-2SK"/>
+                        <segue destination="JC0-fi-sOb" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="1rd-lF-bWP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F8i-iS-MbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="Vyd-4o-vdu" customClass="SWRevealViewControllerDelegate"/>
+            </objects>
+            <point key="canvasLocation" x="-174" y="107"/>
+        </scene>
+        <!--MenuViewController-->
+        <scene sceneID="bDw-zg-peP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Menu" referencedIdentifier="MenuViewController" id="bZi-uR-j7w" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UGf-ce-7sF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="589" y="-91"/>
+        </scene>
+        <!--UserProfileNavViewController-->
+        <scene sceneID="unk-dA-oku">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="UserProfileNavViewController" id="JC0-fi-sOb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wdv-EN-qBt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="643" y="304"/>
+        </scene>
+    </scenes>
+</document>
