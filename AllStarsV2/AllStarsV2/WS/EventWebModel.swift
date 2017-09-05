@@ -12,7 +12,7 @@ class EventWebModel: NSObject {
     
     class func listUserEvents(withSession objSession : SessionBE, withSuccess success : @escaping Events, withError error : @escaping ErrorResponse){
         
-        let path = "/api/event/upcoming/employee/\(objSession.session_user_id)/"
+        let path = "api/event/upcoming/employee/\(objSession.session_user_id)/"
         
         CDMWebSender.doGETTokenToURL(Constants.WEB_SERVICES, withPath: path, withParameter: nil, withToken: objSession.session_token) { (response) in
             
@@ -39,7 +39,7 @@ class EventWebModel: NSObject {
     
     class func listLocalEvents(withSession objSession : SessionBE, withSuccess success : @escaping Events, withError error : @escaping ErrorResponse){
         
-        let path = "/api/event/local/employee/\(objSession.session_user_id)/"
+        let path = "api/event/local/employee/\(objSession.session_user_id)/"
         
         CDMWebSender.doGETTokenToURL(Constants.WEB_SERVICES, withPath: path, withParameter: nil, withToken: objSession.session_token) { (response) in
             
@@ -51,16 +51,6 @@ class EventWebModel: NSObject {
                 var arrayTemp = [EventBE]()
                 
                 for obj in arrayEvents{
-                    arrayTemp.append(EventBE.parse(obj))
-                    arrayTemp.append(EventBE.parse(obj))
-                    arrayTemp.append(EventBE.parse(obj))
-                    arrayTemp.append(EventBE.parse(obj))
-                    arrayTemp.append(EventBE.parse(obj))
-                    arrayTemp.append(EventBE.parse(obj))
-                    arrayTemp.append(EventBE.parse(obj))
-                    arrayTemp.append(EventBE.parse(obj))
-                    arrayTemp.append(EventBE.parse(obj))
-                    arrayTemp.append(EventBE.parse(obj))
                     arrayTemp.append(EventBE.parse(obj))
                     
                 }
@@ -78,7 +68,7 @@ class EventWebModel: NSObject {
     class func listOtherEvents(withSession objSession : SessionBE, withSuccess success : @escaping Events, withError
         error : @escaping ErrorResponse){
         
-        let path = "/api/event/others/employee/\(objSession.session_user_id)/"
+        let path = "api/event/others/employee/\(objSession.session_user_id)/"
         
         CDMWebSender.doGETTokenToURL(Constants.WEB_SERVICES, withPath: path, withParameter: nil, withToken: objSession.session_token) { (response) in
             
@@ -128,7 +118,7 @@ class EventWebModel: NSObject {
     class func getEventDetails(toEvent objEvent : EventBE, withSession objSession : SessionBE,
                                   withSuccess success : @escaping Event, withError error : @escaping ErrorResponse){
         
-        let path = "/api/event/\(objEvent.event_pk)/employee/\(objSession.session_user_id)/"
+        let path = "api/event/\(objEvent.event_pk)/employee/\(objSession.session_user_id)/"
         
         CDMWebSender.doGETTokenToURL(Constants.WEB_SERVICES, withPath: path, withParameter: nil, withToken: objSession.session_token) { (response) in
             
@@ -147,7 +137,7 @@ class EventWebModel: NSObject {
     class func updateUserToEvent(toEvent objEvent : EventBE, withAction action : Bool, withSession objSession :
         SessionBE, withSuccess success : @escaping Event, withError error : @escaping ErrorResponse){
         
-        let path = "/api/event/\(objEvent.event_pk)/employee/\(objSession.session_user_id)/registration/\(action)/"
+        let path = "api/event/\(objEvent.event_pk)/employee/\(objSession.session_user_id)/registration/\(action ? "true" : "false")/"
         
         CDMWebSender.doPATCHTokenToURL(Constants.WEB_SERVICES, withPath: path, withParameter: nil, withToken: objSession.session_token) { (response) in
             

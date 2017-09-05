@@ -13,9 +13,11 @@ class EventDetailViewController: SWFrontGenericoViewController, UIScrollViewDele
     @IBOutlet weak var lblTitle                     : UILabel!
     @IBOutlet weak var lblDateTime                  : UILabel!
     @IBOutlet weak var imgEvent                     : UIImageView!
-    @IBOutlet weak var scrollContent                   : UIScrollView!
+    @IBOutlet weak var scrollContent                : UIScrollView!
     @IBOutlet var arrayButtonSection                : [UIButton]!
     @IBOutlet var arrayVistas                       : [UIView]!
+    @IBOutlet weak var btnRegister                  : UIButton!
+    @IBOutlet weak var constraintSectionSelected    : NSLayoutConstraint!
     
     var controllerAbout                             : AboutEventViewController!
     var controllerNews                              : EventNewsViewController!
@@ -35,6 +37,25 @@ class EventDetailViewController: SWFrontGenericoViewController, UIScrollViewDele
         }
     }
     
+    func checkIfRegistered(){
+        
+        EventBC.getEventDetails(toEvent: self.objEvent, withSuccessful: { (event) in
+            
+            self.objEvent = event
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                
+                self.btnRegister.setTitle(self.objEvent.event_is_registered ? "Unregister".localized : "Register".localized , for: .normal)
+                self.btnRegister.setTitleColor(self.objEvent.event_is_registered ? UIColor.white : Constants.MAIN_COLOR, for: .normal)
+                self.btnRegister.backgroundColor = self.objEvent.event_is_registered ? Constants.MAIN_COLOR : UIColor.white
+            })
+            
+        }) { (title, message) in
+            print(title)
+            print(message)
+        }
+    }
+    
     
     // MARK: - Actions
     
@@ -46,26 +67,49 @@ class EventDetailViewController: SWFrontGenericoViewController, UIScrollViewDele
         
         self.currentIndexSection = sender.tag
         
-        for button in self.arrayButtonSection {
-            let color = button == sender ? Constants.MAIN_COLOR : UIColor.lightGray
-            button.setTitleColor(color, for: .normal)
-        }
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+            
+            for button in self.arrayButtonSection {
+                let color = button == sender ? Constants.MAIN_COLOR : UIColor.lightGray
+                button.setTitleColor(color, for: .normal)
+            }
+            
+            self.constraintSectionSelected.constant = sender.tag == 0 ? -(UIScreen.main.bounds.size.width / 4) : UIScreen.main.bounds.size.width / 4
+            
+            for view in self.arrayVistas {
+                view.alpha = 0
+            }
+            
+            self.arrayVistas[sender.tag].alpha = 1
+            self.scrollContent.setContentOffset(CGPoint(x: self.scrollContent.frame.size.width * CGFloat(sender.tag), y:0), animated: false)
+            
+            self.view.layoutIfNeeded()
+        }, completion: nil)
         
-        
-        
-        for view in self.arrayVistas {
-            view.alpha = 0
-        }
-        
-        self.arrayVistas[sender.tag].alpha = 1
-        self.scrollContent.setContentOffset(CGPoint(x: self.scrollContent.frame.size.width * CGFloat(sender.tag), y:0), animated: false)
-        
-        self.view.layoutIfNeeded()
     }
     
     @IBAction func clickBtnRegister(_ sender: Any) {
-        //EventBC.updateUserToEvent(toEvent: self.objEvent, withAction: <#T##Bool#>, withSuccessful: <#T##Event##Event##(EventBE) -> Void#>, withAlertInformation: <#T##AlertInformation##AlertInformation##(String, String) -> Void#>)
+        
+        EventBC.updateUserToEvent(toEvent: self.objEvent, withSuccessful: { (obj) in
+            
+            self.objEvent = obj
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                
+                self.btnRegister.setTitle(self.objEvent.event_is_registered ? "Unregister".localized : "Register".localized , for: .normal)
+                self.btnRegister.setTitleColor(self.objEvent.event_is_registered ? UIColor.white : Constants.MAIN_COLOR, for: .normal)
+                self.btnRegister.backgroundColor = self.objEvent.event_is_registered ? Constants.MAIN_COLOR : UIColor.white
+            })
+            
+            let message = self.objEvent.event_is_registered ? "You are now registered".localized : "You are no longer registered".localized
+            CDMUserAlerts.showSimpleAlert(title: "Success".localized, withMessage: message, withAcceptButton: "ok".localized, withController: self, withCompletion: nil)
+
+        }, withAlertInformation: { (title, error) in
+            print(error)
+        })
     }
+    
+    
     
     // MARK: - UIScrollViewDelegate
     
@@ -101,12 +145,32 @@ class EventDetailViewController: SWFrontGenericoViewController, UIScrollViewDele
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.transitionViewSectionInto(scrollView)
+        self.animateUnderlineSection(self.arrayButtonSection[self.currentIndexSection])
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.transitionViewSectionInto(scrollView)
+        self.animateUnderlineSection(self.arrayButtonSection[self.currentIndexSection])
     }
     
+    // MARK: - Aux
+    
+    func animateUnderlineSection(_ sender: UIButton){
+        UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseIn, animations: {
+            for button in self.arrayButtonSection{
+                let color = button == sender ? Constants.MAIN_COLOR : UIColor.lightGray
+                button.setTitleColor(color, for: .normal)
+            }
+            
+            self.constraintSectionSelected.constant = sender.tag == 0 ? -(UIScreen.main.bounds.size.width / 4) : UIScreen.main.bounds.size.width / 4
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    func moveUnderlineSectionNoAnimation(_ sender: UIButton){
+        self.constraintSectionSelected.constant = sender.tag == 0 ? -(UIScreen.main.bounds.size.width / 4) : UIScreen.main.bounds.size.width / 4
+        self.view.layoutIfNeeded()
+    }
     
     // MARK: -
 
@@ -114,7 +178,8 @@ class EventDetailViewController: SWFrontGenericoViewController, UIScrollViewDele
         super.viewDidLoad()
 
         self.updateEventInfo()
-        self.clickBtnSection(self.arrayButtonSection[0])
+        self.checkIfRegistered()
+        self.moveUnderlineSectionNoAnimation(self.arrayButtonSection[0])
     }
 
     override func didReceiveMemoryWarning() {

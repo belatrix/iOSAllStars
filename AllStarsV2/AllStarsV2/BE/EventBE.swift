@@ -32,7 +32,7 @@ class EventBE: NSObject {
         objBE.event_is_registered   = CDMWebResponse.getBool(objDic["is_registered"])
         objBE.event_location        = LocationBE.parse(CDMWebResponse.getDictionary(objDic["location"]))
         
-        if let date = CDMDateManager.convertirTexto(CDMWebResponse.getString(objDic["datetime"]), enDateConFormato: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"){
+        if let date = CDMDateManager.convertirTexto(CDMWebResponse.getString(objDic["datetime"]), enDateConFormato: "yyyy-MM-dd'T'HH:mm:ss'Z'"){
             objBE.event_datetime = date
         }
         
