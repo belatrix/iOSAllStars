@@ -15,4 +15,5 @@ class AnimationTransitionManager: NSObject, UINavigationControllerDelegate {
         let transitionController = AnimationTransitionFactory.getAnimationTransitionTo(controllerOrigin: fromVC, withDestinationController: toVC, withOperation: operation)
         return transitionController
     }
+    
 }

@@ -45,10 +45,6 @@ class ContactsToProfileTransition: ControllerTransition {
         
         imgUser.setInitialVisualConfiguration()
         
-        imgUser.animateBordeWidthFromValue(imgUser.borderImage, toValue: 5 / delta)
-        
-        
-        
         toVC.constraintTopHeader.constant = -64
         toVC.imgUser!.alpha = 0
         toVC.viewContainerInfo.alpha = 0
@@ -105,13 +101,16 @@ class ContactsToProfileTransition: ControllerTransition {
         
         UIView.animate(withDuration: duration * 0.5, delay: duration * 0.15, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
             
+            imgUser.animateBordeWidthFromValue(imgUser.borderImage, toValue: 5 / delta)
             imgUser.transform = CGAffineTransform(scaleX: delta, y: delta)
             imgUser.center = newCenter
             
         }) { (_) in
             
-            imgUser.removeFromSuperview()
+            imgUser.alpha = 0
             toVC.imgUser!.alpha = 1
+            imgUser.removeFromSuperview()
+            
         }
         
     }
@@ -168,11 +167,13 @@ class ContactsToProfileTransition: ControllerTransition {
             
         }
         
-        imgUser.animateBordeWidthFromValue(5, toValue: 0)
         
-        UIView.animate(withDuration: duration * 0.65, delay: duration * 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
+        
+        UIView.animate(withDuration: duration * 0.5, delay: duration * 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
             
             toView.alpha = 1
+            
+            imgUser.animateBordeWidthFromValue(5, toValue: 0)
             
             imgUser.transform = CGAffineTransform(scaleX: delta, y: delta)
             var relativeFrame = toVC.clvContacts.convert(cellSelected.frame, to: containerView)
@@ -180,10 +181,13 @@ class ContactsToProfileTransition: ControllerTransition {
             relativeFrame.origin.y = relativeFrame.origin.y + cellSelected.imgUser.frame.origin.y
             imgUser.center = CGPoint(x: relativeFrame.origin.x + cellSelected.imgUser.frame.size.width / 2, y: relativeFrame.origin.y + cellSelected.imgUser.frame.size.height / 2)
             
+            containerView.layoutIfNeeded()
+            
         }) { (_) in
             
-            imgUser.removeFromSuperview()
+            imgUser.alpha = 0
             cellSelected.imgUser.alpha = 1
+            imgUser.removeFromSuperview()
             context.completeTransition(true)
         }
         
