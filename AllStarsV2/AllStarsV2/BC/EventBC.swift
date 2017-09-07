@@ -108,7 +108,7 @@ class EventBC: NSObject {
         
     }
     
-    class func updateUserToEvent(toEvent objEvent : EventBE, withAction action : Bool, withSuccessful success : @escaping Event, withAlertInformation alertInformation : @escaping AlertInformation){
+    class func updateUserToEvent(toEvent objEvent : EventBE, withSuccessful success : @escaping Event, withAlertInformation alertInformation : @escaping AlertInformation){
         
         let objSession = UserBC.getUserSession()
         
@@ -117,7 +117,7 @@ class EventBC: NSObject {
             return
         }
         
-        EventWebModel.updateUserToEvent(toEvent: objEvent, withAction: action, withSession: objSession!, withSuccess: { (event) in
+        EventWebModel.updateUserToEvent(toEvent: objEvent, withAction: !objEvent.event_is_registered, withSession: objSession!, withSuccess: { (event) in
             success(event)
         }) { (errorResponse) in
             alertInformation("generic_title_problem", errorResponse.message)

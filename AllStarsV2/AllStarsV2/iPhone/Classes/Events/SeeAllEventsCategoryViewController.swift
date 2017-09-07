@@ -58,17 +58,6 @@ class SeeAllEventsCategoryViewController: UIViewController, UITableViewDelegate,
         self.performSegue(withIdentifier: "EventDetailViewController", sender: self.arrayEvents[indexPath.row])
     }
     
-    // MARK: - UIScrollViewDelegate
-    
-    /*
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (self.nextPage.characters.count != 0 && self.isDownload == false && scrollView.contentOffset.y +
-            scrollView.frame.size.height > scrollView.contentSize.height + 40){
-                self.listAnyPageEvents()
-        }
-    }
-     */
-    
     //MARK: - WebService
     
     @objc func refreshData(){
@@ -177,6 +166,10 @@ class SeeAllEventsCategoryViewController: UIViewController, UITableViewDelegate,
         self.listFirstPageEvents()
         
         //self.listFirstPageEvents()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.listFirstPageEvents()
     }
 
     override func didReceiveMemoryWarning() {

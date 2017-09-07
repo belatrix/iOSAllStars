@@ -23,13 +23,7 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
     
     func categoryEventViewController(_ viewController: CategoryEventViewController, didFinishLoadData arrayEvents: [EventBE]) {
         
-        if viewController.segueIdentifierClass == .localEvents {
-            self.localEventsConstraint.constant = arrayEvents.count == 0 ? 0 : 200
-        }else if viewController.segueIdentifierClass == .otherEvents{
-            self.otherEventsConstraint.constant = arrayEvents.count == 0 ? 0 : 200
-        }else if viewController.segueIdentifierClass == .userEvents {
-            self.upcomingUserEventsConstraint.constant = arrayEvents.count == 0 ? 0 : 200
-        }
+        
     }
     
     

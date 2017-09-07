@@ -23,7 +23,9 @@ enum EventsViewControllerSegue : String {
 class CategoryEventViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var clvEvents: UICollectionView!
-   
+    @IBOutlet weak var btnSeeAll: UIButton!
+    @IBOutlet weak var loadingView: CDMLoadingView!
+    
     var arrayEvents = [EventBE]()
     var segueIdentifierClass = EventsViewControllerSegue.localEvents
     var delegate : CategoryEventViewControllerDelegate!
@@ -32,22 +34,30 @@ class CategoryEventViewController: UIViewController, UICollectionViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if segueIdentifierClass == .localEvents{
-            self.getLocalEvents()
-        }else if segueIdentifierClass == .otherEvents {
-            self.getOtherEvents()
-        }else if segueIdentifierClass == .userEvents {
-            self.getUserEvents()
-        }
-        
-        
         // Do any additional setup after loading the view.
     }
-
-    func getLocalEvents(){
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
         
+        super.viewDidAppear(animated)
+        
+        if self.segueIdentifierClass == .localEvents{
+            self.getLocalEvents()
+        }else if self.segueIdentifierClass == .otherEvents {
+            self.getOtherEvents()
+        }else if self.segueIdentifierClass == .userEvents {
+            self.getUserEvents()
+        }
+
+    }
+    
+    func getLocalEvents(){
+        self.loadingView.iniciarLoading(conMensaje: "No local events found".localized, conAnimacion: true)
         EventBC.listLocalEvents(withSuccessful: { (arrayLocalEvents, nextPage) in
+            
             self.arrayEvents = arrayLocalEvents
+            self.btnSeeAll.isHidden = self.arrayEvents.count == 0 ? true : false
             
             self.clvEvents.performBatchUpdates({
                 self.clvEvents.reloadSections(IndexSet(integer: 0))
@@ -55,14 +65,17 @@ class CategoryEventViewController: UIViewController, UICollectionViewDelegate, U
             
             self.delegate.categoryEventViewController(self, didFinishLoadData: arrayLocalEvents)
             
+            self.arrayEvents.count == 0 ? self.loadingView.mostrarError(conMensaje: "No local events found".localized, conOpcionReintentar: false) : self.loadingView.detenerLoading()
         }) { (title, message) in
-            // implement error handling
+            self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
     }
     
     func getOtherEvents(){
+        self.loadingView.iniciarLoading(conMensaje: "No other events found".localized, conAnimacion: true)
         EventBC.listOtherEvents(withSuccessful: { (arrayOtherEvents, nextPage) in
             self.arrayEvents = arrayOtherEvents
+            self.btnSeeAll.isHidden = self.arrayEvents.count == 0 ? true : false
             
             self.clvEvents.performBatchUpdates({
                 self.clvEvents.reloadSections(IndexSet(integer: 0))
@@ -70,23 +83,31 @@ class CategoryEventViewController: UIViewController, UICollectionViewDelegate, U
             
             self.delegate.categoryEventViewController(self, didFinishLoadData: arrayOtherEvents)
             
+            self.arrayEvents.count == 0 ? self.loadingView.mostrarError(conMensaje: "No other events found".localized, conOpcionReintentar: false) : self.loadingView.detenerLoading()
         }) { (title, message) in
-            //implement error handling
+            self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
     }
     
     func getUserEvents(){
+        self.loadingView.iniciarLoading(conMensaje: "No events found".localized, conAnimacion: true)
+        
         EventBC.listUserEvents(withSuccessful: { (arrayUserEvents, nextPage) in
             self.arrayEvents = arrayUserEvents
-            
-            self.clvEvents.performBatchUpdates({
-                self.clvEvents.reloadSections(IndexSet(integer: 0))
-            }, completion: nil)
+            self.btnSeeAll.isHidden = self.arrayEvents.count == 0 ? true : false
             
             self.delegate.categoryEventViewController(self, didFinishLoadData: arrayUserEvents)
+        
+            self.clvEvents.performBatchUpdates({
+                self.clvEvents.reloadSections(IndexSet(integer: 0))
+            }, completion: { (_) in
+                self.clvEvents.layoutIfNeeded()
+            })
+            
+            self.arrayEvents.count == 0 ? self.loadingView.mostrarError(conMensaje: "No events found".localized, conOpcionReintentar: false) : self.loadingView.detenerLoading()
             
         }) { (title, message) in
-            //implement error handling
+            self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
     }
     

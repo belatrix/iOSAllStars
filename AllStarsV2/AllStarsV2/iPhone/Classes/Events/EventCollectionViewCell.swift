@@ -10,8 +10,9 @@ import UIKit
 
 class EventCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var imgEvent: UIImageView!
-    @IBOutlet weak var lblEventName: UILabel!
+    @IBOutlet weak var viewImgContainer : UIView!
+    @IBOutlet weak var imgEvent         : UIImageView!
+    @IBOutlet weak var lblEventName     : UILabel!
     
     
     var objEvent : EventBE!{
@@ -21,12 +22,17 @@ class EventCollectionViewCell: UICollectionViewCell {
     }
     
     override func draw(_ rect: CGRect) {
+    
+        
+        self.viewImgContainer.layer.cornerRadius = 8
+        self.viewImgContainer.layer.shadowRadius = 3
+        self.viewImgContainer.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.viewImgContainer.layer.shadowOpacity = 0.6
+        self.viewImgContainer.layer.masksToBounds = false
         
         self.imgEvent.layer.cornerRadius = 8
-        self.imgEvent.layer.shadowRadius = 3
-        self.imgEvent.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.imgEvent.layer.shadowOpacity = 0.6
         self.imgEvent.layer.masksToBounds = true
+   
         self.clipsToBounds = false
     }
     

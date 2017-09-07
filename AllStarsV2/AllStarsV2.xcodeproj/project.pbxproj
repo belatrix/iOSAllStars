@@ -14,6 +14,7 @@
 		4DC7261E1F4F611B0077AF64 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC7261D1F4F611B0077AF64 /* EventCollectionViewCell.swift */; };
 		4DD02A3F1F560BC400A1E6D9 /* EventNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD02A3E1F560BC400A1E6D9 /* EventNewsViewController.swift */; };
 		4DD02A411F560BD200A1E6D9 /* AboutEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD02A401F560BD200A1E6D9 /* AboutEventViewController.swift */; };
+		4DD27C061F598D4800F55C10 /* EventNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD27C051F598D4800F55C10 /* EventNewsTableViewCell.swift */; };
 		4DD4CDE71F4DACEA004515EF /* EventBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4CDE61F4DACEA004515EF /* EventBC.swift */; };
 		4DD4CDE91F4DCBE3004515EF /* ActivityEventBE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4CDE81F4DCBE3004515EF /* ActivityEventBE.swift */; };
 		4DEB73C21F545B2000B80C4A /* SeeAllEventsCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEB73C11F545B2000B80C4A /* SeeAllEventsCategoryViewController.swift */; };
@@ -119,6 +120,7 @@
 		4DC7261D1F4F611B0077AF64 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
 		4DD02A3E1F560BC400A1E6D9 /* EventNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNewsViewController.swift; sourceTree = "<group>"; };
 		4DD02A401F560BD200A1E6D9 /* AboutEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutEventViewController.swift; sourceTree = "<group>"; };
+		4DD27C051F598D4800F55C10 /* EventNewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNewsTableViewCell.swift; sourceTree = "<group>"; };
 		4DD4CDE61F4DACEA004515EF /* EventBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBC.swift; sourceTree = "<group>"; };
 		4DD4CDE81F4DCBE3004515EF /* ActivityEventBE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityEventBE.swift; sourceTree = "<group>"; };
 		4DEB73C11F545B2000B80C4A /* SeeAllEventsCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllEventsCategoryViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				4DD02A3E1F560BC400A1E6D9 /* EventNewsViewController.swift */,
+				4DD27C051F598D4800F55C10 /* EventNewsTableViewCell.swift */,
 			);
 			path = EventNews;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				966BB5A41F4CD1890042D602 /* SWFrontGenericoViewController.m in Sources */,
+				4DD27C061F598D4800F55C10 /* EventNewsTableViewCell.swift in Sources */,
 				966BB5A51F4CD1890042D602 /* SWRevealViewController.m in Sources */,
 				966BB5A61F4CD1890042D602 /* SWRevealViewControllerDelegate.m in Sources */,
 				9609EAA21F45CC3500F7AA4E /* ExtString.swift in Sources */,
