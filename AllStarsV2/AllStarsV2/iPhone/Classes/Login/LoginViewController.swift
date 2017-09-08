@@ -23,6 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var activityLogin            : UIActivityIndicatorView!
     
     
+    
     var initialValueConstraintCenterForm        : CGFloat = 0
     var initialPlaceHolderUser                  : String!
     

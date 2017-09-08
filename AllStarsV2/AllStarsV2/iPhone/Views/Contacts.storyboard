@@ -187,7 +187,11 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOM-l6-crj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="aGc-te-TBc" customClass="AnimationTransitionManager" customModule="AllStarsV2" customModuleProvider="target"/>
+                <customObject id="aGc-te-TBc" customClass="AnimationTransitionManager" customModule="AllStarsV2" customModuleProvider="target">
+                    <connections>
+                        <outlet property="navigationController" destination="32a-b5-WN8" id="SZ8-5v-KHo"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-403" y="97"/>
         </scene>

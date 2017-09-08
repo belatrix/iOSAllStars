@@ -2152,7 +2152,7 @@
             </objects>
             <point key="canvasLocation" x="2205" y="-383.45070422535213"/>
         </scene>
-        <!--Profile-->
+        <!--Navigation Controller-->
         <scene sceneID="IzL-wK-CHe">
             <objects>
                 <navigationController storyboardIdentifier="UserProfileNavViewController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="duM-2z-eUP" sceneMemberID="viewController">
@@ -2168,7 +2168,11 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMZ-ia-erf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="vjs-FO-46s" customClass="AnimationTransitionManager" customModule="AllStarsV2" customModuleProvider="target"/>
+                <customObject id="vjs-FO-46s" customClass="AnimationTransitionManager" customModule="AllStarsV2" customModuleProvider="target">
+                    <connections>
+                        <outlet property="navigationController" destination="duM-2z-eUP" id="erO-Xs-egj"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-347" y="-753"/>
         </scene>

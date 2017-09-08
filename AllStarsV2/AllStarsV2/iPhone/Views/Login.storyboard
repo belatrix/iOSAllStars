@@ -254,7 +254,7 @@
                         <outlet property="constraintTopViewLogo" destination="Uk0-nq-i0d" id="Je5-hz-FED"/>
                         <outlet property="constraintWidthLogo" destination="Hzs-at-TyA" id="wD8-Kr-V8s"/>
                         <outlet property="lblNameCompany" destination="2cq-So-zZn" id="dzK-hG-4aY"/>
-                        <outlet property="txtPassword" destination="14z-fM-puK" id="uQG-do-QPQ"/>
+                        <outlet property="txtPassword" destination="14z-fM-puK" id="L74-IV-gQl"/>
                         <outlet property="txtUserName" destination="bxq-C4-QOt" id="Mjy-kd-nO0"/>
                         <outlet property="viewFormUser" destination="fLt-wG-1U0" id="9Jv-dT-GGb"/>
                         <outlet property="viewLogo" destination="L5D-Fe-xXI" id="dGn-yj-xuy"/>
@@ -878,7 +878,11 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3r-v1-GV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="RD2-rX-dqh" customClass="AnimationTransitionManager" customModule="AllStarsV2" customModuleProvider="target"/>
+                <customObject id="RD2-rX-dqh" customClass="AnimationTransitionManager" customModule="AllStarsV2" customModuleProvider="target">
+                    <connections>
+                        <outlet property="navigationController" destination="d0a-ie-v6N" id="uhV-rv-oiI"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-403" y="90"/>
         </scene>
