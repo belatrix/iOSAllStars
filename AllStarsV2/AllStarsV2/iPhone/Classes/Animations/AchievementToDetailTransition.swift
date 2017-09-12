@@ -8,8 +8,47 @@
 
 import UIKit
 
+class AchievementToDetailInteractiveTransition : InteractiveTransition{
+    
+    var initialScale : CGFloat = 0
+    
+    @objc func gestureTransitionMethod(_ gesture : UIPanGestureRecognizer){
+        
+        let view = self.navigationController.view!
+        
+        if gesture.state == .began {
+            
+            self.interactiveTransition = UIPercentDrivenInteractiveTransition()
+            self.navigationController.popViewController(animated: true)
+            
+        }else if gesture.state == .changed{
+            
+            let translation = gesture.translation(in: view)
+            let delta = fabs(translation.y / view.bounds.height)
+            self.interactiveTransition?.update(delta)
+            
+        }else{
+            
+            self.interactiveTransition?.finish()
+            self.interactiveTransition = nil
+            
+        }
+    }
+}
+
+
 class AchievementToDetailTransition: ControllerTransition {
 
+    override func createInteractiveTransition(navigationController: UINavigationController) -> InteractiveTransition? {
+        
+        let interactiveTransition = AchievementToDetailInteractiveTransition()
+        interactiveTransition.navigationController = navigationController
+        interactiveTransition.gestureTransition = UIPanGestureRecognizer(target: interactiveTransition, action: #selector(interactiveTransition.gestureTransitionMethod(_:)))
+        interactiveTransition.navigationController.view.addGestureRecognizer(interactiveTransition.gestureTransition!)
+        
+        return interactiveTransition
+    }
+    
     override func animatePush(toContext context : UIViewControllerContextTransitioning) {
         
         let fromVC = self.controllerOrigin as! UserProfileViewController
@@ -100,18 +139,7 @@ class AchievementToDetailTransition: ControllerTransition {
         fromVC.imgIcon.alpha = 0
         toVC.controllerAchievements.achievementCellSelected.imgIcon.alpha = 0
         
-        UIView.animate(withDuration: duration*0.5, delay: duration * 0.25, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
-            
-            fromVC.constraintTopContent.constant = UIScreen.main.bounds.size.height - fromVC.viewContent.frame.origin.y + fromVC.initialContraintTopContent
-            fromVC.constraintBottomShare.constant = -60
-            
-            containerView.layoutIfNeeded()
-            
-        }) { (_) in
-            
-        }
-        
-        UIView.animate(withDuration: duration*0.7, delay: duration * 0.3, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
             
             let cell = toVC.controllerAchievements.achievementCellSelected
             let cellFrame = toVC.controllerAchievements.clvAchievements.convert(cell!.frame, to: containerView)
@@ -119,6 +147,10 @@ class AchievementToDetailTransition: ControllerTransition {
             imageIcon.frame = CGRect(x: cellFrame.origin.x + imageFrame.origin.x , y: cellFrame.origin.y  + imageFrame.origin.y, width: imageFrame.width, height: imageFrame.height)
             fromView.backgroundColor = .clear
             fromVC.constraintLeftBtnCerrar.constant = -44
+            
+            fromVC.viewContent.alpha = 0
+            fromVC.constraintTopContent.constant = UIScreen.main.bounds.size.height - fromVC.viewContent.frame.origin.y + fromVC.initialContraintTopContent
+            fromVC.constraintBottomShare.constant = -60
             
             containerView.layoutIfNeeded()
             
@@ -134,6 +166,6 @@ class AchievementToDetailTransition: ControllerTransition {
     
     override func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         
-        return 1
+        return 0.8
     }
 }

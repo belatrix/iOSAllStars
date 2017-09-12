@@ -8,7 +8,46 @@
 
 import UIKit
 
+
+class CategoryToDetailInteractiveTransition : InteractiveTransition{
+    
+    var initialScale : CGFloat = 0
+    
+    @objc func gestureTransitionMethod(_ gesture : UIPanGestureRecognizer){
+        
+        let view = self.navigationController.view!
+        
+        if gesture.state == .began {
+            
+            self.interactiveTransition = UIPercentDrivenInteractiveTransition()
+            self.navigationController.popViewController(animated: true)
+            
+        }else if gesture.state == .changed{
+            
+            let translation = gesture.translation(in: view)
+            let delta = fabs(translation.y / view.bounds.height)
+            self.interactiveTransition?.update(delta)
+            
+        }else{
+            
+            self.interactiveTransition?.finish()
+            self.interactiveTransition = nil
+            
+        }
+    }
+}
+
 class CategoryToDetailTransition: ControllerTransition {
+    
+    override func createInteractiveTransition(navigationController: UINavigationController) -> InteractiveTransition? {
+        
+        let interactiveTransition = CategoryToDetailInteractiveTransition()
+        interactiveTransition.navigationController = navigationController
+        interactiveTransition.gestureTransition = UIPanGestureRecognizer(target: interactiveTransition, action: #selector(interactiveTransition.gestureTransitionMethod(_:)))
+        interactiveTransition.navigationController.view.addGestureRecognizer(interactiveTransition.gestureTransition!)
+        
+        return interactiveTransition
+    }
     
     override func animatePush(toContext context : UIViewControllerContextTransitioning) {
         
@@ -19,8 +58,6 @@ class CategoryToDetailTransition: ControllerTransition {
         containerView.backgroundColor = .white
         let fromView = context.view(forKey: .from)!
         let toView = context.view(forKey: .to)!
-        
-        let duration = self.transitionDuration(using: context)
         
         fromView.frame = UIScreen.main.bounds
         containerView.addSubview(fromView)
@@ -48,14 +85,14 @@ class CategoryToDetailTransition: ControllerTransition {
         
         containerView.layoutIfNeeded()
         
-        UIView.animate(withDuration: duration * 0.1, animations: {
+        UIView.animate(withDuration: 0.1, animations: {
             
             toVC.viewHeader.backgroundColor = Constants.MAIN_COLOR
             toVC.lblTitle.textColor = toVC.titleColorInitial
             
         }) { (_) in
             
-            UIView.animate(withDuration: duration * 0.35, animations: {
+            UIView.animate(withDuration: 0.35, animations: {
                 
                 toVC.constraintTopHeader.constant = 0
                 toVC.constraintTopTitle.constant = 20
@@ -73,8 +110,9 @@ class CategoryToDetailTransition: ControllerTransition {
             
         }
         
-        UIView.animate(withDuration: duration * 0.5, delay: duration * 0.25, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.25, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
             
+            toView.backgroundColor = .white
             toVC.constraintTopContent.constant = 64
             containerView.layoutIfNeeded()
             
@@ -111,7 +149,7 @@ class CategoryToDetailTransition: ControllerTransition {
         
         containerView.layoutIfNeeded()
         
-        UIView.animate(withDuration: duration * 0.35, animations: {
+        UIView.animate(withDuration: duration, animations: {
             
             fromVC.constraintTopHeader.constant = frameRelativeCell.origin.y
             fromVC.constraintTopContent.constant = UIScreen.main.bounds.size.height
@@ -121,12 +159,13 @@ class CategoryToDetailTransition: ControllerTransition {
             fromVC.constraintHeightHeader.constant = frameRelativeCell.height
             fromVC.btnBack.alpha = 0
             fromVC.lblTitle.font = cell?.fontTitleInitial
-            
+            fromView.backgroundColor = .clear
+            fromVC.tlbStars.alpha = 0
             containerView.layoutIfNeeded()
             
         }) { (_) in
             
-            UIView.animate(withDuration: duration * 0.5, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 
                 fromVC.lblTitle.textColor = cell?.titleColorInitial
                 fromVC.viewHeader.backgroundColor = .clear
@@ -146,6 +185,6 @@ class CategoryToDetailTransition: ControllerTransition {
     
     override func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         
-        return 1
+        return 0.35
     }
 }

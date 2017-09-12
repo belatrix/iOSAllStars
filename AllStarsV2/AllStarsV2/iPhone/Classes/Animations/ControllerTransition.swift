@@ -8,6 +8,14 @@
 
 import UIKit
 
+
+class InteractiveTransition: NSObject{
+    
+    var interactiveTransition   : UIPercentDrivenInteractiveTransition?
+    var navigationController    : UINavigationController!
+    var gestureTransition       : UIGestureRecognizer?
+}
+
 class ControllerTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     var controllerOrigin        : UIViewController?

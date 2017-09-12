@@ -8,13 +8,6 @@
 
 import UIKit
 
-class InteractiveTransition: NSObject{
-    
-    var interactiveTransition   : UIPercentDrivenInteractiveTransition?
-    var navigationController    : UINavigationController!
-    var gestureTransition       : UIGestureRecognizer?
-}
-
 
 class AnimationTransitionManager: NSObject, UINavigationControllerDelegate {
 
@@ -33,7 +26,7 @@ class AnimationTransitionManager: NSObject, UINavigationControllerDelegate {
         if operation == .push{
             self.interactiveTransition = transitions.interactiveTransition
         }
-        
+    
         return self.transitionController
     }
     

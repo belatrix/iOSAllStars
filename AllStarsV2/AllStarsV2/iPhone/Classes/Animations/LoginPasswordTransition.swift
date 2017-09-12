@@ -12,56 +12,49 @@ class LoginPasswordInteractiveTransition : InteractiveTransition{
     
     var initialScale : CGFloat = 0
     
-    @objc func gestureTransitionMethod(_ gesture : UIPanGestureRecognizer){
-        
-        let view = self.navigationController.view!
-        
-        if gesture.state == .began {
-            
-            self.interactiveTransition = UIPercentDrivenInteractiveTransition()
-            self.navigationController.popViewController(animated: true)
-            
-        }else if gesture.state == .changed{
-            
-            let translation = gesture.translation(in: view)
-            let delta = fabs(translation.x / view.bounds.width)
-            print(delta)
-            self.interactiveTransition?.update(delta)
-            
-        }else{
-            print("else")
-            
-            self.interactiveTransition?.finish()
-            self.interactiveTransition = nil
-            
-        }
-    }
+//    @objc func gestureTransitionMethod(_ gesture : UIPanGestureRecognizer){
+//
+//        let view = self.navigationController.view!
+//
+//        if gesture.state == .began {
+//
+//            self.interactiveTransition = UIPercentDrivenInteractiveTransition()
+//            self.navigationController.popViewController(animated: true)
+//
+//        }else if gesture.state == .changed{
+//
+//            let translation = gesture.translation(in: view)
+//            let delta = fabs(translation.x / view.bounds.width)
+//            print(delta)
+//            self.interactiveTransition?.update(delta)
+//
+//        }else{
+//            print("else")
+//
+//            self.interactiveTransition?.finish()
+//            self.interactiveTransition = nil
+//
+//        }
+//    }
     
-    @objc func gestureTransitionMethod1(_ gesture : UIPinchGestureRecognizer){
+    @objc func gestureTransitionMethod(_ gesture : UIPinchGestureRecognizer){
         
         var delta = fabs((gesture.scale - initialScale) / 8)
         
         if gesture.state == .began {
-
+            
             self.interactiveTransition = UIPercentDrivenInteractiveTransition()
             self.navigationController.popViewController(animated: true)
             self.initialScale = gesture.scale
+            
         }else if gesture.state == .changed{
             
             delta = delta > 1.0 ? 1 : delta
-            print(delta)
             self.interactiveTransition?.update(delta)
 
         }else{
-            
-            if delta > 0.3 {
-                print("finish")
-                self.interactiveTransition?.finish()
-                self.interactiveTransition = nil
-            }else{
-                print("cancel")
-                self.interactiveTransition?.cancel()
-            }
+            self.interactiveTransition?.finish()
+            self.interactiveTransition = nil
         }
 
     }
@@ -75,7 +68,7 @@ class LoginPasswordTransition: ControllerTransition {
         
         let interactiveTransition = LoginPasswordInteractiveTransition()
         interactiveTransition.navigationController = navigationController
-        interactiveTransition.gestureTransition = UIPinchGestureRecognizer(target: interactiveTransition, action: #selector(interactiveTransition.gestureTransitionMethod1(_:)))
+        interactiveTransition.gestureTransition = UIPinchGestureRecognizer(target: interactiveTransition, action: #selector(interactiveTransition.gestureTransitionMethod(_:)))
         interactiveTransition.navigationController.view.addGestureRecognizer(interactiveTransition.gestureTransition!)
         
         return interactiveTransition

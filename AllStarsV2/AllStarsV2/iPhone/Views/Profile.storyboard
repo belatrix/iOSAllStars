@@ -305,6 +305,7 @@
                         <outlet property="btnLocation" destination="ZQl-9B-73t" id="vG9-tP-UID"/>
                         <outlet property="btnMail" destination="Gdg-SP-W43" id="TLe-Rw-W2v"/>
                         <outlet property="btnSkype" destination="6V6-43-lqS" id="nms-bL-ya8"/>
+                        <outlet property="constraintHeightData" destination="5Xe-Gd-PAB" id="mXB-fN-wbv"/>
                         <outlet property="constraintSectionSelected" destination="s0u-s0-JUb" id="Yb0-cr-swA"/>
                         <outlet property="constraintTopHeader" destination="J2J-eG-gru" id="qOw-pK-caJ"/>
                         <outlet property="imgUser" destination="oXt-jf-QJB" id="EHZ-sN-3Gb"/>

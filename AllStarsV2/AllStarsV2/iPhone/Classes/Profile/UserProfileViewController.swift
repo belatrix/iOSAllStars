@@ -25,6 +25,7 @@ class UserProfileViewController: SWFrontGenericoViewController, UIScrollViewDele
     @IBOutlet weak var viewContainerInfo        : UIView!
     @IBOutlet weak var constraintTopSections    : NSLayoutConstraint!
     @IBOutlet weak var constraintBottomSections : NSLayoutConstraint!
+    @IBOutlet weak var constraintHeightData    : NSLayoutConstraint!
     
     
     

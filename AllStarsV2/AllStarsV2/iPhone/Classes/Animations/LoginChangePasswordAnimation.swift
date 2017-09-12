@@ -8,8 +8,45 @@
 
 import UIKit
 
+class LoginChangePasswordInteractiveTransition : InteractiveTransition{
+    
+    var initialScale : CGFloat = 0
+    
+    @objc func gestureTransitionMethod(_ gesture : UIPinchGestureRecognizer){
+        
+        var delta = fabs((gesture.scale - initialScale) / 8)
+        
+        if gesture.state == .began {
+            
+            self.interactiveTransition = UIPercentDrivenInteractiveTransition()
+            self.navigationController.popViewController(animated: true)
+            self.initialScale = gesture.scale
+            
+        }else if gesture.state == .changed{
+            
+            delta = delta > 1.0 ? 1 : delta
+            self.interactiveTransition?.update(delta)
+            
+        }else{
+            self.interactiveTransition?.finish()
+            self.interactiveTransition = nil
+        }
+        
+    }
+}
+
 class LoginChangePasswordAnimation: ControllerTransition {
 
+    override func createInteractiveTransition(navigationController: UINavigationController) -> InteractiveTransition? {
+        
+        let interactiveTransition = LoginChangePasswordInteractiveTransition()
+        interactiveTransition.navigationController = navigationController
+        interactiveTransition.gestureTransition = UIPinchGestureRecognizer(target: interactiveTransition, action: #selector(interactiveTransition.gestureTransitionMethod(_:)))
+        interactiveTransition.navigationController.view.addGestureRecognizer(interactiveTransition.gestureTransition!)
+        
+        return interactiveTransition
+    }
+    
     override func animatePush(toContext context : UIViewControllerContextTransitioning) {
         
         let fromVC = self.controllerOrigin as! LoginViewController
@@ -33,7 +70,7 @@ class LoginChangePasswordAnimation: ControllerTransition {
         
         containerView.layoutIfNeeded()
         
-        UIView.animate(withDuration: duration * 0.5, animations: {
+        UIView.animate(withDuration: duration, animations: {
             
             fromVC.constraintCenterForm.constant = (UIScreen.main.bounds.size.height + fromVC.viewFormUser.bounds.size.height) / 2
             fromVC.constraintBottomViewLogo.constant = UIScreen.main.bounds.size.height
@@ -45,7 +82,7 @@ class LoginChangePasswordAnimation: ControllerTransition {
             
             fromView.backgroundColor = .clear
             
-            UIView.animate(withDuration: duration * 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
                 
                 toVC.constraintCenterForm.constant = toVC.initialValueConstraintCenterForm
                 toVC.constraintBottomViewLogo.constant = 0
@@ -89,7 +126,7 @@ class LoginChangePasswordAnimation: ControllerTransition {
         
         containerView.layoutIfNeeded()
         
-        UIView.animate(withDuration: duration * 0.5, animations: {
+        UIView.animate(withDuration: duration, animations: {
             
             fromVC.constraintCenterForm.constant = (UIScreen.main.bounds.size.height + fromVC.viewFormUser.bounds.size.height) / 2
             fromVC.constraintBottomViewLogo.constant = UIScreen.main.bounds.size.height
@@ -101,7 +138,7 @@ class LoginChangePasswordAnimation: ControllerTransition {
             
             fromView.backgroundColor = .clear
             
-            UIView.animate(withDuration: duration * 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
                 
                 toVC.constraintCenterForm.constant = toVC.initialValueConstraintCenterForm
                 toVC.constraintBottomViewLogo.constant = 0
@@ -123,6 +160,6 @@ class LoginChangePasswordAnimation: ControllerTransition {
     
     override func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         
-        return 1
+        return 0.5
     }
 }

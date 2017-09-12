@@ -10,13 +10,13 @@ import UIKit
 
 class AchievementDetailViewController: UIViewController {
 
-    @IBOutlet weak var imgIcon: UIImageView!
-    @IBOutlet weak var constraintLeftBtnCerrar: NSLayoutConstraint!
-    @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var lblDescription: UILabel!
-    @IBOutlet weak var constraintTopContent: NSLayoutConstraint!
-    @IBOutlet weak var constraintBottomShare: NSLayoutConstraint!
-    @IBOutlet weak var viewContent: UIView!
+    @IBOutlet weak var imgIcon                  : UIImageView!
+    @IBOutlet weak var constraintLeftBtnCerrar  : NSLayoutConstraint!
+    @IBOutlet weak var lblName                  : UILabel!
+    @IBOutlet weak var lblDescription           : UILabel!
+    @IBOutlet weak var constraintTopContent     : NSLayoutConstraint!
+    @IBOutlet weak var constraintBottomShare    : NSLayoutConstraint!
+    @IBOutlet weak var viewContent              : UIView!
     
     
     var objAchievement : AchievementBE!
