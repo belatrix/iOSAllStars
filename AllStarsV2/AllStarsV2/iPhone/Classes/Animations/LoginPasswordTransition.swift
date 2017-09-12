@@ -8,8 +8,78 @@
 
 import UIKit
 
+class LoginPasswordInteractiveTransition : InteractiveTransition{
+    
+    var initialScale : CGFloat = 0
+    
+    @objc func gestureTransitionMethod(_ gesture : UIPanGestureRecognizer){
+        
+        let view = self.navigationController.view!
+        
+        if gesture.state == .began {
+            
+            self.interactiveTransition = UIPercentDrivenInteractiveTransition()
+            self.navigationController.popViewController(animated: true)
+            
+        }else if gesture.state == .changed{
+            
+            let translation = gesture.translation(in: view)
+            let delta = fabs(translation.x / view.bounds.width)
+            print(delta)
+            self.interactiveTransition?.update(delta)
+            
+        }else{
+            print("else")
+            
+            self.interactiveTransition?.finish()
+            self.interactiveTransition = nil
+            
+        }
+    }
+    
+    @objc func gestureTransitionMethod1(_ gesture : UIPinchGestureRecognizer){
+        
+        var delta = fabs((gesture.scale - initialScale) / 8)
+        
+        if gesture.state == .began {
+
+            self.interactiveTransition = UIPercentDrivenInteractiveTransition()
+            self.navigationController.popViewController(animated: true)
+            self.initialScale = gesture.scale
+        }else if gesture.state == .changed{
+            
+            delta = delta > 1.0 ? 1 : delta
+            print(delta)
+            self.interactiveTransition?.update(delta)
+
+        }else{
+            
+            if delta > 0.3 {
+                print("finish")
+                self.interactiveTransition?.finish()
+                self.interactiveTransition = nil
+            }else{
+                print("cancel")
+                self.interactiveTransition?.cancel()
+            }
+        }
+
+    }
+}
+
 class LoginPasswordTransition: ControllerTransition {
 
+    
+    
+    override func createInteractiveTransition(navigationController: UINavigationController) -> InteractiveTransition? {
+        
+        let interactiveTransition = LoginPasswordInteractiveTransition()
+        interactiveTransition.navigationController = navigationController
+        interactiveTransition.gestureTransition = UIPinchGestureRecognizer(target: interactiveTransition, action: #selector(interactiveTransition.gestureTransitionMethod1(_:)))
+        interactiveTransition.navigationController.view.addGestureRecognizer(interactiveTransition.gestureTransition!)
+        
+        return interactiveTransition
+    }
     
     override func animatePush(toContext context : UIViewControllerContextTransitioning) {
         
@@ -19,8 +89,6 @@ class LoginPasswordTransition: ControllerTransition {
         let containerView = context.containerView
         let fromView = context.view(forKey: .from)!
         let toView = context.view(forKey: .to)!
-        
-        let duration = self.transitionDuration(using: context)
         
         toView.frame = UIScreen.main.bounds
         containerView.addSubview(toView)
@@ -34,7 +102,7 @@ class LoginPasswordTransition: ControllerTransition {
         
         containerView.layoutIfNeeded()
     
-        UIView.animate(withDuration: duration * 0.5, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             
             fromVC.constraintCenterForm.constant = (UIScreen.main.bounds.size.height + fromVC.viewFormUser.bounds.size.height) / 2
             fromVC.constraintBottomViewLogo.constant = UIScreen.main.bounds.size.height
@@ -46,7 +114,7 @@ class LoginPasswordTransition: ControllerTransition {
             
             fromView.backgroundColor = .clear
             
-            UIView.animate(withDuration: duration * 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
                 
                 toVC.constraintCenterForm.constant = toVC.initialValueConstraintCenterForm
                 toVC.constraintBottomViewLogo.constant = 0
@@ -63,8 +131,9 @@ class LoginPasswordTransition: ControllerTransition {
                 
                 context.completeTransition(true)
             }
+            
         }
-  
+ 
     }
     
     override func animatePop(toContext context : UIViewControllerContextTransitioning) {
@@ -76,7 +145,7 @@ class LoginPasswordTransition: ControllerTransition {
         let fromView = context.view(forKey: .from)!
         let toView = context.view(forKey: .to)!
         
-        let duration = self.transitionDuration(using: context)
+//        let duration = self.transitionDuration(using: context)
         
         toView.frame = UIScreen.main.bounds
         containerView.addSubview(toView)
@@ -90,7 +159,7 @@ class LoginPasswordTransition: ControllerTransition {
         
         containerView.layoutIfNeeded()
         
-        UIView.animate(withDuration: duration * 0.5, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             
             fromVC.constraintCenterForm.constant = (UIScreen.main.bounds.size.height + fromVC.viewFormUser.bounds.size.height) / 2
             fromVC.constraintBottomViewLogo.constant = UIScreen.main.bounds.size.height
@@ -102,7 +171,7 @@ class LoginPasswordTransition: ControllerTransition {
             
             fromView.backgroundColor = .clear
             
-            UIView.animate(withDuration: duration * 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
                 
                 toVC.constraintCenterForm.constant = toVC.initialValueConstraintCenterForm
                 toVC.constraintBottomViewLogo.constant = 0
@@ -120,11 +189,13 @@ class LoginPasswordTransition: ControllerTransition {
                 context.completeTransition(true)
             }
         }
+        
+        
     }
 
     
     override func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         
-        return 1
+        return 0.5
     }
 }

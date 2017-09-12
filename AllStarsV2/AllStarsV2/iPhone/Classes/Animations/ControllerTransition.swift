@@ -50,4 +50,9 @@ class ControllerTransition: NSObject, UIViewControllerAnimatedTransitioning {
         
         return 0
     }
+    
+    func createInteractiveTransition(navigationController : UINavigationController) -> InteractiveTransition?{
+        
+        return nil
+    }
 }

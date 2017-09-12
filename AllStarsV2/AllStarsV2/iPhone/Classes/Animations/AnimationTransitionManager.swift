@@ -8,59 +8,39 @@
 
 import UIKit
 
+class InteractiveTransition: NSObject{
+    
+    var interactiveTransition   : UIPercentDrivenInteractiveTransition?
+    var navigationController    : UINavigationController!
+    var gestureTransition       : UIGestureRecognizer?
+}
+
+
 class AnimationTransitionManager: NSObject, UINavigationControllerDelegate {
 
-    @IBOutlet weak var navigationController : UINavigationController!{
-        didSet{
-            self.navigationController.view.addGestureRecognizer(self.panGesture)
-        }
-    }
+    var interactiveTransition : InteractiveTransition?
     
-    var interactionController : UIPercentDrivenInteractiveTransition?
+    @IBOutlet weak var navigationController : UINavigationController!
+
     var transitionController  : ControllerTransition!
     
     
-    lazy var panGesture : UIPanGestureRecognizer = {
-        
-        let _panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.panGestureRecognizer(_:)))
-        return _panGesture
-    }()
-    
-    
-    @objc func panGestureRecognizer(_ gesture : UIPanGestureRecognizer){
-        
-        let view = self.navigationController.view!
-        
-        if gesture.state == .began {
-            
-            self.interactionController = UIPercentDrivenInteractiveTransition()
-            self.navigationController.popViewController(animated: true)
-            
-        }else if gesture.state == .changed{
-            
-            let translation = gesture.translation(in: view)
-            let delta = fabs(translation.x / view.bounds.width)
-            print(delta)
-            self.interactionController?.update(delta)
-            
-        }else{
-            self.interactionController?.finish()
-            self.interactionController = nil
-            
-        }
-    }
-    
-    
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    
-        self.transitionController = AnimationTransitionFactory.getAnimationTransitionTo(controllerOrigin: fromVC, withDestinationController: toVC, withOperation: operation)
+
+        let transitions = AnimationTransitionFactory.getAnimationTransitionTo(controllerOrigin: fromVC, withDestinationController: toVC, withOperation: operation, withNavigationController: self.navigationController)
+        self.transitionController = transitions.transition
+        
+        if operation == .push{
+            self.interactiveTransition = transitions.interactiveTransition
+        }
+        
         return self.transitionController
     }
     
     
     func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         
-        return self.interactionController
+        return self.interactiveTransition?.interactiveTransition
     }
     
 }

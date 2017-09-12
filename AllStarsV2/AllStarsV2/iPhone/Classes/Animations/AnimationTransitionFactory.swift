@@ -10,46 +10,56 @@ import UIKit
 
 class AnimationTransitionFactory: NSObject {
 
-    class func getAnimationTransitionTo(controllerOrigin origin: UIViewController, withDestinationController destination: UIViewController, withOperation operation: UINavigationControllerOperation) -> ControllerTransition?{
+    class func getAnimationTransitionTo(controllerOrigin origin: UIViewController, withDestinationController destination: UIViewController, withOperation operation: UINavigationControllerOperation, withNavigationController navController : UINavigationController) -> (transition : ControllerTransition?, interactiveTransition: InteractiveTransition?){
         
         if (origin is SplashViewController && destination is LoginViewController){
             
-            return SplashLoginTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            let transition = SplashLoginTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
             
         }else if (origin is LoginViewController && destination is ForgotPasswordViewController) || (origin is ForgotPasswordViewController && destination is LoginViewController){
             
-            return LoginPasswordTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            let transition = LoginPasswordTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
             
         }else if (origin is LoginViewController && destination is CreateNewAccountViewController) || (origin is CreateNewAccountViewController && destination is LoginViewController){
             
-            return LoginCreateUserTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            let transition = LoginCreateUserTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
             
         }else if (origin is LoginViewController && destination is ChangePasswordViewController) || (origin is ChangePasswordViewController && destination is LoginViewController){
             
-            return LoginChangePasswordAnimation(withOrigin: origin, withDestination: destination, withOperation: operation)
+            let transition = LoginChangePasswordAnimation(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
             
         }else if (origin is LoginViewController && destination is SWRevealViewController) || (origin is CompleteProfileViewController && destination is SWRevealViewController){
             
-            return LoginTabBarTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            let transition = LoginTabBarTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
             
         }else if (origin is UserProfileViewController && destination is AchievementDetailViewController) || (destination is UserProfileViewController && origin is AchievementDetailViewController){
             
-            return AchievementToDetailTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            let transition = AchievementToDetailTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
             
         }else if (origin is UserProfileViewController && destination is CategoryDetailViewController) || (destination is UserProfileViewController && origin is CategoryDetailViewController){
             
-            return CategoryToDetailTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            let transition = CategoryToDetailTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
             
         }else if (origin is UserProfileViewController && destination is EditProfileViewController) || (destination is UserProfileViewController && origin is EditProfileViewController){
             
-            return ProfileToEditProfileTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            let transition = ProfileToEditProfileTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
             
         }else if (origin is ContactsViewController && destination is UserProfileViewController) || (destination is ContactsViewController && origin is UserProfileViewController){
             
-            return ContactsToProfileTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            let transition = ContactsToProfileTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
             
+        }else{
+            
+            return (nil, nil)
         }
-
-        return nil
     }
 }
