@@ -8,8 +8,47 @@
 
 import UIKit
 
+class ContactsToProfileInteractiveTransition : InteractiveTransition{
+    
+    var initialScale : CGFloat = 0
+    
+    @objc func gestureTransitionMethod(_ gesture : UIPanGestureRecognizer){
+        
+        let view = self.navigationController.view!
+        
+        if gesture.state == .began {
+            
+            self.interactiveTransition = UIPercentDrivenInteractiveTransition()
+            self.navigationController.popViewController(animated: true)
+            
+        }else if gesture.state == .changed{
+            
+            let translation = gesture.translation(in: view)
+            let delta = fabs(translation.x / view.bounds.width)
+            self.interactiveTransition?.update(delta)
+            
+        }else{
+            
+            self.interactiveTransition?.finish()
+            self.interactiveTransition = nil
+            
+        }
+    }
+}
+
+
 class ContactsToProfileTransition: ControllerTransition {
 
+    override func createInteractiveTransition(navigationController: UINavigationController) -> InteractiveTransition? {
+        
+        let interactiveTransition = ContactsToProfileInteractiveTransition()
+        interactiveTransition.navigationController = navigationController
+        interactiveTransition.gestureTransition = UIPanGestureRecognizer(target: interactiveTransition, action: #selector(interactiveTransition.gestureTransitionMethod(_:)))
+        interactiveTransition.navigationController.view.addGestureRecognizer(interactiveTransition.gestureTransition!)
+        
+        return interactiveTransition
+    }
+    
     override func animatePush(toContext context : UIViewControllerContextTransitioning){
         
         let fromVC = self.controllerOrigin as! ContactsViewController
@@ -21,8 +60,6 @@ class ContactsToProfileTransition: ControllerTransition {
         
         let fromView = context.view(forKey: .from)!
         let toView = context.view(forKey: .to)!
-        
-        let duration = self.transitionDuration(using: context)
         
         fromView.frame = UIScreen.main.bounds
         containerView.addSubview(fromView)
@@ -56,7 +93,7 @@ class ContactsToProfileTransition: ControllerTransition {
         
         containerView.layoutIfNeeded()
         
-        UIView.animate(withDuration: duration * 0.15, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             
             fromView.alpha = 0
             
@@ -64,21 +101,21 @@ class ContactsToProfileTransition: ControllerTransition {
             
             toView.backgroundColor = .white
             
-            UIView.animate(withDuration: duration * 0.15, animations: {
+            UIView.animate(withDuration: 0.2, animations: {
                 
                 toVC.constraintTopHeader.constant = 0
                 containerView.layoutIfNeeded()
                 
             }, completion: { (_) in
                 
-                UIView.animate(withDuration: duration * 0.15, animations: {
+                UIView.animate(withDuration: 0.2, animations: {
                     
                     toVC.viewContainerInfo.alpha = 1
                     containerView.layoutIfNeeded()
                     
                 }, completion: { (_) in
                     
-                    UIView.animate(withDuration: duration * 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
+                    UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
                         
                         toVC.constraintTopSections.constant = 0
                         toVC.constraintBottomSections.constant = 0
@@ -99,7 +136,7 @@ class ContactsToProfileTransition: ControllerTransition {
         }
         
         
-        UIView.animate(withDuration: duration * 0.5, delay: duration * 0.15, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.6, delay: 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
             
             imgUser.animateBordeWidthFromValue(imgUser.borderImage, toValue: 5 / delta)
             imgUser.transform = CGAffineTransform(scaleX: delta, y: delta)
@@ -147,31 +184,21 @@ class ContactsToProfileTransition: ControllerTransition {
         
         
         fromVC.imgUser!.alpha = 0
-        fromView.backgroundColor = .clear
-        toView.alpha = 0
+        toView.alpha = 1
         
         cellSelected.imgUser.alpha = 0
         
         let delta = cellSelected.imgUser.frame.size.height / 140
         
-        UIView.animate(withDuration: duration * 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
+
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
             
             fromVC.constraintTopSections.constant = UIScreen.main.bounds.size.height
             fromVC.constraintBottomSections.constant = UIScreen.main.bounds.size.height
             fromVC.viewContainerInfo.alpha = 0
             fromVC.constraintTopHeader.constant = -64
             
-            containerView.layoutIfNeeded()
-            
-        }) { (_) in
-            
-        }
-        
-        
-        
-        UIView.animate(withDuration: duration * 0.5, delay: duration * 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
-            
-            toView.alpha = 1
+            fromView.backgroundColor = .clear
             
             imgUser.animateBordeWidthFromValue(5, toValue: 0)
             
@@ -196,6 +223,6 @@ class ContactsToProfileTransition: ControllerTransition {
     
     override func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         
-        return 1.3
+        return 0.9
     }
 }

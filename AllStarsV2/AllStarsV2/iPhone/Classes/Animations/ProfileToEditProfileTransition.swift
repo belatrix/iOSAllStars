@@ -200,11 +200,17 @@ class ProfileToEditProfileTransition: ControllerTransition {
         fromVC.imgUser.alpha = 0
         
         let newFrame = toVC.imgUser!.convert(toVC.imgUser!.frame, to: toVC.view)
-        let newCenter = toVC.imgUser!.convert(toVC.imgUser!.center, to: toVC.view)
+        var newCenter = toVC.imgUser!.convert(toVC.imgUser!.center, to: toVC.view)
+        newCenter.x = newCenter.x - 8
+        newCenter.y = newCenter.y - 15
+        
+        let delta = newFrame.size.height / imgUser.frame.size.height
         
         toVC.constraintHeightData.constant = fromVC.constraintHeightBlur.constant
         containerView.layoutIfNeeded()
-
+        
+        
+        
         UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
             
             toVC.constraintHeightData.constant = 170
@@ -215,19 +221,12 @@ class ProfileToEditProfileTransition: ControllerTransition {
             fromVC.constraintBottomScroll.constant = -UIScreen.main.bounds.size.height
             
             fromVC.viewPhotoContainer.alpha = 0
-            
             toVC.constraintTopHeader.constant = 0
             fromView.backgroundColor = .clear
-            
-            
-            
-            let delta = newFrame.size.height / imgUser.frame.size.height
+     
             imgUser.transform = CGAffineTransform(scaleX: delta, y: delta)
             
             imgUser.center = newCenter
-            imgUser.center.y = imgUser.center.y - 15
-            imgUser.center.x = imgUser.center.x - 8
-            
             containerView.layoutIfNeeded()
             
         }) { (_) in

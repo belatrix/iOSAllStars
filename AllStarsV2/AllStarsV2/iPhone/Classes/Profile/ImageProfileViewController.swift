@@ -15,6 +15,21 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
     
     var objUser : UserBE!
     
+    @IBAction func doubleTapToRestartScale(_ sender: Any) {
+        
+        
+        
+        UIView.animate(withDuration: 0.35, animations: {
+            self.imgUser.transform = CGAffineTransform.identity
+            self.scrollZoom.contentSize = CGSize(width: self.imgUser.frame.width, height: self.imgUser.frame.height)
+        }) { (_) in
+            UIView.animate(withDuration: 0.35) {
+                
+            }
+            
+        }
+        
+    }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         

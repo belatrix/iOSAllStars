@@ -246,7 +246,7 @@
             </objects>
             <point key="canvasLocation" x="1135.3125" y="97.183098591549296"/>
         </scene>
-        <!--Ranking-->
+        <!--Navigation Controller-->
         <scene sceneID="IBK-YK-Bnd">
             <objects>
                 <navigationController storyboardIdentifier="RankingNavViewController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="coL-NO-liv" sceneMemberID="viewController">
@@ -262,7 +262,11 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xU-ZS-PHg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="PYv-J5-xga" customClass="AnimationTransitionManager" customModule="AllStarsV2" customModuleProvider="target"/>
+                <customObject id="PYv-J5-xga" customClass="AnimationTransitionManager" customModule="AllStarsV2" customModuleProvider="target">
+                    <connections>
+                        <outlet property="navigationController" destination="coL-NO-liv" id="SDO-JI-eHe"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-386" y="98"/>
         </scene>

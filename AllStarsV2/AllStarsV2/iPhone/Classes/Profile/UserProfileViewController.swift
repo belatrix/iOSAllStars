@@ -25,10 +25,10 @@ class UserProfileViewController: SWFrontGenericoViewController, UIScrollViewDele
     @IBOutlet weak var viewContainerInfo        : UIView!
     @IBOutlet weak var constraintTopSections    : NSLayoutConstraint!
     @IBOutlet weak var constraintBottomSections : NSLayoutConstraint!
-    @IBOutlet weak var constraintHeightData    : NSLayoutConstraint!
+    @IBOutlet weak var constraintHeightData     : NSLayoutConstraint!
     
     
-    
+    var allowRevealController                   = true
     var controllerCategories                    : CategoriesViewController!
     var controllerAchievements                  : AchievementsUserViewController!
     var currenteIndexSection                    : Int = 0
@@ -177,6 +177,10 @@ class UserProfileViewController: SWFrontGenericoViewController, UIScrollViewDele
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
+        if self.allowRevealController == false{
+            self.view.removeGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         
         self.updateInfo()
         

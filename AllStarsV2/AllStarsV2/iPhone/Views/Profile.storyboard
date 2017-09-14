@@ -338,24 +338,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="AeY-Qq-aN9">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="2" translatesAutoresizingMaskIntoConstraints="NO" id="AeY-Qq-aN9">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7ks-ZE-yja">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="58" id="SP9-Fh-e8E"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="7ks-ZE-yja" firstAttribute="top" secondItem="AeY-Qq-aN9" secondAttribute="top" id="7X3-UV-1Vl"/>
-                                    <constraint firstItem="7ks-ZE-yja" firstAttribute="leading" secondItem="AeY-Qq-aN9" secondAttribute="leading" id="A0W-Pj-BAX"/>
-                                    <constraint firstItem="7ks-ZE-yja" firstAttribute="width" secondItem="AeY-Qq-aN9" secondAttribute="width" id="Ycr-LA-ECe"/>
-                                    <constraint firstItem="7ks-ZE-yja" firstAttribute="height" secondItem="AeY-Qq-aN9" secondAttribute="height" id="ZHu-sR-ZEN"/>
-                                    <constraint firstAttribute="bottom" secondItem="7ks-ZE-yja" secondAttribute="bottom" id="mZK-TK-hf8"/>
-                                    <constraint firstAttribute="trailing" secondItem="7ks-ZE-yja" secondAttribute="trailing" id="sFA-VY-duW"/>
+                                    <constraint firstAttribute="bottom" secondItem="7ks-ZE-yja" secondAttribute="bottom" id="4cj-7F-t3S"/>
+                                    <constraint firstItem="7ks-ZE-yja" firstAttribute="width" secondItem="AeY-Qq-aN9" secondAttribute="width" id="8qJ-AF-eHh"/>
+                                    <constraint firstItem="7ks-ZE-yja" firstAttribute="height" secondItem="AeY-Qq-aN9" secondAttribute="height" id="BfX-Di-bNn"/>
+                                    <constraint firstItem="7ks-ZE-yja" firstAttribute="top" secondItem="AeY-Qq-aN9" secondAttribute="top" id="FAf-kD-zZQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="7ks-ZE-yja" secondAttribute="trailing" id="Nu6-dd-Bzj"/>
+                                    <constraint firstItem="7ks-ZE-yja" firstAttribute="leading" secondItem="AeY-Qq-aN9" secondAttribute="leading" id="bbv-bB-eXn"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="Jfj-Qv-lVV" id="YWy-Cc-wDT"/>
+                                    <outletCollection property="gestureRecognizers" destination="355-3i-I16" appends="YES" id="rqq-qN-3Nx"/>
                                 </connections>
                             </scrollView>
                         </subviews>
@@ -374,8 +379,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vh6-LY-qya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="355-3i-I16">
+                    <connections>
+                        <action selector="doubleTapToRestartScale:" destination="Jfj-Qv-lVV" id="EqK-DN-OXG"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3174" y="440"/>
+            <point key="canvasLocation" x="3172.5" y="439.43661971830988"/>
         </scene>
         <!--User Profile View Controller-->
         <scene sceneID="FGS-rC-sS0">
@@ -1207,14 +1217,14 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKi-xM-xyH">
                                 <rect key="frame" x="0.0" y="64" width="320" height="180"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zF3-oH-RWU">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zF3-oH-RWU">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVL-DH-uBD">
+                                    <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVL-DH-uBD">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Hmb-8W-0KV">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>

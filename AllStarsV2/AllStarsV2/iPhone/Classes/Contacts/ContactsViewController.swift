@@ -195,6 +195,7 @@ class ContactsViewController: SWFrontGenericoViewController, UISearchBarDelegate
         if segue.identifier == "UserProfileViewController" {
             
             let controller = segue.destination as! UserProfileViewController
+            controller.allowRevealController = false
             controller.objUser = sender as? UserBE
         }
     
