@@ -57,6 +57,11 @@ class AnimationTransitionFactory: NSObject {
             let transition = ContactsToProfileTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
             return (transition, transition.createInteractiveTransition(navigationController: navController))
             
+        }else if (origin is RankingViewController && destination is UserProfileViewController) || (destination is RankingViewController && origin is UserProfileViewController){
+            
+            let transition = RankingToProfileTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
+            
         }else{
             
             return (nil, nil)

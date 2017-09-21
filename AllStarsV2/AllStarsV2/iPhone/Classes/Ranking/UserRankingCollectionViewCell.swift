@@ -8,16 +8,15 @@
 
 import UIKit
 
-class UserRankingTableViewCell: UITableViewCell {
+class UserRankingCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var lblName      : UILabel!
-    @IBOutlet weak var lblRating    : UILabel!
-    @IBOutlet weak var imgUser  : ImageUserProfile!
+    @IBOutlet weak var imgUser      : ImageUserProfile!
+    @IBOutlet weak var progressRanking: UIProgressView!
     
+    var maxValue                    : Int = 0
     var objContact : UserBE!{
-        
         didSet{
-            
             self.updateData()
         }
     }
@@ -30,22 +29,13 @@ class UserRankingTableViewCell: UITableViewCell {
     
     func updateData(){
         
+//        UIView.animateKeyframes(withDuration: 1, delay: 1, options: [], animations: {
+//            self.progressRanking.progress = Float(self.objContact.user_value) / Float(self.maxValue)
+//        }, completion: nil)
+        self.progressRanking.setProgress(Float(self.objContact.user_value) / Float(self.maxValue), animated: true)
+        
         self.lblName.text = "\(self.objContact.user_first_name!) \(self.objContact.user_last_name!)"
-        self.lblRating.text = "\(self.objContact.user_value)"
         self.imgUser.objUser = self.objContact
     }
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-
 
 }

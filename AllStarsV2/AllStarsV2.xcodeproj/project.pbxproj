@@ -30,11 +30,12 @@
 		961518451F32060F007DAAB2 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961518441F32060F007DAAB2 /* UserProfileViewController.swift */; };
 		961E91621F4721AE0086B24E /* RankingWebModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E91611F4721AE0086B24E /* RankingWebModel.swift */; };
 		961E91641F4722900086B24E /* RankingBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E91631F4722900086B24E /* RankingBC.swift */; };
-		961E91661F472D740086B24E /* UserRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E91651F472D740086B24E /* UserRankingTableViewCell.swift */; };
+		961E91661F472D740086B24E /* UserRankingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E91651F472D740086B24E /* UserRankingCollectionViewCell.swift */; };
 		961E91681F476BA20086B24E /* ImageUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E91671F476BA20086B24E /* ImageUserProfile.swift */; };
 		961FE4B81F27840D004A304D /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961FE4B71F27840D004A304D /* ChangePasswordViewController.swift */; };
 		961FE4BA1F27905F004A304D /* LoginChangePasswordAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961FE4B91F27905F004A304D /* LoginChangePasswordAnimation.swift */; };
 		9622E5091F1F983200D66688 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9622E5081F1F983200D66688 /* Login.storyboard */; };
+		9632F9931F7417E7007586D5 /* RankingToProfileTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9632F9921F7417E7007586D5 /* RankingToProfileTransition.swift */; };
 		963D53821F424C6200ADF937 /* AchievementToDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D53811F424C6200ADF937 /* AchievementToDetailTransition.swift */; };
 		963D53841F424E2E00ADF937 /* CategoryToDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D53831F424E2E00ADF937 /* CategoryToDetailTransition.swift */; };
 		96535E671F1E90CC00E97EE9 /* CDMColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96535E5F1F1E90CC00E97EE9 /* CDMColorManager.swift */; };
@@ -137,11 +138,12 @@
 		961518441F32060F007DAAB2 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		961E91611F4721AE0086B24E /* RankingWebModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingWebModel.swift; sourceTree = "<group>"; };
 		961E91631F4722900086B24E /* RankingBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingBC.swift; sourceTree = "<group>"; };
-		961E91651F472D740086B24E /* UserRankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankingTableViewCell.swift; sourceTree = "<group>"; };
+		961E91651F472D740086B24E /* UserRankingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankingCollectionViewCell.swift; sourceTree = "<group>"; };
 		961E91671F476BA20086B24E /* ImageUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUserProfile.swift; sourceTree = "<group>"; };
 		961FE4B71F27840D004A304D /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		961FE4B91F27905F004A304D /* LoginChangePasswordAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginChangePasswordAnimation.swift; sourceTree = "<group>"; };
 		9622E5081F1F983200D66688 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		9632F9921F7417E7007586D5 /* RankingToProfileTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingToProfileTransition.swift; sourceTree = "<group>"; };
 		963D53811F424C6200ADF937 /* AchievementToDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementToDetailTransition.swift; sourceTree = "<group>"; };
 		963D53831F424E2E00ADF937 /* CategoryToDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryToDetailTransition.swift; sourceTree = "<group>"; };
 		96535E5F1F1E90CC00E97EE9 /* CDMColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDMColorManager.swift; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 				963D53831F424E2E00ADF937 /* CategoryToDetailTransition.swift */,
 				968F6B911F4368200042EFD5 /* ProfileToEditProfileTransition.swift */,
 				96BF8EF71F4B5F2B005D4D22 /* ContactsToProfileTransition.swift */,
+				9632F9921F7417E7007586D5 /* RankingToProfileTransition.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -552,7 +555,7 @@
 			isa = PBXGroup;
 			children = (
 				96F2060A1F462B870089E3E6 /* RankingViewController.swift */,
-				961E91651F472D740086B24E /* UserRankingTableViewCell.swift */,
+				961E91651F472D740086B24E /* UserRankingCollectionViewCell.swift */,
 			);
 			path = Ranking;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				966BB5A51F4CD1890042D602 /* SWRevealViewController.m in Sources */,
 				966BB5A61F4CD1890042D602 /* SWRevealViewControllerDelegate.m in Sources */,
 				9609EAA21F45CC3500F7AA4E /* ExtString.swift in Sources */,
+				9632F9931F7417E7007586D5 /* RankingToProfileTransition.swift in Sources */,
 				96F1A7121F3A059E0099DD90 /* KeywordBE.swift in Sources */,
 				96E1BE951F1FB293009E01A3 /* LoginViewController.swift in Sources */,
 				963D53841F424E2E00ADF937 /* CategoryToDetailTransition.swift in Sources */,
@@ -731,7 +735,7 @@
 				4D90D4461F4CB338007E8B04 /* EventWebModel.swift in Sources */,
 				96C1C0B41F268C8700F12BAD /* AnimationTransitionFactory.swift in Sources */,
 				9663360F1F3E3FAA001EF210 /* ContactCollectionViewCell.swift in Sources */,
-				961E91661F472D740086B24E /* UserRankingTableViewCell.swift in Sources */,
+				961E91661F472D740086B24E /* UserRankingCollectionViewCell.swift in Sources */,
 				96BFD4E71F3B7F370086A722 /* AchievementDetailViewController.swift in Sources */,
 				96E42C941F32649900277E34 /* CategoryBC.swift in Sources */,
 				967983151F1E6A79005C58BF /* AllStarsV2.xcdatamodeld in Sources */,
@@ -926,7 +930,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = M759LSEAUK;
 				INFOPLIST_FILE = AllStarsV2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.belatrix.AllStars;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -942,7 +946,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = M759LSEAUK;
 				INFOPLIST_FILE = AllStarsV2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.belatrix.AllStars;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -8,157 +8,81 @@
 
 import UIKit
 
-class RankingViewController: SWFrontGenericoViewController, UITableViewDelegate, UITableViewDataSource {
+class RankingViewController: SWFrontGenericoViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet weak var tlbUsers                 : UITableView!
-    @IBOutlet weak var constraintSectionSelected: NSLayoutConstraint!
-    @IBOutlet var arrayButtonsSection           : [UIButton]!
+    @IBOutlet weak var clvUsers                 : UICollectionView!
     
-    var currenteIndexSection                    : Int = 0
+    var maxValue                                : Int = 0
     
-    var arrayCurrentMonth                       = [UserBE]() {
-        didSet{
-            if self.currenteIndexSection == 0{
-                self.arrayUsers = self.arrayCurrentMonth
-            }
-        }
-    }
+    var arrayUsers                              = [UserBE]()
+    var cellSelected                            : UserRankingCollectionViewCell!
     
-    var arraLastMonth                           = [UserBE]() {
-        didSet{
-            if self.currenteIndexSection == 1{
-                self.arrayUsers = self.arraLastMonth
-            }
-        }
-    }
-    
-    var arrayAllTime                            = [UserBE]() {
-        didSet{
-            if self.currenteIndexSection == 2{
-                self.arrayUsers = self.arrayAllTime
-            }
-        }
-    }
+    //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
     
     
-    var arrayUsers                              = [UserBE]() {
-        didSet{
-            self.tlbUsers.reloadSections(IndexSet(integer: 0), with: .automatic)
-        }
-    }
-    
-    
-    //MARK: - UITableViewDelegate, UITableViewDataSource
-    
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return self.arrayUsers.count
     }
     
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cellIdentifier = "UserRankingTableViewCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! UserRankingTableViewCell
+        let cellIdentifier = "UserRankingCollectionViewCell"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! UserRankingCollectionViewCell
+        cell.maxValue = self.maxValue
         cell.objContact = self.arrayUsers[indexPath.row]
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        tableView.deselectRow(at: indexPath, animated: true)
+        self.cellSelected = collectionView.cellForItem(at: indexPath) as! UserRankingCollectionViewCell
         self.performSegue(withIdentifier: "UserProfileViewController", sender: self.arrayUsers[indexPath.row])
     }
     
-    
-    //MARK: - Selecction kind
-    
-    @IBAction func clicBtnSection(_ sender: UIButton) {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
         
-        self.currenteIndexSection = sender.tag
-        self.listEmployeeByTagSection(self.currenteIndexSection)
+        let numberOfElements: CGFloat = 4
+        let widthCell = (UIScreen.main.bounds.size.width - (numberOfElements + 1)*10) / numberOfElements
+        let heightCell = widthCell + 57
         
-        if self.currenteIndexSection == 0 {
-            self.arrayUsers = self.arrayCurrentMonth
-        }else if self.currenteIndexSection == 1 {
-            self.arrayUsers = self.arraLastMonth
-        }else if self.currenteIndexSection == 2 {
-            self.arrayUsers = self.arrayAllTime
-        }
-        
-        UIView.animate(withDuration: 0.55, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
-            
-            for button in self.arrayButtonsSection{
-                let color = button == sender ? Constants.MAIN_COLOR : UIColor.lightGray
-                button.setTitleColor(color, for: .normal)
-            }
-            
-            self.constraintSectionSelected.constant =  sender.center.x - UIScreen.main.bounds.size.width / 2
-            
-            self.view.layoutIfNeeded()
-            
-        }, completion: nil)
-        
+        return CGSize(width: widthCell, height: heightCell)
     }
-    
-    func getKindByTag(_ tag : Int) -> TypeKind {
+
+
+    func listEmployeeRanking() {
         
-        if tag == 0 {
-            return .currentMonthScore
-        }else if tag == 1 {
-            return .lastMonthScore
-        }else{
-            return .totalScore
-        }
-    }
-    
-    func listEmployeeByTagSection(_ tag : Int) {
-        
-        let kind = self.getKindByTag(tag)
-        
-        RankingBC.listEmployeeByKind(kind.rawValue, withSuccessful: { (arrayUsers) in
-        
-            if kind == .currentMonthScore {
-                self.arrayCurrentMonth = arrayUsers
-            }else if kind == .lastMonthScore {
-                self.arraLastMonth = arrayUsers
-            }else if kind == .totalScore {
-                self.arrayAllTime = arrayUsers
-            }
+        RankingBC.listEmployeeByKind(TypeKind.totalScore.rawValue, withSuccessful: { (arrayUsers) in
             
+            let arrayResult = arrayUsers.sorted(by: {return $0.user_value > $1.user_value})
+            self.maxValue = arrayResult.count > 0 ? arrayResult[0].user_value : 0
+            
+            if self.arrayUsers.count == 0{
+                self.arrayUsers = arrayUsers
+                self.clvUsers.reloadData()
+            }else{
+                
+                self.arrayUsers = arrayUsers
+      
+                self.clvUsers.performBatchUpdates({
+                    self.clvUsers.reloadSections(IndexSet(integer: 0))
+                }, completion: { (_) in
+                    
+                })
+            }
+         
         }) { (title, message) in
             
         }
     }
     
-    func selectSectionWithoutAnimation(_ sender: UIButton){
-        
-        self.currenteIndexSection = sender.tag
-        
-        for button in self.arrayButtonsSection{
-            let color = button == sender ? Constants.MAIN_COLOR : UIColor.lightGray
-            button.setTitleColor(color, for: .normal)
-        }
-        
-        if sender.tag == 0 {
-            self.arrayUsers = self.arrayCurrentMonth
-        }else if sender.tag == 1 {
-            self.arrayUsers = self.arraLastMonth
-        }else if sender.tag == 2 {
-            self.arrayUsers = self.arrayAllTime
-        }
-        
-        self.constraintSectionSelected.constant =  sender.center.x - UIScreen.main.bounds.size.width / 2
-        
-        self.view.layoutIfNeeded()
-    }
+
 
     
     //MARK: - ViewController
@@ -166,20 +90,18 @@ class RankingViewController: SWFrontGenericoViewController, UITableViewDelegate,
     override func loadView() {
         
         super.loadView()
-        self.selectSectionWithoutAnimation(self.arrayButtonsSection[0])
-        
-        for btn in self.arrayButtonsSection{
-            self.listEmployeeByTagSection(btn.tag)
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
 
-    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.listEmployeeRanking()
+        super.viewDidAppear(animated)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -199,6 +121,7 @@ class RankingViewController: SWFrontGenericoViewController, UITableViewDelegate,
         
         if segue.identifier == "UserProfileViewController" {
             let controller = segue.destination as! UserProfileViewController
+            controller.allowRevealController = false
             controller.objUser = sender as? UserBE
         }
     }

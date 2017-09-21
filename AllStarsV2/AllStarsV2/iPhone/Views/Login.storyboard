@@ -62,8 +62,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLt-wG-1U0">
                                 <rect key="frame" x="0.0" y="317" width="320" height="94"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="kenyi" placeholder="username" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="bxq-C4-QOt">
-                                        <rect key="frame" x="20" y="8" width="90" height="26"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="krodriguez" placeholder="username" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="bxq-C4-QOt">
+                                        <rect key="frame" x="20" y="8" width="95" height="26"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="Jqb-Sr-IuV"/>
@@ -78,7 +78,7 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="@belatrixsf.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dp9-9c-XBn">
-                                        <rect key="frame" x="106" y="8" width="136.5" height="26"/>
+                                        <rect key="frame" x="111" y="8" width="136.5" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="0zI-hq-FVa"/>
                                             <constraint firstAttribute="width" constant="136.5" id="ZEs-Nj-9Z2"/>
