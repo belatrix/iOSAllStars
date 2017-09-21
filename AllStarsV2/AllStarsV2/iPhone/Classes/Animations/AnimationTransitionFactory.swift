@@ -42,7 +42,7 @@ class AnimationTransitionFactory: NSObject {
             let transition = AchievementToDetailTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
             return (transition, transition.createInteractiveTransition(navigationController: navController))
             
-        }else if (origin is UserProfileViewController && destination is CategoryDetailViewController) || (destination is UserProfileViewController && origin is CategoryDetailViewController){
+        }else if (origin is UserProfileViewController && destination is CategoryDetailViewController && operation == .push) || (destination is UserProfileViewController && origin is CategoryDetailViewController && operation == .pop){
             
             let transition = CategoryToDetailTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
             return (transition, transition.createInteractiveTransition(navigationController: navController))

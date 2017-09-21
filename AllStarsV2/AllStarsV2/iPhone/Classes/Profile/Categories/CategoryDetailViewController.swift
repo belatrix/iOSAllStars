@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StarUserTableViewCellDelegate {
+class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StarUserTableViewCellDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var constraintTopContent     : NSLayoutConstraint!
@@ -33,12 +33,25 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
         _ = self.navigationController?.popViewController(animated: true)
     }
     
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool{
+        return true
+    }
+    
+    //MARK: - StarUserTableViewCellDelegate
+    
     func starUserTableViewCell(_ cell: StarUserTableViewCell, selectStar objStar: StarUserBE) {
         
         let indexPath = self.tlbStars.indexPath(for: cell)
         self.tlbStars.reloadRows(at: [indexPath!], with: .fade)
         
     }
+    
+    func starUserTableViewCell(_ cell: StarUserTableViewCell, selectNameUserFrom objUser: UserBE) {
+        
+        self.performSegue(withIdentifier: "UserProfileViewController", sender: objUser)
+    }
+    
+    //MARK: - UITableViewDelegate, UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
@@ -107,14 +120,19 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
         return .lightContent
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "UserProfileViewController" {
+            
+            let controller = segue.destination as! UserProfileViewController
+            controller.allowRevealController = false
+            controller.objUser = sender as? UserBE
+        }
     }
-    */
+    
 
 }
