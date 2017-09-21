@@ -25,9 +25,9 @@ class EventCollectionViewCell: UICollectionViewCell {
     
         
         self.viewImgContainer.layer.cornerRadius = 8
-        self.viewImgContainer.layer.shadowRadius = 3
+        self.viewImgContainer.layer.shadowRadius = 2
         self.viewImgContainer.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.viewImgContainer.layer.shadowOpacity = 0.6
+        self.viewImgContainer.layer.shadowOpacity = 0.45
         self.viewImgContainer.layer.masksToBounds = false
         
         self.imgEvent.layer.cornerRadius = 8

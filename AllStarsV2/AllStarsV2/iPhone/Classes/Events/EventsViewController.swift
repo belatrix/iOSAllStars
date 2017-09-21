@@ -17,14 +17,12 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
     @IBOutlet weak var otherEventsConstraint: NSLayoutConstraint!
 
     
+    
+    
+    
     //MARK: - CategoryEventViewControllerDelegate
 
-    
-    
-    func categoryEventViewController(_ viewController: CategoryEventViewController, didFinishLoadData arrayEvents: [EventBE]) {
-        
-        
-    }
+    func categoryEventViewController(_ viewController: CategoryEventViewController, didFinishLoadData arrayEvents: [EventBE]) { }
     
     
     func categoryEventViewController(_ viewController: CategoryEventViewController, showAllSegueWithEventArray eventArray: [EventBE]) {
@@ -34,23 +32,21 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
         self.performSegue(withIdentifier: identifier, sender: tupleDataSegue)
     }
     
+    
+    
+    
+    
     //MARK: -
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-    
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle{
-        
         return .lightContent
     }
     
@@ -60,21 +56,20 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == EventsViewControllerSegue.localEvents.rawValue || segue.identifier == EventsViewControllerSegue.otherEvents.rawValue || segue.identifier == EventsViewControllerSegue.userEvents.rawValue{
+        if segue.identifier == EventsViewControllerSegue.localEvents.rawValue || segue.identifier == EventsViewControllerSegue.otherEvents.rawValue || segue.identifier == EventsViewControllerSegue.userEvents.rawValue {
             
             let controller = segue.destination as! CategoryEventViewController
             controller.delegate = self
             controller.segueIdentifierClass = EventsViewControllerSegue(rawValue: segue.identifier!)!
             
-        }else if segue.identifier == "SeeAllEventsCategoryViewController"{
+        }
+        else if segue.identifier == "SeeAllEventsCategoryViewController" {
             
             let controller = segue.destination as! SeeAllEventsCategoryViewController
             controller.arrayEvents = (sender as! TupleSeeAllCategory).arrayEvents
             controller.segueIdentifierClass = (sender as! TupleSeeAllCategory).identifier
         }
     }
-
 
 }
 

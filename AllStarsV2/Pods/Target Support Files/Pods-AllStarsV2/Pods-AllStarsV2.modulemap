@@ -1,0 +1,6 @@
+framework module Pods_AllStarsV2 {
+  umbrella header "Pods-AllStarsV2-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -17,10 +17,9 @@ enum EventsViewControllerSegue : String {
     case userEvents
     case localEvents
     case otherEvents
-    
 }
 
-class CategoryEventViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CategoryEventViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var clvEvents: UICollectionView!
     @IBOutlet weak var btnSeeAll: UIButton!
@@ -31,81 +30,89 @@ class CategoryEventViewController: UIViewController, UICollectionViewDelegate, U
     var delegate : CategoryEventViewControllerDelegate!
    
     
+    
+    // MARK: - CategoryEventViewController's methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // Configuraciones adicionales.
+        self.btnSeeAll.isHidden = true /* Por defecto, el botón "Se all" está oculto. Solo se muestra en caso hayan eventos (se podría considerar que solamente se muestre en caso la cantidad de eventos sobrepase un número mínimo, pero eso depende de qué es lo exactamente retornan los servicio web.) */
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
-        
         super.viewDidAppear(animated)
-        
-        if self.segueIdentifierClass == .localEvents{
-            self.getLocalEvents()
-        }else if self.segueIdentifierClass == .otherEvents {
-            self.getOtherEvents()
-        }else if self.segueIdentifierClass == .userEvents {
-            self.getUserEvents()
-        }
 
+        // Configuraciones adicionales.
+        switch self.segueIdentifierClass {
+            case .userEvents: self.getUserEvents() /* Obtener los eventos del usuario. */
+            case .localEvents: self.getLocalEvents() /* Obtener los eventos locales. */
+            case .otherEvents: self.getOtherEvents() /* Obtener otra categoría de eventos. */
+        }
     }
     
-    func getLocalEvents(){
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EventDetailViewController" {
+            let controller = segue.destination as! EventDetailViewController
+            controller.objEvent = sender as? EventBE
+        }
+    }
+    
+    
+    
+    
+    
+    // MARK: - My own methods
+    
+    /**
+     Método para mostrar los eventos que descargaron del servicio web.
+     - Parameters:
+         - events: Los eventos descargados y que se van a mostrar.
+         - emptyErrorMessage: Mensaje de error para mostrar si no hay eventos.
+     */
+    private func show(events: [EventBE], emptyErrorMessage: String) {
+        self.arrayEvents = events
+        self.btnSeeAll.isHidden = (events.isEmpty == true) /* Ocultar el botón "See all" si no hay eventos. */
+        
+        self.clvEvents.performBatchUpdates({
+            self.clvEvents.reloadSections(IndexSet(integer: 0))
+        }, completion: nil)
+        
+        (events.isEmpty == true) ? self.loadingView.mostrarError(conMensaje: emptyErrorMessage, conOpcionReintentar: false) : self.loadingView.detenerLoading()
+        self.delegate.categoryEventViewController(self, didFinishLoadData: events)
+    }
+    
+    /**
+     Método para descargar los eventos locales.
+     */
+    func getLocalEvents() {
         self.loadingView.iniciarLoading(conMensaje: "No local events found".localized, conAnimacion: true)
         EventBC.listLocalEvents(withSuccessful: { (arrayLocalEvents, nextPage) in
-            
-            self.arrayEvents = arrayLocalEvents
-            self.btnSeeAll.isHidden = self.arrayEvents.count == 0 ? true : false
-            
-            self.clvEvents.performBatchUpdates({
-                self.clvEvents.reloadSections(IndexSet(integer: 0))
-            }, completion: nil)
-            
-            self.delegate.categoryEventViewController(self, didFinishLoadData: arrayLocalEvents)
-            
-            self.arrayEvents.count == 0 ? self.loadingView.mostrarError(conMensaje: "No local events found".localized, conOpcionReintentar: false) : self.loadingView.detenerLoading()
+            self.show(events: arrayLocalEvents, emptyErrorMessage: "No local events found".localized)
         }) { (title, message) in
             self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
     }
     
-    func getOtherEvents(){
+    /**
+     Método para descargar los eventos que no son locales.
+     */
+    func getOtherEvents() {
         self.loadingView.iniciarLoading(conMensaje: "No other events found".localized, conAnimacion: true)
         EventBC.listOtherEvents(withSuccessful: { (arrayOtherEvents, nextPage) in
-            self.arrayEvents = arrayOtherEvents
-            self.btnSeeAll.isHidden = self.arrayEvents.count == 0 ? true : false
-            
-            self.clvEvents.performBatchUpdates({
-                self.clvEvents.reloadSections(IndexSet(integer: 0))
-            }, completion: nil)
-            
-            self.delegate.categoryEventViewController(self, didFinishLoadData: arrayOtherEvents)
-            
-            self.arrayEvents.count == 0 ? self.loadingView.mostrarError(conMensaje: "No other events found".localized, conOpcionReintentar: false) : self.loadingView.detenerLoading()
+            self.show(events: arrayOtherEvents, emptyErrorMessage: "No other events found".localized)
         }) { (title, message) in
             self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
     }
     
-    func getUserEvents(){
+    /**
+     Método para descargar los eventos a los que el usuario se ha registrado.
+     */
+    func getUserEvents() {
         self.loadingView.iniciarLoading(conMensaje: "No events found".localized, conAnimacion: true)
-        
         EventBC.listUserEvents(withSuccessful: { (arrayUserEvents, nextPage) in
-            self.arrayEvents = arrayUserEvents
-            self.btnSeeAll.isHidden = self.arrayEvents.count == 0 ? true : false
-            
-            self.delegate.categoryEventViewController(self, didFinishLoadData: arrayUserEvents)
-        
-            self.clvEvents.performBatchUpdates({
-                self.clvEvents.reloadSections(IndexSet(integer: 0))
-            }, completion: { (_) in
-                self.clvEvents.layoutIfNeeded()
-            })
-            
-            self.arrayEvents.count == 0 ? self.loadingView.mostrarError(conMensaje: "No events found".localized, conOpcionReintentar: false) : self.loadingView.detenerLoading()
-            
+            self.show(events: arrayUserEvents, emptyErrorMessage: "No events found".localized)
         }) { (title, message) in
             self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
@@ -113,10 +120,13 @@ class CategoryEventViewController: UIViewController, UICollectionViewDelegate, U
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - DataSource, Delegate
+    
+    
+    
+    
+    // MARK: - UICollectionViewDataSource and UICollectionViewDelegateFlowLayout methods
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -139,21 +149,13 @@ class CategoryEventViewController: UIViewController, UICollectionViewDelegate, U
     }
 
     
-    // MARK: - Navigation
+    
+    
+    
+    // MARK: - @IBAction/action methods
      
      @IBAction func clickBtnShowAll(_ sender: Any) {
-        
         self.delegate.categoryEventViewController(self, showAllSegueWithEventArray: arrayEvents)
      }
-     
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EventDetailViewController" {
-            let controller = segue.destination as! EventDetailViewController
-            controller.objEvent = sender as? EventBE
-        }
-    }
     
-
 }
