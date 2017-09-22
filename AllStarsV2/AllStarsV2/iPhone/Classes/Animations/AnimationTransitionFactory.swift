@@ -62,6 +62,11 @@ class AnimationTransitionFactory: NSObject {
             let transition = RankingToProfileTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
             return (transition, transition.createInteractiveTransition(navigationController: navController))
             
+        }else if (origin is CategoryDetailViewController && destination is UserProfileViewController && operation == .push) || (origin is UserProfileViewController && destination is CategoryDetailViewController && operation == .pop){
+            
+            let transition = DetailCategoryTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
+            
         }else{
             
             return (nil, nil)

@@ -27,6 +27,7 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
     var objCategory         : CategoryBE!
     var arrayStars          = [StarUserBE]()
     var objUser             : UserBE!
+    var cellSelected        : StarUserTableViewCell!
     
     @IBAction func clickBtnBack(_ sender: Any?) {
         
@@ -48,6 +49,7 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
     
     func starUserTableViewCell(_ cell: StarUserTableViewCell, selectNameUserFrom objUser: UserBE) {
         
+        self.cellSelected = cell
         self.performSegue(withIdentifier: "UserProfileViewController", sender: objUser)
     }
     
@@ -77,6 +79,7 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         
         tableView.deselectRow(at: indexPath, animated: true)
     }

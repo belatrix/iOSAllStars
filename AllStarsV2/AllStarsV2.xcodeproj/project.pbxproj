@@ -36,6 +36,7 @@
 		961FE4BA1F27905F004A304D /* LoginChangePasswordAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961FE4B91F27905F004A304D /* LoginChangePasswordAnimation.swift */; };
 		9622E5091F1F983200D66688 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9622E5081F1F983200D66688 /* Login.storyboard */; };
 		9632F9931F7417E7007586D5 /* RankingToProfileTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9632F9921F7417E7007586D5 /* RankingToProfileTransition.swift */; };
+		9632F9951F745CBE007586D5 /* UserProfileAlternativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9632F9941F745CBE007586D5 /* UserProfileAlternativeViewController.swift */; };
 		963D53821F424C6200ADF937 /* AchievementToDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D53811F424C6200ADF937 /* AchievementToDetailTransition.swift */; };
 		963D53841F424E2E00ADF937 /* CategoryToDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D53831F424E2E00ADF937 /* CategoryToDetailTransition.swift */; };
 		96535E671F1E90CC00E97EE9 /* CDMColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96535E5F1F1E90CC00E97EE9 /* CDMColorManager.swift */; };
@@ -102,6 +103,7 @@
 		96E42C941F32649900277E34 /* CategoryBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E42C931F32649900277E34 /* CategoryBC.swift */; };
 		96E42C961F32661800277E34 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E42C951F32661800277E34 /* CategoriesViewController.swift */; };
 		96E42C981F32669A00277E34 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E42C971F32669A00277E34 /* CategoryTableViewCell.swift */; };
+		96E9114E1F75521700337732 /* DetailCategoryTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E9114D1F75521700337732 /* DetailCategoryTransition.swift */; };
 		96F1A70E1F3A04000099DD90 /* StarUserBE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1A70D1F3A04000099DD90 /* StarUserBE.swift */; };
 		96F1A7121F3A059E0099DD90 /* KeywordBE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1A7111F3A05270099DD90 /* KeywordBE.swift */; };
 		96F206081F462B480089E3E6 /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F206071F462B480089E3E6 /* Ranking.storyboard */; };
@@ -144,6 +146,7 @@
 		961FE4B91F27905F004A304D /* LoginChangePasswordAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginChangePasswordAnimation.swift; sourceTree = "<group>"; };
 		9622E5081F1F983200D66688 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9632F9921F7417E7007586D5 /* RankingToProfileTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingToProfileTransition.swift; sourceTree = "<group>"; };
+		9632F9941F745CBE007586D5 /* UserProfileAlternativeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileAlternativeViewController.swift; sourceTree = "<group>"; };
 		963D53811F424C6200ADF937 /* AchievementToDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementToDetailTransition.swift; sourceTree = "<group>"; };
 		963D53831F424E2E00ADF937 /* CategoryToDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryToDetailTransition.swift; sourceTree = "<group>"; };
 		96535E5F1F1E90CC00E97EE9 /* CDMColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDMColorManager.swift; sourceTree = "<group>"; };
@@ -216,6 +219,7 @@
 		96E42C931F32649900277E34 /* CategoryBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBC.swift; sourceTree = "<group>"; };
 		96E42C951F32661800277E34 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		96E42C971F32669A00277E34 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		96E9114D1F75521700337732 /* DetailCategoryTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategoryTransition.swift; sourceTree = "<group>"; };
 		96F1A70D1F3A04000099DD90 /* StarUserBE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarUserBE.swift; sourceTree = "<group>"; };
 		96F1A7111F3A05270099DD90 /* KeywordBE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordBE.swift; sourceTree = "<group>"; };
 		96F206071F462B480089E3E6 /* Ranking.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ranking.storyboard; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 				966336031F3E0F97001EF210 /* CompleteProfileViewController.swift */,
 				96D42C2A1F2F707200628A84 /* SelectLocationViewController.swift */,
 				961518441F32060F007DAAB2 /* UserProfileViewController.swift */,
+				9632F9941F745CBE007586D5 /* UserProfileAlternativeViewController.swift */,
 				96DC07411F586C5C0050A890 /* ImageProfileViewController.swift */,
 				96BFD4E11F3B40EC0086A722 /* Achievements */,
 				96BC25901F33C372008AA2F8 /* Categories */,
@@ -547,6 +552,7 @@
 				968F6B911F4368200042EFD5 /* ProfileToEditProfileTransition.swift */,
 				96BF8EF71F4B5F2B005D4D22 /* ContactsToProfileTransition.swift */,
 				9632F9921F7417E7007586D5 /* RankingToProfileTransition.swift */,
+				96E9114D1F75521700337732 /* DetailCategoryTransition.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -729,6 +735,7 @@
 				9600D0441F28D99000B780D6 /* EditProfileViewController.swift in Sources */,
 				4DD02A3F1F560BC400A1E6D9 /* EventNewsViewController.swift in Sources */,
 				968F6B921F4368200042EFD5 /* ProfileToEditProfileTransition.swift in Sources */,
+				9632F9951F745CBE007586D5 /* UserProfileAlternativeViewController.swift in Sources */,
 				96E42C921F3263B500277E34 /* CategoryWebModel.swift in Sources */,
 				96BF8EF81F4B5F2B005D4D22 /* ContactsToProfileTransition.swift in Sources */,
 				96D42C291F2F685000628A84 /* ExUIButton.swift in Sources */,
@@ -796,6 +803,7 @@
 				9663360B1F3E362F001EF210 /* ContactWebModel.swift in Sources */,
 				96F2619C1F3A5F540038103B /* AchievementBE.swift in Sources */,
 				9664D78A1F2130480054E786 /* Constants.swift in Sources */,
+				96E9114E1F75521700337732 /* DetailCategoryTransition.swift in Sources */,
 				963D53821F424C6200ADF937 /* AchievementToDetailTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
