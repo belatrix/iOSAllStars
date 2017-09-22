@@ -20,13 +20,11 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
     
     
     
-    //MARK: - CategoryEventViewControllerDelegate
+    //MARK: - CategoryEventViewControllerDelegate methods
 
     func categoryEventViewController(_ viewController: CategoryEventViewController, didFinishLoadData arrayEvents: [EventBE]) { }
     
-    
     func categoryEventViewController(_ viewController: CategoryEventViewController, showAllSegueWithEventArray eventArray: [EventBE]) {
-        
         let tupleDataSegue : TupleSeeAllCategory = (eventArray, viewController.segueIdentifierClass)
         let identifier = "SeeAllEventsCategoryViewController"
         self.performSegue(withIdentifier: identifier, sender: tupleDataSegue)
@@ -36,7 +34,7 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
     
     
     
-    //MARK: -
+    //MARK: - EventsViewController's methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +47,6 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }
-    
-
-    
-    
-    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == EventsViewControllerSegue.localEvents.rawValue || segue.identifier == EventsViewControllerSegue.otherEvents.rawValue || segue.identifier == EventsViewControllerSegue.userEvents.rawValue {

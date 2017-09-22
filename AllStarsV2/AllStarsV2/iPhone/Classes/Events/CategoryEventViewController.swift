@@ -8,15 +8,19 @@
 
 import UIKit
 
-protocol CategoryEventViewControllerDelegate{
+protocol CategoryEventViewControllerDelegate {
+    
     func categoryEventViewController(_ viewController : CategoryEventViewController, showAllSegueWithEventArray eventArray : [EventBE])
     func categoryEventViewController(_ viewController : CategoryEventViewController, didFinishLoadData arrayEvents :[EventBE])
+    
 }
 
 enum EventsViewControllerSegue : String {
+    
     case userEvents
     case localEvents
     case otherEvents
+    
 }
 
 class CategoryEventViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -44,10 +48,13 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
         super.viewDidAppear(animated)
 
         // Configuraciones adicionales.
-        switch self.segueIdentifierClass {
-            case .userEvents: self.getUserEvents() /* Obtener los eventos del usuario. */
-            case .localEvents: self.getLocalEvents() /* Obtener los eventos locales. */
-            case .otherEvents: self.getOtherEvents() /* Obtener otra categoría de eventos. */
+        let dispatchTime: DispatchTime = (.now() + self.revealViewController().toggleAnimationDuration)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+            switch self.segueIdentifierClass {
+                case .userEvents: self.getUserEvents() /* Obtener los eventos del usuario. */
+                case .localEvents: self.getLocalEvents() /* Obtener los eventos locales. */
+                case .otherEvents: self.getOtherEvents() /* Obtener otra categoría de eventos. */
+            }
         }
     }
     
@@ -71,12 +78,10 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
          - emptyErrorMessage: Mensaje de error para mostrar si no hay eventos.
      */
     private func show(events: [EventBE], emptyErrorMessage: String) {
-        self.arrayEvents = events
         self.btnSeeAll.isHidden = (events.isEmpty == true) /* Ocultar el botón "See all" si no hay eventos. */
         
-        self.clvEvents.performBatchUpdates({
-            self.clvEvents.reloadSections(IndexSet(integer: 0))
-        }, completion: nil)
+        self.arrayEvents = events
+        self.clvEvents.reloadData()
         
         (events.isEmpty == true) ? self.loadingView.mostrarError(conMensaje: emptyErrorMessage, conOpcionReintentar: false) : self.loadingView.detenerLoading()
         self.delegate.categoryEventViewController(self, didFinishLoadData: events)
@@ -86,7 +91,7 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
      Método para descargar los eventos locales.
      */
     func getLocalEvents() {
-        self.loadingView.iniciarLoading(conMensaje: "No local events found".localized, conAnimacion: true)
+        self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
         EventBC.listLocalEvents(withSuccessful: { (arrayLocalEvents, nextPage) in
             self.show(events: arrayLocalEvents, emptyErrorMessage: "No local events found".localized)
         }) { (title, message) in
@@ -98,7 +103,7 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
      Método para descargar los eventos que no son locales.
      */
     func getOtherEvents() {
-        self.loadingView.iniciarLoading(conMensaje: "No other events found".localized, conAnimacion: true)
+        self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
         EventBC.listOtherEvents(withSuccessful: { (arrayOtherEvents, nextPage) in
             self.show(events: arrayOtherEvents, emptyErrorMessage: "No other events found".localized)
         }) { (title, message) in
@@ -110,7 +115,7 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
      Método para descargar los eventos a los que el usuario se ha registrado.
      */
     func getUserEvents() {
-        self.loadingView.iniciarLoading(conMensaje: "No events found".localized, conAnimacion: true)
+        self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
         EventBC.listUserEvents(withSuccessful: { (arrayUserEvents, nextPage) in
             self.show(events: arrayUserEvents, emptyErrorMessage: "No events found".localized)
         }) { (title, message) in
@@ -144,6 +149,24 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let event = self.arrayEvents[indexPath.row]
+        
+        if collectionView.bounds.contains(cell.bounds.origin) == true && event.event_didAppear == false { /* La animación se va a aplicar solamente para las celdas que se encuentras visibles dentro del marco del UICollectionView y solamente si no ha aparecido anteriormente. */
+            cell.alpha = 0.0
+            cell.transform = CGAffineTransform.init(translationX: 25, y: 0.0)
+            
+            let duration: Double = Double(indexPath.row + 1) / 2.0
+            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                cell.alpha = 1.0
+                cell.transform = CGAffineTransform.identity
+                
+            }, completion: { (finished: Bool) in
+                event.event_didAppear = true
+            })
+        }
+    }
+		
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "EventDetailViewController", sender: self.arrayEvents[indexPath.row])
     }

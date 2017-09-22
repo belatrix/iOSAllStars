@@ -25,36 +25,7 @@ class EventDetailViewController: SWFrontGenericoViewController, UIScrollViewDele
     var objEvent                                    : EventBE!
     
     
-    func updateEventInfo(){
-        if let event = self.objEvent {
-            self.lblTitle?.text = "\(event.event_name)"
-            self.lblDateTime?.text = "\(CDMDateManager.convertirFecha(event.event_datetime, enTextoConFormato: "yyyy'/'MM'/'dd")) - \(CDMDateManager.convertirFecha(event.event_datetime, enTextoConFormato: "HH:mm"))"
-            
-            CDMImageDownloaded.descargarImagen(enURL: event.event_image, paraImageView: self.imgEvent, conPlaceHolder: self.imgEvent.image, conCompletion: { (isCorrect, urlImage, image) in
-                self.imgEvent.image = image
-            })
-            
-        }
-    }
     
-    func checkIfRegistered(){
-        
-        EventBC.getEventDetails(toEvent: self.objEvent, withSuccessful: { (event) in
-            
-            self.objEvent = event
-            
-            UIView.animate(withDuration: 0.3, animations: {
-                
-                self.btnRegister.setTitle(self.objEvent.event_is_registered ? "Unregister".localized : "Register".localized , for: .normal)
-                self.btnRegister.setTitleColor(self.objEvent.event_is_registered ? UIColor.white : Constants.MAIN_COLOR, for: .normal)
-                self.btnRegister.backgroundColor = self.objEvent.event_is_registered ? Constants.MAIN_COLOR : UIColor.white
-            })
-            
-        }) { (title, message) in
-            print(title)
-            print(message)
-        }
-    }
     
     
     // MARK: - Actions
@@ -111,7 +82,7 @@ class EventDetailViewController: SWFrontGenericoViewController, UIScrollViewDele
     
     
     
-    // MARK: - UIScrollViewDelegate
+    // MARK: - UIScrollViewDelegate methods
     
     func transitionViewSectionInto(_ scrollView : UIScrollView){
         
@@ -153,7 +124,11 @@ class EventDetailViewController: SWFrontGenericoViewController, UIScrollViewDele
         self.animateUnderlineSection(self.arrayButtonSection[self.currentIndexSection])
     }
     
-    // MARK: - Aux
+    
+    
+    
+    
+    // MARK: - My own methods
     
     func animateUnderlineSection(_ sender: UIButton){
         UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseIn, animations: {
@@ -172,11 +147,46 @@ class EventDetailViewController: SWFrontGenericoViewController, UIScrollViewDele
         self.view.layoutIfNeeded()
     }
     
-    // MARK: -
+    func updateEventInfo() {
+        if let event = self.objEvent {
+            self.lblTitle?.text = "\(event.event_name)"
+            self.lblDateTime?.text = "\(CDMDateManager.convertirFecha(event.event_datetime, enTextoConFormato: "yyyy'/'MM'/'dd")) - \(CDMDateManager.convertirFecha(event.event_datetime, enTextoConFormato: "hh:mm a"))"
+            
+            CDMImageDownloaded.descargarImagen(enURL: event.event_image,
+                                               paraImageView: self.imgEvent,
+                                               conPlaceHolder: self.imgEvent.image,
+                                               conCompletion: { (isCorrect, urlImage, image) in
+                self.imgEvent.image = image
+            })
+            
+        }
+    }
+    
+    func checkIfRegistered() {
+        EventBC.getEventDetails(toEvent: self.objEvent, withSuccessful: { (event) in
+            self.objEvent = event
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.btnRegister.setTitle(self.objEvent.event_is_registered ? "Unregister".localized : "Register".localized , for: .normal)
+                self.btnRegister.setTitleColor(self.objEvent.event_is_registered ? UIColor.white : Constants.MAIN_COLOR, for: .normal)
+                self.btnRegister.backgroundColor = self.objEvent.event_is_registered ? Constants.MAIN_COLOR : UIColor.white
+            })
+            
+        }) { (title, message) in
+            
+        }
+    }
+    
+    
+    
+    
+    
+    // MARK: - EventDetailViewController's methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Configuraciones adicionales.
         self.updateEventInfo()
         self.checkIfRegistered()
         self.moveUnderlineSectionNoAnimation(self.arrayButtonSection[0])
@@ -187,15 +197,9 @@ class EventDetailViewController: SWFrontGenericoViewController, UIScrollViewDele
         // Dispose of any resources that can be recreated.
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
-    
-    
-    // MARK: - Navigation
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AboutEventViewController" {

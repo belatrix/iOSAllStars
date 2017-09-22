@@ -18,6 +18,7 @@ class EventBE: NSObject {
     var event_is_active     : Bool = false
     var event_is_registered : Bool = false
     var event_location      : LocationBE?
+    var event_didAppear     : Bool = false /* Propiedad para saber si el evento se mostró en un UICollectionView. Esta propiedad permite determinar si la animación para mostrar el evento en la celda se realiza o no. La idea es que solo se realice la animación una solo vez. */
     
     class func parse(_ objDic : [String : Any]) -> EventBE {
         
