@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -529,13 +529,26 @@
                                             <action selector="clickBtnBack:" destination="jTd-G1-mA2" eventType="touchUpInside" id="yog-oZ-fP3"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcs-dr-ah9">
+                                        <rect key="frame" x="266" y="26" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="nhs-CP-yoi"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <segue destination="uOK-PL-kBh" kind="show" identifier="KudosUserViewController" id="qLu-h2-TSD"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.46274509800000002" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="fP9-Cm-4Xh" secondAttribute="trailing" constant="36" id="MA1-O5-q7X"/>
                                     <constraint firstAttribute="height" constant="64" id="fRL-gH-9R9"/>
+                                    <constraint firstAttribute="trailing" secondItem="vcs-dr-ah9" secondAttribute="trailing" constant="8" id="i2F-ln-mYY"/>
                                     <constraint firstItem="fP9-Cm-4Xh" firstAttribute="top" secondItem="YD2-gp-BbU" secondAttribute="top" constant="20" id="ojF-wE-gDI"/>
                                     <constraint firstItem="fP9-Cm-4Xh" firstAttribute="leading" secondItem="YD2-gp-BbU" secondAttribute="leading" constant="38" id="tFV-fi-ruO"/>
+                                    <constraint firstItem="vcs-dr-ah9" firstAttribute="top" secondItem="YD2-gp-BbU" secondAttribute="top" constant="26" id="uSb-Kw-UbZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="vcs-dr-ah9" secondAttribute="bottom" constant="8" id="w6P-sT-xvi"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
@@ -652,6 +665,7 @@
                         <outlet property="btnMail" destination="emM-S4-WaE" id="dhq-PJ-R2s"/>
                         <outlet property="btnSkype" destination="KS0-1w-u1R" id="3LJ-AP-hgJ"/>
                         <outlet property="constraintBottomSections" destination="CSh-tt-4v9" id="UJl-rf-sMe"/>
+                        <outlet property="constraintHeightData" destination="hTH-gH-9At" id="mSx-Se-Xpj"/>
                         <outlet property="constraintSectionSelected" destination="bCM-Az-ooq" id="xAN-Kp-VhT"/>
                         <outlet property="constraintTopHeader" destination="FeI-id-W74" id="ZiD-Na-8YX"/>
                         <outlet property="constraintTopSections" destination="WNa-v4-Pwd" id="xzw-ZD-8O3"/>
@@ -661,6 +675,8 @@
                         <outlet property="lblScore" destination="hab-Od-ZkV" id="aD9-Zp-quS"/>
                         <outlet property="scrollContent" destination="Waq-Nz-aVV" id="aOq-lA-cIR"/>
                         <outlet property="viewContainerInfo" destination="v1L-Vg-7od" id="Rby-cm-dqn"/>
+                        <outlet property="viewHeader" destination="YD2-gp-BbU" id="t3R-35-vJz"/>
+                        <outlet property="viewScoreData" destination="Ud1-CZ-MEa" id="Ee7-oN-Mdl"/>
                         <outletCollection property="arrayButtonsSection" destination="9sA-xU-we3" collectionClass="NSMutableArray" id="27U-Jk-UF2"/>
                         <outletCollection property="arrayButtonsSection" destination="OoP-A7-hJl" collectionClass="NSMutableArray" id="ybj-tI-Uki"/>
                         <outletCollection property="arrayVistas" destination="cMP-Ns-5Ys" collectionClass="NSMutableArray" id="Fms-pq-Tsi"/>
@@ -671,13 +687,21 @@
             </objects>
             <point key="canvasLocation" x="3090" y="-753.16901408450701"/>
         </scene>
+        <!--KudosUserViewController-->
+        <scene sceneID="3uN-vK-hjM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="KudosUser" referencedIdentifier="KudosUserViewController" id="uOK-PL-kBh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Za-bN-9UV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3788" y="-806"/>
+        </scene>
         <!--CategoriesViewController-->
         <scene sceneID="Y4H-pg-q7v">
             <objects>
                 <viewControllerPlaceholder referencedIdentifier="CategoriesViewController" id="y8P-HR-Gg9" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C11-uT-fDK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3806.25" y="-837.67605633802816"/>
+            <point key="canvasLocation" x="3789" y="-753"/>
         </scene>
         <!--AchievementsUserViewController-->
         <scene sceneID="I3N-Ya-6vP">
@@ -685,7 +709,7 @@
                 <viewControllerPlaceholder referencedIdentifier="AchievementsUserViewController" id="yFv-Kl-3ra" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b6V-j1-dGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3834.375" y="-682.3943661971831"/>
+            <point key="canvasLocation" x="3833" y="-699"/>
         </scene>
         <!--Complete Profile View Controller-->
         <scene sceneID="85C-pj-L8o">

@@ -26,7 +26,8 @@ class UserProfileViewController: SWFrontGenericoViewController, UIScrollViewDele
     @IBOutlet weak var constraintTopSections    : NSLayoutConstraint!
     @IBOutlet weak var constraintBottomSections : NSLayoutConstraint!
     @IBOutlet weak var constraintHeightData     : NSLayoutConstraint!
-    
+    @IBOutlet weak var viewScoreData            : UIView!
+    @IBOutlet weak var viewHeader               : UIView!
     
     var allowRevealController                   = true
     var controllerCategories                    : CategoriesViewController!
@@ -234,6 +235,11 @@ class UserProfileViewController: SWFrontGenericoViewController, UIScrollViewDele
             
             let controller = segue.destination as! ImageProfileViewController
             controller.objUser = self.objUser
+            
+        }else if segue.identifier == "KudosUserViewController"{
+            
+            let controller = segue.destination as! KudosUserViewController
+            controller.objUser = self.objUser!
         }
     }
     

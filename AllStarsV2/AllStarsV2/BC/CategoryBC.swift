@@ -10,6 +10,49 @@ import UIKit
 
 class CategoryBC: NSObject {
     
+    
+    class func listGeneralKeyWords(withSuccessful success : @escaping KeyWords, withAlertInformation alertInformation : @escaping AlertInformation) {
+        
+        let objSession = UserBC.getUserSession()
+        
+        if objSession?.session_token == "" {
+            alertInformation("app_name".localized, "token_invalid".localized)
+            return
+        }
+        
+        CategoryWebModel.listGeneralKeyWords(withSession: objSession!, withSuccessful: { (arrayKeyWords) in
+            
+            success(arrayKeyWords)
+            
+        }) { (errorResponse) in
+            
+            alertInformation("generic_title_problem", "server_error".localized)
+        }
+        
+    }
+    
+    
+    class func listGeneralCategories(withSuccessful success : @escaping Categories, withAlertInformation alertInformation : @escaping AlertInformation) {
+        
+        let objSession = UserBC.getUserSession()
+        
+        if objSession?.session_token == "" {
+            alertInformation("app_name".localized, "token_invalid".localized)
+            return
+        }
+        
+        CategoryWebModel.listGeneralCategories(withSession: objSession!, withSuccessful: { (arrayCategories) in
+            
+            success(arrayCategories)
+            
+        }) { (errorResponse) in
+            
+            alertInformation("generic_title_problem", "server_error".localized)
+        }
+        
+    }
+    
+    
     class func listCategories(toUser objUser: UserBE, withSuccessful success : @escaping Categories, withAlertInformation alertInformation : @escaping AlertInformation) {
         
         let objSession = UserBC.getUserSession()
@@ -27,8 +70,9 @@ class CategoryBC: NSObject {
             
             alertInformation("generic_title_problem", "server_error".localized)
         }
-        
+
     }
+    
     
     class func listStartsToCategory(_ objCategory : CategoryBE, toUser objUser: UserBE, withSuccessful success : @escaping Stars, withAlertInformation alertInformation : @escaping AlertInformation) {
         

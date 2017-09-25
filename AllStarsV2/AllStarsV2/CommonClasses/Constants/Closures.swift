@@ -14,6 +14,7 @@ typealias ErrorResponse         = (_ error : ErrorResponseBE) -> Void
 typealias AlertInformation      = (_ title : String, _ message : String) -> Void
 typealias Locations             = (_ arrayLocations : [LocationBE]) -> Void
 typealias Categories            = (_ arrayCategories : [CategoryBE]) -> Void
+typealias KeyWords              = (_ arrayKeyWords : [KeywordBE]) -> Void
 typealias Stars                 = (_ arrayStars : [StarUserBE]) -> Void
 typealias Achievements          = (_ arrayAchievements : [AchievementBE]) -> Void
 typealias Contacts              = (_ arrayContacts : [UserBE], _ urlNextPage: String) -> Void

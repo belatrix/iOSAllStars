@@ -10,15 +10,15 @@ import UIKit
 
 class DetailCategoryTransition: ControllerTransition {
 
-    override func createInteractiveTransition(navigationController: UINavigationController) -> InteractiveTransition? {
-        
-        let interactiveTransition = ContactsToProfileInteractiveTransition()
-        interactiveTransition.navigationController = navigationController
-        interactiveTransition.gestureTransition = UIPanGestureRecognizer(target: interactiveTransition, action: #selector(interactiveTransition.gestureTransitionMethod(_:)))
-        interactiveTransition.navigationController.view.addGestureRecognizer(interactiveTransition.gestureTransition!)
-        
-        return interactiveTransition
-    }
+//    override func createInteractiveTransition(navigationController: UINavigationController) -> InteractiveTransition? {
+//
+//        let interactiveTransition = ContactsToProfileInteractiveTransition()
+//        interactiveTransition.navigationController = navigationController
+//        interactiveTransition.gestureTransition = UIPanGestureRecognizer(target: interactiveTransition, action: #selector(interactiveTransition.gestureTransitionMethod(_:)))
+//        interactiveTransition.navigationController.view.addGestureRecognizer(interactiveTransition.gestureTransition!)
+//
+//        return interactiveTransition
+//    }
     
     override func animatePush(toContext context : UIViewControllerContextTransitioning){
         
