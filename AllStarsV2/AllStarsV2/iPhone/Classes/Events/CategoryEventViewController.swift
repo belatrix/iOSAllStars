@@ -10,8 +10,9 @@ import UIKit
 
 protocol CategoryEventViewControllerDelegate {
     
-    func categoryEventViewController(_ viewController : CategoryEventViewController, showAllSegueWithEventArray eventArray : [EventBE])
-    func categoryEventViewController(_ viewController : CategoryEventViewController, didFinishLoadData arrayEvents :[EventBE])
+    func categoryEventViewController(_ viewController: CategoryEventViewController, showAllSegueWithEventArray eventArray: [EventBE])
+    func categoryEventViewController(_ viewController: CategoryEventViewController, didFinishLoadData arrayEvents: [EventBE])
+    func categoryEventViewController(_ viewController: CategoryEventViewController, didEventSelected event: EventBE, forCategory category: EventsViewControllerSegue, inCell cell: EventCollectionViewCell)
     
 }
 
@@ -25,6 +26,8 @@ enum EventsViewControllerSegue : String {
 
 class CategoryEventViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    // MARK: - Properties
+    
     @IBOutlet weak var clvEvents: UICollectionView!
     @IBOutlet weak var btnSeeAll: UIButton!
     @IBOutlet weak var loadingView: CDMLoadingView!
@@ -33,6 +36,8 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
     var segueIdentifierClass = EventsViewControllerSegue.localEvents
     var delegate : CategoryEventViewControllerDelegate!
    
+    
+    
     
     
     // MARK: - CategoryEventViewController's methods
@@ -58,12 +63,12 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EventDetailViewController" {
             let controller = segue.destination as! EventDetailViewController
             controller.objEvent = sender as? EventBE
         }
-    }
+    } */
     
     
     
@@ -93,7 +98,7 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
     func getLocalEvents() {
         self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
         EventBC.listLocalEvents(withSuccessful: { (arrayLocalEvents, nextPage) in
-            self.show(events: arrayLocalEvents, emptyErrorMessage: "No local events found".localized)
+            self.show(events: arrayLocalEvents + arrayLocalEvents + arrayLocalEvents + arrayLocalEvents + arrayLocalEvents, emptyErrorMessage: "No local events found".localized)
         }) { (title, message) in
             self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
@@ -156,8 +161,8 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
             cell.alpha = 0.0
             cell.transform = CGAffineTransform.init(translationX: 25, y: 0.0)
             
-            let duration: Double = Double(indexPath.row + 1) / 2.0
-            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            let duration: Double = Double(indexPath.row + 1) / 2.5
+            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 cell.alpha = 1.0
                 cell.transform = CGAffineTransform.identity
                 
@@ -168,7 +173,11 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
     }
 		
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "EventDetailViewController", sender: self.arrayEvents[indexPath.row])
+        // performSegue(withIdentifier: "EventDetailViewController", sender: self.arrayEvents[indexPath.row])
+        
+        let eventSelected = self.arrayEvents[indexPath.row]
+        let cellSelected = collectionView.cellForItem(at: indexPath) as! EventCollectionViewCell
+        self.delegate.categoryEventViewController(self, didEventSelected: eventSelected, forCategory: self.segueIdentifierClass, inCell: cellSelected)
     }
 
     

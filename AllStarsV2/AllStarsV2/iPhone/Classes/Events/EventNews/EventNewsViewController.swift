@@ -70,7 +70,7 @@ class EventNewsViewController: UIViewController, UITableViewDelegate, UITableVie
             self.loadingView.iniciarLoading(conMensaje: "get_event_news_list".localized, conAnimacion: true)
         }
         
-        EventBC.listEventActivities(toEvent: self.objEvent, withSuccess: { (arrayActivities) in
+        /* EventBC.listEventActivities(toEvent: self.objEvent, withSuccess: { (arrayActivities) in
             self.refreshControl.endRefreshing()
             self.arrayEventActivities = arrayActivities
             self.tlbEventActivities.reloadSections(IndexSet(integer: 0), with: .fade)
@@ -79,7 +79,7 @@ class EventNewsViewController: UIViewController, UITableViewDelegate, UITableVie
         }) { (title, message) in
             self.refreshControl.endRefreshing()
             self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
-        }
+        } */
     }
     
     // MARK: -

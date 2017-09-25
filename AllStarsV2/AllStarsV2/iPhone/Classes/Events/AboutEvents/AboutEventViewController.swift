@@ -11,10 +11,11 @@ import EventKit
 
 class AboutEventViewController: UIViewController {
     
+    // MARK: - Properties
+    
     @IBOutlet weak var lblDetailBody: UILabel!
     @IBOutlet weak var lblLocation: UILabel!
     @IBOutlet weak var btnAddEvent: UIButton!
-    
     
     let eventStore      : EKEventStore = EKEventStore()
     var eventExists     : Bool = false
@@ -22,12 +23,18 @@ class AboutEventViewController: UIViewController {
     var event           : EKEvent!
     
     
-    func updateEventInfo(){
+    
+    
+    // MARK: - My own methods
+    
+    func updateEventInfo() {
         self.lblDetailBody.text = self.objEvent.event_description
-        self.lblLocation.text   = "\(self.objEvent.event_location!.location_name), \(self.objEvent.event_address)"
+        
+        let eventAddress = (self.objEvent.event_address.characters.isEmpty == true) ? "" : ", \(self.objEvent.event_address)"
+        self.lblLocation.text   = "\(self.objEvent.event_location!.location_name)\(eventAddress)" /* Si valor de 'eventAddress' no es vacío, se muestra junto con la coma (,). */
     }
     
-    func setEventDate(){
+    func setEventDate() {
         self.event = EKEvent(eventStore: self.eventStore)
         self.event.title         = self.objEvent.event_name
         self.event.startDate     = self.objEvent.event_datetime
@@ -35,59 +42,45 @@ class AboutEventViewController: UIViewController {
         self.event.notes         = self.objEvent.event_description
         self.event.calendar      = eventStore.defaultCalendarForNewEvents
     }
-    //MARK: - Actions
     
-    //Checks permissions
-    @IBAction func btnAddToCalender(_ sender: Any) {
-        let status = EKEventStore.authorizationStatus(for: .event)
-        
-        if status == .authorized {
-            self.addEventToCalender()
-        }else{
-            CDMUserAlerts.showSimpleAlert(title: "Need Permission".localized, withMessage: "The app needs permission to use calendar".localized,
-                                          withAcceptButton: "OK".localized, withController: self, withCompletion: nil)
-        }
-        
-    }
-    
-    //MARK: - EventControllers
-    
-    //Checks if the current event is already added to calender
-    func checkIfEventExists(){
+    func checkIfEventExists() {
         let predicate = eventStore.predicateForEvents(withStart: event.startDate, end: event.endDate.addingTimeInterval(60*60), calendars: nil)
         let existingEvents = eventStore.events(matching: predicate)
         for singleEvent in existingEvents{
             if event.title == singleEvent.title && event.startDate == singleEvent.startDate {
                 self.eventExists = true
                 self.btnAddEvent.setTitle("Remove from Calender".localized, for: .normal)
-            }else{
+            }
+            else {
                 self.eventExists = false
                 self.btnAddEvent.setTitle("Add to Calender".localized, for: .normal)
             }
         }
     }
     
-    //Adds or Removes Event from calender
-    func addEventToCalender(){
+    func addEventToCalender() {
         self.setEventDate()
         
-        if !self.eventExists{
-            do{
+        if !self.eventExists {
+            do {
                 try eventStore.save(event, span: EKSpan.thisEvent)
                 CDMUserAlerts.showSimpleAlert(title: "Event Added".localized,
                                               withMessage: "Event added correctly".localized,
                                               withAcceptButton: "OK".localized,
                                               withController: self, withCompletion: nil)
+                
                 self.eventExists = true
                 UIView.animate(withDuration: 0.3, animations: {
                     self.btnAddEvent.setTitle("Remove from Calender".localized, for: .normal)
                     self.view.layoutIfNeeded()
                 })
-            }catch{
+            }
+            catch {
                 print("Error in saving event")
             }
-        }else{
-            do{
+        }
+        else {
+            do {
                 let predicate = eventStore.predicateForEvents(withStart: event.startDate, end: event.endDate.addingTimeInterval(60*60), calendars: nil)
                 let existingEvents = eventStore.events(matching: predicate)
                 for singleEvent in existingEvents{
@@ -97,6 +90,7 @@ class AboutEventViewController: UIViewController {
                                                       withMessage: "Event removed correctly".localized,
                                                       withAcceptButton: "OK".localized,
                                                       withController: self, withCompletion: nil)
+                        
                         self.eventExists = false
                         UIView.animate(withDuration: 0.3, animations: {
                             self.btnAddEvent.setTitle("Add To Calender".localized, for: .normal)
@@ -104,40 +98,51 @@ class AboutEventViewController: UIViewController {
                         })
                     }
                 }
-            }catch{
+            }
+            catch {
                 print("Error in deleting event")
             }
+        }
+    }
+    
+    
+    
+    
+    
+    //MARK: - @IBAction/actions methods
+    
+    @IBAction func btnAddToCalender(_ sender: Any) {
+        let status = EKEventStore.authorizationStatus(for: .event)
+        if status == .authorized {
+            self.addEventToCalender()
+        }
+        else {
+            CDMUserAlerts.showSimpleAlert(title: "Need Permission".localized,
+                                          withMessage: "The app needs permission to use calendar".localized,
+                                          withAcceptButton: "OK".localized,
+                                          withController: self,
+                                          withCompletion: nil)
         }
         
     }
     
     
-    //MARK: -
+    
+    
+    
+    //MARK: - AboutEventViewController methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        // Configuraciones adicionales.
         self.updateEventInfo()
         self.setEventDate()
         self.checkIfEventExists()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

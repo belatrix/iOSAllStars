@@ -62,8 +62,12 @@ class AnimationTransitionFactory: NSObject {
             let transition = RankingToProfileTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
             return (transition, transition.createInteractiveTransition(navigationController: navController))
             
-        }else{
-            
+        }
+        else if (origin is EventsViewController && destination is EventDetailViewController) || (origin is EventDetailViewController && destination is EventsViewController) {
+            let transition = EventsToEventDetailTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
+        }
+        else {
             return (nil, nil)
         }
     }

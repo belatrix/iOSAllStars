@@ -49,7 +49,7 @@ class ContactsToProfileTransition: ControllerTransition {
         return interactiveTransition
     }
     
-    override func animatePush(toContext context : UIViewControllerContextTransitioning){
+    override func animatePush(toContext context : UIViewControllerContextTransitioning) {
         
         let fromVC = self.controllerOrigin as! ContactsViewController
         let toVC   = self.controllerDestination as! UserProfileViewController

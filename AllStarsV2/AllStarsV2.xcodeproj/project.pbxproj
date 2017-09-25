@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F129EAD1F794FB70098930C /* EventsToEventDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F129EAC1F794FB60098930C /* EventsToEventDetailTransition.swift */; };
 		4D357BEA1F54A9FF00CBF8BB /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D357BE91F54A9FF00CBF8BB /* EventDetailViewController.swift */; };
 		4D90D4441F4CAAD7007E8B04 /* EventBE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90D4431F4CAAD7007E8B04 /* EventBE.swift */; };
 		4D90D4461F4CB338007E8B04 /* EventWebModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90D4451F4CB338007E8B04 /* EventWebModel.swift */; };
@@ -113,6 +114,7 @@
 
 /* Begin PBXFileReference section */
 		028D2A82DCDB2E908C8B3512 /* Pods-AllStarsV2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllStarsV2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AllStarsV2/Pods-AllStarsV2.debug.xcconfig"; sourceTree = "<group>"; };
+		2F129EAC1F794FB60098930C /* EventsToEventDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsToEventDetailTransition.swift; sourceTree = "<group>"; };
 		401903A3A318AEB2B3B05D1F /* Pods-AllStarsV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllStarsV2.release.xcconfig"; path = "Pods/Target Support Files/Pods-AllStarsV2/Pods-AllStarsV2.release.xcconfig"; sourceTree = "<group>"; };
 		4D357BE91F54A9FF00CBF8BB /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		4D90D4431F4CAAD7007E8B04 /* EventBE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBE.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				968F6B911F4368200042EFD5 /* ProfileToEditProfileTransition.swift */,
 				96BF8EF71F4B5F2B005D4D22 /* ContactsToProfileTransition.swift */,
 				9632F9921F7417E7007586D5 /* RankingToProfileTransition.swift */,
+				2F129EAC1F794FB60098930C /* EventsToEventDetailTransition.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -775,6 +778,7 @@
 				9664D78E1F2132500054E786 /* Closures.swift in Sources */,
 				96C1C0AE1F26863B00F12BAD /* LoginCreateUserTransition.swift in Sources */,
 				9664D7821F212F0B0054E786 /* UserBE.swift in Sources */,
+				2F129EAD1F794FB70098930C /* EventsToEventDetailTransition.swift in Sources */,
 				961FE4BA1F27905F004A304D /* LoginChangePasswordAnimation.swift in Sources */,
 				96535E691F1E90CC00E97EE9 /* CDMImageDownloaded.swift in Sources */,
 				96E42C961F32661800277E34 /* CategoriesViewController.swift in Sources */,

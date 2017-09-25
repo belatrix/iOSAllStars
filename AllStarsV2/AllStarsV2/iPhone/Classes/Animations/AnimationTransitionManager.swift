@@ -23,7 +23,7 @@ class AnimationTransitionManager: NSObject, UINavigationControllerDelegate {
         let transitions = AnimationTransitionFactory.getAnimationTransitionTo(controllerOrigin: fromVC, withDestinationController: toVC, withOperation: operation, withNavigationController: self.navigationController)
         self.transitionController = transitions.transition
         
-        if operation == .push{
+        if operation == .push {
             self.interactiveTransition = transitions.interactiveTransition
         }
     

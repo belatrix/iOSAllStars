@@ -12,9 +12,15 @@ typealias TupleSeeAllCategory = (arrayEvents : [EventBE], identifier : EventsVie
 
 class EventsViewController: SWFrontGenericoViewController, CategoryEventViewControllerDelegate {
     
-    @IBOutlet weak var upcomingUserEventsConstraint: NSLayoutConstraint!
-    @IBOutlet weak var localEventsConstraint: NSLayoutConstraint!
-    @IBOutlet weak var otherEventsConstraint: NSLayoutConstraint!
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var upcomingUserEventsContainerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var localEventsContainerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var otherEventsContainerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var eventsCategoriesScrollView: UIScrollView!
+    
+    private var eventSelected: EventBE!
+    var frameForEventImageViewSelected: CGRect!
+    var centerForEventImageViewSelected: CGPoint!
 
     
     
@@ -22,6 +28,16 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
     
     //MARK: - CategoryEventViewControllerDelegate methods
 
+    func categoryEventViewController(_ viewController: CategoryEventViewController, didEventSelected event: EventBE, forCategory category: EventsViewControllerSegue, inCell cell: EventCollectionViewCell) {
+        print("Evento seleccionado '\(event.event_name)' (\(category.rawValue))")
+
+        self.frameForEventImageViewSelected = cell.imgEvent.convert(cell.imgEvent.frame, to: self.eventsCategoriesScrollView)
+        self.centerForEventImageViewSelected = cell.imgEvent.convert(cell.imgEvent.center, to: self.eventsCategoriesScrollView)
+        
+        self.eventSelected = event
+        self.performSegue(withIdentifier: "EventDetailViewController", sender: nil)
+    }
+    
     func categoryEventViewController(_ viewController: CategoryEventViewController, didFinishLoadData arrayEvents: [EventBE]) { }
     
     func categoryEventViewController(_ viewController: CategoryEventViewController, showAllSegueWithEventArray eventArray: [EventBE]) {
@@ -50,17 +66,19 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == EventsViewControllerSegue.localEvents.rawValue || segue.identifier == EventsViewControllerSegue.otherEvents.rawValue || segue.identifier == EventsViewControllerSegue.userEvents.rawValue {
-            
             let controller = segue.destination as! CategoryEventViewController
             controller.delegate = self
             controller.segueIdentifierClass = EventsViewControllerSegue(rawValue: segue.identifier!)!
             
         }
         else if segue.identifier == "SeeAllEventsCategoryViewController" {
-            
             let controller = segue.destination as! SeeAllEventsCategoryViewController
             controller.arrayEvents = (sender as! TupleSeeAllCategory).arrayEvents
             controller.segueIdentifierClass = (sender as! TupleSeeAllCategory).identifier
+        }
+        else if segue.identifier == "EventDetailViewController" {
+            let controller = segue.destination as! EventDetailViewController
+            controller.objEvent = self.eventSelected
         }
     }
 
