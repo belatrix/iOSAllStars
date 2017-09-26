@@ -130,6 +130,9 @@
                                         <state key="normal" title="Select a action">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="PcQ-57-5jS" kind="presentation" identifier="SelectCategoryKudosViewController" animates="NO" modalPresentationStyle="overCurrentContext" id="CaB-B3-p73"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9e-Tq-Ovt">
                                         <rect key="frame" x="18" y="8" width="284" height="21"/>
@@ -242,6 +245,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zU-mQ-7bQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-73.125" y="148.94366197183098"/>
+        </scene>
+        <!--Select Category Kudos View Controller-->
+        <scene sceneID="nKt-Dc-A49">
+            <objects>
+                <viewController storyboardIdentifier="SelectCategoryKudosViewController" id="PcQ-57-5jS" customClass="SelectCategoryKudosViewController" customModule="AllStarsV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Xw-xu-JQf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84K-08-fZY">
+                                <rect key="frame" x="0.0" y="374" width="320" height="194"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTw-lb-SzS">
+                                        <rect key="frame" x="0.0" y="32" width="320" height="162"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="162" id="jp7-Vb-Hgm"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="PcQ-57-5jS" id="mp3-qa-ZJA"/>
+                                            <outlet property="delegate" destination="PcQ-57-5jS" id="m6F-g3-Lxe"/>
+                                        </connections>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pvj-9S-e7v">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
+                                        <color key="backgroundColor" red="0.40784313729999999" green="0.63137254899999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <state key="normal" title="ok">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapClose:" destination="PcQ-57-5jS" eventType="touchUpInside" id="TGc-h3-bv1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Pvj-9S-e7v" firstAttribute="top" secondItem="84K-08-fZY" secondAttribute="top" id="GdO-vK-gyI"/>
+                                    <constraint firstAttribute="trailing" secondItem="VTw-lb-SzS" secondAttribute="trailing" id="K7S-8X-gVs"/>
+                                    <constraint firstAttribute="bottom" secondItem="VTw-lb-SzS" secondAttribute="bottom" id="YqM-mr-6V5"/>
+                                    <constraint firstItem="Pvj-9S-e7v" firstAttribute="leading" secondItem="84K-08-fZY" secondAttribute="leading" id="qbr-bf-2le"/>
+                                    <constraint firstItem="VTw-lb-SzS" firstAttribute="leading" secondItem="84K-08-fZY" secondAttribute="leading" id="qsG-8Y-I0B"/>
+                                    <constraint firstAttribute="height" constant="194" id="sdB-lE-R8q"/>
+                                    <constraint firstItem="VTw-lb-SzS" firstAttribute="top" secondItem="Pvj-9S-e7v" secondAttribute="bottom" id="vCe-zD-oDW"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pvj-9S-e7v" secondAttribute="trailing" id="vNO-OX-ZQd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="84K-08-fZY" firstAttribute="leading" secondItem="btb-Jp-Y5S" secondAttribute="leading" id="RLx-UB-Ilq"/>
+                            <constraint firstItem="84K-08-fZY" firstAttribute="trailing" secondItem="btb-Jp-Y5S" secondAttribute="trailing" id="bpT-TX-QxX"/>
+                            <constraint firstItem="btb-Jp-Y5S" firstAttribute="bottom" secondItem="84K-08-fZY" secondAttribute="bottom" id="tbB-dH-uVE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="btb-Jp-Y5S"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Z7s-KY-OuY" appends="YES" id="f2q-ie-X0z"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="constraintBottomPicker" destination="tbB-dH-uVE" id="w0a-pm-ruo"/>
+                        <outlet property="constraintHeightContainer" destination="sdB-lE-R8q" id="vib-tf-edj"/>
+                        <outlet property="pickerCategory" destination="VTw-lb-SzS" id="dde-G0-hcv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8EA-nR-PC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Z7s-KY-OuY">
+                    <connections>
+                        <action selector="tapClose:" destination="PcQ-57-5jS" id="Fir-nj-iHL"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="808" y="149"/>
         </scene>
     </scenes>
     <resources>

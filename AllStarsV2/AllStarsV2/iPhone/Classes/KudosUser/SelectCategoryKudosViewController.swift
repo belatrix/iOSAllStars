@@ -43,7 +43,9 @@ class SelectCategoryKudosViewController: UIViewController, UIPickerViewDelegate,
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        self.delegate.selectionCategoryKudosViewController(self, selectCategory: self.arrayCategories[row])
+        if row <= self.arrayCategories.count{
+            self.delegate.selectionCategoryKudosViewController(self, selectCategory: self.arrayCategories[row])
+        }
     }
     
     @IBAction func tapClose(_ sender: Any) {
@@ -60,7 +62,7 @@ class SelectCategoryKudosViewController: UIViewController, UIPickerViewDelegate,
         }
     }
     
-    func getLocationByLocationReference(_ category: CategoryBE?) -> CategoryBE? {
+    func getCategoryByCategoryReference(_ category: CategoryBE?) -> CategoryBE? {
         
         if category == nil {
             return nil
@@ -89,14 +91,14 @@ class SelectCategoryKudosViewController: UIViewController, UIPickerViewDelegate,
             self.view.layoutIfNeeded()
         }
         
-//        self.objCategorySelected = self.getLocationByLocationReference(self.objLocationSelected)
-//
-//        if self.objLocationSelected == nil && self.arrayLocations.count != 0 {
-//            self.delegate.selectionLocationViewController(self, selectLocation: self.arrayLocations[0])
-//        }else{
-//
-//            self.pickerLocation.selectRow(self.arrayLocations.index(of: self.objLocationSelected!)!, inComponent: 0, animated: false)
-//        }
+        self.objCategorySelected = self.getCategoryByCategoryReference(self.objCategorySelected)
+
+        if self.objCategorySelected == nil && self.arrayCategories.count != 0 {
+            self.delegate.selectionCategoryKudosViewController(self, selectCategory: self.arrayCategories[0])
+            
+        }else if self.objCategorySelected != nil {
+            self.pickerCategory.selectRow(self.arrayCategories.index(of: self.objCategorySelected!)!, inComponent: 0, animated: false)
+        }
     }
 
     override func didReceiveMemoryWarning() {

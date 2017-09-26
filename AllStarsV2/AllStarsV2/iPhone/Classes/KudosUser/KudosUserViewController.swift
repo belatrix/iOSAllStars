@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KudosUserViewController: UIViewController {
+class KudosUserViewController: UIViewController, SelectCategoryKudosViewControllerDelegate {
 
     @IBOutlet weak var imgUser                  : ImageUserProfile!
     @IBOutlet weak var lblUserName              : UILabel!
@@ -29,12 +29,20 @@ class KudosUserViewController: UIViewController {
     var objUser : UserBE!
     var arrayCategories = [CategoryBE]()
     var arrayKeyWords = [KeywordBE]()
-    
+    var objCategorySelected : CategoryBE?
     
     @IBAction func clickBtnBack(_ sender: Any) {
         
         _ = self.navigationController?.popViewController(animated: true)
     }
+    
+    
+    func selectionCategoryKudosViewController(_ controller: SelectCategoryKudosViewController, selectCategory category: CategoryBE) {
+        
+        self.objCategorySelected = category
+        self.btnAction.setTitle(category.category_name, for: .normal)
+    }
+    
     
     func getCategories(){
         
@@ -45,6 +53,7 @@ class KudosUserViewController: UIViewController {
             
             self.btnTag.isEnabled = true
             self.activityTag.stopAnimating()
+            self.arrayCategories = arrayCategories
             
         }) { (title, message) in
             
@@ -55,6 +64,7 @@ class KudosUserViewController: UIViewController {
     
     func getKeyWords(){
         
+       
         self.btnAction.isEnabled = false
         self.activityAction.startAnimating()
         
@@ -62,6 +72,7 @@ class KudosUserViewController: UIViewController {
             
             self.btnAction.isEnabled = true
             self.activityAction.stopAnimating()
+            self.arrayKeyWords = arrayKeyWords
             
         }) { (title, message) in
             
@@ -95,14 +106,20 @@ class KudosUserViewController: UIViewController {
         return .lightContent
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "SelectCategoryKudosViewController" {
+            
+            let controller = segue.destination as! SelectCategoryKudosViewController
+            controller.arrayCategories = self.arrayCategories
+            controller.objCategorySelected = self.objCategorySelected
+            controller.delegate = self
+        }
     }
-    */
+    
 
 }

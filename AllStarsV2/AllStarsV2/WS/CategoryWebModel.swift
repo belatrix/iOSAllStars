@@ -41,9 +41,9 @@ class CategoryWebModel: NSObject {
         
         CDMWebSender.doGETTokenToURL(Constants.WEB_SERVICES, withPath: path, withParameter: nil, withToken: objSession.session_token) { (response) in
             
-            if response.successful, let JSON = response.JSON as? [String : Any]{
+            if response.successful, let JSON = response.JSON as? [[String : Any]]{
                 
-                let arrayCategories = CDMWebResponse.getArrayDictionary(JSON)
+                let arrayCategories = JSON
                 
                 var arrayTemp = [CategoryBE]()
                 
