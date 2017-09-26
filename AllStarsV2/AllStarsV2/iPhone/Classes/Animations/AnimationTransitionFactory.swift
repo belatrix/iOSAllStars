@@ -67,6 +67,14 @@ class AnimationTransitionFactory: NSObject {
             let transition = EventsToEventDetailTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
             return (transition, transition.createInteractiveTransition(navigationController: navController))
         }
+        else if (origin is SeeAllEventsCategoryViewController && destination is EventDetailViewController) || (origin is EventDetailViewController && destination is SeeAllEventsCategoryViewController) {
+            let transition = SeeAllEventsToEventDetailTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
+        }
+        else if (origin is EventsViewController && destination is SeeAllEventsCategoryViewController) || (origin is SeeAllEventsCategoryViewController && destination is EventsViewController) {
+            let transition = EventsToSeeAllEventsTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
+        }
         else {
             return (nil, nil)
         }

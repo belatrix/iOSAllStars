@@ -16,6 +16,8 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
     @IBOutlet weak var upcomingUserEventsContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var localEventsContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var otherEventsContainerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var eventsCategoriesScrollViewCenterXConstraint: NSLayoutConstraint!
+    @IBOutlet weak var headerViewCenterXConstraint: NSLayoutConstraint!
     @IBOutlet weak private var eventsCategoriesScrollView: UIScrollView!
     
     private var eventSelected: EventBE!
@@ -69,11 +71,10 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
             let controller = segue.destination as! CategoryEventViewController
             controller.delegate = self
             controller.segueIdentifierClass = EventsViewControllerSegue(rawValue: segue.identifier!)!
-            
         }
         else if segue.identifier == "SeeAllEventsCategoryViewController" {
             let controller = segue.destination as! SeeAllEventsCategoryViewController
-            controller.arrayEvents = (sender as! TupleSeeAllCategory).arrayEvents
+            // controller.arrayEvents = (sender as! TupleSeeAllCategory).arrayEvents
             controller.segueIdentifierClass = (sender as! TupleSeeAllCategory).identifier
         }
         else if segue.identifier == "EventDetailViewController" {

@@ -47,7 +47,13 @@ class EventDetailViewController: SWFrontGenericoViewController, UIScrollViewDele
     @IBAction func clickBtnSection(_ sender: UIButton) {
         self.currentIndexSection = sender.tag
         
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.55,
+                       delay: 0,
+                       usingSpringWithDamping: 0.8,
+                       initialSpringVelocity: 0.1,
+                       options: .curveEaseIn,
+                       animations: {
+                        
             for button in self.arrayButtonSection {
                 let color = button == sender ? Constants.MAIN_COLOR : UIColor.lightGray
                 button.setTitleColor(color, for: .normal)
@@ -106,12 +112,10 @@ class EventDetailViewController: SWFrontGenericoViewController, UIScrollViewDele
             for view in self.arrayVistas {
                 view.alpha = currentView == view ? (1 - alpha) : alpha
             }
-            
         }
         else {
             self.currentIndexSection = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
         }
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -135,14 +139,21 @@ class EventDetailViewController: SWFrontGenericoViewController, UIScrollViewDele
     // MARK: - My own methods
     
     func animateUnderlineSection(_ sender: UIButton){
-        UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.35,
+                       delay: 0,
+                       usingSpringWithDamping: 0.8,
+                       initialSpringVelocity: 0.1,
+                       options: .curveEaseIn,
+                       animations: {
+            
             for button in self.arrayButtonSection{
-                let color = button == sender ? Constants.MAIN_COLOR : UIColor.lightGray
+                let color = (button == sender) ? Constants.MAIN_COLOR : UIColor.lightGray
                 button.setTitleColor(color, for: .normal)
             }
             
-            self.constraintSectionSelected.constant = sender.tag == 0 ? -(UIScreen.main.bounds.size.width / 4) : UIScreen.main.bounds.size.width / 4
+            self.constraintSectionSelected.constant = (sender.tag == 0) ? -(UIScreen.main.bounds.size.width / 4) : UIScreen.main.bounds.size.width / 4
             self.view.layoutIfNeeded()
+            
         }, completion: nil)
     }
     

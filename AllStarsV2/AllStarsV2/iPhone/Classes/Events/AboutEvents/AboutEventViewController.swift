@@ -76,7 +76,7 @@ class AboutEventViewController: UIViewController {
                 })
             }
             catch {
-                print("Error in saving event")
+                
             }
         }
         else {
@@ -100,7 +100,7 @@ class AboutEventViewController: UIViewController {
                 }
             }
             catch {
-                print("Error in deleting event")
+                
             }
         }
     }
@@ -123,7 +123,6 @@ class AboutEventViewController: UIViewController {
                                           withController: self,
                                           withCompletion: nil)
         }
-        
     }
     
     

@@ -54,7 +54,7 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
 
         // Configuraciones adicionales.
         let dispatchTime: DispatchTime = (.now() + self.revealViewController().toggleAnimationDuration)
-        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime) { [unowned self] in
             switch self.segueIdentifierClass {
                 case .userEvents: self.getUserEvents() /* Obtener los eventos del usuario. */
                 case .localEvents: self.getLocalEvents() /* Obtener los eventos locales. */
@@ -97,9 +97,9 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
      */
     func getLocalEvents() {
         self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
-        EventBC.listLocalEvents(withSuccessful: { (arrayLocalEvents, nextPage) in
+        EventBC.listLocalEvents(withSuccessful: { [unowned self] (arrayLocalEvents, nextPage) in
             self.show(events: arrayLocalEvents + arrayLocalEvents + arrayLocalEvents + arrayLocalEvents + arrayLocalEvents, emptyErrorMessage: "No local events found".localized)
-        }) { (title, message) in
+        }) { [unowned self] (title, message) in
             self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
     }
@@ -109,9 +109,9 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
      */
     func getOtherEvents() {
         self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
-        EventBC.listOtherEvents(withSuccessful: { (arrayOtherEvents, nextPage) in
+        EventBC.listOtherEvents(withSuccessful: { [unowned self] (arrayOtherEvents, nextPage) in
             self.show(events: arrayOtherEvents, emptyErrorMessage: "No other events found".localized)
-        }) { (title, message) in
+        }) { [unowned self] (title, message) in
             self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
     }
@@ -121,9 +121,9 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
      */
     func getUserEvents() {
         self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
-        EventBC.listUserEvents(withSuccessful: { (arrayUserEvents, nextPage) in
+        EventBC.listUserEvents(withSuccessful: { [unowned self] (arrayUserEvents, nextPage) in
             self.show(events: arrayUserEvents, emptyErrorMessage: "No events found".localized)
-        }) { (title, message) in
+        }) { [unowned self] (title, message) in
             self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
     }
