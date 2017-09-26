@@ -71,7 +71,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         self.startLoading()
     
-        UserBC.getUserInformationById(objSession.session_user_id, withSuccessful: { (objUser) in
+        UserBC.getUserInformationById(objSession.session_user_id.intValue, withSuccessful: { (objUser) in
             
             self.stopLoading()
             UserBE.shareInstance = objUser

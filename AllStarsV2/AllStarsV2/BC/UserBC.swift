@@ -156,6 +156,7 @@ class UserBC: NSObject {
                 self.saveSession(objSession)
                 
                 if objSession.session_state == SessionBE.SessionState.session_profileComplete{
+                    UserBC.saveSession(objSession)
                     success(objSession)
                 }else if objSession.session_state == SessionBE.SessionState.session_profileIncomplete{
                     profileIcomplete(objSession)
@@ -189,7 +190,7 @@ class UserBC: NSObject {
         
         if let dataUser = CDMKeyChain.dataDesdeKeychainConCuenta("Login", conServicio: "dataUser") {
             
-            let objUser = NSKeyedUnarchiver.unarchiveObject(with: dataUser) as! SessionBE
+            let objUser = NSKeyedUnarchiver.unarchiveObject(with: dataUser) as? SessionBE
             SessionBE.sharedInstance = objUser
             return objUser
         }

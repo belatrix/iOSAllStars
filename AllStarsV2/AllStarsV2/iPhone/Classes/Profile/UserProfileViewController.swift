@@ -189,7 +189,7 @@ class UserProfileViewController: SWFrontGenericoViewController, UIScrollViewDele
             
             objUser.user_color = self.objUser?.user_color ?? UIColor.darkGray
             
-            if SessionBE.sharedInstance?.session_user_id == objUser.user_pk {
+            if SessionBE.sharedInstance?.session_user_id.intValue == objUser.user_pk {
                 UserBE.shareInstance = objUser
             }
         

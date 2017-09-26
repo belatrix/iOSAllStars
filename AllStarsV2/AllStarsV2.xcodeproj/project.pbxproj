@@ -68,6 +68,7 @@
 		966BB5A41F4CD1890042D602 /* SWFrontGenericoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96AD291A1F4CBEC80004468E /* SWFrontGenericoViewController.m */; };
 		966BB5A51F4CD1890042D602 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96AD291C1F4CBEC80004468E /* SWRevealViewController.m */; };
 		966BB5A61F4CD1890042D602 /* SWRevealViewControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96AD291E1F4CBEC80004468E /* SWRevealViewControllerDelegate.m */; };
+		96759A771F79A93B00A3FF46 /* SelectCategoryKudosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96759A761F79A93B00A3FF46 /* SelectCategoryKudosViewController.swift */; };
 		9679830D1F1E6A79005C58BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9679830C1F1E6A79005C58BF /* AppDelegate.swift */; };
 		967983151F1E6A79005C58BF /* AllStarsV2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 967983131F1E6A79005C58BF /* AllStarsV2.xcdatamodeld */; };
 		967983171F1E6A79005C58BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 967983161F1E6A79005C58BF /* Assets.xcassets */; };
@@ -178,6 +179,7 @@
 		9664D78F1F2133CE0054E786 /* ErrorResponseBE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponseBE.swift; sourceTree = "<group>"; };
 		966BB59F1F4CC54D0042D602 /* MainReveal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainReveal.storyboard; sourceTree = "<group>"; };
 		966BB5A21F4CC5910042D602 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		96759A761F79A93B00A3FF46 /* SelectCategoryKudosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryKudosViewController.swift; sourceTree = "<group>"; };
 		967983091F1E6A79005C58BF /* AllStarsV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllStarsV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9679830C1F1E6A79005C58BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		967983141F1E6A79005C58BF /* AllStarsV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AllStarsV2.xcdatamodel; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				964D1F7A1F795CAB00DF5D8B /* KudosUserViewController.swift */,
+				96759A761F79A93B00A3FF46 /* SelectCategoryKudosViewController.swift */,
 			);
 			path = KudosUser;
 			sourceTree = "<group>";
@@ -678,7 +681,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AllStarsV2/Pods-AllStarsV2-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -704,7 +707,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DC09DD9025E0AEE814C84424 /* [CP] Embed Pods Frameworks */ = {
@@ -735,6 +738,7 @@
 				966BB5A41F4CD1890042D602 /* SWFrontGenericoViewController.m in Sources */,
 				4DD27C061F598D4800F55C10 /* EventNewsTableViewCell.swift in Sources */,
 				966BB5A51F4CD1890042D602 /* SWRevealViewController.m in Sources */,
+				96759A771F79A93B00A3FF46 /* SelectCategoryKudosViewController.swift in Sources */,
 				966BB5A61F4CD1890042D602 /* SWRevealViewControllerDelegate.m in Sources */,
 				964D1F7D1F79651B00DF5D8B /* ProfileToKudosTransition.swift in Sources */,
 				9609EAA21F45CC3500F7AA4E /* ExtString.swift in Sources */,

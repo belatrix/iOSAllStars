@@ -12,15 +12,15 @@ import UIKit
 
 class SessionBE: NSObject, NSCoding {
     
-    var session_pwd_reset_required      : Bool = false
-    var session_base_profile_complete   : Bool = false
-    var session_user_id                 : Int  = 0
+    var session_pwd_reset_required      : NSNumber = false
+    var session_base_profile_complete   : NSNumber = false
+    var session_user_id                 : NSNumber = 0
     var session_token                   : String = ""
     var session_user                    : String?
     var session_password                : String?
     var session_state                   : SessionState = .session_profileComplete
     
-    enum SessionState: Int {
+    enum SessionState: NSNumber {
         
         case session_profileComplete    = 1
         case session_profileIncomplete  = 2
@@ -37,13 +37,13 @@ class SessionBE: NSObject, NSCoding {
     
     required public init(coder aDecoder: NSCoder) {
         
-        self.session_pwd_reset_required     = aDecoder.decodeObject(forKey:"session_pwd_reset_required")    as! Bool
-        self.session_base_profile_complete  = aDecoder.decodeObject(forKey:"session_base_profile_complete") as! Bool
-        self.session_user_id                = aDecoder.decodeObject(forKey:"session_user_id")               as! Int
+        self.session_pwd_reset_required     = aDecoder.decodeObject(forKey:"session_pwd_reset_required")    as! NSNumber
+        self.session_base_profile_complete  = aDecoder.decodeObject(forKey:"session_base_profile_complete") as! NSNumber
+        self.session_user_id                = aDecoder.decodeObject(forKey:"session_user_id")               as! NSNumber
         self.session_token                  = aDecoder.decodeObject(forKey:"session_token")                 as! String
         self.session_user                   = aDecoder.decodeObject(forKey:"session_user")                  as? String
         self.session_password               = aDecoder.decodeObject(forKey:"session_password")              as? String
-        self.session_state                  = SessionState(rawValue: aDecoder.decodeObject(forKey:"session_state") as! Int) ?? .session_profileComplete
+//        self.session_state                  = SessionState(rawValue: aDecoder.decodeObject(forKey:"session_state") as! NSNumber) ?? .session_profileComplete
     }
     
     
@@ -54,8 +54,8 @@ class SessionBE: NSObject, NSCoding {
         aCoder.encode(self.session_base_profile_complete,   forKey: "session_base_profile_complete")
         aCoder.encode(self.session_user_id,                 forKey: "session_user_id")
         aCoder.encode(self.session_token,                   forKey: "session_token")
-        aCoder.encode(self.session_user!,                    forKey: "session_user")
-        aCoder.encode(self.session_password!,                forKey: "session_password")
+        aCoder.encode(self.session_user!,                   forKey: "session_user")
+        aCoder.encode(self.session_password!,               forKey: "session_password")
         aCoder.encode(self.session_state.rawValue,          forKey: "SessionState")
     }
     
@@ -64,14 +64,14 @@ class SessionBE: NSObject, NSCoding {
         
         let objBE = SessionBE()
         
-        objBE.session_pwd_reset_required    = CDMWebResponse.getBool(objDic["is_password_reset_required"])
-        objBE.session_base_profile_complete = CDMWebResponse.getBool(objDic["is_base_profile_complete"])
-        objBE.session_user_id               = CDMWebResponse.getInt(objDic["user_id"])
+        objBE.session_pwd_reset_required    = NSNumber(booleanLiteral: CDMWebResponse.getBool(objDic["is_password_reset_required"]))
+        objBE.session_base_profile_complete = NSNumber(booleanLiteral: CDMWebResponse.getBool(objDic["is_base_profile_complete"]))
+        objBE.session_user_id               = NSNumber(integerLiteral: CDMWebResponse.getInt(objDic["user_id"]))
         objBE.session_token                 = CDMWebResponse.getString(objDic["token"])
         
-        if objBE.session_pwd_reset_required == false {
+        if objBE.session_pwd_reset_required.boolValue == false {
             
-            if objBE.session_base_profile_complete == true{
+            if objBE.session_base_profile_complete.boolValue == true{
                 objBE.session_state = .session_profileComplete
             }else{
                 objBE.session_state = .session_profileIncomplete

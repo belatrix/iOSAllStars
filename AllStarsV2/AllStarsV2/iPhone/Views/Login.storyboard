@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="d0a-ie-v6N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="d0a-ie-v6N">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,6 +45,7 @@
                     <connections>
                         <outlet property="imgLogo" destination="VW8-BU-ecg" id="lZ8-TD-03e"/>
                         <segue destination="Wxg-L8-UBq" kind="show" identifier="LoginViewController" id="ANx-YU-8mc"/>
+                        <segue destination="myL-W8-1Gd" kind="show" identifier="RevealViewController" id="a7G-pj-jet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foD-gM-toz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -667,6 +668,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bbb-B0-njG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2635" y="543"/>
+        </scene>
+        <!--RevealViewController-->
+        <scene sceneID="S2g-yE-8On">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainReveal" referencedIdentifier="RevealViewController" id="myL-W8-1Gd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t2S-HK-i9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="351" y="603"/>
         </scene>
         <!--RevealViewController-->
         <scene sceneID="mc5-hG-Mfp">

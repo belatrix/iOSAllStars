@@ -20,12 +20,54 @@ class KudosUserViewController: UIViewController {
     @IBOutlet weak var constraintBottonOptions  : NSLayoutConstraint!
     @IBOutlet weak var constraintHeightData     : NSLayoutConstraint!
     @IBOutlet weak var constraintTopHeader      : NSLayoutConstraint!
+    @IBOutlet weak var btnAction                : UIButton!
+    @IBOutlet weak var btnTag                   : UIButton!
+    @IBOutlet weak var activityAction           : UIActivityIndicatorView!
+    @IBOutlet weak var activityTag              : UIActivityIndicatorView!
+    
     
     var objUser : UserBE!
+    var arrayCategories = [CategoryBE]()
+    var arrayKeyWords = [KeywordBE]()
+    
     
     @IBAction func clickBtnBack(_ sender: Any) {
         
         _ = self.navigationController?.popViewController(animated: true)
+    }
+    
+    func getCategories(){
+        
+        self.btnTag.isEnabled = false
+        self.activityTag.startAnimating()
+        
+        CategoryBC.listGeneralCategories(withSuccessful: { (arrayCategories) in
+            
+            self.btnTag.isEnabled = true
+            self.activityTag.stopAnimating()
+            
+        }) { (title, message) in
+            
+            self.btnTag.isEnabled = true
+            self.activityTag.stopAnimating()
+        }
+    }
+    
+    func getKeyWords(){
+        
+        self.btnAction.isEnabled = false
+        self.activityAction.startAnimating()
+        
+        CategoryBC.listGeneralKeyWords(withSuccessful: { (arrayKeyWords) in
+            
+            self.btnAction.isEnabled = true
+            self.activityAction.stopAnimating()
+            
+        }) { (title, message) in
+            
+            self.btnAction.isEnabled = true
+            self.activityAction.stopAnimating()
+        }
     }
     
     override func viewDidLoad() {
@@ -33,9 +75,14 @@ class KudosUserViewController: UIViewController {
 
         self.imgUser.objUser = self.objUser
         self.imgUser.setInitialVisualConfiguration()
+        self.btnTag.makeBorder()
+        self.btnAction.makeBorder()
         
+        self.getCategories()
+        self.getKeyWords()
         
         self.lblUserName.text = "\(self.objUser.user_first_name!) \(self.objUser.user_last_name!)"
+        self.lblUserLevel.text = "Level: \(self.objUser.user_level)"
     }
 
     override func didReceiveMemoryWarning() {

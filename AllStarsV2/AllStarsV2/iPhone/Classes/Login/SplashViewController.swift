@@ -15,12 +15,6 @@ class SplashViewController: UIViewController {
     
     var initialColor : UIColor!
     
-    func iniciarLogin(){
-        
-        self.performSegue(withIdentifier: "LoginViewController", sender: nil)
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +24,22 @@ class SplashViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
-        self.performSegue(withIdentifier: "LoginViewController", sender: nil)
+        
+        if let objSession = UserBC.getUserSession(){
+            
+            UserBC.getUserInformationById(objSession.session_user_id.intValue, withSuccessful: { (objUser) in
+                
+                UserBE.shareInstance = objUser
+                self.performSegue(withIdentifier: "RevealViewController", sender: nil)
+                
+            }) { (title, message) in
+                
+                CDMUserAlerts.showSimpleAlert(title: title, withMessage: message, withAcceptButton: "ok".localized, withController: self, withCompletion: nil)
+            }
+            
+        }else{
+            self.performSegue(withIdentifier: "LoginViewController", sender: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {

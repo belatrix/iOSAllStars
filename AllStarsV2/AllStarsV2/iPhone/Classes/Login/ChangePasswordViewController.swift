@@ -51,7 +51,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
             self.objSession = objSession
             self.stopLoading()
             
-            if self.objSession.session_base_profile_complete == false{
+            if self.objSession.session_base_profile_complete.boolValue == false{
                 
                 self.performSegue(withIdentifier: "CompleteProfileViewController", sender: nil)
             }else{
