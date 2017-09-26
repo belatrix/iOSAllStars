@@ -118,6 +118,11 @@ class KudosUserViewController: UIViewController, SelectCategoryKudosViewControll
             controller.arrayCategories = self.arrayCategories
             controller.objCategorySelected = self.objCategorySelected
             controller.delegate = self
+            
+        }else if segue.identifier == "SelectKeywordViewController"{
+            
+            let controller = segue.destination as! SelectKeywordViewController
+            controller.arrayKeywords = self.arrayKeyWords
         }
     }
     

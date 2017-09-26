@@ -18,7 +18,7 @@ class CategoryWebModel: NSObject {
             
             if response.successful, let JSON = response.JSON as? [String : Any]{
                 
-                let arrayCategories = CDMWebResponse.getArrayDictionary(JSON)
+                let arrayCategories = CDMWebResponse.getArrayDictionary(JSON["results"])
                 
                 var arrayTemp = [KeywordBE]()
                 

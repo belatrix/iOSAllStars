@@ -26,6 +26,8 @@
 		9600D04C1F293B1B00B780D6 /* LocationWebModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9600D04B1F293B1B00B780D6 /* LocationWebModel.swift */; };
 		9600D04E1F293B4A00B780D6 /* LocationBE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9600D04D1F293B4A00B780D6 /* LocationBE.swift */; };
 		9600D0501F293F3700B780D6 /* LocationBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9600D04F1F293F3700B780D6 /* LocationBC.swift */; };
+		96054C4D1F7AAE4200D49460 /* SelectKeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96054C4C1F7AAE4200D49460 /* SelectKeywordViewController.swift */; };
+		96054C4F1F7AB91600D49460 /* KeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96054C4E1F7AB91600D49460 /* KeywordTableViewCell.swift */; };
 		9609EAA21F45CC3500F7AA4E /* ExtString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9609EAA11F45CB2200F7AA4E /* ExtString.swift */; };
 		961518451F32060F007DAAB2 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961518441F32060F007DAAB2 /* UserProfileViewController.swift */; };
 		961E91621F4721AE0086B24E /* RankingWebModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E91611F4721AE0086B24E /* RankingWebModel.swift */; };
@@ -140,6 +142,8 @@
 		9600D04B1F293B1B00B780D6 /* LocationWebModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWebModel.swift; sourceTree = "<group>"; };
 		9600D04D1F293B4A00B780D6 /* LocationBE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBE.swift; sourceTree = "<group>"; };
 		9600D04F1F293F3700B780D6 /* LocationBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBC.swift; sourceTree = "<group>"; };
+		96054C4C1F7AAE4200D49460 /* SelectKeywordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectKeywordViewController.swift; sourceTree = "<group>"; };
+		96054C4E1F7AB91600D49460 /* KeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordTableViewCell.swift; sourceTree = "<group>"; };
 		9609EAA11F45CB2200F7AA4E /* ExtString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtString.swift; sourceTree = "<group>"; };
 		961518441F32060F007DAAB2 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		961E91611F4721AE0086B24E /* RankingWebModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingWebModel.swift; sourceTree = "<group>"; };
@@ -293,6 +297,8 @@
 			children = (
 				964D1F7A1F795CAB00DF5D8B /* KudosUserViewController.swift */,
 				96759A761F79A93B00A3FF46 /* SelectCategoryKudosViewController.swift */,
+				96054C4C1F7AAE4200D49460 /* SelectKeywordViewController.swift */,
+				96054C4E1F7AB91600D49460 /* KeywordTableViewCell.swift */,
 			);
 			path = KudosUser;
 			sourceTree = "<group>";
@@ -744,6 +750,7 @@
 				9609EAA21F45CC3500F7AA4E /* ExtString.swift in Sources */,
 				9632F9931F7417E7007586D5 /* RankingToProfileTransition.swift in Sources */,
 				96F1A7121F3A059E0099DD90 /* KeywordBE.swift in Sources */,
+				96054C4D1F7AAE4200D49460 /* SelectKeywordViewController.swift in Sources */,
 				96E1BE951F1FB293009E01A3 /* LoginViewController.swift in Sources */,
 				963D53841F424E2E00ADF937 /* CategoryToDetailTransition.swift in Sources */,
 				96BFD4DE1F3B3E770086A722 /* AchievementWebModel.swift in Sources */,
@@ -763,6 +770,7 @@
 				96BF8EF81F4B5F2B005D4D22 /* ContactsToProfileTransition.swift in Sources */,
 				96D42C291F2F685000628A84 /* ExUIButton.swift in Sources */,
 				4D90D4461F4CB338007E8B04 /* EventWebModel.swift in Sources */,
+				96054C4F1F7AB91600D49460 /* KeywordTableViewCell.swift in Sources */,
 				96C1C0B41F268C8700F12BAD /* AnimationTransitionFactory.swift in Sources */,
 				9663360F1F3E3FAA001EF210 /* ContactCollectionViewCell.swift in Sources */,
 				961E91661F472D740086B24E /* UserRankingCollectionViewCell.swift in Sources */,

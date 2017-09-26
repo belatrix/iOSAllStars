@@ -41,7 +41,9 @@ class SelectLocationViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        self.delegate.selectionLocationViewController(self, selectLocation: self.arrayLocations[row])
+        if row <= self.arrayLocations.count {
+            self.delegate.selectionLocationViewController(self, selectLocation: self.arrayLocations[row])
+        }
     }
     
     @IBAction func tapClose(_ sender: Any) {
@@ -91,8 +93,8 @@ class SelectLocationViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         if self.objLocationSelected == nil && self.arrayLocations.count != 0 {
             self.delegate.selectionLocationViewController(self, selectLocation: self.arrayLocations[0])
-        }else{
             
+        }else if self.objLocationSelected != nil{
             self.pickerLocation.selectRow(self.arrayLocations.index(of: self.objLocationSelected!)!, inComponent: 0, animated: false)
         }
     }

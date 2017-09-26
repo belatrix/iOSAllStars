@@ -78,7 +78,6 @@ class SelectCategoryKudosViewController: UIViewController, UIPickerViewDelegate,
         
         self.view.backgroundColor = .clear
         self.constraintBottomPicker.constant = -self.constraintHeightContainer.constant
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
