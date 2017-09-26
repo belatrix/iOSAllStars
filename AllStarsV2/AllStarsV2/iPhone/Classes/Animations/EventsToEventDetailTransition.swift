@@ -59,6 +59,9 @@ class EventsToEventDetailTransition: ControllerTransition {
         toView.backgroundColor = .clear
         containerView.addSubview(toView)
         
+        eventsViewController.headerView.alpha       = 0.0
+        eventDetailViewController.headerView.alpha  = 1.0
+        
         eventDetailViewController.eventInformationView.alpha                    = 0.0
         eventDetailViewController.eventInformationBackgroundView.alpha          = 0.0
         eventDetailViewController.buttonsSectionView.alpha                      = 0.0
@@ -80,6 +83,7 @@ class EventsToEventDetailTransition: ControllerTransition {
                        initialSpringVelocity: 0.5,
                        options: .curveEaseOut,
                        animations: {
+                        
             fromView.alpha = 0.0
             toView.backgroundColor = .white
                         
@@ -100,6 +104,7 @@ class EventsToEventDetailTransition: ControllerTransition {
                        initialSpringVelocity: 0.5,
                        options: .curveEaseOut,
                        animations: {
+                        
             eventDetailViewController.headerView.alpha                              = 1.0
             eventDetailViewController.eventInformationBackgroundView.alpha          = 1.0
             eventDetailViewController.buttonsSectionsViewTopConstraint.constant     = 0.0
@@ -109,7 +114,11 @@ class EventsToEventDetailTransition: ControllerTransition {
                         
         }, completion: nil)
         
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5,
+                       delay: 0.0,
+                       options: .curveEaseOut,
+                       animations: {
+                        
             eventDetailViewController.eventInformationView.alpha    = 1.0
             eventDetailViewController.buttonsSectionView.alpha      = 1.0
             eventDetailViewController.scrollContent.alpha           = 1.0
@@ -136,7 +145,11 @@ class EventsToEventDetailTransition: ControllerTransition {
         
         let fromView = context.view(forKey: .from)!
         fromView.frame = UIScreen.main.bounds
+        fromView.backgroundColor = .clear
         containerView.addSubview(fromView)
+        
+        eventsViewController.headerView.alpha       = 1.0
+        eventDetailViewController.headerView.alpha  = 0.0
         
         eventDetailViewController.eventInformationView.alpha    = 0.0
         eventDetailViewController.buttonsSectionView.alpha      = 0.0
@@ -153,7 +166,6 @@ class EventsToEventDetailTransition: ControllerTransition {
                        initialSpringVelocity: 0.5,
                        options: .curveEaseOut,
                        animations: {
-            fromView.backgroundColor = .clear
 
             eventDetailViewController.eventInformationBackgroundView.alpha          = 0.0
             eventDetailViewController.backgroundImageViewLeadingConstraint.constant = frameForEventImageViewSelected!.origin.x

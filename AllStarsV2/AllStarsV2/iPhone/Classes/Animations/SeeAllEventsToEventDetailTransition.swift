@@ -59,6 +59,9 @@ class SeeAllEventsToEventDetailTransition: ControllerTransition {
         toView.backgroundColor = .clear
         containerView.addSubview(toView)
         
+        eventDetailViewController.headerView.alpha  = 1.0
+        seeAllEventsViewController.headerView.alpha = 0.0
+        
         eventDetailViewController.eventInformationView.alpha                    = 0.0
         eventDetailViewController.eventInformationBackgroundView.alpha          = 0.0
         eventDetailViewController.buttonsSectionView.alpha                      = 0.0
@@ -128,8 +131,8 @@ class SeeAllEventsToEventDetailTransition: ControllerTransition {
     
     override func animatePop(toContext context : UIViewControllerContextTransitioning) {
         let eventDetailViewController = self.controllerOrigin as! EventDetailViewController
-        let eventsViewController = self.controllerDestination as! SeeAllEventsCategoryViewController
-        let frameForEventImageViewSelected = eventsViewController.frameForEventImageViewSelected
+        let seeAllEventsViewController = self.controllerDestination as! SeeAllEventsCategoryViewController
+        let frameForEventImageViewSelected = seeAllEventsViewController.frameForEventImageViewSelected
         
         let containerView = context.containerView
         containerView.backgroundColor = .white
@@ -142,7 +145,11 @@ class SeeAllEventsToEventDetailTransition: ControllerTransition {
         
         let fromView = context.view(forKey: .from)!
         fromView.frame = UIScreen.main.bounds
+        fromView.backgroundColor = .clear
         containerView.addSubview(fromView)
+        
+        eventDetailViewController.headerView.alpha  = 0.0
+        seeAllEventsViewController.headerView.alpha = 1.0
         
         eventDetailViewController.eventInformationView.alpha    = 0.0
         eventDetailViewController.buttonsSectionView.alpha      = 0.0
@@ -159,8 +166,6 @@ class SeeAllEventsToEventDetailTransition: ControllerTransition {
                        initialSpringVelocity: 0.5,
                        options: .curveEaseOut,
                        animations: {
-                        
-            fromView.backgroundColor = .clear
                         
             eventDetailViewController.eventInformationBackgroundView.alpha          = 0.0
             eventDetailViewController.backgroundImageViewLeadingConstraint.constant = frameForEventImageViewSelected!.origin.x

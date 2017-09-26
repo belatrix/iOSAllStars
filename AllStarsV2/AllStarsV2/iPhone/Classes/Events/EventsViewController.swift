@@ -22,7 +22,6 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
     
     private var eventSelected: EventBE!
     var frameForEventImageViewSelected: CGRect!
-    var centerForEventImageViewSelected: CGPoint!
 
     
     
@@ -32,9 +31,7 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
 
     func categoryEventViewController(_ viewController: CategoryEventViewController, didEventSelected event: EventBE, forCategory category: EventsViewControllerSegue, inCell cell: EventCollectionViewCell) {
         print("Evento seleccionado '\(event.event_name)' (\(category.rawValue))")
-
-        self.frameForEventImageViewSelected = cell.imgEvent.convert(cell.imgEvent.frame, to: self.eventsCategoriesScrollView)
-        self.centerForEventImageViewSelected = cell.imgEvent.convert(cell.imgEvent.center, to: self.eventsCategoriesScrollView)
+        self.frameForEventImageViewSelected = cell.imgEvent.convert(cell.imgEvent.frame, to: self.eventsCategoriesScrollView).offsetBy(dx: 0.0, dy: -self.eventsCategoriesScrollView.contentOffset.y)
         
         self.eventSelected = event
         self.performSegue(withIdentifier: "EventDetailViewController", sender: nil)

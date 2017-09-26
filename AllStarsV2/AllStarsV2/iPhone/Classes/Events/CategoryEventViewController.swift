@@ -86,6 +86,7 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
         self.btnSeeAll.isHidden = (events.isEmpty == true) /* Ocultar el botón "See all" si no hay eventos. */
         
         self.arrayEvents = events
+        self.clvEvents.contentOffset = CGPoint.zero
         self.clvEvents.reloadData()
         
         (events.isEmpty == true) ? self.loadingView.mostrarError(conMensaje: emptyErrorMessage, conOpcionReintentar: false) : self.loadingView.detenerLoading()
@@ -98,7 +99,7 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
     func getLocalEvents() {
         self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
         EventBC.listLocalEvents(withSuccessful: { [unowned self] (arrayLocalEvents, nextPage) in
-            self.show(events: arrayLocalEvents + arrayLocalEvents + arrayLocalEvents + arrayLocalEvents + arrayLocalEvents, emptyErrorMessage: "No local events found".localized)
+            self.show(events: arrayLocalEvents, emptyErrorMessage: "No local events found".localized)
         }) { [unowned self] (title, message) in
             self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
@@ -173,8 +174,6 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
     }
 		
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // performSegue(withIdentifier: "EventDetailViewController", sender: self.arrayEvents[indexPath.row])
-        
         let eventSelected = self.arrayEvents[indexPath.row]
         let cellSelected = collectionView.cellForItem(at: indexPath) as! EventCollectionViewCell
         self.delegate.categoryEventViewController(self, didEventSelected: eventSelected, forCategory: self.segueIdentifierClass, inCell: cellSelected)
