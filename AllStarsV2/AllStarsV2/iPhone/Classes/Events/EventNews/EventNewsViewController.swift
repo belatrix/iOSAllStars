@@ -58,17 +58,6 @@ class EventNewsViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    /* func getActivities() {
-        EventBC.listEventActivities(toEvent: self.objEvent, withSuccess: { (arrayActivities) in
-            
-            self.arrayEventActivities = arrayActivities
-            self.tlbEventActivities.reloadData()
-            
-        }) { (title, message) in
-            
-        }
-    } */
-    
     
     
     
@@ -109,7 +98,6 @@ class EventNewsViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tlbEventActivities.addSubview(self.refreshControl)
         self.tlbEventActivities.estimatedRowHeight = 70.0
         
-        // self.getActivities()
         self.listEventNews()
     }
 

@@ -63,8 +63,16 @@ class AnimationTransitionFactory: NSObject {
             return (transition, transition.createInteractiveTransition(navigationController: navController))
             
         }
+        else if (origin is CategoryDetailViewController && destination is UserProfileViewController && operation == .push) || (origin is UserProfileViewController && destination is CategoryDetailViewController && operation == .pop){
+            let transition = DetailCategoryTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
+        }
         else if (origin is EventsViewController && destination is EventDetailViewController) || (origin is EventDetailViewController && destination is EventsViewController) {
             let transition = EventsToEventDetailTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
+            return (transition, transition.createInteractiveTransition(navigationController: navController))
+        }
+        else if (origin is UserProfileViewController && destination is KudosUserViewController) || (origin is KudosUserViewController && destination is UserProfileViewController){
+            let transition = ProfileToKudosTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
             return (transition, transition.createInteractiveTransition(navigationController: navController))
         }
         else if (origin is SeeAllEventsCategoryViewController && destination is EventDetailViewController) || (origin is EventDetailViewController && destination is SeeAllEventsCategoryViewController) {

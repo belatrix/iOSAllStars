@@ -54,21 +54,16 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
 
         // Configuraciones adicionales.
         let dispatchTime: DispatchTime = (.now() + self.revealViewController().toggleAnimationDuration)
-        DispatchQueue.main.asyncAfter(deadline: dispatchTime) { [unowned self] in
-            switch self.segueIdentifierClass {
-                case .userEvents: self.getUserEvents() /* Obtener los eventos del usuario. */
-                case .localEvents: self.getLocalEvents() /* Obtener los eventos locales. */
-                case .otherEvents: self.getOtherEvents() /* Obtener otra categoría de eventos. */
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime) { [weak self] in
+            guard let viewController = self else { return }
+            
+            switch viewController.segueIdentifierClass {
+                case .userEvents: viewController.getUserEvents() /* Obtener los eventos del usuario. */
+                case .localEvents: viewController.getLocalEvents() /* Obtener los eventos locales. */
+                case .otherEvents: viewController.getOtherEvents() /* Obtener otra categoría de eventos. */
             }
         }
     }
-    
-    /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EventDetailViewController" {
-            let controller = segue.destination as! EventDetailViewController
-            controller.objEvent = sender as? EventBE
-        }
-    } */
     
     
     
@@ -98,10 +93,12 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
      */
     func getLocalEvents() {
         self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
-        EventBC.listLocalEvents(withSuccessful: { [unowned self] (arrayLocalEvents, nextPage) in
-            self.show(events: arrayLocalEvents, emptyErrorMessage: "No local events found".localized)
-        }) { [unowned self] (title, message) in
-            self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
+        EventBC.listLocalEvents(withSuccessful: { [weak self] (arrayLocalEvents, nextPage) in
+            guard let viewController = self else { return }
+            viewController.show(events: arrayLocalEvents, emptyErrorMessage: "No local events found".localized)
+        }) { [weak self] (title, message) in
+            guard let viewController = self else { return }
+            viewController.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
     }
     
@@ -110,10 +107,12 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
      */
     func getOtherEvents() {
         self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
-        EventBC.listOtherEvents(withSuccessful: { [unowned self] (arrayOtherEvents, nextPage) in
-            self.show(events: arrayOtherEvents, emptyErrorMessage: "No other events found".localized)
-        }) { [unowned self] (title, message) in
-            self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
+        EventBC.listOtherEvents(withSuccessful: { [weak self] (arrayOtherEvents, nextPage) in
+            guard let viewController = self else { return }
+            viewController.show(events: arrayOtherEvents, emptyErrorMessage: "No other events found".localized)
+        }) { [weak self] (title, message) in
+            guard let viewController = self else { return }
+            viewController.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
     }
     
@@ -122,10 +121,12 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
      */
     func getUserEvents() {
         self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
-        EventBC.listUserEvents(withSuccessful: { [unowned self] (arrayUserEvents, nextPage) in
-            self.show(events: arrayUserEvents, emptyErrorMessage: "No events found".localized)
-        }) { [unowned self] (title, message) in
-            self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
+        EventBC.listUserEvents(withSuccessful: { [weak self] (arrayUserEvents, nextPage) in
+            guard let viewController = self else { return }
+            viewController.show(events: arrayUserEvents, emptyErrorMessage: "No events found".localized)
+        }) { [weak self] (title, message) in
+            guard let viewController = self else { return }
+            viewController.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
     }
     

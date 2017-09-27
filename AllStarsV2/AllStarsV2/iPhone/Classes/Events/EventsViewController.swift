@@ -71,7 +71,6 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
         }
         else if segue.identifier == "SeeAllEventsCategoryViewController" {
             let controller = segue.destination as! SeeAllEventsCategoryViewController
-            // controller.arrayEvents = (sender as! TupleSeeAllCategory).arrayEvents
             controller.segueIdentifierClass = (sender as! TupleSeeAllCategory).identifier
         }
         else if segue.identifier == "EventDetailViewController" {

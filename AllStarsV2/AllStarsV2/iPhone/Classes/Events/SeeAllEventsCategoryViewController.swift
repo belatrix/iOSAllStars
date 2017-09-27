@@ -95,37 +95,46 @@ class SeeAllEventsCategoryViewController: UIViewController, UITableViewDelegate,
         if segueIdentifierClass == .localEvents {
             self.isDownload = true
             
-            EventBC.listLocalEvents(withSuccessful: { [unowned self] (arrayEvents, nextPage) in
-                self.endRefresh(arrayEvents, NextPage: nextPage)
+            EventBC.listLocalEvents(withSuccessful: { [weak self] (arrayEvents, nextPage) in
+                guard let viewController = self else { return }
+                viewController.endRefresh(arrayEvents, NextPage: nextPage)
                 
-            }, withAlertInformation: { [unowned self] (title, message) in
-                self.isDownload = false
-                self.refreshControl.endRefreshing()
-                self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
+            }, withAlertInformation: { [weak self] (title, message) in
+                guard let viewController = self else { return }
+                
+                viewController.isDownload = false
+                viewController.refreshControl.endRefreshing()
+                viewController.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
             })
         }
         else if segueIdentifierClass == .otherEvents {
             self.isDownload = true
             
-            EventBC.listOtherEvents(withSuccessful: { [unowned self] (arrayEvents, nextPage) in
-                self.endRefresh(arrayEvents, NextPage: nextPage)
+            EventBC.listOtherEvents(withSuccessful: { [weak self] (arrayEvents, nextPage) in
+                guard let viewController = self else { return }
+                viewController.endRefresh(arrayEvents, NextPage: nextPage)
                 
-            }, withAlertInformation: { [unowned self] (title, message) in
-                self.isDownload = false
-                self.refreshControl.endRefreshing()
-                self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
+            }, withAlertInformation: { [weak self] (title, message) in
+                guard let viewController = self else { return }
+                
+                viewController.isDownload = false
+                viewController.refreshControl.endRefreshing()
+                viewController.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
             })
         }
         else if segueIdentifierClass == .userEvents{
             self.isDownload = true
             
-            EventBC.listUserEvents(withSuccessful: { [unowned self] (arrayEvents, nextPage) in
-                self.endRefresh(arrayEvents, NextPage: nextPage)
+            EventBC.listUserEvents(withSuccessful: { [weak self] (arrayEvents, nextPage) in
+                guard let viewController = self else { return }
+                viewController.endRefresh(arrayEvents, NextPage: nextPage)
                 
-            }, withAlertInformation: { [unowned self] (title, message) in
-                self.isDownload = false
-                self.refreshControl.endRefreshing()
-                self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
+            }, withAlertInformation: { [weak self] (title, message) in
+                guard let viewController = self else { return }
+                
+                viewController.isDownload = false
+                viewController.refreshControl.endRefreshing()
+                viewController.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
             })
         }
     }
@@ -145,33 +154,6 @@ class SeeAllEventsCategoryViewController: UIViewController, UITableViewDelegate,
         self.loadingView.detenerLoading()
     }
     
-    /* func listAnyPageEvents() {
-        if isDownload == true{
-            return
-        }
-        
-        self.isDownload = true
-        
-        EventBC.listEventToPage(self.nextPage, withSuccessful: { (arrayEvents, nextPage) in
-            self.isDownload = false
-            self.nextPage = nextPage
-            
-            var arrayIndexPath = [IndexPath]()
-            
-            for i in self.arrayEvents.count..<(self.arrayEvents.count + arrayEvents.count){
-                arrayIndexPath.append(IndexPath(item: i, section: 0))
-            }
-            
-            self.arrayEvents.append(contentsOf: arrayEvents)
-            
-            self.tlbEvents.beginUpdates()
-            self.tlbEvents.reloadSections(IndexSet(integer: 0), with: UITableViewRowAnimation.bottom)
-            self.tlbEvents.endUpdates()
-            
-        }, withAlertInformation: { (title, message) in
-            self.isDownload = false
-        })
-    } */
     
     
     
