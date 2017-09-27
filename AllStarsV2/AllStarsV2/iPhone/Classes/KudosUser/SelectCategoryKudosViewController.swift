@@ -1,26 +1,28 @@
 //
-//  SelectLocationViewController.swift
+//  SelectCategorieKudosViewController.swift
 //  AllStarsV2
 //
-//  Created by Kenyi Rodriguez Vergara on 31/07/17.
+//  Created by Kenyi Rodriguez Vergara on 25/09/17.
 //  Copyright © 2017 Kenyi Rodriguez Vergara. All rights reserved.
 //
 
 import UIKit
 
-protocol SelectLocationViewControllerDelegate {
-    func selectionLocationViewController(_ controller: SelectLocationViewController, selectLocation location: LocationBE)
+
+protocol SelectCategoryKudosViewControllerDelegate {
+    func selectionCategoryKudosViewController(_ controller: SelectCategoryKudosViewController, selectCategory category: CategoryBE)
 }
 
-class SelectLocationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+
+class SelectCategoryKudosViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var constraintBottomPicker   : NSLayoutConstraint!
     @IBOutlet weak var constraintHeightContainer: NSLayoutConstraint!
-    @IBOutlet weak var pickerLocation           : UIPickerView!
+    @IBOutlet weak var pickerCategory           : UIPickerView!
     
-    var delegate                                : SelectLocationViewControllerDelegate!
-    var arrayLocations                          = [LocationBE]()
-    var objLocationSelected                     : LocationBE?
+    var delegate                                : SelectCategoryKudosViewControllerDelegate!
+    var arrayCategories                         = [CategoryBE]()
+    var objCategorySelected                     : CategoryBE?
     
     //MARK: - UIPickerViewDelegate, UIPickerViewDataSource
     
@@ -31,18 +33,18 @@ class SelectLocationViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        return self.arrayLocations.count
+        return self.arrayCategories.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return self.arrayLocations[row].location_name
+        return self.arrayCategories[row].category_name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        if row <= self.arrayLocations.count {
-            self.delegate.selectionLocationViewController(self, selectLocation: self.arrayLocations[row])
+        if row <= self.arrayCategories.count{
+            self.delegate.selectionCategoryKudosViewController(self, selectCategory: self.arrayCategories[row])
         }
     }
     
@@ -51,7 +53,7 @@ class SelectLocationViewController: UIViewController, UIPickerViewDelegate, UIPi
         UIView.animate(withDuration: 0.25, animations: {
             
             self.view.backgroundColor = .clear
-            self.constraintBottomPicker.constant = -self.pickerLocation.frame.size.height
+            self.constraintBottomPicker.constant = -self.pickerCategory.frame.size.height
             self.view.layoutIfNeeded()
             
         }) { (_) in
@@ -60,13 +62,13 @@ class SelectLocationViewController: UIViewController, UIPickerViewDelegate, UIPi
         }
     }
     
-    func getLocationByLocationReference(_ location: LocationBE?) -> LocationBE? {
+    func getCategoryByCategoryReference(_ category: CategoryBE?) -> CategoryBE? {
         
-        if location == nil {
+        if category == nil {
             return nil
         }
         
-        let arrayResult = self.arrayLocations.filter({$0.location_pk == location!.location_pk})
+        let arrayResult = self.arrayCategories.filter({$0.category_pk == category!.category_pk})
         return arrayResult.count == 0 ? nil : arrayResult[0]
     }
     
@@ -76,9 +78,8 @@ class SelectLocationViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         self.view.backgroundColor = .clear
         self.constraintBottomPicker.constant = -self.constraintHeightContainer.constant
-        
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
@@ -89,17 +90,16 @@ class SelectLocationViewController: UIViewController, UIPickerViewDelegate, UIPi
             self.view.layoutIfNeeded()
         }
         
-        self.objLocationSelected = self.getLocationByLocationReference(self.objLocationSelected)
-        
-        if self.objLocationSelected == nil && self.arrayLocations.count != 0 {
-            self.delegate.selectionLocationViewController(self, selectLocation: self.arrayLocations[0])
+        self.objCategorySelected = self.getCategoryByCategoryReference(self.objCategorySelected)
+
+        if self.objCategorySelected == nil && self.arrayCategories.count != 0 {
+            self.delegate.selectionCategoryKudosViewController(self, selectCategory: self.arrayCategories[0])
             
-        }else if self.objLocationSelected != nil{
-            self.pickerLocation.selectRow(self.arrayLocations.index(of: self.objLocationSelected!)!, inComponent: 0, animated: false)
+        }else if self.objCategorySelected != nil {
+            self.pickerCategory.selectRow(self.arrayCategories.index(of: self.objCategorySelected!)!, inComponent: 0, animated: false)
         }
     }
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -62,8 +62,6 @@ class LoginPasswordInteractiveTransition : InteractiveTransition{
 
 class LoginPasswordTransition: ControllerTransition {
 
-    
-    
     override func createInteractiveTransition(navigationController: UINavigationController) -> InteractiveTransition? {
         
         let interactiveTransition = LoginPasswordInteractiveTransition()

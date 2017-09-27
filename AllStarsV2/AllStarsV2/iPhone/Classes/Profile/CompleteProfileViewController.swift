@@ -9,12 +9,9 @@
 import UIKit
 
 class CompleteProfileViewController: EditProfileViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        self.imgUser.showUserNameAbrev(false)
-//        self.imgUser.imgUser.image = UIImage(named: "placeHolderProfile")
     }
 
     override func didReceiveMemoryWarning() {

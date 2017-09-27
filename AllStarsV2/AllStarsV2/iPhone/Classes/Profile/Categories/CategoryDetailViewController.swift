@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StarUserTableViewCellDelegate {
+class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StarUserTableViewCellDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var constraintTopContent     : NSLayoutConstraint!
@@ -27,11 +27,18 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
     var objCategory         : CategoryBE!
     var arrayStars          = [StarUserBE]()
     var objUser             : UserBE!
+    var cellSelected        : StarUserTableViewCell!
     
     @IBAction func clickBtnBack(_ sender: Any?) {
         
         _ = self.navigationController?.popViewController(animated: true)
     }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool{
+        return true
+    }
+    
+    //MARK: - StarUserTableViewCellDelegate
     
     func starUserTableViewCell(_ cell: StarUserTableViewCell, selectStar objStar: StarUserBE) {
         
@@ -39,6 +46,14 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
         self.tlbStars.reloadRows(at: [indexPath!], with: .fade)
         
     }
+    
+    func starUserTableViewCell(_ cell: StarUserTableViewCell, selectNameUserFrom objUser: UserBE) {
+        
+        self.cellSelected = cell
+        self.performSegue(withIdentifier: "UserProfileViewController", sender: objUser)
+    }
+    
+    //MARK: - UITableViewDelegate, UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
@@ -64,6 +79,7 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -107,14 +123,19 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
         return .lightContent
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "UserProfileViewController" {
+            
+            let controller = segue.destination as! UserProfileViewController
+            controller.allowRevealController = false
+            controller.objUser = sender as? UserBE
+        }
     }
-    */
+    
 
 }

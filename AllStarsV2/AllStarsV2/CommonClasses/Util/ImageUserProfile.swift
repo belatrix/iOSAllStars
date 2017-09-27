@@ -89,7 +89,7 @@ class ImageUserProfile: UIView {
         _imgUser.contentMode = .scaleAspectFill
         _imgUser.clipsToBounds = true
         
-//        _imgUser.translatesAutoresizingMaskIntoConstraints = false
+        _imgUser.translatesAutoresizingMaskIntoConstraints = false
         return _imgUser
         
     }()
@@ -133,12 +133,13 @@ class ImageUserProfile: UIView {
         self.addSubview(self.imgUser)
         self.addSubview(self.lblAbrev)
         
-        self.imgUser.frame.size = rect.size
-        self.imgUser.frame.origin = CGPoint(x: 0, y: 0 )
+//        self.imgUser.frame.size = rect.size
+//        self.imgUser.frame.origin = CGPoint(x: 0, y: 0 )
         
-//        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[imgUser]-0-|", options: [], metrics: nil, views: ["imgUser" : self.imgUser]))
-//        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[imgUser]-0-|", options: [], metrics: nil, views: ["imgUser" : self.imgUser]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[imgUser]-0-|", options: [], metrics: nil, views: ["imgUser" : self.imgUser]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[imgUser]-0-|", options: [], metrics: nil, views: ["imgUser" : self.imgUser]))
 
+        
 //        let lblwidth = self.lblAbrev.widthAnchor.constraint(equalToConstant: 250)
 //        let lblheight = self.lblAbrev.heightAnchor.constraint(equalToConstant: 250)
 //        let centerx = self.lblAbrev.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0)

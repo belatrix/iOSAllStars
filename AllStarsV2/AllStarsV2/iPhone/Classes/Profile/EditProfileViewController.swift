@@ -326,7 +326,7 @@ class EditProfileViewController: UIViewController, UIScrollViewDelegate, UITextF
         }else {
             
             if let id = SessionBE.sharedInstance?.session_user_id{
-                self.objUser.user_pk = id
+                self.objUser.user_pk = id.intValue
             }
         }
         

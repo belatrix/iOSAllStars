@@ -10,12 +10,13 @@ import UIKit
 
 protocol StarUserTableViewCellDelegate {
     func starUserTableViewCell(_ cell: StarUserTableViewCell, selectStar objStar : StarUserBE) -> Void
+    func starUserTableViewCell(_ cell: StarUserTableViewCell, selectNameUserFrom objUser : UserBE) -> Void
 }
 
 class StarUserTableViewCell: UITableViewCell {
 
     @IBOutlet weak var imgUser          : ImageUserProfile!
-    @IBOutlet weak var lblNameUser      : UILabel!
+    @IBOutlet weak var btnNameUser      : UIButton!
     @IBOutlet weak var lblPositionName  : UILabel!
     @IBOutlet weak var lblDate          : UILabel!
     @IBOutlet weak var lblText          : UILabel?
@@ -39,16 +40,19 @@ class StarUserTableViewCell: UITableViewCell {
         self.delegate.starUserTableViewCell(self, selectStar: self.objStar)
     }
     
+    @IBAction func clickNameUser(_ sender: UIButton){
+        self.delegate.starUserTableViewCell(self, selectNameUserFrom: self.objStar.star_fromUser)
+    }
+    
     override func draw(_ rect: CGRect) {
         
         self.imgUser.setInitialVisualConfiguration()
         self.imgUser.borderImage = 0
-        
     }
     
     func updateData(){
         
-        self.lblNameUser.text = "\(self.objStar.star_fromUser.user_first_name!) \(self.objStar.star_fromUser.user_last_name!)"
+        self.btnNameUser.setTitle("\(self.objStar.star_fromUser.user_first_name!) \(self.objStar.star_fromUser.user_last_name!)", for: .normal)
         self.lblDate.text = CDMDateManager.convertirFecha(self.objStar.star_date, enTextoConFormato: "dd/MM/yyyy")
         self.lblPositionName.text = self.objStar.star_fromUser.user_username
         self.btnSeeMore?.setTitle(!self.objStar.star_explainDetail ? "see_more".localized : "see_less".localized , for: .normal)

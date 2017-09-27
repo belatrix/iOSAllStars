@@ -45,6 +45,7 @@
                     <connections>
                         <outlet property="imgLogo" destination="VW8-BU-ecg" id="lZ8-TD-03e"/>
                         <segue destination="Wxg-L8-UBq" kind="show" identifier="LoginViewController" id="ANx-YU-8mc"/>
+                        <segue destination="myL-W8-1Gd" kind="show" identifier="RevealViewController" id="a7G-pj-jet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foD-gM-toz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -667,6 +668,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bbb-B0-njG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2635" y="543"/>
+        </scene>
+        <!--RevealViewController-->
+        <scene sceneID="S2g-yE-8On">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainReveal" referencedIdentifier="RevealViewController" id="myL-W8-1Gd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t2S-HK-i9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="351" y="603"/>
         </scene>
         <!--RevealViewController-->
         <scene sceneID="mc5-hG-Mfp">

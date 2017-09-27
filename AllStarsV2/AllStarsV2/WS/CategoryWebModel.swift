@@ -10,6 +10,56 @@ import UIKit
 
 class CategoryWebModel: NSObject {
 
+    class func listGeneralKeyWords(withSession objSession : SessionBE, withSuccessful success : @escaping KeyWords, withError error : @escaping ErrorResponse) {
+        
+        let path = "api/star/keyword/list/"
+        
+        CDMWebSender.doGETTokenToURL(Constants.WEB_SERVICES, withPath: path, withParameter: nil, withToken: objSession.session_token) { (response) in
+            
+            if response.successful, let JSON = response.JSON as? [String : Any]{
+                
+                let arrayCategories = CDMWebResponse.getArrayDictionary(JSON["results"])
+                
+                var arrayTemp = [KeywordBE]()
+                
+                for obj in arrayCategories{
+                    arrayTemp.append(KeywordBE.parse(obj))
+                }
+                
+                success(arrayTemp)
+                
+            }else{
+                error(ErrorResponseBE.parse(response.JSON as? [String : Any], withCode: response.statusCode))
+            }
+        }
+    }
+    
+    
+    class func listGeneralCategories(withSession objSession : SessionBE, withSuccessful success : @escaping Categories, withError error : @escaping ErrorResponse) {
+        
+        let path = "api/category/list/"
+        
+        CDMWebSender.doGETTokenToURL(Constants.WEB_SERVICES, withPath: path, withParameter: nil, withToken: objSession.session_token) { (response) in
+            
+            if response.successful, let JSON = response.JSON as? [[String : Any]]{
+                
+                let arrayCategories = JSON
+                
+                var arrayTemp = [CategoryBE]()
+                
+                for obj in arrayCategories{
+                    arrayTemp.append(CategoryBE.parse(obj))
+                }
+                
+                success(arrayTemp)
+                
+            }else{
+                error(ErrorResponseBE.parse(response.JSON as? [String : Any], withCode: response.statusCode))
+            }
+        }
+    }
+    
+    
     class func listCategories(toUser objUser: UserBE, withSession objSession : SessionBE, withSuccessful success : @escaping Categories, withError error : @escaping ErrorResponse) {
         
         let path = "api/star/\(objUser.user_pk)/list/group/category/"
@@ -31,7 +81,6 @@ class CategoryWebModel: NSObject {
             }else{
                 error(ErrorResponseBE.parse(response.JSON as? [String : Any], withCode: response.statusCode))
             }
-            
         }
     }
     
@@ -57,7 +106,6 @@ class CategoryWebModel: NSObject {
             }else{
                 error(ErrorResponseBE.parse(response.JSON as? [String : Any], withCode: response.statusCode))
             }
-            
         }
     }
     
