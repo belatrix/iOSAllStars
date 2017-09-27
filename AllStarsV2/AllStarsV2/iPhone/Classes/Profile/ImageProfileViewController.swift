@@ -10,43 +10,69 @@ import UIKit
 
 class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
 
+    // MARK: - Properties
+    
     @IBOutlet weak var imgUser      : UIImageView!
     @IBOutlet weak var scrollZoom   : UIScrollView!
+    @IBOutlet weak var userProfileImageBackgroundView           : UIView!
+    @IBOutlet weak var userProfileImageViewLeadingConstraint    : NSLayoutConstraint!
+    @IBOutlet weak var userProfileImageViewTopConstraint        : NSLayoutConstraint!
+    @IBOutlet weak var userProfileImageViewWidthConstraint      : NSLayoutConstraint!
+    @IBOutlet weak var userProfileImageViewHeightConstraint     : NSLayoutConstraint!
     
     var objUser : UserBE!
     
+    
+    
+    
+    
+    // MARK: - @IBAction/action methods
+    
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func doubleTapToRestartScale(_ sender: Any) {
-        
-        
-        
-        UIView.animate(withDuration: 0.35, animations: {
+        UIView.animate(withDuration: 0.35,
+                       animations: {
+                        
             self.imgUser.transform = CGAffineTransform.identity
             self.scrollZoom.contentSize = CGSize(width: self.imgUser.frame.width, height: self.imgUser.frame.height)
+                        
         }) { (_) in
+            
             UIView.animate(withDuration: 0.35) {
                 
             }
             
         }
-        
     }
     
+    
+    
+    
+    
+    // MARK: - UIScrollViewDelegate methods
+    
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        
         return self.imgUser
     }
     
     func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-        
         self.scrollZoom.contentSize = CGSize(width: self.imgUser.frame.width, height: self.imgUser.frame.height)
     }
     
     
+    
+    
+    
+    // MARK: - ImageProfileViewController's methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Configuraciones adicionales.
         CDMImageDownloaded.descargarImagen(enURL: self.objUser.user_avatar, paraImageView: self.imgUser, conPlaceHolder: self.imgUser.image) { (isCorrect, urlImage, image) in
-            
             if image != nil {
                 self.imgUser.contentMode = image!.size.width > image!.size.height ? UIViewContentMode.scaleAspectFit : UIViewContentMode.scaleAspectFill
             }
@@ -56,24 +82,11 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
-        
         return .lightContent
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -318,7 +318,7 @@
                         <outletCollection property="arrayButtonsSection" destination="oIg-rf-bHr" collectionClass="NSMutableArray" id="ytU-IX-wsF"/>
                         <outletCollection property="arrayVistas" destination="lL2-ZT-E1M" collectionClass="NSMutableArray" id="gSO-Tb-5GA"/>
                         <outletCollection property="arrayVistas" destination="Srg-oU-OWY" collectionClass="NSMutableArray" id="bDG-cI-yzb"/>
-                        <segue destination="301-oi-mEP" kind="presentation" identifier="ImageProfileViewController" animates="NO" modalPresentationStyle="overCurrentContext" id="aK1-2X-YaN"/>
+                        <segue destination="301-oi-mEP" kind="show" identifier="ImageProfileViewController" id="aK1-2X-YaN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLQ-DY-7Yx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -338,30 +338,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" maximumZoomScale="2" translatesAutoresizingMaskIntoConstraints="NO" id="AeY-Qq-aN9">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="2" translatesAutoresizingMaskIntoConstraints="NO" id="AeY-Qq-aN9">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ks-ZE-yja">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDb-1F-bKv">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <gestureRecognizers/>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G7S-hV-HBg">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7ks-ZE-yja">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="568" id="5kK-A2-j75"/>
+                                            <constraint firstAttribute="width" constant="320" id="rFj-eG-vVq"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="PDb-1F-bKv" firstAttribute="centerX" secondItem="AeY-Qq-aN9" secondAttribute="centerX" id="BTv-bY-Te6"/>
+                                    <constraint firstItem="PDb-1F-bKv" firstAttribute="width" secondItem="AeY-Qq-aN9" secondAttribute="width" id="JIg-Ro-6LI"/>
+                                    <constraint firstAttribute="trailing" secondItem="7ks-ZE-yja" secondAttribute="trailing" id="PE9-aU-gTO"/>
+                                    <constraint firstItem="PDb-1F-bKv" firstAttribute="centerY" secondItem="AeY-Qq-aN9" secondAttribute="centerY" id="bcP-ec-OmY"/>
+                                    <constraint firstItem="PDb-1F-bKv" firstAttribute="height" secondItem="AeY-Qq-aN9" secondAttribute="height" id="krz-iS-pzp"/>
+                                    <constraint firstItem="7ks-ZE-yja" firstAttribute="top" secondItem="AeY-Qq-aN9" secondAttribute="top" id="lrC-0L-pL4"/>
+                                    <constraint firstItem="7ks-ZE-yja" firstAttribute="leading" secondItem="AeY-Qq-aN9" secondAttribute="leading" id="nKw-SU-pfH"/>
+                                    <constraint firstAttribute="bottom" secondItem="7ks-ZE-yja" secondAttribute="bottom" id="wd6-hl-uWo"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="Jfj-Qv-lVV" id="YWy-Cc-wDT"/>
                                     <outletCollection property="gestureRecognizers" destination="355-3i-I16" appends="YES" id="rqq-qN-3Nx"/>
                                 </connections>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MgJ-dF-k9e">
+                                <rect key="frame" x="273" y="20" width="27" height="27"/>
+                                <state key="normal" image="btnClose"/>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="Jfj-Qv-lVV" eventType="touchUpInside" id="0ku-2d-RfA"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wFJ-Uf-TDH" firstAttribute="trailing" secondItem="MgJ-dF-k9e" secondAttribute="trailing" constant="20" id="6i7-tt-aP6"/>
                             <constraint firstItem="AeY-Qq-aN9" firstAttribute="trailing" secondItem="wFJ-Uf-TDH" secondAttribute="trailing" id="BHS-P8-Lv5"/>
+                            <constraint firstItem="MgJ-dF-k9e" firstAttribute="top" secondItem="wFJ-Uf-TDH" secondAttribute="top" id="evJ-9n-6gM"/>
                             <constraint firstItem="AeY-Qq-aN9" firstAttribute="bottom" secondItem="wFJ-Uf-TDH" secondAttribute="bottom" id="hsX-1p-CjX"/>
                             <constraint firstItem="AeY-Qq-aN9" firstAttribute="top" secondItem="isJ-GB-geG" secondAttribute="top" id="mD2-Nn-kl8"/>
                             <constraint firstItem="AeY-Qq-aN9" firstAttribute="leading" secondItem="wFJ-Uf-TDH" secondAttribute="leading" id="uQY-lR-JXe"/>
@@ -371,6 +392,11 @@
                     <connections>
                         <outlet property="imgUser" destination="7ks-ZE-yja" id="zRD-Ie-n2W"/>
                         <outlet property="scrollZoom" destination="AeY-Qq-aN9" id="lRv-rI-JAw"/>
+                        <outlet property="userProfileImageBackgroundView" destination="PDb-1F-bKv" id="yrL-If-rjP"/>
+                        <outlet property="userProfileImageViewHeightConstraint" destination="5kK-A2-j75" id="nEu-lE-3Qe"/>
+                        <outlet property="userProfileImageViewLeadingConstraint" destination="nKw-SU-pfH" id="bX2-Of-Ncj"/>
+                        <outlet property="userProfileImageViewTopConstraint" destination="lrC-0L-pL4" id="6X7-sd-J82"/>
+                        <outlet property="userProfileImageViewWidthConstraint" destination="rFj-eG-vVq" id="Umz-jy-j7y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vh6-LY-qya" userLabel="First Responder" sceneMemberID="firstResponder"/>
