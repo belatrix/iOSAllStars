@@ -188,6 +188,22 @@
                                             <constraint firstAttribute="height" constant="20" id="vnH-jW-r3b"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dD-FV-cLU">
+                                        <rect key="frame" x="20" y="342" width="280" height="44"/>
+                                        <color key="backgroundColor" red="0.40784313729999999" green="0.63137254899999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="81V-QX-VvA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Confirm kudos">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -195,6 +211,7 @@
                                     <constraint firstItem="o4g-bL-sRd" firstAttribute="top" secondItem="vL5-lC-SiN" secondAttribute="bottom" constant="3" id="5uU-C3-mkV"/>
                                     <constraint firstItem="BWd-ZQ-6Ld" firstAttribute="centerY" secondItem="cDd-Lq-zaI" secondAttribute="centerY" id="AKZ-ui-MbZ"/>
                                     <constraint firstAttribute="trailing" secondItem="vL5-lC-SiN" secondAttribute="trailing" constant="18" id="AXM-dJ-yEb"/>
+                                    <constraint firstItem="9dD-FV-cLU" firstAttribute="leading" secondItem="J8g-7p-3zV" secondAttribute="leading" constant="20" id="Bw5-1R-6MI"/>
                                     <constraint firstItem="BWd-ZQ-6Ld" firstAttribute="trailing" secondItem="cDd-Lq-zaI" secondAttribute="trailing" constant="-6" id="Ghn-FN-P5c"/>
                                     <constraint firstAttribute="trailing" secondItem="B9e-Tq-Ovt" secondAttribute="trailing" constant="18" id="I13-e7-AmU"/>
                                     <constraint firstItem="B9e-Tq-Ovt" firstAttribute="leading" secondItem="J8g-7p-3zV" secondAttribute="leading" constant="18" id="OPo-AK-ez5"/>
@@ -209,8 +226,10 @@
                                     <constraint firstItem="KEg-v9-R7F" firstAttribute="trailing" secondItem="o4g-bL-sRd" secondAttribute="trailing" constant="-6" id="maY-uQ-7T8"/>
                                     <constraint firstItem="vL5-lC-SiN" firstAttribute="leading" secondItem="J8g-7p-3zV" secondAttribute="leading" constant="18" id="o6i-lx-VvP"/>
                                     <constraint firstItem="e2H-R3-sK2" firstAttribute="centerY" secondItem="cDd-Lq-zaI" secondAttribute="centerY" id="q2b-f9-R1R"/>
+                                    <constraint firstAttribute="bottom" secondItem="9dD-FV-cLU" secondAttribute="bottom" constant="8" id="qZx-pJ-n2h"/>
                                     <constraint firstItem="B9e-Tq-Ovt" firstAttribute="top" secondItem="J8g-7p-3zV" secondAttribute="top" constant="8" id="t7m-JQ-LR5"/>
                                     <constraint firstItem="cDd-Lq-zaI" firstAttribute="top" secondItem="B9e-Tq-Ovt" secondAttribute="bottom" constant="3" id="vaF-C3-t0B"/>
+                                    <constraint firstAttribute="trailing" secondItem="9dD-FV-cLU" secondAttribute="trailing" constant="20" id="ynm-K2-gjZ"/>
                                 </constraints>
                             </view>
                         </subviews>

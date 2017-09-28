@@ -15,7 +15,7 @@ class KeywordTableViewCell: UITableViewCell {
     var objKeyword : KeywordBE!{
         
         didSet{
-            self.lblNameKeyword.text = self.objKeyword.keyword_name
+            self.lblNameKeyword.text = self.objKeyword.keyword_name.uppercased()
         }
     }
     

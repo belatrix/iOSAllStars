@@ -95,6 +95,11 @@ class SelectKeywordViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+    }
+    
     //MARK: -
     
     override func viewDidLoad() {
