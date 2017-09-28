@@ -10,15 +10,26 @@ import UIKit
 
 class CategoryWebModel: NSObject {
 
+    class func createKeyWord(_ keyWord: String, withSession objSession : SessionBE, withSuccessful success : @escaping KeyWords, withError error : @escaping ErrorResponse) {
+        
+        let path = "api/category/keyword/create/"
+        let dic : [String : Any] = ["name" : keyWord]
+        
+        CDMWebSender.doPOSTTokenToURL(Constants.WEB_SERVICES, withPath: path, withParameter: dic, withToken: objSession.session_token) { (response) in
+            
+        }
+    }
+    
+    
     class func listGeneralKeyWords(withSession objSession : SessionBE, withSuccessful success : @escaping KeyWords, withError error : @escaping ErrorResponse) {
         
-        let path = "api/star/keyword/list/"
+        let path = "api/category/keyword/list/"
         
         CDMWebSender.doGETTokenToURL(Constants.WEB_SERVICES, withPath: path, withParameter: nil, withToken: objSession.session_token) { (response) in
             
-            if response.successful, let JSON = response.JSON as? [String : Any]{
+            if response.successful, let JSON = response.JSON as? [[String : Any]]{
                 
-                let arrayCategories = CDMWebResponse.getArrayDictionary(JSON["results"])
+                let arrayCategories = JSON
                 
                 var arrayTemp = [KeywordBE]()
                 

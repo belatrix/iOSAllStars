@@ -1,23 +1,23 @@
 //
-//  KeywordTableViewCell.swift
+//  AddKeywordTableViewCell.swift
 //  AllStarsV2
 //
-//  Created by Kenyi Rodriguez Vergara on 26/09/17.
+//  Created by Kenyi Rodriguez Vergara on 28/09/17.
 //  Copyright © 2017 Kenyi Rodriguez Vergara. All rights reserved.
 //
 
 import UIKit
 
-class KeywordTableViewCell: UITableViewCell {
+class AddKeywordTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lblNameKeyword: UILabel!
+    @IBOutlet weak var lblTitle : UILabel!
     
-    var objKeyword : KeywordBE!{
-        
+    var objTitleTag = "" {
         didSet{
-            self.lblNameKeyword.text = self.objKeyword.keyword_name.uppercased()
+            self.lblTitle.text = "+ \("create_new".localized) \"\(self.objTitleTag)\" tag"
         }
     }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

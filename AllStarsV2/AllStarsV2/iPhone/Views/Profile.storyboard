@@ -557,11 +557,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcs-dr-ah9">
-                                        <rect key="frame" x="266" y="26" width="46" height="30"/>
+                                        <rect key="frame" x="280" y="20" width="40" height="44"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="46" id="nhs-CP-yoi"/>
+                                            <constraint firstAttribute="width" constant="40" id="nhs-CP-yoi"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="kudos"/>
                                         <connections>
                                             <segue destination="uOK-PL-kBh" kind="show" identifier="KudosUserViewController" id="qLu-h2-TSD"/>
                                         </connections>
@@ -571,11 +572,11 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="fP9-Cm-4Xh" secondAttribute="trailing" constant="36" id="MA1-O5-q7X"/>
                                     <constraint firstAttribute="height" constant="64" id="fRL-gH-9R9"/>
-                                    <constraint firstAttribute="trailing" secondItem="vcs-dr-ah9" secondAttribute="trailing" constant="8" id="i2F-ln-mYY"/>
+                                    <constraint firstAttribute="trailing" secondItem="vcs-dr-ah9" secondAttribute="trailing" id="i2F-ln-mYY"/>
                                     <constraint firstItem="fP9-Cm-4Xh" firstAttribute="top" secondItem="YD2-gp-BbU" secondAttribute="top" constant="20" id="ojF-wE-gDI"/>
                                     <constraint firstItem="fP9-Cm-4Xh" firstAttribute="leading" secondItem="YD2-gp-BbU" secondAttribute="leading" constant="38" id="tFV-fi-ruO"/>
-                                    <constraint firstItem="vcs-dr-ah9" firstAttribute="top" secondItem="YD2-gp-BbU" secondAttribute="top" constant="26" id="uSb-Kw-UbZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="vcs-dr-ah9" secondAttribute="bottom" constant="8" id="w6P-sT-xvi"/>
+                                    <constraint firstItem="vcs-dr-ah9" firstAttribute="top" secondItem="YD2-gp-BbU" secondAttribute="top" constant="20" id="uSb-Kw-UbZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="vcs-dr-ah9" secondAttribute="bottom" id="w6P-sT-xvi"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
@@ -2260,6 +2261,7 @@
         <image name="iconLocation" width="20" height="20"/>
         <image name="iconMail" width="20" height="20"/>
         <image name="iconSkype" width="20" height="20"/>
+        <image name="kudos" width="30" height="30"/>
         <image name="sideMenuButtom" width="21" height="15"/>
     </resources>
 </document>
