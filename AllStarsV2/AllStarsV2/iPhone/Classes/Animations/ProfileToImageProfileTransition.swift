@@ -57,11 +57,28 @@ class ProfileToImageProfileTransition: ControllerTransition {
         toView.frame = UIScreen.main.bounds
         containerView.addSubview(toView)
         
-        let imageViewFrame = profileViewController.imgUser!.convert(profileViewController.imgUser!.frame, to: profileViewController.view)
-        print(imageViewFrame)
         
-        imageProfileViewController.userProfileImageViewTopConstraint.constant       = 79.0 - 15.0//imageViewFrame.origin.y
-        imageProfileViewController.userProfileImageViewLeadingConstraint.constant   = 8.0//imageViewFrame.origin.x
+        
+        /////
+        var newProfileImageViewHeight = UIScreen.main.bounds.height
+        let profileImage = profileViewController.imgUser?.imgUser.image
+        let aspectRatioForImage = (profileImage!.size.width / profileImage!.size.height)
+        
+        if profileImage!.size.width > profileImage!.size.height { /* Hay más ancho que alto... */
+            newProfileImageViewHeight = (imageProfileViewController.userProfileImageViewWidthConstraint.constant / aspectRatioForImage)
+        }
+        else { /* La imagen tiene más alto que ancho o es un cuadrado. */
+            
+        }
+        /////
+        
+        
+        
+        let imageViewFrame = profileViewController.imgUser!.convert(profileViewController.imgUser!.frame, to: profileViewController.view)
+        let imageViewCenter = profileViewController.imgUser!.convert(profileViewController.imgUser!.center, to: profileViewController.view)
+        
+        imageProfileViewController.userProfileImageViewCenterXConstraint.constant   = (imageViewCenter.x * -1.0)
+        imageProfileViewController.userProfileImageViewCenterYConstraint.constant   = (imageViewCenter.y * -1.0)
         imageProfileViewController.userProfileImageViewWidthConstraint.constant     = imageViewFrame.width
         imageProfileViewController.userProfileImageViewHeightConstraint.constant    = imageViewFrame.height
         imageProfileViewController.view.layoutIfNeeded()
@@ -69,6 +86,8 @@ class ProfileToImageProfileTransition: ControllerTransition {
         imageProfileViewController.view.backgroundColor                 = .clear
         imageProfileViewController.imgUser.layer.cornerRadius           = (imageViewFrame.width / 2.0)
         imageProfileViewController.imgUser.layer.masksToBounds          = true
+        imageProfileViewController.imgUser.image                        = profileViewController.imgUser?.imgUser.image
+        imageProfileViewController.imgUser.contentMode                  = .scaleAspectFit
         imageProfileViewController.userProfileImageBackgroundView.alpha = 0.0
 
         UIView.animate(withDuration: 0.5,
@@ -81,10 +100,10 @@ class ProfileToImageProfileTransition: ControllerTransition {
             imageProfileViewController.view.backgroundColor         = .white
             imageProfileViewController.imgUser.layer.cornerRadius   = 0.0
                 
-            imageProfileViewController.userProfileImageViewTopConstraint.constant       = 0.0
-            imageProfileViewController.userProfileImageViewLeadingConstraint.constant   = 0.0
+            imageProfileViewController.userProfileImageViewCenterXConstraint.constant   = 0.0
+            imageProfileViewController.userProfileImageViewCenterYConstraint.constant   = 0.0
             imageProfileViewController.userProfileImageViewWidthConstraint.constant     = UIScreen.main.bounds.width
-            imageProfileViewController.userProfileImageViewHeightConstraint.constant    = UIScreen.main.bounds.height
+            imageProfileViewController.userProfileImageViewHeightConstraint.constant    = newProfileImageViewHeight //UIScreen.main.bounds.height
                         
             imageProfileViewController.view.layoutIfNeeded()
                         
@@ -109,7 +128,12 @@ class ProfileToImageProfileTransition: ControllerTransition {
         containerView.addSubview(fromView)
         
         let imageViewFrame = profileViewController.imgUser!.convert(profileViewController.imgUser!.frame, to: profileViewController.view)
-        print(imageViewFrame)
+        let imageViewCenter = profileViewController.imgUser!.convert(profileViewController.imgUser!.center, to: profileViewController.view)
+        
+        UIView.animate(withDuration: 0.15) {
+            imageProfileViewController.imgUser.layer.cornerRadius   = (imageViewFrame.width / 2.0)
+            imageProfileViewController.imgUser.alpha = 0.0
+        }
         
         imageProfileViewController.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5,
@@ -120,10 +144,9 @@ class ProfileToImageProfileTransition: ControllerTransition {
                        animations: {
                         
             imageProfileViewController.view.backgroundColor         = .clear
-            imageProfileViewController.imgUser.layer.cornerRadius   = (imageViewFrame.width / 2.0)
                         
-            imageProfileViewController.userProfileImageViewTopConstraint.constant       = 79.0 - 15.0//imageViewFrame.origin.y
-            imageProfileViewController.userProfileImageViewLeadingConstraint.constant   = 8.0//imageViewFrame.origin.x
+            imageProfileViewController.userProfileImageViewCenterXConstraint.constant   = (imageViewCenter.x * -1.0)
+            imageProfileViewController.userProfileImageViewCenterYConstraint.constant   = (imageViewCenter.y * -1.0)
             imageProfileViewController.userProfileImageViewWidthConstraint.constant     = imageViewFrame.width
             imageProfileViewController.userProfileImageViewHeightConstraint.constant    = imageViewFrame.height
                         

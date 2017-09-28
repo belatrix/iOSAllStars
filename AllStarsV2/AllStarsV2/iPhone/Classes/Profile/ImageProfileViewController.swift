@@ -15,11 +15,14 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var imgUser      : UIImageView!
     @IBOutlet weak var scrollZoom   : UIScrollView!
     @IBOutlet weak var userProfileImageBackgroundView           : UIView!
-    @IBOutlet weak var userProfileImageViewLeadingConstraint    : NSLayoutConstraint!
-    @IBOutlet weak var userProfileImageViewTopConstraint        : NSLayoutConstraint!
+    /* @IBOutlet weak var userProfileImageViewLeadingConstraint    : NSLayoutConstraint!
+    @IBOutlet weak var userProfileImageViewTopConstraint        : NSLayoutConstraint! */
+    @IBOutlet weak var userProfileImageViewCenterXConstraint    : NSLayoutConstraint!
+    @IBOutlet weak var userProfileImageViewCenterYConstraint    : NSLayoutConstraint!
     @IBOutlet weak var userProfileImageViewWidthConstraint      : NSLayoutConstraint!
     @IBOutlet weak var userProfileImageViewHeightConstraint     : NSLayoutConstraint!
     
+    var newProfileImageViewHeight: CGFloat = 0.0
     var objUser : UserBE!
     
     
@@ -32,7 +35,7 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func doubleTapToRestartScale(_ sender: Any) {
+    /* @IBAction func doubleTapToRestartScale(_ sender: Any) {
         UIView.animate(withDuration: 0.35,
                        animations: {
                         
@@ -46,7 +49,7 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
             }
             
         }
-    }
+    } */
     
     
     
@@ -70,15 +73,45 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.layoutIfNeeded()
 
         // Configuraciones adicionales.
-        CDMImageDownloaded.descargarImagen(enURL: self.objUser.user_avatar, paraImageView: self.imgUser, conPlaceHolder: self.imgUser.image) { (isCorrect, urlImage, image) in
-            if image != nil {
-                self.imgUser.contentMode = image!.size.width > image!.size.height ? UIViewContentMode.scaleAspectFit : UIViewContentMode.scaleAspectFill
+        // self.newProfileImageViewHeight = self.userProfileImageViewHeightConstraint.constant
+        
+        /* CDMImageDownloaded.descargarImagen(enURL: self.objUser.user_avatar, paraImageView: self.imgUser, conPlaceHolder: self.imgUser.image) { (isCorrect, urlImage, image) in */
+            /* if image != nil {
+                self.imgUser.contentMode = (image!.size.width > image!.size.height) ? UIViewContentMode.scaleAspectFit : UIViewContentMode.scaleAspectFill
             }
             
+            self.imgUser.contentMode = .scaleAspectFit
             self.imgUser.image = image
-        }
+            
+            print(image!.size)
+            print(self.imgUser.frame) */
+            
+            /* guard let profileImage = image else { return }
+            self.imgUser.image = profileImage
+            
+            if profileImage.size.width > self.imgUser.frame.width {
+                
+                /*
+                 El ancho de la imagen es mayor al del 'UIImageView'.
+                 ¿Qué se hace? (1) Se asigna el valor '.scaleAspectFit' a la propiedad 'contentMode' y (2) se calcula la nueva altura del control 'UIImageView' en función al valor del "aspect ratio" de la imagen.
+                 */
+                
+                self.imgUser.contentMode = .scaleToFill
+                
+                let aspectRatioForImage = (profileImage.size.width / profileImage.size.height)
+                if profileImage.size.width > profileImage.size.height { /* Hay más ancho que alto. */
+                    self.newProfileImageViewHeight = (self.userProfileImageViewWidthConstraint.constant / aspectRatioForImage)
+                    self.userProfileImageViewHeightConstraint.constant = self.newProfileImageViewHeight
+                    print("new size for UIImageView: \(self.userProfileImageViewWidthConstraint.constant) x \(self.newProfileImageViewHeight)")
+                }
+                else { /* La imagen tiene más alto que ancho o es un cuadrado. */
+                    
+                }
+            } */
+        // }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
