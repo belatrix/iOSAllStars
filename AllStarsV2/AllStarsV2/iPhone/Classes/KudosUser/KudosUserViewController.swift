@@ -123,6 +123,7 @@ class KudosUserViewController: UIViewController, SelectCategoryKudosViewControll
             
             let controller = segue.destination as! SelectKeywordViewController
             controller.arrayKeywords = self.arrayKeyWords
+            controller.arrayKeywordsTable = self.arrayKeyWords
         }
     }
     
