@@ -79,7 +79,7 @@ public class CDMWebSender: NSObject {
             responseData = self.getResponseJSON(withData: data!)
         }
         
-        print("respuesta servicio \(String(describing: responseData))")
+        // print("respuesta servicio \(String(describing: responseData))")
         
         let urlResponse = response as? HTTPURLResponse
         

@@ -83,10 +83,10 @@ class AnimationTransitionFactory: NSObject {
             let transition = EventsToSeeAllEventsTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
             return (transition, transition.createInteractiveTransition(navigationController: navController))
         }
-        else if (origin is UserProfileViewController && destination is ImageProfileViewController) || (origin is ImageProfileViewController && destination is UserProfileViewController) {
+        /* else if (origin is UserProfileViewController && destination is ImageProfileViewController) || (origin is ImageProfileViewController && destination is UserProfileViewController) {
             let transition = ProfileToImageProfileTransition(withOrigin: origin, withDestination: destination, withOperation: operation)
             return (transition, transition.createInteractiveTransition(navigationController: navController))
-        }
+        } */
         else {
             return (nil, nil)
         }

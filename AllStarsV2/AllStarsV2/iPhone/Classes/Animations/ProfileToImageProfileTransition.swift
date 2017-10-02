@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileToImageProfileInteractiveTransition: InteractiveTransition {
+/* class ProfileToImageProfileInteractiveTransition: InteractiveTransition {
     var initialScale: CGFloat = 0
     
     @objc func gestureTransitionMethod(_ gesture : UIPanGestureRecognizer){
@@ -60,15 +60,21 @@ class ProfileToImageProfileTransition: ControllerTransition {
         
         
         /////
-        var newProfileImageViewHeight = UIScreen.main.bounds.height
+        imageProfileViewController.view.layoutIfNeeded()
+        
+        var newProfileImageViewHeight   = UIScreen.main.bounds.height
+        var newProfileImageViewWidth    = UIScreen.main.bounds.width
         let profileImage = profileViewController.imgUser?.imgUser.image
         let aspectRatioForImage = (profileImage!.size.width / profileImage!.size.height)
         
-        if profileImage!.size.width > profileImage!.size.height { /* Hay más ancho que alto... */
-            newProfileImageViewHeight = (imageProfileViewController.userProfileImageViewWidthConstraint.constant / aspectRatioForImage)
-        }
-        else { /* La imagen tiene más alto que ancho o es un cuadrado. */
-            
+        if profileImage!.size.width > imageProfileViewController.scrollZoom.bounds.width {
+            if profileImage!.size.width > profileImage!.size.height { /* Hay más ancho que alto... */
+                newProfileImageViewWidth    = imageProfileViewController.scrollZoom.bounds.width
+                newProfileImageViewHeight   = (imageProfileViewController.scrollZoom.bounds.width / aspectRatioForImage)
+            }
+            else { /* La imagen tiene más alto que ancho o es un cuadrado. */
+                
+            }
         }
         /////
         
@@ -87,8 +93,7 @@ class ProfileToImageProfileTransition: ControllerTransition {
         imageProfileViewController.imgUser.layer.cornerRadius           = (imageViewFrame.width / 2.0)
         imageProfileViewController.imgUser.layer.masksToBounds          = true
         imageProfileViewController.imgUser.image                        = profileViewController.imgUser?.imgUser.image
-        imageProfileViewController.imgUser.contentMode                  = .scaleAspectFit
-        imageProfileViewController.userProfileImageBackgroundView.alpha = 0.0
+        imageProfileViewController.imgUser.contentMode                  = .scaleToFill
 
         UIView.animate(withDuration: 0.5,
                        delay: 0,
@@ -97,13 +102,13 @@ class ProfileToImageProfileTransition: ControllerTransition {
                        options: .curveEaseOut,
                        animations: {
                         
-            imageProfileViewController.view.backgroundColor         = .white
+            imageProfileViewController.view.backgroundColor         = UIColor.white.withAlphaComponent(0.85)
             imageProfileViewController.imgUser.layer.cornerRadius   = 0.0
                 
             imageProfileViewController.userProfileImageViewCenterXConstraint.constant   = 0.0
             imageProfileViewController.userProfileImageViewCenterYConstraint.constant   = 0.0
-            imageProfileViewController.userProfileImageViewWidthConstraint.constant     = UIScreen.main.bounds.width
-            imageProfileViewController.userProfileImageViewHeightConstraint.constant    = newProfileImageViewHeight //UIScreen.main.bounds.height
+            imageProfileViewController.userProfileImageViewWidthConstraint.constant     = newProfileImageViewWidth
+            imageProfileViewController.userProfileImageViewHeightConstraint.constant    = newProfileImageViewHeight
                         
             imageProfileViewController.view.layoutIfNeeded()
                         
@@ -131,7 +136,6 @@ class ProfileToImageProfileTransition: ControllerTransition {
         let imageViewCenter = profileViewController.imgUser!.convert(profileViewController.imgUser!.center, to: profileViewController.view)
         
         UIView.animate(withDuration: 0.15) {
-            imageProfileViewController.imgUser.layer.cornerRadius   = (imageViewFrame.width / 2.0)
             imageProfileViewController.imgUser.alpha = 0.0
         }
         
@@ -160,4 +164,4 @@ class ProfileToImageProfileTransition: ControllerTransition {
     override func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5
     }
-}
+} */

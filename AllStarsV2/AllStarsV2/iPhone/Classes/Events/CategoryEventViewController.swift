@@ -34,7 +34,7 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
     
     var arrayEvents = [EventBE]()
     var segueIdentifierClass = EventsViewControllerSegue.localEvents
-    var delegate : CategoryEventViewControllerDelegate!
+    var delegate : CategoryEventViewControllerDelegate?
    
     
     
@@ -44,6 +44,7 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad - Retain count for CategoryEventViewController: \(CFGetRetainCount(self))")
         
         // Configuraciones adicionales.
         self.btnSeeAll.isHidden = true /* Por defecto, el botón "Se all" está oculto. Solo se muestra en caso hayan eventos (se podría considerar que solamente se muestre en caso la cantidad de eventos sobrepase un número mínimo, pero eso depende de qué es lo exactamente retornan los servicio web.) */
@@ -51,7 +52,8 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        print("viewDidAppear - Retain count for CategoryEventViewController: \(CFGetRetainCount(self))")
+        
         // Configuraciones adicionales.
         let dispatchTime: DispatchTime = (.now() + self.revealViewController().toggleAnimationDuration)
         DispatchQueue.main.asyncAfter(deadline: dispatchTime) { [weak self] in
@@ -78,6 +80,7 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
          - emptyErrorMessage: Mensaje de error para mostrar si no hay eventos.
      */
     private func show(events: [EventBE], emptyErrorMessage: String) {
+        print("show(events:emptyErrorMessage:) - Retain count for CategoryEventViewController: \(CFGetRetainCount(self))")
         self.btnSeeAll.isHidden = (events.isEmpty == true) /* Ocultar el botón "See all" si no hay eventos. */
         
         self.arrayEvents = events
@@ -85,18 +88,22 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
         self.clvEvents.reloadData()
         
         (events.isEmpty == true) ? self.loadingView.mostrarError(conMensaje: emptyErrorMessage, conOpcionReintentar: false) : self.loadingView.detenerLoading()
-        self.delegate.categoryEventViewController(self, didFinishLoadData: events)
+        self.delegate?.categoryEventViewController(self, didFinishLoadData: events)
     }
     
     /**
      Método para descargar los eventos locales.
      */
     func getLocalEvents() {
+        print("getLocalEvents - Retain count for CategoryEventViewController: \(CFGetRetainCount(self)) - before getting local events")
+        
         self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
         EventBC.listLocalEvents(withSuccessful: { [weak self] (arrayLocalEvents, nextPage) in
+            print("getLocalEvents - Retain count for CategoryEventViewController: \(CFGetRetainCount(self)) - after getting local events")
             guard let viewController = self else { return }
             viewController.show(events: arrayLocalEvents, emptyErrorMessage: "No local events found".localized)
         }) { [weak self] (title, message) in
+            print("getLocalEvents - Retain count for CategoryEventViewController: \(CFGetRetainCount(self)) - after getting error for local events")
             guard let viewController = self else { return }
             viewController.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
@@ -152,32 +159,38 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
         let cellIdentifier = "EventCollectionViewCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! EventCollectionViewCell
         cell.objEvent = self.arrayEvents[indexPath.row]
+        print("collectionView:cellForItemAt: - Retain count for CategoryEventViewController: \(CFGetRetainCount(self))")
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let event = self.arrayEvents[indexPath.row]
+        print("collectionView:willDisplay:forItemAt: - Retain count for CategoryEventViewController: \(CFGetRetainCount(self))")
         
         if collectionView.bounds.contains(cell.bounds.origin) == true && event.event_didAppear == false { /* La animación se va a aplicar solamente para las celdas que se encuentras visibles dentro del marco del UICollectionView y solamente si no ha aparecido anteriormente. */
             cell.alpha = 0.0
             cell.transform = CGAffineTransform.init(translationX: 25, y: 0.0)
             
             let duration: Double = Double(indexPath.row + 1) / 2.5
-            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-                cell.alpha = 1.0
-                cell.transform = CGAffineTransform.identity
+            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.curveEaseInOut, animations: { [weak cell] in
+                guard let _ = cell else { return }
+                cell?.alpha = 1.0
+                cell?.transform = CGAffineTransform.identity
                 
-            }, completion: { (finished: Bool) in
+            }, completion: { [unowned event] (finished: Bool) in
                 event.event_didAppear = true
             })
         }
     }
 		
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("collectionView:didSelectItemAt: - Retain count for CategoryEventViewController: \(CFGetRetainCount(self)) - before calling delegate object.")
+        
         let eventSelected = self.arrayEvents[indexPath.row]
         let cellSelected = collectionView.cellForItem(at: indexPath) as! EventCollectionViewCell
-        self.delegate.categoryEventViewController(self, didEventSelected: eventSelected, forCategory: self.segueIdentifierClass, inCell: cellSelected)
+        self.delegate?.categoryEventViewController(self, didEventSelected: eventSelected, forCategory: self.segueIdentifierClass, inCell: cellSelected)
+        print("collectionView:didSelectItemAt: - Retain count for CategoryEventViewController: \(CFGetRetainCount(self)) - after calling delegate object.")
     }
 
     
@@ -187,7 +200,7 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
     // MARK: - @IBAction/action methods
      
      @IBAction func clickBtnShowAll(_ sender: Any) {
-        self.delegate.categoryEventViewController(self, showAllSegueWithEventArray: arrayEvents)
+        self.delegate?.categoryEventViewController(self, showAllSegueWithEventArray: arrayEvents)
      }
     
 }

@@ -97,9 +97,9 @@ public class CDMImageDownloaded: NSObject {
     }
     
     
-    public class func descargarImagen(enURL url : String?, paraImageView imageViewFoto : UIImageView, conPlaceHolder imgPlaceHolder : UIImage?, conCompletion completion : @escaping(_ descargaCorrecta : Bool, _ nombreArchivo : String?, _ imagen : UIImage?) -> Void) {
+    public class func descargarImagen(enURL url : String?, paraImageView imageViewFoto : UIImageView?, conPlaceHolder imgPlaceHolder : UIImage?, conCompletion completion : @escaping(_ descargaCorrecta : Bool, _ nombreArchivo : String?, _ imagen : UIImage?) -> Void) {
         
-        imageViewFoto.image = imgPlaceHolder
+        imageViewFoto?.image = imgPlaceHolder
         
         var nombre : String? = url == nil ? nil : NSString(string: url!).lastPathComponent
         

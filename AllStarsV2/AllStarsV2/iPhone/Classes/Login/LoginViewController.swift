@@ -169,6 +169,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.statusBarStyle = .default
+        
         self.initialValueConstraintCenterForm = self.constraintCenterForm.constant
         self.initialPlaceHolderUser = self.txtUserName.placeholder
     }

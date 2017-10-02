@@ -178,6 +178,7 @@ class UserProfileViewController: SWFrontGenericoViewController, UIScrollViewDele
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
         
         if self.allowRevealController == false{
             self.view.removeGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -203,11 +204,9 @@ class UserProfileViewController: SWFrontGenericoViewController, UIScrollViewDele
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
-        
         return .lightContent
     }
 
@@ -234,7 +233,9 @@ class UserProfileViewController: SWFrontGenericoViewController, UIScrollViewDele
         }else if segue.identifier == "ImageProfileViewController" {
             
             let controller = segue.destination as! ImageProfileViewController
-            controller.objUser = self.objUser
+            controller.objUser                  = self.objUser
+            controller.initialImageViewFrame    = self.imgUser!.convert(self.imgUser!.frame, to: self.view)
+            controller.initialImageViewCenter   = self.imgUser!.convert(self.imgUser!.center, to: self.view)
             
         }else if segue.identifier == "KudosUserViewController"{
             

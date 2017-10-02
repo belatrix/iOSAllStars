@@ -12,18 +12,19 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: - Properties
     
-    @IBOutlet weak var imgUser      : UIImageView!
+    @IBOutlet weak var pbImageView  : PBImageView!
+    @IBOutlet weak var closeButton  : UIButton!
     @IBOutlet weak var scrollZoom   : UIScrollView!
-    @IBOutlet weak var userProfileImageBackgroundView           : UIView!
-    /* @IBOutlet weak var userProfileImageViewLeadingConstraint    : NSLayoutConstraint!
-    @IBOutlet weak var userProfileImageViewTopConstraint        : NSLayoutConstraint! */
+    @IBOutlet weak var statusBarView                            : UIView!
     @IBOutlet weak var userProfileImageViewCenterXConstraint    : NSLayoutConstraint!
     @IBOutlet weak var userProfileImageViewCenterYConstraint    : NSLayoutConstraint!
     @IBOutlet weak var userProfileImageViewWidthConstraint      : NSLayoutConstraint!
     @IBOutlet weak var userProfileImageViewHeightConstraint     : NSLayoutConstraint!
     
-    var newProfileImageViewHeight: CGFloat = 0.0
-    var objUser : UserBE!
+    var objUser: UserBE!
+    var initialImageViewFrame: CGRect       = CGRect.zero
+    var initialImageViewCenter: CGPoint     = CGPoint.zero
+    var newProfileImageViewHeight: CGFloat  = 0.0
     
     
     
@@ -32,24 +33,52 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - @IBAction/action methods
     
     @IBAction func backButtonClicked(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    /* @IBAction func doubleTapToRestartScale(_ sender: Any) {
-        UIView.animate(withDuration: 0.35,
-                       animations: {
-                        
-            self.imgUser.transform = CGAffineTransform.identity
-            self.scrollZoom.contentSize = CGSize(width: self.imgUser.frame.width, height: self.imgUser.frame.height)
-                        
-        }) { (_) in
+        let customAnimationsClosure: (() -> ()) = {  [unowned self] in
+            self.pbImageView.contentMode = .scaleAspectFill
             
-            UIView.animate(withDuration: 0.35) {
-                
-            }
-            
+            self.userProfileImageViewCenterXConstraint.constant = (((self.scrollZoom.bounds.width / 2.0) * -1.0) + (self.initialImageViewCenter.x - 8.0))
+            self.userProfileImageViewCenterYConstraint.constant = (((self.scrollZoom.bounds.height / 2.0) * -1.0) + (self.initialImageViewCenter.y - 35.0))
+            self.userProfileImageViewWidthConstraint.constant   = self.initialImageViewFrame.width
+            self.userProfileImageViewHeightConstraint.constant  = self.initialImageViewFrame.height
         }
-    } */
+        let defaultsAnimationsClosure: (() -> ()) = { [unowned self] in
+            self.closeButton.alpha = 0.0
+            
+            self.scrollZoom.backgroundColor = UIColor.white.withAlphaComponent(0.0)
+            self.statusBarView.backgroundColor = UIColor.white.withAlphaComponent(0.0)
+            
+            self.pbImageView.layer.cornerRadius = (self.initialImageViewFrame.width / 2.0)
+        }
+        
+        let animationDuration = 0.5
+        
+        let colorAnimation = CABasicAnimation(keyPath: "borderColor");
+        colorAnimation.fromValue = UIColor.white.withAlphaComponent(0.0).cgColor
+        colorAnimation.toValue = UIColor.white.cgColor
+        colorAnimation.beginTime = (CACurrentMediaTime() + (0.75 * animationDuration))
+        colorAnimation.duration = (0.25 * animationDuration)
+        colorAnimation.repeatCount = 1
+        colorAnimation.fillMode = kCAFillModeForwards
+        colorAnimation.isRemovedOnCompletion = false
+        self.pbImageView.layer.add(colorAnimation, forKey: "BorderColorAnimationKey");
+        
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: animationDuration,
+                       delay: 0.0,
+                       usingSpringWithDamping: 1.0,
+                       initialSpringVelocity: 0.5,
+                       options: .curveEaseInOut,
+                       animations: {
+            defaultsAnimationsClosure()
+            customAnimationsClosure()
+                        
+            self.view.layoutIfNeeded()
+        }, completion: { (_) in
+            UIApplication.shared.statusBarStyle = .lightContent
+            
+            self.dismiss(animated: false, completion: nil)
+        })
+    }
     
     
     
@@ -58,11 +87,30 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - UIScrollViewDelegate methods
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return self.imgUser
+        return self.pbImageView
     }
     
-    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-        self.scrollZoom.contentSize = CGSize(width: self.imgUser.frame.width, height: self.imgUser.frame.height)
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        if scrollView.zoomScale > 1.0 {
+            self.closeButton.alpha = 0.0
+            
+            if let image = self.pbImageView.image {
+                let ratioW = (self.pbImageView.frame.width / image.size.width)
+                let ratioH = (self.pbImageView.frame.height / image.size.height)
+                let ratio = (ratioW < ratioH) ? ratioW : ratioH
+                
+                let newWidth    = (image.size.width * ratio)
+                let newHeight   = (image.size.height * ratio)
+                let left    = 0.5 * (newWidth * scrollView.zoomScale > self.pbImageView.frame.width     ? (newWidth - self.pbImageView.frame.width)     : (scrollView.frame.width - scrollView.contentSize.width))
+                let top     = 0.5 * (newHeight * scrollView.zoomScale > self.pbImageView.frame.height   ? (newHeight - self.pbImageView.frame.height)   : (scrollView.frame.height - scrollView.contentSize.height))
+                
+                scrollView.contentInset = UIEdgeInsetsMake(top, left, top, left)
+            }
+        }
+        else {
+            self.closeButton.alpha = 1.0
+            scrollView.contentInset = UIEdgeInsets.zero
+        } 
     }
     
     
@@ -76,48 +124,65 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
         self.view.layoutIfNeeded()
 
         // Configuraciones adicionales.
-        // self.newProfileImageViewHeight = self.userProfileImageViewHeightConstraint.constant
+        self.closeButton.alpha = 0.0
+
+        let centerX: CGFloat = (self.initialImageViewCenter.x <= 0.0) ? 86.0     : self.initialImageViewCenter.x
+        let centerY: CGFloat = (self.initialImageViewCenter.y <= 0.0) ? 164.0    : self.initialImageViewCenter.y
+        self.userProfileImageViewCenterXConstraint.constant = (((UIScreen.main.bounds.width / 2.0) * -1.0) + (centerX - 8.0))
+        self.userProfileImageViewCenterYConstraint.constant = ((((UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height) / 2.0) * -1.0) + (centerY - 35.0))
+        self.userProfileImageViewWidthConstraint.constant   = (self.initialImageViewFrame.width <= 0.0)     ? 140.0 : self.initialImageViewFrame.width
+        self.userProfileImageViewHeightConstraint.constant  = (self.initialImageViewFrame.height <= 0.0)    ? 140.0 : self.initialImageViewFrame.height
         
-        /* CDMImageDownloaded.descargarImagen(enURL: self.objUser.user_avatar, paraImageView: self.imgUser, conPlaceHolder: self.imgUser.image) { (isCorrect, urlImage, image) in */
-            /* if image != nil {
-                self.imgUser.contentMode = (image!.size.width > image!.size.height) ? UIViewContentMode.scaleAspectFit : UIViewContentMode.scaleAspectFill
-            }
-            
-            self.imgUser.contentMode = .scaleAspectFit
-            self.imgUser.image = image
-            
-            print(image!.size)
-            print(self.imgUser.frame) */
-            
-            /* guard let profileImage = image else { return }
-            self.imgUser.image = profileImage
-            
-            if profileImage.size.width > self.imgUser.frame.width {
-                
-                /*
-                 El ancho de la imagen es mayor al del 'UIImageView'.
-                 ¿Qué se hace? (1) Se asigna el valor '.scaleAspectFit' a la propiedad 'contentMode' y (2) se calcula la nueva altura del control 'UIImageView' en función al valor del "aspect ratio" de la imagen.
-                 */
-                
-                self.imgUser.contentMode = .scaleToFill
-                
-                let aspectRatioForImage = (profileImage.size.width / profileImage.size.height)
-                if profileImage.size.width > profileImage.size.height { /* Hay más ancho que alto. */
-                    self.newProfileImageViewHeight = (self.userProfileImageViewWidthConstraint.constant / aspectRatioForImage)
-                    self.userProfileImageViewHeightConstraint.constant = self.newProfileImageViewHeight
-                    print("new size for UIImageView: \(self.userProfileImageViewWidthConstraint.constant) x \(self.newProfileImageViewHeight)")
-                }
-                else { /* La imagen tiene más alto que ancho o es un cuadrado. */
-                    
-                }
-            } */
-        // }
+        self.pbImageView.layer.cornerRadius = (self.userProfileImageViewWidthConstraint.constant / 2.0)
+        self.pbImageView.layer.borderColor  = UIColor.white.withAlphaComponent(0.0).cgColor
+        self.pbImageView.layer.borderWidth  = 5.0
+        self.pbImageView.contentMode = .scaleAspectFill
+        
+        self.view.layoutIfNeeded()
+        CDMImageDownloaded.descargarImagen(enURL: self.objUser.user_avatar, paraImageView: nil, conPlaceHolder: nil) { [weak self] (isCorrect, urlImage, image) in
+            self?.pbImageView.image = image
+        }
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.view.layoutIfNeeded()
+        
+        // Configuraciones adicionales.
+        guard let _ = self.pbImageView.image else { return }
+        
+        UIApplication.shared.statusBarStyle = .default
+        
+        let customAnimationsClosure: (() -> ()) = {  [unowned self] in
+            self.pbImageView.contentMode = .scaleAspectFit
+            
+            self.userProfileImageViewHeightConstraint.constant  = (UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.height)
+            self.userProfileImageViewWidthConstraint.constant   = UIScreen.main.bounds.width
+            
+            self.userProfileImageViewCenterXConstraint.constant = 0.0
+            self.userProfileImageViewCenterYConstraint.constant = 0.0
+        }
+        let defaultsAnimationsClosure: (() -> ()) = { [unowned self] in
+            self.closeButton.alpha = 1.0
+            
+            self.scrollZoom.backgroundColor = UIColor.white.withAlphaComponent(0.75)
+            self.statusBarView.backgroundColor = UIColor.white.withAlphaComponent(0.75)
+        }
+        
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.75,
+                       delay: 0.0,
+                       usingSpringWithDamping: 1.0,
+                       initialSpringVelocity: 0.5,
+                       options: .curveEaseInOut,
+                       animations: {
+            defaultsAnimationsClosure()
+            customAnimationsClosure()
+            
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
