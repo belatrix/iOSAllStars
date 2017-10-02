@@ -14,54 +14,77 @@ protocol SelectCategoryKudosViewControllerDelegate {
 }
 
 
-class SelectCategoryKudosViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class SelectCategoryKudosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var constraintBottomPicker   : NSLayoutConstraint!
-    @IBOutlet weak var constraintHeightContainer: NSLayoutConstraint!
-    @IBOutlet weak var pickerCategory           : UIPickerView!
+    @IBOutlet weak var blurView                 : UIVisualEffectView!
+    @IBOutlet weak var constraintTopHeader      : NSLayoutConstraint!
+    @IBOutlet weak var tlbCategories            : UITableView!
+    @IBOutlet weak var constraintTopTlbKeywords : NSLayoutConstraint!
     
     var delegate                                : SelectCategoryKudosViewControllerDelegate!
     var arrayCategories                         = [CategoryBE]()
     var objCategorySelected                     : CategoryBE?
     
-    //MARK: - UIPickerViewDelegate, UIPickerViewDataSource
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    @IBAction func clickBtnAtras(_ sender: Any) {
         
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        return self.arrayCategories.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        return self.arrayCategories[row].category_name
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        if row <= self.arrayCategories.count{
-            self.delegate.selectionCategoryKudosViewController(self, selectCategory: self.arrayCategories[row])
-        }
-    }
-    
-    @IBAction func tapClose(_ sender: Any) {
-        
-        UIView.animate(withDuration: 0.25, animations: {
+        self.view.endEditing(true)
+        UIView.animate(withDuration: 0.4, animations: {
             
-            self.view.backgroundColor = .clear
-            self.constraintBottomPicker.constant = -self.pickerCategory.frame.size.height
+            self.constraintTopHeader.constant = -120
+            self.constraintTopTlbKeywords.constant = UIScreen.main.bounds.size.height - 120
+            self.blurView.alpha = 0
+            self.tlbCategories.alpha = 0
             self.view.layoutIfNeeded()
             
         }) { (_) in
-            
             self.dismiss(animated: false, completion: nil)
         }
     }
     
+    
+    //MARK: - UITableViewDelegate, UITableViewDataSource
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return self.arrayCategories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cellIdentifier = "SelectCategoryTableViewCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SelectCategoryTableViewCell
+        cell.objCategory = self.arrayCategories[indexPath.row]
+    
+        if self.arrayCategories[indexPath.row] == self.objCategorySelected {
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+            cell.selectCell(true)
+        }else{
+            tableView.deselectRow(at: indexPath, animated: true)
+            cell.selectCell(false)
+        }
+        
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as! SelectCategoryTableViewCell
+        cell.selectCell(true)
+        self.delegate.selectionCategoryKudosViewController(self, selectCategory: self.arrayCategories[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as! SelectCategoryTableViewCell
+        cell.selectCell(false)
+    }
+    
+
     func getCategoryByCategoryReference(_ category: CategoryBE?) -> CategoryBE? {
         
         if category == nil {
@@ -73,31 +96,36 @@ class SelectCategoryKudosViewController: UIViewController, UIPickerViewDelegate,
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
-        self.view.backgroundColor = .clear
-        self.constraintBottomPicker.constant = -self.constraintHeightContainer.constant
+        self.objCategorySelected = self.getCategoryByCategoryReference(self.objCategorySelected)
+        
+        self.tlbCategories.estimatedRowHeight = 55
+        self.tlbCategories.rowHeight = UITableViewAutomaticDimension
+        
+        self.constraintTopHeader.constant = -120
+        self.constraintTopTlbKeywords.constant = UIScreen.main.bounds.size.height - 120
+        self.blurView.alpha = 0
+        self.tlbCategories.alpha = 0
+        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
         
-        UIView.animate(withDuration: 0.25) {
-            self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-            self.constraintBottomPicker.constant = 0
-            self.view.layoutIfNeeded()
-        }
         
-        self.objCategorySelected = self.getCategoryByCategoryReference(self.objCategorySelected)
-
-        if self.objCategorySelected == nil && self.arrayCategories.count != 0 {
-            self.delegate.selectionCategoryKudosViewController(self, selectCategory: self.arrayCategories[0])
+        self.tlbCategories.reloadData()
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
             
-        }else if self.objCategorySelected != nil {
-            self.pickerCategory.selectRow(self.arrayCategories.index(of: self.objCategorySelected!)!, inComponent: 0, animated: false)
-        }
+            self.constraintTopHeader.constant = 0
+            self.constraintTopTlbKeywords.constant = 0
+            self.blurView.alpha = 1
+            self.tlbCategories.alpha = 1
+            self.view.layoutIfNeeded()
+            
+        }, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
