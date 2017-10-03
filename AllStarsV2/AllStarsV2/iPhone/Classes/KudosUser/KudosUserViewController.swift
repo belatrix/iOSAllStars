@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KudosUserViewController: UIViewController, SelectCategoryKudosViewControllerDelegate {
+class KudosUserViewController: UIViewController, SelectCategoryKudosViewControllerDelegate, SelectKeywordViewControllerDelegate {
 
     @IBOutlet weak var imgUser                  : ImageUserProfile!
     @IBOutlet weak var lblUserName              : UILabel!
@@ -26,16 +26,29 @@ class KudosUserViewController: UIViewController, SelectCategoryKudosViewControll
     @IBOutlet weak var activityTag              : UIActivityIndicatorView!
     
     
-    var objUser : UserBE!
-    var arrayCategories = [CategoryBE]()
-    var arrayKeyWords = [KeywordBE]()
+    var objUser             : UserBE!
+    var arrayCategories     = [CategoryBE]()
+    var arrayKeyWords       = [KeywordBE]()
     var objCategorySelected : CategoryBE?
+    var objKeywordSelected  : KeywordBE?
+    
     
     @IBAction func clickBtnBack(_ sender: Any) {
         
         _ = self.navigationController?.popViewController(animated: true)
     }
     
+    
+    //MARK: - SelectKeywordViewControllerDelegate
+    
+    func selectKeywordViewController(_ controller: SelectKeywordViewController, selectKeyword keyword: KeywordBE) {
+        
+        self.objKeywordSelected = keyword
+        self.btnTag.setTitle(keyword.keyword_name, for: .normal)
+    }
+    
+    
+    //MARK: - SelectCategoryKudosViewControllerDelegate
     
     func selectionCategoryKudosViewController(_ controller: SelectCategoryKudosViewController, selectCategory category: CategoryBE) {
         
@@ -124,6 +137,8 @@ class KudosUserViewController: UIViewController, SelectCategoryKudosViewControll
             let controller = segue.destination as! SelectKeywordViewController
             controller.arrayKeywords = self.arrayKeyWords
             controller.arrayKeywordsTable = self.arrayKeyWords
+            controller.objKeywordSelected = self.objKeywordSelected
+            controller.delegate = self
         }
     }
     

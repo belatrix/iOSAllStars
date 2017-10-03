@@ -75,6 +75,7 @@ class SelectCategoryKudosViewController: UIViewController, UITableViewDelegate, 
         
         let cell = tableView.cellForRow(at: indexPath) as! SelectCategoryTableViewCell
         cell.selectCell(true)
+        self.objCategorySelected = self.arrayCategories[indexPath.row]
         self.delegate.selectionCategoryKudosViewController(self, selectCategory: self.arrayCategories[indexPath.row])
     }
     

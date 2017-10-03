@@ -309,10 +309,10 @@
 			children = (
 				964D1F7A1F795CAB00DF5D8B /* KudosUserViewController.swift */,
 				96759A761F79A93B00A3FF46 /* SelectCategoryKudosViewController.swift */,
+				96F47A941F82BCC600E01575 /* SelectCategoryTableViewCell.swift */,
 				96054C4C1F7AAE4200D49460 /* SelectKeywordViewController.swift */,
 				96054C4E1F7AB91600D49460 /* KeywordTableViewCell.swift */,
 				968E54C21F7D2FA200D514E6 /* AddKeywordTableViewCell.swift */,
-				96F47A941F82BCC600E01575 /* SelectCategoryTableViewCell.swift */,
 			);
 			path = KudosUser;
 			sourceTree = "<group>";

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SelectKeywordViewControllerDelegate {
+    func selectKeywordViewController(_ controller: SelectKeywordViewController, selectKeyword keyword: KeywordBE)
+}
+
 class SelectKeywordViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     
@@ -18,9 +22,10 @@ class SelectKeywordViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var constraintTopTlbKeywords : NSLayoutConstraint!
     
     
-    
-    var arrayKeywords = [KeywordBE]()
-    var arrayKeywordsTable = [Any]()
+    var delegate                                : SelectKeywordViewControllerDelegate!
+    var arrayKeywords                           = [KeywordBE]()
+    var objKeywordSelected                      : KeywordBE?
+    var arrayKeywordsTable                      = [Any]()
     
     @IBAction func clickBtnAtras(_ sender: Any) {
         
@@ -83,6 +88,15 @@ class SelectKeywordViewController: UIViewController, UITableViewDelegate, UITabl
         let cellIdentifier = "KeywordTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! KeywordTableViewCell
         cell.objKeyword = self.arrayKeywordsTable[indexPath.row] as! KeywordBE
+        
+        if self.arrayKeywords[indexPath.row] == self.objKeywordSelected {
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+            cell.selectCell(true)
+        }else{
+            tableView.deselectRow(at: indexPath, animated: true)
+            cell.selectCell(false)
+        }
+        
         return cell
     }
     
@@ -97,14 +111,42 @@ class SelectKeywordViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let cell = tableView.cellForRow(at: indexPath)
         
+        if cell is KeywordTableViewCell {
+            (cell as! KeywordTableViewCell).selectCell(true)
+            self.objKeywordSelected = self.arrayKeywords[indexPath.row]
+            self.delegate.selectKeywordViewController(self, selectKeyword: self.arrayKeywords[indexPath.row])
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        if cell is KeywordTableViewCell{
+            (cell as! KeywordTableViewCell).selectCell(false)
+        }
     }
     
     //MARK: -
     
+    func getKeywordByKeywordReference(_ keyword: KeywordBE?) -> KeywordBE? {
+        
+        if keyword == nil {
+            return nil
+        }
+        
+        let arrayResult = self.arrayKeywords.filter({$0.keyword_pk == keyword!.keyword_pk})
+        return arrayResult.count == 0 ? nil : arrayResult[0]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.objKeywordSelected = self.getKeywordByKeywordReference(self.objKeywordSelected)
+        
         self.tlbKeywords.estimatedRowHeight = 55
         self.tlbKeywords.rowHeight = UITableViewAutomaticDimension
         

@@ -27,8 +27,6 @@ class SelectCategoryTableViewCell: UITableViewCell {
             let scale : CGFloat = state ? 1.05 : 1
             self.lblCategoryName.transform = CGAffineTransform(scaleX: scale, y: scale)
         }
-        
-        
     }
     
     func updateData(){
