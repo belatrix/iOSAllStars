@@ -42,22 +42,18 @@ class EventWebModel: NSObject {
         let path = "api/event/local/employee/\(objSession.session_user_id)/"
         
         CDMWebSender.doGETTokenToURL(Constants.WEB_SERVICES, withPath: path, withParameter: nil, withToken: objSession.session_token) { (response) in
-            
             if response.successful, let JSON = response.JSON as? [String : Any]{
-                
                 let arrayEvents = CDMWebResponse.getArrayDictionary(JSON["results"])
                 let nextPage = CDMWebResponse.getString(JSON["next"])
-                
                 var arrayTemp = [EventBE]()
                 
                 for obj in arrayEvents{
                     arrayTemp.append(EventBE.parse(obj))
-                    
                 }
                 
                 success(arrayTemp, nextPage)
-                
-            }else{
+            }
+            else{
                 error(ErrorResponseBE.parse(response.JSON as? [String : Any], withCode: response.statusCode))
             }
             

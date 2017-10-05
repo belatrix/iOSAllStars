@@ -23,6 +23,10 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
     private var eventSelected: EventBE!
     var frameForEventImageViewSelected: CGRect!
     var cellSelected: EventCollectionViewCell!
+    
+    var localEventsContainerView: UIView?
+    var otherEventsContainerView: UIView?
+    var userEventsContainerView: UIView?
 
     
     
@@ -55,6 +59,9 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Configuraciones adicionales.
+        self.eventsCategoriesScrollView.backgroundColor = CDMColorManager.colorFromHexString("EDEDED", withAlpha: 1.0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,4 +90,16 @@ class EventsViewController: SWFrontGenericoViewController, CategoryEventViewCont
 
 }
 
+
+
+
+extension EventsViewController: UIScrollViewDelegate {
+    
+    // MARK: - UIScrollViewDelegate methods
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollView.backgroundColor = (scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.bounds.height) ? CDMColorManager.colorFromHexString("EDEDED", withAlpha: 1.0) : UIColor.white
+    }
+    
+}
 

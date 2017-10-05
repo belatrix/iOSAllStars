@@ -43,9 +43,7 @@ class EventBC: NSObject {
         }
         
         EventWebModel.listLocalEvents(withSession: objSession!, withSuccess: { (arrayEvents, nextPage) in
-            
             success(arrayEvents, nextPage)
-            
         }) { (errorResponse) in
             alertInformation("generic_title_problem", errorResponse.message)
         }

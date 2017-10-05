@@ -32,6 +32,16 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - @IBAction/action methods
     
+    @objc func doubleTap(_ gesture: UIGestureRecognizer) {
+        if self.scrollZoom.zoomScale <= 1.0 { /* Hacer zoom... */
+            let maxZoomScale = (self.scrollZoom.maximumZoomScale / 2.0)
+            self.scrollZoom.setZoomScale(maxZoomScale, animated: true)
+        }
+        else { /* Quitar zoom... */
+            self.scrollZoom.setZoomScale(1.0, animated: true)
+        }
+    }
+    
     @IBAction func backButtonClicked(_ sender: Any) {
         let customAnimationsClosure: (() -> ()) = {  [unowned self] in
             self.pbImageView.contentMode = .scaleAspectFill
@@ -124,6 +134,10 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
         self.view.layoutIfNeeded()
 
         // Configuraciones adicionales.
+        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.doubleTap(_:)))
+        doubleTapGestureRecognizer.numberOfTapsRequired = 2
+        self.scrollZoom.addGestureRecognizer(doubleTapGestureRecognizer)
+        
         self.closeButton.alpha = 0.0
 
         let centerX: CGFloat = (self.initialImageViewCenter.x <= 0.0) ? 86.0     : self.initialImageViewCenter.x

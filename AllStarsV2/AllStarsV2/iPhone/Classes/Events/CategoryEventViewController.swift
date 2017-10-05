@@ -59,6 +59,10 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
         DispatchQueue.main.asyncAfter(deadline: dispatchTime) { [weak self] in
             guard let viewController = self else { return }
             
+            UIView.animate(withDuration: 0.2, animations: {
+                viewController.clvEvents.alpha = 0.0
+            })
+            
             switch viewController.segueIdentifierClass {
                 case .userEvents: viewController.getUserEvents() /* Obtener los eventos del usuario. */
                 case .localEvents: viewController.getLocalEvents() /* Obtener los eventos locales. */
@@ -96,12 +100,15 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
      */
     func getLocalEvents() {
         print("getLocalEvents - Retain count for CategoryEventViewController: \(CFGetRetainCount(self)) - before getting local events")
-        
         self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
+        
         EventBC.listLocalEvents(withSuccessful: { [weak self] (arrayLocalEvents, nextPage) in
             print("getLocalEvents - Retain count for CategoryEventViewController: \(CFGetRetainCount(self)) - after getting local events")
             guard let viewController = self else { return }
+            
             viewController.show(events: arrayLocalEvents, emptyErrorMessage: "No local events found".localized)
+            viewController.clvEvents.alpha = 1.0
+            
         }) { [weak self] (title, message) in
             print("getLocalEvents - Retain count for CategoryEventViewController: \(CFGetRetainCount(self)) - after getting error for local events")
             guard let viewController = self else { return }
@@ -114,9 +121,13 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
      */
     func getOtherEvents() {
         self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
+        
         EventBC.listOtherEvents(withSuccessful: { [weak self] (arrayOtherEvents, nextPage) in
             guard let viewController = self else { return }
+            
             viewController.show(events: arrayOtherEvents, emptyErrorMessage: "No other events found".localized)
+            viewController.clvEvents.alpha = 1.0
+            
         }) { [weak self] (title, message) in
             guard let viewController = self else { return }
             viewController.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
@@ -128,9 +139,13 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
      */
     func getUserEvents() {
         self.loadingView.iniciarLoading(conMensaje: nil, conAnimacion: true)
+        
         EventBC.listUserEvents(withSuccessful: { [weak self] (arrayUserEvents, nextPage) in
             guard let viewController = self else { return }
+            
             viewController.show(events: arrayUserEvents, emptyErrorMessage: "No events found".localized)
+            viewController.clvEvents.alpha = 1.0
+            
         }) { [weak self] (title, message) in
             guard let viewController = self else { return }
             viewController.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
