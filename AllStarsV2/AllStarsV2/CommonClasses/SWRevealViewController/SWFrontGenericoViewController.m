@@ -49,6 +49,11 @@
     
     [self.view bringSubviewToFront:self.vistaBloqueo];
     
+    if (self.revealViewController) {
+        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+        [self.view addGestureRecognizer: self.revealViewController.tapGestureRecognizer];
+    }
+    
     if (posicion == FrontViewPositionLeft) {
         self.vistaBloqueo.alpha = 0;
     }else if (posicion == FrontViewPositionRight){
@@ -67,9 +72,9 @@
 
     self.vistaBloqueo.alpha = 0;
     
-    if (self.revealViewController) {
+    /* if (self.revealViewController) {
         [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-    }
+    } */
     
     [super viewWillAppear:animated];
 }

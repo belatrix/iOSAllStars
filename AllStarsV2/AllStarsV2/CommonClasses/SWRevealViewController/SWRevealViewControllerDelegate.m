@@ -43,6 +43,10 @@
         SWFrontGenericoViewController * controller = (SWFrontGenericoViewController *)((UINavigationController *)revealController.frontViewController).topViewController;
         [controller cambiarEstadoFront:position];
     }
+    else {
+        SWFrontGenericoViewController * controller = (SWFrontGenericoViewController *)revealController.frontViewController;
+        [controller cambiarEstadoFront:position];
+    }
     
     
 //    if (position == FrontViewPositionLeft) {
