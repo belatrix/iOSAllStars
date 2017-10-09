@@ -60,6 +60,8 @@ class EventsToEventDetailTransition: ControllerTransition {
         containerView.addSubview(toView)
         
         eventsViewController.headerView.alpha       = 0.0
+        eventsViewController.cellSelected.alpha     = 0.0
+        
         eventDetailViewController.headerView.alpha  = 1.0
         
         eventDetailViewController.eventInformationView.alpha                    = 0.0
@@ -156,8 +158,8 @@ class EventsToEventDetailTransition: ControllerTransition {
         eventDetailViewController.scrollContent.alpha           = 0.0
         eventDetailViewController.imgEvent.layer.cornerRadius   = 8.0
         eventDetailViewController.eventInformationBackgroundView.layer.cornerRadius = 8.0
-        eventDetailViewController.buttonsSectionsViewTopConstraint.constant     = 50.0
-        eventDetailViewController.eventTitleLabelTopConstraint.constant         = 58.0
+        eventDetailViewController.buttonsSectionsViewTopConstraint.constant         = 50.0
+        eventDetailViewController.eventTitleLabelTopConstraint.constant             = 58.0
         
         eventDetailViewController.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.6,
@@ -175,6 +177,15 @@ class EventsToEventDetailTransition: ControllerTransition {
                         
             eventDetailViewController.view.layoutIfNeeded()
                         
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.15,
+                       delay: 0.45,
+                       usingSpringWithDamping: 1.0,
+                       initialSpringVelocity: 0.5,
+                       options: .curveEaseOut,
+                       animations: {
+            eventsViewController.cellSelected.alpha = 1.0
         }, completion: { (_) in
             context.completeTransition(true)
         })
