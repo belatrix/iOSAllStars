@@ -29,6 +29,12 @@ class MenuViewController: UIViewController {
         let storyBoardeRanking = UIStoryboard(name: "Ranking", bundle: nil)
         array.append(storyBoardeRanking.instantiateViewController(withIdentifier: "RankingNavViewController"))
         
+        let aboutStoryboard = UIStoryboard(name: "About", bundle: nil)
+        array.append(aboutStoryboard.instantiateInitialViewController()!)
+        
+        let tutorialStoryboard = UIStoryboard(name: "Tutorial", bundle: nil)
+        array.append(tutorialStoryboard.instantiateInitialViewController()!)
+        
         return array
     }()
     
@@ -69,7 +75,6 @@ class MenuViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -78,14 +83,5 @@ class MenuViewController: UIViewController {
         return .lightContent
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

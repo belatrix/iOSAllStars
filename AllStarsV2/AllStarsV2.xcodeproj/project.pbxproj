@@ -12,6 +12,10 @@
 		2F19DD851F82965B00A8364F /* PBImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F19DD841F82965B00A8364F /* PBImageView.swift */; };
 		2FC98CA51F7ABA47002F9726 /* SeeAllEventsToEventDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC98CA41F7ABA47002F9726 /* SeeAllEventsToEventDetailTransition.swift */; };
 		2FC98CA71F7AD9CE002F9726 /* EventsToSeeAllEventsTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC98CA61F7AD9CE002F9726 /* EventsToSeeAllEventsTransition.swift */; };
+		2FCFF8521F8BFFFD00D3DF7F /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FCFF8511F8BFFFD00D3DF7F /* About.storyboard */; };
+		2FCFF8541F8C000700D3DF7F /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FCFF8531F8C000700D3DF7F /* Tutorial.storyboard */; };
+		2FCFF8581F8C010F00D3DF7F /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCFF8571F8C010F00D3DF7F /* TutorialViewController.swift */; };
+		2FCFF85A1F8C013100D3DF7F /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCFF8591F8C013100D3DF7F /* AboutViewController.swift */; };
 		4D357BEA1F54A9FF00CBF8BB /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D357BE91F54A9FF00CBF8BB /* EventDetailViewController.swift */; };
 		4D90D4441F4CAAD7007E8B04 /* EventBE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90D4431F4CAAD7007E8B04 /* EventBE.swift */; };
 		4D90D4461F4CB338007E8B04 /* EventWebModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90D4451F4CB338007E8B04 /* EventWebModel.swift */; };
@@ -133,6 +137,10 @@
 		2F19DD841F82965B00A8364F /* PBImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBImageView.swift; sourceTree = "<group>"; };
 		2FC98CA41F7ABA47002F9726 /* SeeAllEventsToEventDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllEventsToEventDetailTransition.swift; sourceTree = "<group>"; };
 		2FC98CA61F7AD9CE002F9726 /* EventsToSeeAllEventsTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsToSeeAllEventsTransition.swift; sourceTree = "<group>"; };
+		2FCFF8511F8BFFFD00D3DF7F /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
+		2FCFF8531F8C000700D3DF7F /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		2FCFF8571F8C010F00D3DF7F /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		2FCFF8591F8C013100D3DF7F /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		401903A3A318AEB2B3B05D1F /* Pods-AllStarsV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllStarsV2.release.xcconfig"; path = "Pods/Target Support Files/Pods-AllStarsV2/Pods-AllStarsV2.release.xcconfig"; sourceTree = "<group>"; };
 		4D357BE91F54A9FF00CBF8BB /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		4D90D4431F4CAAD7007E8B04 /* EventBE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBE.swift; sourceTree = "<group>"; };
@@ -266,6 +274,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FCFF8551F8C00FB00D3DF7F /* About */ = {
+			isa = PBXGroup;
+			children = (
+				2FCFF8591F8C013100D3DF7F /* AboutViewController.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		2FCFF8561F8C00FB00D3DF7F /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				2FCFF8571F8C010F00D3DF7F /* TutorialViewController.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
 		4DD02A3C1F560B8D00A1E6D9 /* AboutEvents */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,6 +472,8 @@
 		969D2EDF1F1F8AF100916B54 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2FCFF8551F8C00FB00D3DF7F /* About */,
+				2FCFF8561F8C00FB00D3DF7F /* Tutorial */,
 				964D1F751F794BB000DF5D8B /* KudosUser */,
 				966BB5A11F4CC5810042D602 /* Menu */,
 				96F206091F462B6E0089E3E6 /* Ranking */,
@@ -471,6 +497,8 @@
 				969710871F4CC14E00F1563F /* Menu.storyboard */,
 				966BB59F1F4CC54D0042D602 /* MainReveal.storyboard */,
 				964D1F761F794BC500DF5D8B /* KudosUser.storyboard */,
+				2FCFF8511F8BFFFD00D3DF7F /* About.storyboard */,
+				2FCFF8531F8C000700D3DF7F /* Tutorial.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -691,7 +719,9 @@
 				9679831A1F1E6A79005C58BF /* LaunchScreen.storyboard in Resources */,
 				969710881F4CC14E00F1563F /* Menu.storyboard in Resources */,
 				9692B65A1F31253D00362078 /* Events.storyboard in Resources */,
+				2FCFF8521F8BFFFD00D3DF7F /* About.storyboard in Resources */,
 				96D8BE401F1F935D002331C4 /* Login.xcassets in Resources */,
+				2FCFF8541F8C000700D3DF7F /* Tutorial.storyboard in Resources */,
 				96836F491F506E1F00FE1EB0 /* Menu.xcassets in Resources */,
 				967983171F1E6A79005C58BF /* Assets.xcassets in Resources */,
 				96F206081F462B480089E3E6 /* Ranking.storyboard in Resources */,
@@ -766,6 +796,7 @@
 				966BB5A41F4CD1890042D602 /* SWFrontGenericoViewController.m in Sources */,
 				4DD27C061F598D4800F55C10 /* EventNewsTableViewCell.swift in Sources */,
 				966BB5A51F4CD1890042D602 /* SWRevealViewController.m in Sources */,
+				2FCFF85A1F8C013100D3DF7F /* AboutViewController.swift in Sources */,
 				96759A771F79A93B00A3FF46 /* SelectCategoryKudosViewController.swift in Sources */,
 				966BB5A61F4CD1890042D602 /* SWRevealViewControllerDelegate.m in Sources */,
 				964D1F7D1F79651B00DF5D8B /* ProfileToKudosTransition.swift in Sources */,
@@ -821,6 +852,7 @@
 				96BC258D1F3378A9008AA2F8 /* LoginTabBarTransition.swift in Sources */,
 				2FC98CA71F7AD9CE002F9726 /* EventsToSeeAllEventsTransition.swift in Sources */,
 				96F47A951F82BCC600E01575 /* SelectCategoryTableViewCell.swift in Sources */,
+				2FCFF8581F8C010F00D3DF7F /* TutorialViewController.swift in Sources */,
 				966336091F3E1218001EF210 /* ContactsViewController.swift in Sources */,
 				4D90D4441F4CAAD7007E8B04 /* EventBE.swift in Sources */,
 				4DC7261E1F4F611B0077AF64 /* EventCollectionViewCell.swift in Sources */,
