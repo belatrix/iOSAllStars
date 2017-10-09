@@ -10,6 +10,7 @@ import UIKit
 
 protocol SelectKeywordViewControllerDelegate {
     func selectKeywordViewController(_ controller: SelectKeywordViewController, selectKeyword keyword: KeywordBE)
+    func selectKeywordViewController(_ controller: SelectKeywordViewController, addKeyword keyword: KeywordBE)
 }
 
 class SelectKeywordViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
@@ -27,7 +28,7 @@ class SelectKeywordViewController: UIViewController, UITableViewDelegate, UITabl
     var objKeywordSelected                      : KeywordBE?
     var arrayKeywordsTable                      = [Any]()
     
-    @IBAction func clickBtnAtras(_ sender: Any) {
+    @IBAction func clickBtnAtras(_ sender: Any?) {
         
         self.view.endEditing(true)
         UIView.animate(withDuration: 0.4, animations: {
@@ -114,9 +115,20 @@ class SelectKeywordViewController: UIViewController, UITableViewDelegate, UITabl
         let cell = tableView.cellForRow(at: indexPath)
         
         if cell is KeywordTableViewCell {
+            
             (cell as! KeywordTableViewCell).selectCell(true)
             self.objKeywordSelected = self.arrayKeywords[indexPath.row]
             self.delegate.selectKeywordViewController(self, selectKeyword: self.arrayKeywords[indexPath.row])
+            
+        }else{
+            
+            let obj = KeywordBE()
+            obj.keyword_name = self.arrayKeywordsTable[indexPath.row] as! String
+            
+            self.delegate.selectKeywordViewController(self, addKeyword: obj)
+            self.delegate.selectKeywordViewController(self, selectKeyword: obj)
+            
+            self.clickBtnAtras(nil)
         }
         
     }

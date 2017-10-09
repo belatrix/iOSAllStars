@@ -285,7 +285,7 @@ class EditProfileViewController: UIViewController, UIScrollViewDelegate, UITextF
     
     @objc func keyboardWillShown(notification : NSNotification) -> Void{
         
-        if let kbSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let kbSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             UIView.animate(withDuration: 0.35, animations: {
                 

@@ -136,7 +136,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWillShown(notification : NSNotification) -> Void{
         
-        let kbSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+        let kbSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         
         let finalForm = (self.viewFormUser.frame.size.height + 120) / 2 + self.initialValueConstraintCenterForm
         let sizeScreen = UIScreen.main.bounds.size.height / 2
