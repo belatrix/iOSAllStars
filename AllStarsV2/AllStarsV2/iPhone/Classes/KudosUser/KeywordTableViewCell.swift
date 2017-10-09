@@ -19,6 +19,18 @@ class KeywordTableViewCell: UITableViewCell {
         }
     }
     
+    
+    func selectCell(_ state : Bool){
+        
+        UIView.animate(withDuration: 0.35) {
+            
+            self.lblNameKeyword.textColor = state ? Constants.SECOND_COLOR : UIColor.darkGray
+            let scale : CGFloat = state ? 1.05 : 1
+            self.lblNameKeyword.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

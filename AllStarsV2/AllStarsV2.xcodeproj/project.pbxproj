@@ -122,6 +122,7 @@
 		96F2060B1F462B870089E3E6 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2060A1F462B870089E3E6 /* RankingViewController.swift */; };
 		96F2619C1F3A5F540038103B /* AchievementBE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2619B1F3A5F540038103B /* AchievementBE.swift */; };
 		96F2619E1F3A5F6D0038103B /* BadgeBE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2619D1F3A5F6D0038103B /* BadgeBE.swift */; };
+		96F47A951F82BCC600E01575 /* SelectCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F47A941F82BCC600E01575 /* SelectCategoryTableViewCell.swift */; };
 		979DCC4DCD5CD1576D39675A /* Pods_AllStarsV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F17947B2D076243FFBBDAB /* Pods_AllStarsV2.framework */; };
 /* End PBXBuildFile section */
 
@@ -250,6 +251,7 @@
 		96F2060A1F462B870089E3E6 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		96F2619B1F3A5F540038103B /* AchievementBE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementBE.swift; sourceTree = "<group>"; };
 		96F2619D1F3A5F6D0038103B /* BadgeBE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeBE.swift; sourceTree = "<group>"; };
+		96F47A941F82BCC600E01575 /* SelectCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +311,7 @@
 			children = (
 				964D1F7A1F795CAB00DF5D8B /* KudosUserViewController.swift */,
 				96759A761F79A93B00A3FF46 /* SelectCategoryKudosViewController.swift */,
+				96F47A941F82BCC600E01575 /* SelectCategoryTableViewCell.swift */,
 				96054C4C1F7AAE4200D49460 /* SelectKeywordViewController.swift */,
 				96054C4E1F7AB91600D49460 /* KeywordTableViewCell.swift */,
 				968E54C21F7D2FA200D514E6 /* AddKeywordTableViewCell.swift */,
@@ -817,6 +820,7 @@
 				2F13F1161F7C30D0001F4099 /* ProfileToImageProfileTransition.swift in Sources */,
 				96BC258D1F3378A9008AA2F8 /* LoginTabBarTransition.swift in Sources */,
 				2FC98CA71F7AD9CE002F9726 /* EventsToSeeAllEventsTransition.swift in Sources */,
+				96F47A951F82BCC600E01575 /* SelectCategoryTableViewCell.swift in Sources */,
 				966336091F3E1218001EF210 /* ContactsViewController.swift in Sources */,
 				4D90D4441F4CAAD7007E8B04 /* EventBE.swift in Sources */,
 				4DC7261E1F4F611B0077AF64 /* EventCollectionViewCell.swift in Sources */,
