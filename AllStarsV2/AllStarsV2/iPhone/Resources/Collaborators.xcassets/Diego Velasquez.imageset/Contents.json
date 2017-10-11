@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Walkthrough (3).png",
+      "filename" : "Diego Velasquez.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Walkthrough (3)@2x.png",
+      "filename" : "Diego Velasquez@2x.jpg",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Walkthrough (3)@3x.png",
+      "filename" : "Diego Velasquez@3x.jpg",
       "scale" : "3x"
     }
   ],

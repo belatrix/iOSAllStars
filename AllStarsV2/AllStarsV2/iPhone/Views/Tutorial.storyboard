@@ -24,13 +24,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oyf-rM-thh">
-                                <rect key="frame" x="0.0" y="65" width="320" height="453"/>
+                                <rect key="frame" x="0.0" y="65" width="320" height="478"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stW-HS-sm5">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="453"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="478"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tutorial 1" translatesAutoresizingMaskIntoConstraints="NO" id="l7S-yz-DfO">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="453"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="478"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </imageView>
                                         </subviews>
@@ -43,10 +43,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22P-Ab-0tY">
-                                        <rect key="frame" x="320" y="0.0" width="320" height="453"/>
+                                        <rect key="frame" x="320" y="0.0" width="320" height="478"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tutorial 2" translatesAutoresizingMaskIntoConstraints="NO" id="jIV-uj-Y3Y">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="453"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="478"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </imageView>
                                         </subviews>
@@ -59,10 +59,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8WJ-Gy-YBQ">
-                                        <rect key="frame" x="640" y="0.0" width="320" height="453"/>
+                                        <rect key="frame" x="640" y="0.0" width="320" height="478"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tutorial 3" translatesAutoresizingMaskIntoConstraints="NO" id="hI9-vj-eQh">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="453"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="478"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </imageView>
                                         </subviews>
@@ -167,7 +167,7 @@
                             <constraint firstItem="1dB-Vk-3up" firstAttribute="trailing" secondItem="PLc-dT-IPy" secondAttribute="trailing" id="jNX-Lv-X3m"/>
                             <constraint firstItem="KK4-aa-EE3" firstAttribute="leading" secondItem="Oyf-rM-thh" secondAttribute="leading" id="nhk-Ea-VBN"/>
                             <constraint firstItem="KK4-aa-EE3" firstAttribute="top" secondItem="Okt-Ud-jw2" secondAttribute="bottom" constant="1" id="sgg-yO-QRV"/>
-                            <constraint firstItem="1dB-Vk-3up" firstAttribute="bottom" secondItem="Oyf-rM-thh" secondAttribute="bottom" constant="50" id="uCg-Cr-47I"/>
+                            <constraint firstItem="1dB-Vk-3up" firstAttribute="bottom" secondItem="Oyf-rM-thh" secondAttribute="bottom" constant="25" id="uCg-Cr-47I"/>
                             <constraint firstItem="Okt-Ud-jw2" firstAttribute="width" secondItem="1dB-Vk-3up" secondAttribute="width" id="wo9-Ar-AWl"/>
                             <constraint firstItem="1dB-Vk-3up" firstAttribute="top" secondItem="Okt-Ud-jw2" secondAttribute="top" constant="20" id="x6E-Tx-GI9"/>
                             <constraint firstItem="PLc-dT-IPy" firstAttribute="top" secondItem="1dB-Vk-3up" secondAttribute="top" id="xLB-nG-BIw"/>
@@ -185,9 +185,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Tutorial 1" width="320" height="498"/>
-        <image name="Tutorial 2" width="320" height="498"/>
-        <image name="Tutorial 3" width="320" height="498"/>
+        <image name="Tutorial 1" width="320" height="497"/>
+        <image name="Tutorial 2" width="320" height="497"/>
+        <image name="Tutorial 3" width="320" height="497"/>
         <image name="sideMenuButtom" width="21" height="15"/>
     </resources>
 </document>
