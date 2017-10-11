@@ -109,7 +109,7 @@ class AboutViewController: SWFrontGenericoViewController {
             case 1:  return #imageLiteral(resourceName: "Carina Valdez")
             case 2:  return #imageLiteral(resourceName: "Carlos Monzon")
             case 3:  return #imageLiteral(resourceName: "Diego Velasquez")
-            case 4:  return #imageLiteral(resourceName: "Erick Flores")
+            case 4:  return #imageLiteral(resourceName: "Erik Flores")
             case 5:  return #imageLiteral(resourceName: "Fernando Puebla")
             case 6:  return #imageLiteral(resourceName: "Gladys Cuzcano")
             case 7:  return #imageLiteral(resourceName: "Karla Cerron")
