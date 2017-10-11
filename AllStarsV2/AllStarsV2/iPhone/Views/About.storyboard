@@ -1,29 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hev-JF-pUx">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--About View Controller-->
         <scene sceneID="xHI-jG-Ovy">
             <objects>
                 <viewController storyboardIdentifier="AboutViewController" id="hev-JF-pUx" customClass="AboutViewController" customModule="AllStarsV2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1cC-PA-lzi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cgh-uj-F7h">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wew-Ak-wwi">
+                                        <rect key="frame" x="22" y="116" width="83.5" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="YLh-03-Uo5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.46274509800000002" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="6bA-jb-d7v"/>
+                                    <constraint firstItem="Wew-Ak-wwi" firstAttribute="leading" secondItem="Cgh-uj-F7h" secondAttribute="leading" constant="22" id="7e1-5v-WJa"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wew-Ak-wwi" secondAttribute="bottom" constant="20" id="wam-cF-ij8"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1M-Uj-JN0" userLabel="Menu Button">
+                                <rect key="frame" x="0.0" y="20" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Ezx-GL-h8I"/>
+                                    <constraint firstAttribute="width" constant="44" id="Tl8-ZS-sj7"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="sideMenuButtom"/>
+                                <connections>
+                                    <action selector="clicBtnReveal:" destination="hev-JF-pUx" eventType="touchUpInside" id="jxe-8e-iVF"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AGD-Vj-b6M">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKv-Cr-n9Y">
+                                        <rect key="frame" x="16" y="96" width="288" height="800"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="800" id="H8U-UQ-9vm"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="PKv-Cr-n9Y" firstAttribute="centerX" secondItem="AGD-Vj-b6M" secondAttribute="centerX" id="1hj-yY-Wvf"/>
+                                    <constraint firstItem="PKv-Cr-n9Y" firstAttribute="top" secondItem="AGD-Vj-b6M" secondAttribute="top" constant="96" id="Hbv-vz-dN1"/>
+                                    <constraint firstAttribute="trailing" secondItem="PKv-Cr-n9Y" secondAttribute="trailing" id="Yfe-Ue-70F"/>
+                                    <constraint firstAttribute="bottom" secondItem="PKv-Cr-n9Y" secondAttribute="bottom" id="je0-Ym-K81"/>
+                                    <constraint firstItem="PKv-Cr-n9Y" firstAttribute="width" secondItem="AGD-Vj-b6M" secondAttribute="width" multiplier="0.9" id="ug1-fY-HYd"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="hev-JF-pUx" id="J6b-Ya-8TT"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="A1M-Uj-JN0" firstAttribute="leading" secondItem="h0L-fo-SBi" secondAttribute="leading" id="2Zv-hg-adt"/>
+                            <constraint firstItem="Cgh-uj-F7h" firstAttribute="centerX" secondItem="h0L-fo-SBi" secondAttribute="centerX" id="6xq-fD-Kol"/>
+                            <constraint firstItem="Cgh-uj-F7h" firstAttribute="top" secondItem="h0L-fo-SBi" secondAttribute="top" constant="-20" id="JDb-1K-rYi"/>
+                            <constraint firstItem="h0L-fo-SBi" firstAttribute="bottom" secondItem="AGD-Vj-b6M" secondAttribute="bottom" id="Jkh-12-ANP"/>
+                            <constraint firstItem="AGD-Vj-b6M" firstAttribute="top" secondItem="h0L-fo-SBi" secondAttribute="top" constant="44" id="LPE-8I-fct"/>
+                            <constraint firstItem="AGD-Vj-b6M" firstAttribute="width" secondItem="h0L-fo-SBi" secondAttribute="width" id="OwD-7n-aCT"/>
+                            <constraint firstItem="AGD-Vj-b6M" firstAttribute="centerX" secondItem="h0L-fo-SBi" secondAttribute="centerX" id="bG1-4N-D6F"/>
+                            <constraint firstItem="Cgh-uj-F7h" firstAttribute="width" secondItem="1cC-PA-lzi" secondAttribute="width" id="e8p-bK-NQ1"/>
+                            <constraint firstItem="h0L-fo-SBi" firstAttribute="top" secondItem="A1M-Uj-JN0" secondAttribute="top" id="nTZ-PY-I2O"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="h0L-fo-SBi"/>
                     </view>
+                    <connections>
+                        <outlet property="aboutScrollView" destination="AGD-Vj-b6M" id="vQD-P6-CGf"/>
+                        <outlet property="headerView" destination="Cgh-uj-F7h" id="x6g-oa-kZm"/>
+                        <outlet property="headerViewHeightConstraint" destination="6bA-jb-d7v" id="42y-9t-h3I"/>
+                        <outlet property="menuButtonWidthConstraint" destination="Tl8-ZS-sj7" id="fjb-fx-Cx6"/>
+                        <outlet property="scrollViewContentTopConstraint" destination="Hbv-vz-dN1" id="ANC-QQ-GRe"/>
+                        <outlet property="titleLabel" destination="Wew-Ak-wwi" id="q0s-Fz-KT9"/>
+                        <outlet property="titleLabelBottomConstraint" destination="wam-cF-ij8" id="AoX-6K-T1s"/>
+                        <outlet property="titleLabelLeftConstraint" destination="7e1-5v-WJa" id="eCu-Q5-FB3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NpF-Ef-lzo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="122" y="98"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="sideMenuButtom" width="21" height="15"/>
+    </resources>
 </document>
