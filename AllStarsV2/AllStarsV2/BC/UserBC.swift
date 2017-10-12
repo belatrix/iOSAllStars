@@ -50,11 +50,14 @@ class UserBC: NSObject {
     }
     
     
-    class func updateInfoToUser(_ user : UserBE, withSuccessful success : @escaping User, withAlertInformation alertInformation : @escaping AlertInformation) {
+    class func updateInfoToUser(_ user : UserBE, withImage image: UIImage?, withSuccessful success : @escaping User, withAlertInformation alertInformation : @escaping AlertInformation) {
         
         let objSession = UserBC.getUserSession()
         
-        if objSession == nil || objSession!.session_token == "" {
+        if image == nil{
+            alertInformation("app_name".localized, "select_image_profile".localized)
+            
+        }else if objSession == nil || objSession!.session_token == "" {
             alertInformation("app_name".localized, "token_invalid".localized)
             
         }else if (user.user_first_name == nil || user.user_first_name == "") {

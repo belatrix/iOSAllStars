@@ -36,7 +36,6 @@ class EditProfileViewController: UIViewController, UIScrollViewDelegate, UITextF
     var initialValueConstraintHeightBlur        : CGFloat!
     var arrayLocations                          = [LocationBE]()
     
-    
     var objUser                                 = UserBE() {
         
         didSet{
@@ -173,32 +172,21 @@ class EditProfileViewController: UIViewController, UIScrollViewDelegate, UITextF
     func updateUserInfo(){
         
         self.activitySave.startAnimating()
-        self.btnSave.isEnabled = false
+        self.view.isUserInteractionEnabled = false
         
-        UserBC.updateInfoToUser(self.objUser, withSuccessful: { (objUserResult) in
+        UserBC.updateInfoToUser(self.objUser, withImage: self.imgUser.image, withSuccessful: { (objUserResult) in
             
             self.activitySave.stopAnimating()
-            self.btnSave.isEnabled = true
+            self.view.isUserInteractionEnabled = true
             
             objUserResult.user_color = self.objUser.user_color
-            self.objUser = objUserResult
-            self.imgUser.objUser = objUserResult
-            UserBE.shareInstance = objUserResult
-            
-            if self.imgUser.image != nil {
-                self.uploadPhoto()
-            }else{
-                if self.canPerformSegueWithIdentifier("RevealViewController"){
-                    self.performSegue(withIdentifier: "RevealViewController", sender: nil)
-                }else{
-                    _ = self.navigationController?.popViewController(animated: true)
-                }
-            }
-            
+
+            self.uploadPhotoWithUserResult(objUserResult)
+                    
         }) { (title, body) in
             
             self.activitySave.stopAnimating()
-            self.btnSave.isEnabled = true
+            self.view.isUserInteractionEnabled = true
             
             CDMUserAlerts.showSimpleAlert(title: title, withMessage: body, withAcceptButton: "ok".localized, withController: self, withCompletion: nil)
         }
@@ -212,27 +200,38 @@ class EditProfileViewController: UIViewController, UIScrollViewDelegate, UITextF
         return (result.count>0)
     }
     
-    func uploadPhoto(){
+    func goToNextController(){
+        
+        if self.canPerformSegueWithIdentifier("RevealViewController"){
+            self.performSegue(withIdentifier: "RevealViewController", sender: nil)
+        }else{
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func uploadPhotoWithUserResult(_ objUserResult : UserBE){
+        
+        self.activitySave.startAnimating()
+        self.view.isUserInteractionEnabled = false
         
         UserBC.uploadPhoto(self.imgUser.image!, withSuccessful: { (objUser) in
             
+            self.activitySave.stopAnimating()
+            self.view.isUserInteractionEnabled = true
+            
+            self.objUser = objUser
             objUser.user_color = self.objUser.user_color
             UserBE.shareInstance = objUser
             self.imgUser.objUser = objUser
             
-            if self.canPerformSegueWithIdentifier("RevealViewController"){
-                self.performSegue(withIdentifier: "RevealViewController", sender: nil)
-            }else{
-                _ = self.navigationController?.popViewController(animated: true)
-            }
+            self.goToNextController()
 
         }, withAlertInformation: { (title, message) in
           
-            if self.canPerformSegueWithIdentifier("RevealViewController"){
-                self.performSegue(withIdentifier: "RevealViewController", sender: nil)
-            }else{
-                _ = self.navigationController?.popViewController(animated: true)
-            }
+            self.activitySave.stopAnimating()
+            self.view.isUserInteractionEnabled = true
+            
+            self.goToNextController()
         })
     }
     

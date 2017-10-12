@@ -192,7 +192,7 @@ class ProfileToEditProfileTransition: ControllerTransition {
         imgUser.alpha = 0
         containerView.addSubview(imgUser)
         imgUser.borderImage = toVC.imgUser!.borderImage
-        imgUser.image = toVC.imgUser?.imgUser.image
+        imgUser.image = fromVC.imgUser.imgUser.image
         imgUser.alpha = 1
         
         toVC.imgUser?.alpha = 0
@@ -231,6 +231,8 @@ class ProfileToEditProfileTransition: ControllerTransition {
             
         }) { (_) in
             
+            toVC.imgUser?.image = fromVC.imgUser.imgUser.image
+            toVC.objUser = fromVC.objUser
             toVC.imgUser?.alpha = 1
             imgUser.removeFromSuperview()
             context.completeTransition(true)

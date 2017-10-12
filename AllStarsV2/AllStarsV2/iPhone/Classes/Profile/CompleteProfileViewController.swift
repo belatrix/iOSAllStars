@@ -20,6 +20,11 @@ class CompleteProfileViewController: EditProfileViewController {
     }
     
 
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        
+        return .lightContent
+    }
+    
     /*
     // MARK: - Navigation
 

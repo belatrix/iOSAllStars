@@ -891,9 +891,6 @@
                                             <constraint firstItem="CcK-4N-0wt" firstAttribute="top" secondItem="aNP-qq-ekk" secondAttribute="top" constant="5" id="vjq-xU-px9"/>
                                             <constraint firstItem="X8K-TI-rB5" firstAttribute="leading" secondItem="JcZ-VD-NW8" secondAttribute="leading" constant="18" id="xAV-us-7X7"/>
                                         </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="YQv-T7-hgc" appends="YES" id="Cj8-X6-uVh"/>
-                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -1056,6 +1053,9 @@
                             <constraint firstItem="48G-IU-6sw" firstAttribute="top" secondItem="q2O-oC-S2J" secondAttribute="bottom" id="yLa-j9-sm4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0WM-HJ-ZEQ"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="YQv-T7-hgc" appends="YES" id="PP0-Du-8el"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="activityLocations" destination="CcK-4N-0wt" id="qcZ-c5-v0j"/>
@@ -1234,9 +1234,6 @@
                                             <constraint firstItem="P2c-yE-2hr" firstAttribute="top" secondItem="0Sv-x3-Dtw" secondAttribute="bottom" constant="15" id="veD-8o-VDA"/>
                                             <constraint firstItem="0Sv-x3-Dtw" firstAttribute="leading" secondItem="MIS-42-K4V" secondAttribute="leading" constant="18" id="vyx-ze-0Cn"/>
                                         </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="mCK-d9-IQo" appends="YES" id="pQH-KL-qD3"/>
-                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -1408,6 +1405,9 @@
                             <constraint firstItem="UaY-Fa-pfE" firstAttribute="trailing" secondItem="qzf-UZ-ZwJ" secondAttribute="trailing" id="tru-6F-sC0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qzf-UZ-ZwJ"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="mCK-d9-IQo" appends="YES" id="ip4-Ug-eMW"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="activityLocations" destination="rQR-KU-kAk" id="BCT-c5-ELM"/>
