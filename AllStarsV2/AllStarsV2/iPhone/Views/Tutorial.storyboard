@@ -29,7 +29,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stW-HS-sm5">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="478"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tutorial 1" translatesAutoresizingMaskIntoConstraints="NO" id="l7S-yz-DfO">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="es-Tutorial 1" translatesAutoresizingMaskIntoConstraints="NO" id="l7S-yz-DfO">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="478"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </imageView>
@@ -45,7 +45,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22P-Ab-0tY">
                                         <rect key="frame" x="320" y="0.0" width="320" height="478"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tutorial 2" translatesAutoresizingMaskIntoConstraints="NO" id="jIV-uj-Y3Y">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="es-Tutorial 2" translatesAutoresizingMaskIntoConstraints="NO" id="jIV-uj-Y3Y">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="478"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </imageView>
@@ -61,7 +61,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8WJ-Gy-YBQ">
                                         <rect key="frame" x="640" y="0.0" width="320" height="478"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tutorial 3" translatesAutoresizingMaskIntoConstraints="NO" id="hI9-vj-eQh">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="es-Tutorial 3" translatesAutoresizingMaskIntoConstraints="NO" id="hI9-vj-eQh">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="478"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </imageView>
@@ -175,7 +175,11 @@
                         <viewLayoutGuide key="safeArea" id="1dB-Vk-3up"/>
                     </view>
                     <connections>
+                        <outlet property="menuButton" destination="KK4-aa-EE3" id="Awq-gc-Ijl"/>
                         <outlet property="skipButton" destination="PLc-dT-IPy" id="639-3d-K4e"/>
+                        <outlet property="tutorial1ImageView" destination="l7S-yz-DfO" id="78B-eD-DSC"/>
+                        <outlet property="tutorial2ImageView" destination="jIV-uj-Y3Y" id="ogL-Kx-MIY"/>
+                        <outlet property="tutorial3ImageView" destination="hI9-vj-eQh" id="Vi8-6I-FAy"/>
                         <outlet property="tutorialPageControl" destination="azn-K3-mLc" id="B8P-p6-BLq"/>
                     </connections>
                 </viewController>
@@ -185,9 +189,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Tutorial 1" width="320" height="497"/>
-        <image name="Tutorial 2" width="320" height="497"/>
-        <image name="Tutorial 3" width="320" height="497"/>
+        <image name="es-Tutorial 1" width="320" height="497"/>
+        <image name="es-Tutorial 2" width="320" height="497"/>
+        <image name="es-Tutorial 3" width="320" height="497"/>
         <image name="sideMenuButtom" width="21" height="15"/>
     </resources>
 </document>

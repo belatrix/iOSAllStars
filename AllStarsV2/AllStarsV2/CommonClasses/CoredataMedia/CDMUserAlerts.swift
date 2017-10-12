@@ -33,6 +33,37 @@ public class CDMUserAlerts: NSObject {
         controller.present(alertController, animated: true, completion: nil)
     }
     
+    
+    public class func showMultipleAlert(title: String,
+                                        withMessage message: String,
+                                        withButtons options: [String],
+                                        withCancelButton cancel: String,
+                                        withController controller: UIViewController,
+                                        withCompletion completion: @escaping ((_ index: Int) -> Void)) {
+        
+        let alertaController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        for option in options {
+            let action = UIAlertAction(title: option,
+                                       style: UIAlertActionStyle.default,
+                                       handler: { (action) in
+                completion(options.index(of: option)!)
+            })
+            
+            alertaController.addAction(action)
+        }
+        
+        let accionCancelar = UIAlertAction(title: cancel,
+                                           style: UIAlertActionStyle.cancel,
+                                           handler: nil)
+        alertaController.addAction(accionCancelar)
+        
+        controller.present(alertaController,
+                           animated: true,
+                           completion: nil)
+    }
+    
+    
     public class func showSimpleAlert(title: String, withMessage message : String, withAcceptButton accept: String, withController controller : UIViewController, withCompletion completion : (() -> Void)?){
         
         let alertaController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)

@@ -105,13 +105,13 @@
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="About"/>
+                                <state key="normal" title="About" image="menu_5"/>
                                 <connections>
                                     <action selector="clickBtnMenu:" destination="xZZ-g8-DNw" eventType="touchUpInside" id="vOO-jo-WdA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2e9-PI-56J">
-                                <rect key="frame" x="0.0" y="441" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="440" width="320" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="sTt-fW-Tho"/>
                                 </constraints>
@@ -119,26 +119,43 @@
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Tutorial"/>
+                                <state key="normal" title="Tutorial" image="menu_6"/>
                                 <connections>
                                     <action selector="clickBtnMenu:" destination="xZZ-g8-DNw" eventType="touchUpInside" id="Pt7-Bg-UjJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWV-bH-Eoa" userLabel="Log out">
+                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="jA1-sG-fJQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Log out" image="menu_7"/>
+                                <connections>
+                                    <action selector="logOutButtonTapped:" destination="xZZ-g8-DNw" eventType="touchUpInside" id="jgR-fi-Eg2"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zWV-bH-Eoa" firstAttribute="width" secondItem="aiY-gj-gxP" secondAttribute="width" id="0Ot-nP-4CT"/>
                             <constraint firstItem="NIg-Js-sUz" firstAttribute="top" secondItem="d92-64-TFz" secondAttribute="bottom" id="0aL-e6-mnF"/>
                             <constraint firstItem="2e9-PI-56J" firstAttribute="width" secondItem="10T-r8-ron" secondAttribute="width" id="1jp-7B-Wdw"/>
                             <constraint firstItem="NIg-Js-sUz" firstAttribute="trailing" secondItem="Z33-tb-zJZ" secondAttribute="trailing" id="3TG-bd-fAC"/>
                             <constraint firstItem="UhJ-fn-gmn" firstAttribute="top" secondItem="NIg-Js-sUz" secondAttribute="bottom" id="4K5-Hd-hhj"/>
+                            <constraint firstItem="zWV-bH-Eoa" firstAttribute="bottom" secondItem="Z33-tb-zJZ" secondAttribute="bottom" id="8lY-Uu-SAi"/>
                             <constraint firstItem="jr8-Z2-Qjx" firstAttribute="trailing" secondItem="Z33-tb-zJZ" secondAttribute="trailing" id="9eR-5L-46x"/>
                             <constraint firstItem="10T-r8-ron" firstAttribute="width" secondItem="jr8-Z2-Qjx" secondAttribute="width" id="BEW-mv-urU"/>
-                            <constraint firstItem="2e9-PI-56J" firstAttribute="top" secondItem="10T-r8-ron" secondAttribute="bottom" constant="1" id="GRj-f0-ib8"/>
+                            <constraint firstItem="2e9-PI-56J" firstAttribute="top" secondItem="10T-r8-ron" secondAttribute="bottom" id="GRj-f0-ib8"/>
                             <constraint firstItem="d92-64-TFz" firstAttribute="trailing" secondItem="Z33-tb-zJZ" secondAttribute="trailing" id="PSi-6y-RjO"/>
                             <constraint firstItem="d92-64-TFz" firstAttribute="leading" secondItem="Z33-tb-zJZ" secondAttribute="leading" id="Q0a-7V-Lof"/>
                             <constraint firstItem="jr8-Z2-Qjx" firstAttribute="top" secondItem="eL8-L6-XkA" secondAttribute="bottom" id="QpQ-qP-7dU"/>
                             <constraint firstItem="NIg-Js-sUz" firstAttribute="leading" secondItem="Z33-tb-zJZ" secondAttribute="leading" id="Rnk-23-hbd"/>
                             <constraint firstItem="UhJ-fn-gmn" firstAttribute="trailing" secondItem="Z33-tb-zJZ" secondAttribute="trailing" id="TkW-zH-wiW"/>
+                            <constraint firstItem="zWV-bH-Eoa" firstAttribute="centerX" secondItem="Z33-tb-zJZ" secondAttribute="centerX" id="ara-g0-B8A"/>
                             <constraint firstItem="eL8-L6-XkA" firstAttribute="trailing" secondItem="Z33-tb-zJZ" secondAttribute="trailing" id="d1e-sY-k9G"/>
                             <constraint firstItem="eL8-L6-XkA" firstAttribute="leading" secondItem="Z33-tb-zJZ" secondAttribute="leading" id="gTz-RT-I3Y"/>
                             <constraint firstItem="eL8-L6-XkA" firstAttribute="top" secondItem="UhJ-fn-gmn" secondAttribute="bottom" id="kVO-Ch-Vtt"/>
@@ -171,5 +188,8 @@
         <image name="menu_2" width="28" height="25"/>
         <image name="menu_3" width="28" height="25"/>
         <image name="menu_4" width="28" height="25"/>
+        <image name="menu_5" width="25" height="28"/>
+        <image name="menu_6" width="25" height="28"/>
+        <image name="menu_7" width="25" height="28"/>
     </resources>
 </document>

@@ -30,13 +30,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="About banner" translatesAutoresizingMaskIntoConstraints="NO" id="Y0a-OW-Zae">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="180.5"/>
                             </imageView>
                             <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="Cgh-uj-F7h">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="180.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wew-Ak-wwi">
-                                        <rect key="frame" x="22" y="116" width="83.5" height="44"/>
+                                        <rect key="frame" x="22" y="116.5" width="83.5" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="YLh-03-Uo5"/>
                                         </constraints>
@@ -47,8 +47,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="6bA-jb-d7v"/>
                                     <constraint firstItem="Wew-Ak-wwi" firstAttribute="leading" secondItem="Cgh-uj-F7h" secondAttribute="leading" constant="22" id="7e1-5v-WJa"/>
+                                    <constraint firstAttribute="height" constant="180.5" id="pB1-DA-jii"/>
                                     <constraint firstAttribute="bottom" secondItem="Wew-Ak-wwi" secondAttribute="bottom" constant="20" id="wam-cF-ij8"/>
                                 </constraints>
                             </view>
@@ -168,7 +168,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="onu-0U-myj">
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E-mail" translatesAutoresizingMaskIntoConstraints="NO" id="onu-0U-myj">
                                                 <rect key="frame" x="14.5" y="50" width="41" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="onu-0U-myj" secondAttribute="height" multiplier="41:45" id="0ox-P4-5Ld"/>
@@ -176,9 +176,13 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcR-VI-04e">
-                                                <rect key="frame" x="63" y="58" width="210.5" height="30"/>
+                                                <rect key="frame" x="62.5" y="58" width="211" height="30"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="mobilelab@belatrixsf.com"/>
+                                                <connections>
+                                                    <action selector="sendEmailButtonTapped:" destination="hev-JF-pUx" eventType="touchUpInside" id="dUa-Pj-SgM"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -405,8 +409,9 @@
                     <connections>
                         <outlet property="collaboratorsCollectionView" destination="Gj2-Db-IFQ" id="xd8-sv-Svd"/>
                         <outlet property="collaboratorsScrollViewHeightConstraint" destination="1y1-JY-Yb8" id="5Hn-Fk-3ha"/>
+                        <outlet property="emailButton" destination="VcR-VI-04e" id="E1F-vj-vRR"/>
                         <outlet property="headerView" destination="Cgh-uj-F7h" id="x6g-oa-kZm"/>
-                        <outlet property="headerViewHeightConstraint" destination="6bA-jb-d7v" id="42y-9t-h3I"/>
+                        <outlet property="headerViewHeightConstraint" destination="pB1-DA-jii" id="f9X-66-kgh"/>
                         <outlet property="licenseLabel" destination="E9B-pZ-CYx" id="bXO-kW-Lcq"/>
                         <outlet property="menuButton" destination="A1M-Uj-JN0" id="BpL-yb-97h"/>
                         <outlet property="menuButtonWidthConstraint" destination="Tl8-ZS-sj7" id="fjb-fx-Cx6"/>
@@ -426,6 +431,7 @@
     </scenes>
     <resources>
         <image name="About banner" width="320" height="180"/>
+        <image name="E-mail" width="25" height="28"/>
         <image name="sideMenuButtom" width="21" height="15"/>
     </resources>
 </document>

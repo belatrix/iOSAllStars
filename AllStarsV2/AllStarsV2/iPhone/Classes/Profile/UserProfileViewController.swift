@@ -201,6 +201,22 @@ class UserProfileViewController: SWFrontGenericoViewController, UIScrollViewDele
         }
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // Mostrar el tutorial.
+        if UserDefaults.standard.bool(forKey: "TutorialWasShown") == false {
+            let storyboard = UIStoryboard(name: "Tutorial", bundle: nil)
+            let tutorialViewController = storyboard.instantiateInitialViewController() as! TutorialViewController
+            
+            self.present(tutorialViewController,
+                         animated: true,
+                         completion: { /* Después de mostrar el tutorial, se guarda un valor para indicar que ya no es necesario mostrarlo nuevamente.  */
+                UserDefaults.standard.set(true, forKey: "TutorialWasShown")
+            })
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
