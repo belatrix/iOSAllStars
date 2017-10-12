@@ -25,7 +25,8 @@ class KudosUserViewController: UIViewController, SelectCategoryKudosViewControll
     @IBOutlet weak var btnTag                   : UIButton!
     @IBOutlet weak var activityAction           : UIActivityIndicatorView!
     @IBOutlet weak var activityTag              : UIActivityIndicatorView!
-    @IBOutlet weak var txtComments: UITextView!
+    @IBOutlet weak var txtComments              : UITextView!
+    @IBOutlet weak var activityLoading          : UIActivityIndicatorView!
     
     
     var objUser             : UserBE!
@@ -43,20 +44,50 @@ class KudosUserViewController: UIViewController, SelectCategoryKudosViewControll
         _ = self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func clickBtnConfirmKudos(_ sender: Any) {
+        
+        self.activityLoading.startAnimating()
+        self.view.isUserInteractionEnabled = false
+        
+        KudosBC.addStarToEmployee(self.objUser, withKeyword: self.objKeywordSelected, withCategory: self.objCategorySelected, withText: self.txtComments.text, withSuccessful: { (isSuccess) in
+            
+            self.activityLoading.stopAnimating()
+            self.view.isUserInteractionEnabled = true
+            
+            _ = self.navigationController?.popViewController(animated: true)
+            
+        }) { (title, message) in
+            
+            self.activityLoading.stopAnimating()
+            self.view.isUserInteractionEnabled = true
+            
+            CDMUserAlerts.showSimpleAlert(title: title, withMessage: message, withAcceptButton: "accept".localized, withController: self, withCompletion: nil)
+        }
+    }
+    
     
     //MARK: - SelectKeywordViewControllerDelegate
     
     func selectKeywordViewController(_ controller: SelectKeywordViewController, selectKeyword keyword: KeywordBE) {
         
         self.objKeywordSelected = keyword
-        self.btnTag.setTitle(keyword.keyword_name, for: .normal)
+        self.btnTag.setTitle(keyword.keyword_name.uppercased(), for: .normal)
     }
     
     func selectKeywordViewController(_ controller: SelectKeywordViewController, addKeyword keyword: KeywordBE) {
         
-        self.objKeywordSelected = keyword
-        self.arrayKeyWords.append(keyword)
-        self.arrayKeyWords = self.arrayKeyWords.sorted(by: {return $0.keyword_name > $1.keyword_name})
+        CategoryBC.createKeyWord(keyword.keyword_name, withSuccessful: { (newKeyword) in
+            
+            self.objKeywordSelected = newKeyword
+            self.arrayKeyWords.append(newKeyword)
+            self.btnTag.setTitle(newKeyword.keyword_name.uppercased(), for: .normal)
+            self.arrayKeyWords = self.arrayKeyWords.sorted(by: {return $0.keyword_name.uppercased() < $1.keyword_name.uppercased()})
+            
+        }) { (title, message) in
+            
+            CDMUserAlerts.showSimpleAlert(title: title, withMessage: message, withAcceptButton: "accept".localized, withController: self, withCompletion: nil)
+        }
+
     }
     
     

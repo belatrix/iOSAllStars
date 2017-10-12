@@ -10,6 +10,25 @@ import UIKit
 
 class CategoryBC: NSObject {
     
+    class func createKeyWord(_ keyWord: String, withSuccessful success : @escaping KeyWord, alertInformation : @escaping AlertInformation) {
+        
+        let objSession = UserBC.getUserSession()
+        
+        if objSession?.session_token == "" {
+            alertInformation("app_name".localized, "token_invalid".localized)
+            return
+        }
+        
+        CategoryWebModel.createKeyWord(keyWord, withSession: objSession!, withSuccessful: { (newKeyword) in
+            
+            success(newKeyword)
+            
+        }) { (errorResponse) in
+            
+            alertInformation("generic_title_problem".localized, errorResponse.message)
+        }
+    }
+    
     
     class func listGeneralKeyWords(withSuccessful success : @escaping KeyWords, withAlertInformation alertInformation : @escaping AlertInformation) {
         
@@ -26,7 +45,7 @@ class CategoryBC: NSObject {
             
         }) { (errorResponse) in
             
-            alertInformation("generic_title_problem", "server_error".localized)
+            alertInformation("generic_title_problem", errorResponse.message)
         }
         
     }
@@ -47,7 +66,7 @@ class CategoryBC: NSObject {
             
         }) { (errorResponse) in
             
-            alertInformation("generic_title_problem", "server_error".localized)
+            alertInformation("generic_title_problem", errorResponse.message)
         }
         
     }
@@ -68,7 +87,7 @@ class CategoryBC: NSObject {
             
         }) { (errorResponse) in
             
-            alertInformation("generic_title_problem", "server_error".localized)
+            alertInformation("generic_title_problem", errorResponse.message)
         }
 
     }
@@ -89,7 +108,7 @@ class CategoryBC: NSObject {
             
         }) { (errorResponse) in
             
-            alertInformation("generic_title_problem", "server_error".localized)
+            alertInformation("generic_title_problem", errorResponse.message)
             
         }
 

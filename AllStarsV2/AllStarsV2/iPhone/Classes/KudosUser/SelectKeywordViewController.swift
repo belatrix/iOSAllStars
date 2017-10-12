@@ -43,6 +43,7 @@ class SelectKeywordViewController: UIViewController, UITableViewDelegate, UITabl
             self.dismiss(animated: false, completion: nil)
         }
     }
+
     
     
     //MARK: - UISearchBarDelegate
@@ -126,8 +127,7 @@ class SelectKeywordViewController: UIViewController, UITableViewDelegate, UITabl
             obj.keyword_name = self.arrayKeywordsTable[indexPath.row] as! String
             
             self.delegate.selectKeywordViewController(self, addKeyword: obj)
-            self.delegate.selectKeywordViewController(self, selectKeyword: obj)
-            
+        
             self.clickBtnAtras(nil)
         }
         
