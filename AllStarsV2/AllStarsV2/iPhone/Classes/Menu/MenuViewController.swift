@@ -59,15 +59,14 @@ class MenuViewController: UIViewController {
     }
     
     @IBAction private func logOutButtonTapped(_ sender: UIButton) {
-        CDMUserAlerts.showActionSheet(withTitle: "app_name".localized,
-                                      withMessage: "logout".localized,
-                                      withButtons: ["yes".localized],
-                                      withCancelButton: "cancel".localized,
-                                      inController: self,
-                                      withSelectionButtonIndex: { (_ index: Int) in
+        CDMUserAlerts.showMultipleAlert(title: "app_name".localized,
+                                        withMessage: "logout".localized,
+                                        withButtons: ["yes".localized],
+                                        withCancelButton: "cancel".localized,
+                                        withController: self) { (index) in
             
             //...
-        }, withActionCancel: nil)
+        }
     }
     
     
