@@ -10,13 +10,20 @@ import UIKit
 
 class CategoryWebModel: NSObject {
 
-    class func createKeyWord(_ keyWord: String, withSession objSession : SessionBE, withSuccessful success : @escaping KeyWords, withError error : @escaping ErrorResponse) {
+    class func createKeyWord(_ keyWord: String, withSession objSession : SessionBE, withSuccessful success : @escaping KeyWord, withError error : @escaping ErrorResponse) {
         
         let path = "api/category/keyword/create/"
-        let dic : [String : Any] = ["name" : keyWord]
+        let dic : [String : Any] = ["name" : keyWord.lowercased()]
         
         CDMWebSender.doPOSTTokenToURL(Constants.WEB_SERVICES, withPath: path, withParameter: dic, withToken: objSession.session_token) { (response) in
             
+            if response.successful, let JSON = response.JSON as? [String : Any]{
+                
+                success(KeywordBE.parse(JSON))
+                
+            }else{
+                error(ErrorResponseBE.parse(response.JSON as? [String : Any], withCode: response.statusCode))
+            }
         }
     }
     

@@ -92,7 +92,11 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         self.tlbCategories.addSubview(self.refreshControl)
         self.tlbCategories.estimatedRowHeight = 30
         self.tlbCategories.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
+        super.viewWillAppear(animated)
         self.listCategories()
     }
 

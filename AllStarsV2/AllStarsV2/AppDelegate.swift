@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        CDMKeyChain.eliminarKeychain()
+        CDMKeyChain.eliminarKeychain()
         GMSServices.provideAPIKey("AIzaSyAPN91Fur0N3HtQPlGpbxydc9wTACkmzpg")
         
         UIApplication.shared.statusBarStyle = .lightContent

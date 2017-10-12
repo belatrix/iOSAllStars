@@ -80,6 +80,7 @@
 		967983151F1E6A79005C58BF /* AllStarsV2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 967983131F1E6A79005C58BF /* AllStarsV2.xcdatamodeld */; };
 		967983171F1E6A79005C58BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 967983161F1E6A79005C58BF /* Assets.xcassets */; };
 		9679831A1F1E6A79005C58BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967983181F1E6A79005C58BF /* LaunchScreen.storyboard */; };
+		967E7BFA1F8D26EB0057F7AF /* KudosBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E7BF91F8D26EB0057F7AF /* KudosBC.swift */; };
 		96836F491F506E1F00FE1EB0 /* Menu.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96836F481F506E1F00FE1EB0 /* Menu.xcassets */; };
 		968E54C31F7D2FA200D514E6 /* AddKeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E54C21F7D2FA200D514E6 /* AddKeywordTableViewCell.swift */; };
 		968F6B921F4368200042EFD5 /* ProfileToEditProfileTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968F6B911F4368200042EFD5 /* ProfileToEditProfileTransition.swift */; };
@@ -202,6 +203,7 @@
 		967983161F1E6A79005C58BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		967983191F1E6A79005C58BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9679831B1F1E6A79005C58BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		967E7BF91F8D26EB0057F7AF /* KudosBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KudosBC.swift; sourceTree = "<group>"; };
 		96836F481F506E1F00FE1EB0 /* Menu.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Menu.xcassets; sourceTree = "<group>"; };
 		968E54C21F7D2FA200D514E6 /* AddKeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddKeywordTableViewCell.swift; sourceTree = "<group>"; };
 		968F6B911F4368200042EFD5 /* ProfileToEditProfileTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToEditProfileTransition.swift; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 				9663360C1F3E3BE7001EF210 /* ContactBC.swift */,
 				961E91631F4722900086B24E /* RankingBC.swift */,
 				4DD4CDE61F4DACEA004515EF /* EventBC.swift */,
+				967E7BF91F8D26EB0057F7AF /* KudosBC.swift */,
 			);
 			path = BC;
 			sourceTree = "<group>";
@@ -798,6 +801,7 @@
 				961E91661F472D740086B24E /* UserRankingCollectionViewCell.swift in Sources */,
 				96BFD4E71F3B7F370086A722 /* AchievementDetailViewController.swift in Sources */,
 				96E42C941F32649900277E34 /* CategoryBC.swift in Sources */,
+				967E7BFA1F8D26EB0057F7AF /* KudosBC.swift in Sources */,
 				967983151F1E6A79005C58BF /* AllStarsV2.xcdatamodeld in Sources */,
 				9600D0461F28E12000B780D6 /* ExUIImageView.swift in Sources */,
 				968E54C31F7D2FA200D514E6 /* AddKeywordTableViewCell.swift in Sources */,
@@ -999,7 +1003,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6T4TJ7V7HV;
+				DEVELOPMENT_TEAM = M759LSEAUK;
 				INFOPLIST_FILE = AllStarsV2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1018,7 +1022,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6T4TJ7V7HV;
+				DEVELOPMENT_TEAM = M759LSEAUK;
 				INFOPLIST_FILE = AllStarsV2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
