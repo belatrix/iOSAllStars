@@ -49,6 +49,7 @@ class AboutViewController: SWFrontGenericoViewController {
     @IBOutlet private weak var whyLabel: UILabel!
     @IBOutlet private weak var whoLabel: UILabel!
     @IBOutlet private weak var licenseLabel: UILabel!
+    @IBOutlet private weak var emailButton: UIButton!
     
     fileprivate var collaborators: [Collaborator]?
     fileprivate var maxHeightForHeaderView: CGFloat = 0.0
@@ -70,16 +71,26 @@ class AboutViewController: SWFrontGenericoViewController {
         super.viewDidLoad()
 
         // Configuraciones adicionales.
+        self.headerViewHeightConstraint.constant = (0.3178 * UIScreen.main.bounds.height)
         self.maxHeightForHeaderView = self.headerViewHeightConstraint.constant /* La altura máxima del `headerView`. */
         self.minLeftForTitleLabel   = self.titleLabelLeftConstraint.constant /* El espacio mínimo a la izquierda del `titleLabel`. */
         self.maxLeftForTitleLabel   = self.menuButtonWidthConstraint.constant /* El espacio máximo a la derecha del `titleLabel`. */
         self.maxBottomForTitleLabel = self.titleLabelBottomConstraint.constant /* La separación máxima de abajo del `titleLabel`. */
         self.maxTitleLabelFontSize  = self.titleLabel.font.pointSize /* El tamaño máximo de la fuente del `titleLabel`. */
+        self.scrollViewContentTopConstraint.constant = (self.headerViewHeightConstraint.constant - 64.0 - 20.0)
         
         self.headerView.layer.shadowOffset  = CGSize.zero
         self.headerView.layer.shadowOpacity = 0.3
         self.headerView.layer.shadowRadius  = 4.0
         self.headerView.backgroundColor     = UIColor.white.withAlphaComponent(0.0)
+        
+        let attributes: [NSAttributedStringKey: Any] = [
+                    NSAttributedStringKey.font:             UIFont(name: "HelveticaNeue", size: 15.0)!,
+                    NSAttributedStringKey.foregroundColor : CDMColorManager.colorFromHexString("007AFF", withAlpha: 1.0),
+                    NSAttributedStringKey.underlineStyle :  NSUnderlineStyle.styleSingle.rawValue
+                ]
+        let emailAttributedString = NSAttributedString(string: "mobilelab@belatrixsf.com", attributes: attributes)
+        self.emailButton.setAttributedTitle(emailAttributedString, for: .normal)
         
         // Obtener colaboradores.
         self.collaborators = [Collaborator]()
@@ -168,10 +179,23 @@ class AboutViewController: SWFrontGenericoViewController {
      - Parameter sender: El `UIButton` que ejecuta este método.
      */
     @IBAction private func sendEmailButtonTapped(_ sender: UIButton) {
-        if MFMailComposeViewController.canSendMail() == false {
-            // Mostrar alerta
+        if MFMailComposeViewController.canSendMail() == false { /* See if the current device is configured to send email... */
+            CDMUserAlerts.showSimpleAlert(title: "generic_title_problem".localized,
+                                          withMessage: "no_email_setup".localized,
+                                          withAcceptButton: "accept".localized,
+                                          withController: self,
+                                          withCompletion: nil)
+            
             return
         }
+        
+        let mailComposeViewController = MFMailComposeViewController()
+        mailComposeViewController.mailComposeDelegate = self
+        mailComposeViewController.setToRecipients(["mobilelab@belatrixsf.com"])
+        mailComposeViewController.setSubject("email_subject".localized)
+        self.present(mailComposeViewController,
+                     animated: true,
+                     completion: nil)
     }
     
 }
@@ -320,6 +344,32 @@ extension AboutViewController: UICollectionViewDelegateFlowLayout, UICollectionV
         cell?.nameLabel.text            = (collaborator.name ?? "")
         
         return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let itemWidth   = (collectionView.frame.size.width / 2.0)
+        let itemHeight  = (collectionViewLayout as! UICollectionViewFlowLayout).itemSize.height
+        return CGSize(width: itemWidth, height: itemHeight)
+    }
+    
+}
+
+
+
+
+
+extension AboutViewController: MFMailComposeViewControllerDelegate {
+    
+    // MARK: - MFMailComposeViewController's methods
+    
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult,
+                               error: Error?) { /* When the user taps the buttons to send the email or cancel the interface, the mail compose view controller calls this method of its delegate. */
+        
+        controller.dismiss(animated: true, completion: nil)
     }
     
 }
