@@ -17,6 +17,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var viewFormUser             : UIView!
     @IBOutlet weak var txtUserName              : UITextField!
     @IBOutlet weak var activityPassword         : UIActivityIndicatorView!
+    @IBOutlet weak var lblDomain                : UILabel!
     
     
     var initialValueConstraintCenterForm        : CGFloat = 0
@@ -65,6 +66,35 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBAction func clickBtnPassword(_ sender: Any?) {
         
         self.tapToCloseKeyboard(nil)
+        
+        
+        self.activityPassword.startAnimating()
+        self.view.isUserInteractionEnabled = false
+        
+        UserBC.forgotPasswordToEmail(self.txtUserName.text, withSuccessful: { (isCorrect) in
+            
+            self.activityPassword.stopAnimating()
+            self.view.isUserInteractionEnabled = true
+            
+            if isCorrect {
+                
+                CDMUserAlerts.showSimpleAlert(title: "app_name".localized, withMessage: "sent_mail_correct".localized, withAcceptButton: "Accept".localized, withController: self, withCompletion: {
+                    
+                    _ = self.navigationController?.popViewController(animated: true)
+                })
+                
+            }else{
+                CDMUserAlerts.showSimpleAlert(title: "app_name".localized, withMessage: "sent_mail_correct".localized, withAcceptButton: "Accept".localized, withController: self, withCompletion: nil)
+            }
+            
+        }) { (title, messageError) in
+            
+            self.activityPassword.stopAnimating()
+            self.view.isUserInteractionEnabled = true
+            
+            CDMUserAlerts.showSimpleAlert(title: title, withMessage: messageError, withAcceptButton: "Accept".localized, withController: self, withCompletion: nil)
+        }
+        
     }
     
     @IBAction func changeText(_ sender: Any) {
@@ -121,6 +151,8 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
+        self.lblDomain.text = "@" + AppInformationBC.sharedInstance.appInformation.appInformation_emailDomain
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShown(notification:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillBeHidden(notification:)), name: .UIKeyboardWillHide, object: nil)

@@ -54,7 +54,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="30" maxY="0.0"/>
-                                                <state key="normal" title="Select a action">
+                                                <state key="normal" title="Select an action">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -91,7 +91,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="30" maxY="0.0"/>
-                                                <state key="normal" title="Select a tag">
+                                                <state key="normal" title="Select a Tag">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -173,7 +173,7 @@
                                             <constraint firstAttribute="height" constant="44" id="a1m-wM-lMa"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                        <state key="normal" title="Confirm kudos">
+                                        <state key="normal" title="Confirm Kudos">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -253,14 +253,11 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfJ-QQ-PWZ">
-                                        <rect key="frame" x="264" y="20" width="52" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" id="Vgn-5T-xqq"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfJ-QQ-PWZ">
+                                        <rect key="frame" x="0.0" y="20" width="30" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Confirm"/>
+                                        <state key="normal" image="btnBack"/>
                                         <connections>
                                             <action selector="clickBtnBack:" destination="zgs-V6-CQS" eventType="touchUpInside" id="PmF-Zx-VQ3"/>
                                         </connections>
@@ -268,13 +265,10 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.46274509800000002" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="xfJ-QQ-PWZ" secondAttribute="bottom" id="0NB-xU-YeQ"/>
                                     <constraint firstAttribute="height" constant="64" id="VfN-yP-5jL"/>
                                     <constraint firstAttribute="bottom" secondItem="gJB-Vz-GxL" secondAttribute="bottom" id="Wdg-6V-SaP"/>
-                                    <constraint firstAttribute="trailing" secondItem="xfJ-QQ-PWZ" secondAttribute="trailing" constant="4" id="Zqw-WR-0aJ"/>
                                     <constraint firstItem="gJB-Vz-GxL" firstAttribute="leading" secondItem="XLy-1u-YwV" secondAttribute="leading" constant="38" id="d0i-tX-HTH"/>
                                     <constraint firstAttribute="trailing" secondItem="gJB-Vz-GxL" secondAttribute="trailing" constant="36" id="qpG-xQ-Kkp"/>
-                                    <constraint firstItem="xfJ-QQ-PWZ" firstAttribute="top" secondItem="XLy-1u-YwV" secondAttribute="top" constant="20" id="sZ4-NG-BOo"/>
                                     <constraint firstItem="gJB-Vz-GxL" firstAttribute="top" secondItem="XLy-1u-YwV" secondAttribute="top" constant="20" id="xpu-J6-VV7"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -369,7 +363,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZ4-UR-3R0">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsX-XZ-DZj">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsX-XZ-DZj">
                                         <rect key="frame" x="37" y="20" width="246" height="44"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -546,31 +540,37 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3tc-ux-c6X">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kea-UG-PfT">
-                                        <rect key="frame" x="0.0" y="20" width="30" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select an Action" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g50-r3-aBc">
+                                        <rect key="frame" x="37" y="20" width="246" height="44"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kea-UG-PfT">
+                                        <rect key="frame" x="264" y="20" width="52" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" id="qXw-kw-E9U"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="btnBack"/>
+                                        <state key="normal" title="Confirm"/>
                                         <connections>
                                             <action selector="clickBtnAtras:" destination="PcQ-57-5jS" eventType="touchUpInside" id="FyW-Rb-4ZU"/>
                                             <action selector="clickBtnAtras:" destination="K0t-Ac-ZEf" eventType="touchUpInside" id="dYn-eu-giF"/>
                                             <action selector="clickBtnBack:" destination="zgs-V6-CQS" eventType="touchUpInside" id="rlA-GM-LiG"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Action" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g50-r3-aBc">
-                                        <rect key="frame" x="37" y="20" width="246" height="44"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.46274509800000002" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="g50-r3-aBc" secondAttribute="bottom" id="4i3-zt-9EK"/>
+                                    <constraint firstAttribute="trailing" secondItem="kea-UG-PfT" secondAttribute="trailing" constant="4" id="79y-6c-HKw"/>
                                     <constraint firstItem="g50-r3-aBc" firstAttribute="top" secondItem="3tc-ux-c6X" secondAttribute="top" constant="20" id="7aD-nR-OIK"/>
+                                    <constraint firstAttribute="bottom" secondItem="kea-UG-PfT" secondAttribute="bottom" id="8Bf-5A-N9x"/>
                                     <constraint firstAttribute="height" constant="64" id="PNd-Cy-Og1"/>
                                     <constraint firstAttribute="trailing" secondItem="g50-r3-aBc" secondAttribute="trailing" constant="37" id="ZpA-Sw-7A2"/>
                                     <constraint firstItem="g50-r3-aBc" firstAttribute="leading" secondItem="3tc-ux-c6X" secondAttribute="leading" constant="37" id="at7-vQ-CHI"/>
+                                    <constraint firstItem="kea-UG-PfT" firstAttribute="top" secondItem="3tc-ux-c6X" secondAttribute="top" constant="20" id="mwK-sH-cHK"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mZm-XZ-AJG">

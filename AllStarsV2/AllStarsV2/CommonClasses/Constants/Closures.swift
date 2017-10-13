@@ -25,3 +25,4 @@ typealias Events                = (_ arrayEvents : [EventBE], _ urlNextPage: Str
 typealias Event                 = (_ event : EventBE) -> Void
 typealias Activities            = (_ activities : [ActivityEventBE]) -> Void
 typealias Success               = (_ isSuccess : Bool) -> Void
+typealias AppConfiguration      = (_ appConfiguration : AppInformationBE) -> Void

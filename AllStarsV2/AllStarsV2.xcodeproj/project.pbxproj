@@ -48,6 +48,9 @@
 		961FE4B81F27840D004A304D /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961FE4B71F27840D004A304D /* ChangePasswordViewController.swift */; };
 		961FE4BA1F27905F004A304D /* LoginChangePasswordAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961FE4B91F27905F004A304D /* LoginChangePasswordAnimation.swift */; };
 		9622E5091F1F983200D66688 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9622E5081F1F983200D66688 /* Login.storyboard */; };
+		96234A1E1F9108BF009734C9 /* ConfigurationWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96234A1D1F9108BF009734C9 /* ConfigurationWS.swift */; };
+		96234A201F9108E3009734C9 /* AppInformationBE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96234A1F1F9108E3009734C9 /* AppInformationBE.swift */; };
+		96234A221F910A04009734C9 /* AppInformationBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96234A211F910A04009734C9 /* AppInformationBC.swift */; };
 		9632F9931F7417E7007586D5 /* RankingToProfileTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9632F9921F7417E7007586D5 /* RankingToProfileTransition.swift */; };
 		963D53821F424C6200ADF937 /* AchievementToDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D53811F424C6200ADF937 /* AchievementToDetailTransition.swift */; };
 		963D53841F424E2E00ADF937 /* CategoryToDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963D53831F424E2E00ADF937 /* CategoryToDetailTransition.swift */; };
@@ -178,6 +181,9 @@
 		961FE4B71F27840D004A304D /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		961FE4B91F27905F004A304D /* LoginChangePasswordAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginChangePasswordAnimation.swift; sourceTree = "<group>"; };
 		9622E5081F1F983200D66688 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		96234A1D1F9108BF009734C9 /* ConfigurationWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationWS.swift; sourceTree = "<group>"; };
+		96234A1F1F9108E3009734C9 /* AppInformationBE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationBE.swift; sourceTree = "<group>"; };
+		96234A211F910A04009734C9 /* AppInformationBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationBC.swift; sourceTree = "<group>"; };
 		9632F9921F7417E7007586D5 /* RankingToProfileTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingToProfileTransition.swift; sourceTree = "<group>"; };
 		963D53811F424C6200ADF937 /* AchievementToDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementToDetailTransition.swift; sourceTree = "<group>"; };
 		963D53831F424E2E00ADF937 /* CategoryToDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryToDetailTransition.swift; sourceTree = "<group>"; };
@@ -540,6 +546,7 @@
 				961E91631F4722900086B24E /* RankingBC.swift */,
 				4DD4CDE61F4DACEA004515EF /* EventBC.swift */,
 				967E7BF91F8D26EB0057F7AF /* KudosBC.swift */,
+				96234A211F910A04009734C9 /* AppInformationBC.swift */,
 			);
 			path = BC;
 			sourceTree = "<group>";
@@ -558,6 +565,7 @@
 				96F2619D1F3A5F6D0038103B /* BadgeBE.swift */,
 				4D90D4431F4CAAD7007E8B04 /* EventBE.swift */,
 				4DD4CDE81F4DCBE3004515EF /* ActivityEventBE.swift */,
+				96234A1F1F9108E3009734C9 /* AppInformationBE.swift */,
 			);
 			path = BE;
 			sourceTree = "<group>";
@@ -573,6 +581,7 @@
 				961E91611F4721AE0086B24E /* RankingWebModel.swift */,
 				4D90D4451F4CB338007E8B04 /* EventWebModel.swift */,
 				964D1F781F794ED400DF5D8B /* KudosWS.swift */,
+				96234A1D1F9108BF009734C9 /* ConfigurationWS.swift */,
 			);
 			path = WS;
 			sourceTree = "<group>";
@@ -864,11 +873,13 @@
 				96DC07421F586C5C0050A890 /* ImageProfileViewController.swift in Sources */,
 				9664D78C1F21321D0054E786 /* UserWebModel.swift in Sources */,
 				4DD4CDE71F4DACEA004515EF /* EventBC.swift in Sources */,
+				96234A221F910A04009734C9 /* AppInformationBC.swift in Sources */,
 				96E42C901F32622F00277E34 /* CategoryBE.swift in Sources */,
 				961FE4B81F27840D004A304D /* ChangePasswordViewController.swift in Sources */,
 				2F18E0FA1F8ED02100A02EB8 /* AboutCollaboratorCollectionViewCell.swift in Sources */,
 				961E91621F4721AE0086B24E /* RankingWebModel.swift in Sources */,
 				2F13F1161F7C30D0001F4099 /* ProfileToImageProfileTransition.swift in Sources */,
+				96234A201F9108E3009734C9 /* AppInformationBE.swift in Sources */,
 				96BC258D1F3378A9008AA2F8 /* LoginTabBarTransition.swift in Sources */,
 				2FC98CA71F7AD9CE002F9726 /* EventsToSeeAllEventsTransition.swift in Sources */,
 				96F47A951F82BCC600E01575 /* SelectCategoryTableViewCell.swift in Sources */,
@@ -885,6 +896,7 @@
 				9664D7841F212F180054E786 /* SessionBE.swift in Sources */,
 				96535E6C1F1E90CC00E97EE9 /* CDMUserAlerts.swift in Sources */,
 				4D357BEA1F54A9FF00CBF8BB /* EventDetailViewController.swift in Sources */,
+				96234A1E1F9108BF009734C9 /* ConfigurationWS.swift in Sources */,
 				96BC258F1F33C35C008AA2F8 /* CategoryDetailViewController.swift in Sources */,
 				96BFD4E01F3B3FA10086A722 /* AchievementBC.swift in Sources */,
 				9664D7901F2133CE0054E786 /* ErrorResponseBE.swift in Sources */,
@@ -1051,7 +1063,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6T4TJ7V7HV;
+				DEVELOPMENT_TEAM = M759LSEAUK;
 				INFOPLIST_FILE = AllStarsV2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1070,7 +1082,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6T4TJ7V7HV;
+				DEVELOPMENT_TEAM = M759LSEAUK;
 				INFOPLIST_FILE = AllStarsV2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

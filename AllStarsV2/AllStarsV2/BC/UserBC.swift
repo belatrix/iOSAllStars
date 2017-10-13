@@ -67,7 +67,7 @@ class UserBC: NSObject {
             alertInformation("app_name".localized, "last_name_empty".localized)
         
         }else if (user.user_skype_id == nil || user.user_skype_id == "") {
-            alertInformation("app_name".localized, "skype_id_empty".localized)
+            alertInformation("app_name".localized, "skype_is_empty".localized)
 
         }else if (user.user_location == nil) {
             alertInformation("app_name".localized, "location_empty".localized)
@@ -136,6 +136,24 @@ class UserBC: NSObject {
             alertInformation("generic_title_problem".localized, errorResponse.message)
         }
         
+    }
+    
+    
+    class func forgotPasswordToEmail(_ user_email: String?, withSuccessful success : @escaping Success, withAlertInformation alertInformation : @escaping AlertInformation) {
+    
+        if (user_email == nil || user_email == "") {
+            alertInformation("app_name".localized, "email_is_empty".localized)
+            return
+        }
+        
+        UserWebModel.forgotPasswordToEmail("\(user_email!)@\(AppInformationBC.sharedInstance.appInformation.appInformation_emailDomain)", withSuccessful: { (isCorrect) in
+            
+            success(isCorrect)
+            
+        }) { (errorResponse) in
+            
+            alertInformation("generic_title_problem".localized, errorResponse.message)
+        }
     }
     
     

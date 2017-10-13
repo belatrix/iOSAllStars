@@ -254,6 +254,7 @@
                         <outlet property="constraintHeightLogo" destination="hXg-zp-4VR" id="ALu-fm-mJa"/>
                         <outlet property="constraintTopViewLogo" destination="Uk0-nq-i0d" id="Je5-hz-FED"/>
                         <outlet property="constraintWidthLogo" destination="Hzs-at-TyA" id="wD8-Kr-V8s"/>
+                        <outlet property="lblDomain" destination="dp9-9c-XBn" id="33V-Vg-S9X"/>
                         <outlet property="lblNameCompany" destination="2cq-So-zZn" id="dzK-hG-4aY"/>
                         <outlet property="txtPassword" destination="14z-fM-puK" id="L74-IV-gQl"/>
                         <outlet property="txtUserName" destination="bxq-C4-QOt" id="Mjy-kd-nO0"/>
@@ -438,6 +439,7 @@
                         <outlet property="constraintBottomViewLogo" destination="3Pc-8w-RBC" id="5z7-zK-vnM"/>
                         <outlet property="constraintCenterForm" destination="omn-pc-ZBq" id="DHE-MG-je7"/>
                         <outlet property="constraintTopViewLogo" destination="qIP-B5-h5R" id="p4x-yI-tKP"/>
+                        <outlet property="lblDomain" destination="0JC-zP-epi" id="w5Z-9E-cae"/>
                         <outlet property="txtUserName" destination="xdd-3U-ueK" id="xLL-82-XGc"/>
                         <outlet property="viewFormUser" destination="s3N-VP-Tca" id="tn2-dI-aDe"/>
                         <outlet property="viewLogo" destination="1fH-aD-PJY" id="fGB-eN-aUZ"/>
@@ -858,6 +860,7 @@
                         <outlet property="constraintBottomViewLogo" destination="0t1-s7-m2m" id="5AX-0N-NGl"/>
                         <outlet property="constraintCenterForm" destination="Qe0-vI-Swk" id="hPm-aJ-Xdr"/>
                         <outlet property="constraintTopViewLogo" destination="5CM-E2-1en" id="y1E-IB-TLN"/>
+                        <outlet property="lblDomain" destination="Tz2-Kq-5Rp" id="OZU-aJ-1ke"/>
                         <outlet property="txtUserName" destination="tb3-dH-vel" id="pK1-Z3-fsQ"/>
                         <outlet property="viewFormUser" destination="nxY-JL-gfE" id="M2q-Fr-sPF"/>
                         <outlet property="viewLogo" destination="IYP-1c-sXx" id="6o3-GQ-ifW"/>

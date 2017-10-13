@@ -21,6 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtUserName              : UITextField!
     @IBOutlet weak var txtPassword              : UITextField!
     @IBOutlet weak var activityLogin            : UIActivityIndicatorView!
+    @IBOutlet weak var lblDomain                : UILabel!
     
     
     
@@ -178,6 +179,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
 
         super.viewWillAppear(animated)
+        
+        self.lblDomain.text = "@" + AppInformationBC.sharedInstance.appInformation.appInformation_emailDomain
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShown(notification:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillBeHidden(notification:)), name: .UIKeyboardWillHide, object: nil)

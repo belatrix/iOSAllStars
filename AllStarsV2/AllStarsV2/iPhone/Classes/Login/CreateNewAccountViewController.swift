@@ -17,6 +17,7 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var viewFormUser             : UIView!
     @IBOutlet weak var txtUserName              : UITextField!
     @IBOutlet weak var activityPassword         : UIActivityIndicatorView!
+    @IBOutlet weak var lblDomain                : UILabel!
     
     
     var initialValueConstraintCenterForm        : CGFloat = 0
@@ -122,6 +123,7 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
         
         super.viewWillAppear(animated)
         
+        self.lblDomain.text = "@" + AppInformationBC.sharedInstance.appInformation.appInformation_emailDomain
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShown(notification:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillBeHidden(notification:)), name: .UIKeyboardWillHide, object: nil)
         
