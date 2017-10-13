@@ -78,7 +78,11 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
+        
+        let result = string.replace(" ", withString: "")
+        return result.characters.count == string.characters.count
+    }
     
     //MARK: - Keyboard Notifications
     

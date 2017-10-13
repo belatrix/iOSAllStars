@@ -44,6 +44,12 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
+        
+        let result = string.replace(" ", withString: "")
+        return result.characters.count == string.characters.count
+    }
+    
     //MARK: -
     
     func starLoading(){
@@ -81,7 +87,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
                 CDMUserAlerts.showSimpleAlert(title: "app_name".localized, withMessage: "sent_mail_correct".localized, withAcceptButton: "Accept".localized, withController: self, withCompletion:nil)
                 
             }else{
-                CDMUserAlerts.showSimpleAlert(title: "app_name".localized, withMessage: "sent_mail_correct".localized, withAcceptButton: "Accept".localized, withController: self, withCompletion: nil)
+                CDMUserAlerts.showSimpleAlert(title: "app_name".localized, withMessage: "sent_mail_incorrect".localized, withAcceptButton: "Accept".localized, withController: self, withCompletion: nil)
             }
             
         }) { (title, messageError) in

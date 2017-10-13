@@ -55,6 +55,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
+    
+        let result = string.replace(" ", withString: "")
+        return result.characters.count == string.characters.count
+    }
+    
     //MARK: -
     
     func startLoading(){

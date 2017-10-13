@@ -13,20 +13,9 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tlbCategories: UITableView!
     @IBOutlet weak var loadingView  : CDMLoadingView!
     
-    var categoryCellSelected : CategoryTableViewCell!
-    var objUser : UserBE!
-    
-    lazy var refreshControl : UIRefreshControl = {
-        
-        var _refreshControl = UIRefreshControl()
-        _refreshControl.backgroundColor = UIColor.clear
-        _refreshControl.tintColor = Constants.MAIN_COLOR
-        _refreshControl.addTarget(self, action: #selector(self.refreshData), for: .valueChanged)
-        
-        return _refreshControl
-    }()
-    
-    var arrayCategories = [CategoryBE]()
+    var categoryCellSelected        : CategoryTableViewCell!
+    var objUser                     : UserBE!
+    var arrayCategories             = [CategoryBE]()
     
     //MARK: - UITableViewDelegate, UITableViewDataSource
     
@@ -58,11 +47,6 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     //MARK: - WebService
     
-    @objc func refreshData(){
-        
-        self.listCategories()
-    }
-    
     func listCategories(){
         
         if self.arrayCategories.count == 0 {
@@ -72,7 +56,6 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         
         CategoryBC.listCategories(toUser: self.objUser, withSuccessful: { (arrayCategories) in
             
-            self.refreshControl.endRefreshing()
             self.arrayCategories = arrayCategories
             self.tlbCategories.reloadSections(IndexSet(integer: 0), with: .automatic)
             
@@ -80,7 +63,6 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
             
         }) { (title, message) in
             
-            self.refreshControl.endRefreshing()
             self.loadingView.mostrarError(conMensaje: message, conOpcionReintentar: false)
         }
         
@@ -89,7 +71,6 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tlbCategories.addSubview(self.refreshControl)
         self.tlbCategories.estimatedRowHeight = 30
         self.tlbCategories.rowHeight = UITableViewAutomaticDimension
     }
