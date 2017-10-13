@@ -47,7 +47,7 @@ class TutorialViewController: SWFrontGenericoViewController {
         }
         
         // Mostrar las imágenes del tutorial solo si el idioma es diferente al español.
-        if let languageCode = Locale.current.languageCode, languageCode != "es" { /* El lenguage es español... */
+        if let languageCode = Locale.current.languageCode, languageCode != "es" { /* El lenguage es diferente al español. En el "storyboard", las imágenes están en ese idioma. */
             
             /*
              It's important to make the difference between the application language and the device locale language:
@@ -55,9 +55,9 @@ class TutorialViewController: SWFrontGenericoViewController {
              - "Locale.preferredLanguages[0]" will return the application language.
              */
             
-            self.tutorial1ImageView.image = nil
-            self.tutorial2ImageView.image = nil
-            self.tutorial3ImageView.image = nil
+            self.tutorial1ImageView.image = #imageLiteral(resourceName: "en-Tutorial 1")
+            self.tutorial2ImageView.image = #imageLiteral(resourceName: "en-tutorial 2")
+            self.tutorial3ImageView.image = #imageLiteral(resourceName: "en-tutorial 3")
         }
     }
     
