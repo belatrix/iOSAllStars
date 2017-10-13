@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; normalTitle = "About"; ObjectID = "10T-r8-ron"; */
+"10T-r8-ron.normalTitle" = "Información";
+
+/* Class = "UIButton"; normalTitle = "Tutorial"; ObjectID = "2e9-PI-56J"; */
+"2e9-PI-56J.normalTitle" = "Tutorial";
+
+/* Class = "UIButton"; normalTitle = "Profile"; ObjectID = "NIg-Js-sUz"; */
+"NIg-Js-sUz.normalTitle" = "Perfil";
+
+/* Class = "UIButton"; normalTitle = "Events"; ObjectID = "UhJ-fn-gmn"; */
+"UhJ-fn-gmn.normalTitle" = "Eventos";
+
+/* Class = "UIButton"; normalTitle = "Contacts"; ObjectID = "eL8-L6-XkA"; */
+"eL8-L6-XkA.normalTitle" = "Contactos";
+
+/* Class = "UIButton"; normalTitle = "Ranking"; ObjectID = "jr8-Z2-Qjx"; */
+"jr8-Z2-Qjx.normalTitle" = "Ranking";
+
+/* Class = "UIButton"; normalTitle = "Log out"; ObjectID = "zWV-bH-Eoa"; */
+"zWV-bH-Eoa.normalTitle" = "Cerrar sesión";

@@ -1,0 +1,48 @@
+
+/* Class = "UILabel"; text = "AddKeywordTableViewCell"; ObjectID = "3vn-ug-ZCD"; */
+"3vn-ug-ZCD.text" = "AddKeywordTableViewCell";
+
+/* Class = "UILabel"; text = "Comment:"; ObjectID = "6Hr-tR-RrE"; */
+"6Hr-tR-RrE.text" = "Comment:";
+
+/* Class = "UIButton"; normalTitle = "Confirm Kudos"; ObjectID = "9dD-FV-cLU"; */
+"9dD-FV-cLU.normalTitle" = "Confirm Kudos";
+
+/* Class = "UILabel"; text = "Action:"; ObjectID = "B9e-Tq-Ovt"; */
+"B9e-Tq-Ovt.text" = "Action:";
+
+/* Class = "UILabel"; text = "Nombre Usuario"; ObjectID = "PQv-Sf-61w"; */
+"PQv-Sf-61w.text" = "Nombre Usuario";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "TIr-Xm-LxN"; */
+"TIr-Xm-LxN.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "WGj-vy-gMv"; */
+"WGj-vy-gMv.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Select an action"; ObjectID = "cDd-Lq-zaI"; */
+"cDd-Lq-zaI.normalTitle" = "Select an action";
+
+/* Class = "UILabel"; text = "dzxm"; ObjectID = "ehX-kT-c4O"; */
+"ehX-kT-c4O.text" = "dzxm";
+
+/* Class = "UILabel"; text = "Select an Action"; ObjectID = "g50-r3-aBc"; */
+"g50-r3-aBc.text" = "Select an Action";
+
+/* Class = "UILabel"; text = "Kudos"; ObjectID = "gJB-Vz-GxL"; */
+"gJB-Vz-GxL.text" = "Kudos";
+
+/* Class = "UILabel"; text = "Select a Tag"; ObjectID = "hsX-XZ-DZj"; */
+"hsX-XZ-DZj.text" = "Select a Tag";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "kea-UG-PfT"; */
+"kea-UG-PfT.normalTitle" = "Confirm";
+
+/* Class = "UIButton"; normalTitle = "Select a Tag"; ObjectID = "o4g-bL-sRd"; */
+"o4g-bL-sRd.normalTitle" = "Select a Tag";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "pSe-mp-Kf6"; */
+"pSe-mp-Kf6.normalTitle" = "Confirm";
+
+/* Class = "UILabel"; text = "Tag:"; ObjectID = "vL5-lC-SiN"; */
+"vL5-lC-SiN.text" = "Tag:";

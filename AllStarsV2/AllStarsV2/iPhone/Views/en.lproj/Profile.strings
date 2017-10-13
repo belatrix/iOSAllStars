@@ -1,0 +1,168 @@
+
+/* Class = "UILabel"; text = "Label Label Label Label Label Label "; ObjectID = "2Au-xd-f01"; */
+"2Au-xd-f01.text" = "Label Label Label Label Label Label ";
+
+/* Class = "UILabel"; text = "Score"; ObjectID = "2Hp-lt-7uJ"; */
+"2Hp-lt-7uJ.text" = "Score";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "3Lp-8Q-l6n"; */
+"3Lp-8Q-l6n.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "4qJ-4B-z4e"; */
+"4qJ-4B-z4e.text" = "Label";
+
+/* Class = "UILabel"; text = "--"; ObjectID = "4un-Nz-MBq"; */
+"4un-Nz-MBq.text" = "--";
+
+/* Class = "UIButton"; normalTitle = "see more"; ObjectID = "6AB-do-EJh"; */
+"6AB-do-EJh.normalTitle" = "see more";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "6V6-43-lqS"; */
+"6V6-43-lqS.normalTitle" = "-";
+
+/* Class = "UIButton"; normalTitle = "PHP"; ObjectID = "79o-TS-52v"; */
+"79o-TS-52v.normalTitle" = "PHP";
+
+/* Class = "UILabel"; text = "Edit Profile"; ObjectID = "923-Fi-Pau"; */
+"923-Fi-Pau.text" = "Edit Profile";
+
+/* Class = "UIButton"; normalTitle = "Gratitudes"; ObjectID = "9sA-xU-we3"; */
+"9sA-xU-we3.normalTitle" = "Gratitudes";
+
+/* Class = "UIButton"; normalTitle = "Gratitudes"; ObjectID = "B64-Gz-eOi"; */
+"B64-Gz-eOi.normalTitle" = "Gratitudes";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "E52-kG-Tqg"; */
+"E52-kG-Tqg.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "EGT-Pb-ucr"; */
+"EGT-Pb-ucr.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Feu-yh-sYB"; */
+"Feu-yh-sYB.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "GIc-mA-dgG"; */
+"GIc-mA-dgG.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "Location:"; ObjectID = "GTV-eF-oeZ"; */
+"GTV-eF-oeZ.text" = "Location:";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "Gdg-SP-W43"; */
+"Gdg-SP-W43.normalTitle" = "-";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "HbC-ba-pul"; */
+"HbC-ba-pul.text" = "Label";
+
+/* Class = "UILabel"; text = "Last name:"; ObjectID = "IBs-Gt-5Hu"; */
+"IBs-Gt-5Hu.text" = "Last name:";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "JMU-mQ-nob"; */
+"JMU-mQ-nob.text" = "-";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "KS0-1w-u1R"; */
+"KS0-1w-u1R.normalTitle" = "-";
+
+/* Class = "UIButton"; normalTitle = "ok"; ObjectID = "Nbl-Mb-c0Y"; */
+"Nbl-Mb-c0Y.normalTitle" = "ok";
+
+/* Class = "UIButton"; normalTitle = "Label"; ObjectID = "OoM-DF-z15"; */
+"OoM-DF-z15.normalTitle" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Achievements"; ObjectID = "OoP-A7-hJl"; */
+"OoP-A7-hJl.normalTitle" = "Achievements";
+
+/* Class = "UILabel"; text = "Skype ID:"; ObjectID = "P2c-yE-2hr"; */
+"P2c-yE-2hr.text" = "Skype ID:";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "Ppb-Xg-Hhi"; */
+"Ppb-Xg-Hhi.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "--"; ObjectID = "QST-g8-mUB"; */
+"QST-g8-mUB.text" = "--";
+
+/* Class = "UILabel"; text = "Label "; ObjectID = "Qoc-h6-XOF"; */
+"Qoc-h6-XOF.text" = "Label ";
+
+/* Class = "UILabel"; text = "Edit Profile"; ObjectID = "Rmi-j4-EhA"; */
+"Rmi-j4-EhA.text" = "Edit Profile";
+
+/* Class = "UILabel"; text = "Name:"; ObjectID = "UYR-oa-OYV"; */
+"UYR-oa-OYV.text" = "Name:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "V5s-e7-W2l"; */
+"V5s-e7-W2l.text" = "Label";
+
+/* Class = "UILabel"; text = "Last name:"; ObjectID = "WYT-cy-c81"; */
+"WYT-cy-c81.text" = "Last name:";
+
+/* Class = "UIButton"; normalTitle = "Select a location"; ObjectID = "Xv7-9A-lcA"; */
+"Xv7-9A-lcA.normalTitle" = "Select a location";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "ZQl-9B-73t"; */
+"ZQl-9B-73t.normalTitle" = "-";
+
+/* Class = "UILabel"; text = "99"; ObjectID = "aJk-Va-Kje"; */
+"aJk-Va-Kje.text" = "99";
+
+/* Class = "UIButton"; normalTitle = "Select a location"; ObjectID = "aNP-qq-ekk"; */
+"aNP-qq-ekk.normalTitle" = "Select a location";
+
+/* Class = "UIButton"; normalTitle = "Share"; ObjectID = "aqc-zQ-mar"; */
+"aqc-zQ-mar.normalTitle" = "Share";
+
+/* Class = "UIButton"; normalTitle = "PHP"; ObjectID = "dkJ-uc-pVe"; */
+"dkJ-uc-pVe.normalTitle" = "PHP";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "eNj-Rw-fQO"; */
+"eNj-Rw-fQO.text" = "-";
+
+/* Class = "UILabel"; text = "Skype ID:"; ObjectID = "eho-np-nB7"; */
+"eho-np-nB7.text" = "Skype ID:";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "emM-S4-WaE"; */
+"emM-S4-WaE.normalTitle" = "-";
+
+/* Class = "UILabel"; text = "--"; ObjectID = "fP9-Cm-4Xh"; */
+"fP9-Cm-4Xh.text" = "--";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gDH-hA-M1d"; */
+"gDH-hA-M1d.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "glu-qy-XLV"; */
+"glu-qy-XLV.normalTitle" = "-";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "hab-Od-ZkV"; */
+"hab-Od-ZkV.text" = "-";
+
+/* Class = "UIButton"; normalTitle = "Achievements"; ObjectID = "oIg-rf-bHr"; */
+"oIg-rf-bHr.normalTitle" = "Achievements";
+
+/* Class = "UILabel"; text = "Level"; ObjectID = "ocV-pR-KlZ"; */
+"ocV-pR-KlZ.text" = "Level";
+
+/* Class = "UIButton"; normalTitle = "Label"; ObjectID = "pej-Cw-IGD"; */
+"pej-Cw-IGD.normalTitle" = "Label";
+
+/* Class = "UILabel"; text = "Level"; ObjectID = "q4R-t4-zNG"; */
+"q4R-t4-zNG.text" = "Level";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qZh-9j-RdY"; */
+"qZh-9j-RdY.text" = "Label";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "qni-bN-NKt"; */
+"qni-bN-NKt.text" = "-";
+
+/* Class = "UILabel"; text = "Name:"; ObjectID = "sOT-os-7my"; */
+"sOT-os-7my.text" = "Name:";
+
+/* Class = "UILabel"; text = "Location:"; ObjectID = "sfu-9x-m6v"; */
+"sfu-9x-m6v.text" = "Location:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "szk-vU-0cf"; */
+"szk-vU-0cf.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "tL8-rq-Jer"; */
+"tL8-rq-Jer.title" = "Profile";
+
+/* Class = "UILabel"; text = "Score"; ObjectID = "uBZ-9m-du8"; */
+"uBZ-9m-du8.text" = "Score";
