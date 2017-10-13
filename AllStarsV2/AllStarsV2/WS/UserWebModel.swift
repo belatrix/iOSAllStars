@@ -17,13 +17,11 @@ class UserWebModel: NSObject {
         
         CDMWebSender.uploadRequest(image, withURL: Constants.WEB_SERVICES, withPath: path, withParameter: nil, withToken: session.session_token) { (response) in
             
-            let JSON = response.JSON as? [String : Any]
-            
-            if response.successful && JSON != nil{
-                success(UserBE.parse(JSON!))
-            }else{
-                error(ErrorResponseBE.parse(JSON, withCode: response.statusCode))
-            }
+            self.getUserInformationById(session.session_user_id.intValue, withSession: session, withSuccessful: { (objUser) in
+                success(objUser)
+            }, withError: { (ErrorResponse) in
+                error(ErrorResponse)
+            })
         }
     }
     
