@@ -53,13 +53,17 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
             self.loadingView.iniciarLoading(conMensaje: "get_category_list", conAnimacion: true)
         }
         
-        
         CategoryBC.listCategories(toUser: self.objUser, withSuccessful: { (arrayCategories) in
             
-            self.arrayCategories = arrayCategories
-            self.tlbCategories.reloadSections(IndexSet(integer: 0), with: .automatic)
-            
-            self.loadingView.detenerLoading()
+            if arrayCategories.count > 0 {
+                self.arrayCategories = arrayCategories
+                self.tlbCategories.reloadSections(IndexSet(integer: 0), with: .automatic)
+                
+                self.loadingView.detenerLoading()
+            }
+            else {
+                self.loadingView.mostrarError(conMensaje: "no_categories", conOpcionReintentar: false)
+            }
             
         }) { (title, message) in
             
