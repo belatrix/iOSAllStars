@@ -126,4 +126,25 @@ class UserWebModel: NSObject {
             }
         }
     }
+    
+    class func createUserWithEmail(_ user_email: String, withSuccessful success : @escaping Success, withError error : @escaping ErrorResponse) {
+        
+        let path = "api/employee/create/"
+        let dic : [String : Any] = ["email" : user_email]
+        
+        CDMWebSender.doPOSTToURL(Constants.WEB_SERVICES, withPath: path, withParameter: dic) { (response) in
+            
+            let JSON = response.JSON as? [String : Any]
+            
+            if response.successful{
+                if let _ = response.JSON as? [String : Any] {
+                    success(true)
+                }else{
+                    success(false)
+                }
+            }else{
+                error(ErrorResponseBE.parse(JSON, withCode: response.statusCode))
+            }
+        }
+    }
 }
