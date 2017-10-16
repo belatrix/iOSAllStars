@@ -87,7 +87,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
                 CDMUserAlerts.showSimpleAlert(title: "app_name".localized, withMessage: "sent_mail_correct".localized, withAcceptButton: "Accept".localized, withController: self, withCompletion:nil)
                 
             }else{
-                CDMUserAlerts.showSimpleAlert(title: "app_name".localized, withMessage: "sent_mail_incorrect".localized, withAcceptButton: "Accept".localized, withController: self, withCompletion: nil)
+                CDMUserAlerts.showSimpleAlert(title: "generic_title_problem".localized, withMessage: "sent_mail_incorrect".localized, withAcceptButton: "Accept".localized, withController: self, withCompletion: nil)
             }
             
         }) { (title, messageError) in

@@ -26,7 +26,7 @@ class EventBC: NSObject {
             
         }, withError: { (errorResponse) in
             
-            alertInformation("generic_title_problem", errorResponse.message)
+            alertInformation("generic_title_problem".localized, errorResponse.message)
             
         })
         
@@ -45,7 +45,7 @@ class EventBC: NSObject {
         EventWebModel.listLocalEvents(withSession: objSession!, withSuccess: { (arrayEvents, nextPage) in
             success(arrayEvents, nextPage)
         }) { (errorResponse) in
-            alertInformation("generic_title_problem", errorResponse.message)
+            alertInformation("generic_title_problem".localized, errorResponse.message)
         }
         
     }
@@ -63,7 +63,7 @@ class EventBC: NSObject {
         EventWebModel.listOtherEvents(withSession: objSession!, withSuccess: { (arrayEvents, nextPage) in
             success(arrayEvents, nextPage)
         }) { (errorResponse) in
-            alertInformation("generic_title_problem", errorResponse.message)
+            alertInformation("generic_title_problem".localized, errorResponse.message)
         }
         
     }
@@ -80,7 +80,7 @@ class EventBC: NSObject {
         return EventWebModel.listEventToPage(page, withSession: objSession!, withSuccessfil: { (arrayEvents, nextPage) in
             success(arrayEvents, nextPage)
         }, withError: { (errorResponse) in
-            alertInformation("generic_title_problem", errorResponse.message)
+            alertInformation("generic_title_problem".localized, errorResponse.message)
         })
         
     }
@@ -100,7 +100,7 @@ class EventBC: NSObject {
             
         }) { (errorResponse) in
             
-            alertInformation("generic_title_problem", errorResponse.message)
+            alertInformation("generic_title_problem".localized, errorResponse.message)
             
         }
         
@@ -118,7 +118,7 @@ class EventBC: NSObject {
         EventWebModel.updateUserToEvent(toEvent: objEvent, withAction: !objEvent.event_is_registered, withSession: objSession!, withSuccess: { (event) in
             success(event)
         }) { (errorResponse) in
-            alertInformation("generic_title_problem", errorResponse.message)
+            alertInformation("generic_title_problem".localized, errorResponse.message)
         }
         
     }
@@ -136,13 +136,9 @@ class EventBC: NSObject {
         EventWebModel.listEventActivities(toEvent: objEvent, withSession: objSession!, withSuccess: { (arrayActivites) in
             success(arrayActivites)
         }) { (errorResponse) in
-            alertInformation("generic_title_problem", errorResponse.message)
+            alertInformation("generic_title_problem".localized, errorResponse.message)
         }
         
     }
-    
-    
-    
-    
 
 }

@@ -25,7 +25,7 @@ class ContactBC: NSObject {
             
         }) { (errorResponse) in
             
-            alertInformation("generic_title_problem", errorResponse.message)
+            alertInformation("generic_title_problem".localized, errorResponse.message)
         }
     }
     
@@ -45,7 +45,7 @@ class ContactBC: NSObject {
             
         }) { (errorResponse) in
             
-            alertInformation("generic_title_problem", errorResponse.message)
+            alertInformation("generic_title_problem".localized, errorResponse.message)
         }
         
     }

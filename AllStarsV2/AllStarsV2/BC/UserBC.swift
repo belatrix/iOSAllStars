@@ -116,7 +116,8 @@ class UserBC: NSObject {
         }
         
         if (newPassword!.characters.count < Constants.MIN_PASSWORD_LENGTH) {
-            alertInformation("app_name".localized, "new_password_length".localized + " \(Constants.MIN_PASSWORD_LENGTH) "  + "characters".localized)
+            let message = String.init(format: "new_password_length".localized, Constants.MIN_PASSWORD_LENGTH)
+            alertInformation("app_name".localized,  message)
             return
         }
         

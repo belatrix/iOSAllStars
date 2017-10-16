@@ -14,7 +14,7 @@ class AddKeywordTableViewCell: UITableViewCell {
     
     var objTitleTag = "" {
         didSet{
-            self.lblTitle.text = "+ \("create_new".localized) \"\(self.objTitleTag)\" tag"
+            self.lblTitle.text = String.init(format: "create_tag".localized, self.objTitleTag)
         }
     }
     

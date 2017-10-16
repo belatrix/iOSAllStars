@@ -49,11 +49,11 @@ class AboutEventViewController: UIViewController {
         for singleEvent in existingEvents{
             if event.title == singleEvent.title && event.startDate == singleEvent.startDate {
                 self.eventExists = true
-                self.btnAddEvent.setTitle("Remove from Calender".localized, for: .normal)
+                self.btnAddEvent.setTitle("Remove_from_Calender".localized, for: .normal)
             }
             else {
                 self.eventExists = false
-                self.btnAddEvent.setTitle("Add to Calender".localized, for: .normal)
+                self.btnAddEvent.setTitle("Add_to_Calender".localized, for: .normal)
             }
         }
     }
@@ -64,14 +64,14 @@ class AboutEventViewController: UIViewController {
         if !self.eventExists {
             do {
                 try eventStore.save(event, span: EKSpan.thisEvent)
-                CDMUserAlerts.showSimpleAlert(title: "Event Added".localized,
-                                              withMessage: "Event added correctly".localized,
-                                              withAcceptButton: "OK".localized,
+                CDMUserAlerts.showSimpleAlert(title: "Event_Added".localized,
+                                              withMessage: "Event_added_correctly".localized,
+                                              withAcceptButton: "ok".localized,
                                               withController: self, withCompletion: nil)
                 
                 self.eventExists = true
                 UIView.animate(withDuration: 0.3, animations: {
-                    self.btnAddEvent.setTitle("Remove from Calender".localized, for: .normal)
+                    self.btnAddEvent.setTitle("Remove_from_Calender".localized, for: .normal)
                     self.view.layoutIfNeeded()
                 })
             }
@@ -86,14 +86,14 @@ class AboutEventViewController: UIViewController {
                 for singleEvent in existingEvents{
                     if event.title == singleEvent.title && event.startDate == singleEvent.startDate {
                         try self.eventStore.remove(singleEvent, span: .thisEvent)
-                        CDMUserAlerts.showSimpleAlert(title: "Event Removed".localized,
-                                                      withMessage: "Event removed correctly".localized,
-                                                      withAcceptButton: "OK".localized,
+                        CDMUserAlerts.showSimpleAlert(title: "Event_Removed".localized,
+                                                      withMessage: "Event_removed_correctly".localized,
+                                                      withAcceptButton: "ok".localized,
                                                       withController: self, withCompletion: nil)
                         
                         self.eventExists = false
                         UIView.animate(withDuration: 0.3, animations: {
-                            self.btnAddEvent.setTitle("Add To Calender".localized, for: .normal)
+                            self.btnAddEvent.setTitle("Add_To_Calender".localized, for: .normal)
                             self.view.layoutIfNeeded()
                         })
                     }
@@ -117,9 +117,9 @@ class AboutEventViewController: UIViewController {
             self.addEventToCalender()
         }
         else {
-            CDMUserAlerts.showSimpleAlert(title: "Need Permission".localized,
-                                          withMessage: "The app needs permission to use calendar".localized,
-                                          withAcceptButton: "OK".localized,
+            CDMUserAlerts.showSimpleAlert(title: "Need_Permissions".localized,
+                                          withMessage: "permission_use_calendar".localized,
+                                          withAcceptButton: "ok".localized,
                                           withController: self,
                                           withCompletion: nil)
         }

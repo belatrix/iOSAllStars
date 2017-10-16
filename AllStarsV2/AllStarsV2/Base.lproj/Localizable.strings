@@ -1,0 +1,72 @@
+/* 
+  Localizable.strings
+  AllStarsV2
+
+  Created by Kenyi Rodriguez Vergara on 16/10/17.
+  Copyright © 2017 Kenyi Rodriguez Vergara. All rights reserved.
+*/
+
+"app_name" = "Belatrix Connect";
+"generic_title_problem" = "Opps! We found a problem...";
+"token_invalid" = "Invalid token";
+"server_error" = "You have problems with your connection. Try again in few minutes";
+"ok" = "OK";
+"Accept" = "Accept";
+"de" = "of";
+"logout" = "Cerrar sesión";
+"yes" = "yes";
+"cancel" = "cancel";
+"skip" = "skip";
+"go" = "go";
+"no_email_setup" = "no email setup";
+"email_subject" = "por definir";
+
+"username_empty" = "You need enter your username";
+"select_image_profile" = "Please select a image to your profile"
+"first_name_empty" = "Your firts name is empty";
+"last_name_empty" = "Your last name is empty";
+"skype_is_empty" = "You need put your Skype Id";
+"location_empty" = "Select your location!";
+"old_password_empty" = "You need put your old password";
+"new_password_empty" = "Enter your new password";
+"new_password_match" = "Put again your new password";
+"new_password_length" = "Your password must be of %@ characters at least";
+"email_is_empty" = "Put your email address";
+"password_empty" = "Enter your password";
+"sent_mail_correct" = "Mail sent correctly";
+"sent_mail_incorrect" = "We can't send your mail";
+
+
+"select_keyword" = "You need select an tag";
+"select_category" = "You need select a category";
+
+"see_more" = "See more";
+"see_less" = "See less";
+
+"select_type_photo" = "Select a picture";
+"library" = "Choose Photo";
+"camera" = "Take Photo";
+
+"get_event_list" = "Loading events";
+
+"No_local_events_found" = "No local events found";
+"No_other_events_found" = "No other events found";
+"No_events_found" = "No events found";
+
+"Remove_from_Calender" = "Remove from Calender";
+"Add_to_Calender" = "Add to Calender";
+"Event_Added" = "Event Added";
+"Event_added_correctly" = "Event added correctly";
+"Event_Removed" = "Event Removed";
+"Event_removed_correctly" = "Event removed correctly";
+"Add_To_Calender" = "Add To Calender";
+"Need_Permissions" = "Need Permissions";
+"permission_use_calendar" = "The app needs permission to use calendar";
+
+"create_tag" = "+ create new \"%@\" tag";
+
+"what_text" = "Belatrix Connect tries to motivate social engagement and teammate recognition through reputation points system based on technical criteria topics about Software Development, also Belatrix Connect wants to be a social connection between people interested in events or talks organized by Belatrix.";
+"why_text" = "Because we want to take action and improve our working environment. Because we can. Because we believe in technology and mobile world.";
+"who_text" = "Belatrix Connect was created by people really motivated doing geeky stuff and living passionated about mobile technology.";
+"license_text" = "The MIT License (MIT)\nCopyright © 2016 BELATRIX\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: \n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. \n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
+
