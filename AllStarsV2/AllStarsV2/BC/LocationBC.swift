@@ -25,7 +25,7 @@ class LocationBC: NSObject {
             
         }) { (errorResponse) in
             
-            alertInformation("generic_title_problem", "server_error".localized)
+            alertInformation("generic_title_problem".localized, "server_error".localized)
         }
         
     }

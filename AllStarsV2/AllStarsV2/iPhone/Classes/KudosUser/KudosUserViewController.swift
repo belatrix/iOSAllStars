@@ -61,7 +61,7 @@ class KudosUserViewController: UIViewController, SelectCategoryKudosViewControll
             self.activityLoading.stopAnimating()
             self.view.isUserInteractionEnabled = true
             
-            CDMUserAlerts.showSimpleAlert(title: title, withMessage: message, withAcceptButton: "accept".localized, withController: self, withCompletion: nil)
+            CDMUserAlerts.showSimpleAlert(title: title, withMessage: message, withAcceptButton: "Accept".localized, withController: self, withCompletion: nil)
         }
     }
     
@@ -85,7 +85,7 @@ class KudosUserViewController: UIViewController, SelectCategoryKudosViewControll
             
         }) { (title, message) in
             
-            CDMUserAlerts.showSimpleAlert(title: title, withMessage: message, withAcceptButton: "accept".localized, withController: self, withCompletion: nil)
+            CDMUserAlerts.showSimpleAlert(title: title, withMessage: message, withAcceptButton: "Accept".localized, withController: self, withCompletion: nil)
         }
 
     }

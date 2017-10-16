@@ -107,13 +107,10 @@ class AboutViewController: SWFrontGenericoViewController {
         self.collaboratorsScrollViewHeightConstraint.constant = (numberOfRows * collectionViewLayout.itemSize.height) + (collectionViewLayout.minimumLineSpacing * (numberOfRows - 1.0)) /* - 1.0, porque la última fila no tiene espaciado. */
         
         // Mostrar los textos.
-        self.whatLabel.text = "Belatrix Connect tries to motivate social engagement and teammate recognition through reputation points system based on technical criteria topics about Software Development, also Belatrix Connect wants to be a social connection between people interested in events or talks organized by Belatrix.".localized
-        
-        self.whyLabel.text = "Because we want to take action and improve our working environment. Because we can. Because we believe in technology and mobile world.".localized
-        
-        self.whoLabel.text = "Belatrix Connect was created by people really motivated doing geeky stuff and living passionated about mobile technology.".localized
-        
-        self.licenseLabel.text = "The MIT License (MIT)\nCopyright © 2016 BELATRIX\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: \n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. \n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.".localized
+        self.whatLabel.text     = "what_text".localized
+        self.whyLabel.text      = "why_text".localized
+        self.whoLabel.text      = "who_text".localized
+        self.licenseLabel.text  = "license_text".localized
         
         self.view.layoutIfNeeded()
     }

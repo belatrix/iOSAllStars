@@ -106,7 +106,7 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
             print("getLocalEvents - Retain count for CategoryEventViewController: \(CFGetRetainCount(self)) - after getting local events")
             guard let viewController = self else { return }
             
-            viewController.show(events: arrayLocalEvents, emptyErrorMessage: "No local events found".localized)
+            viewController.show(events: arrayLocalEvents, emptyErrorMessage: "No_local_events_found".localized)
             viewController.clvEvents.alpha = 1.0
             
         }) { [weak self] (title, message) in
@@ -125,7 +125,7 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
         EventBC.listOtherEvents(withSuccessful: { [weak self] (arrayOtherEvents, nextPage) in
             guard let viewController = self else { return }
             
-            viewController.show(events: arrayOtherEvents, emptyErrorMessage: "No other events found".localized)
+            viewController.show(events: arrayOtherEvents, emptyErrorMessage: "No_other_events_found".localized)
             viewController.clvEvents.alpha = 1.0
             
         }) { [weak self] (title, message) in
@@ -143,7 +143,7 @@ class CategoryEventViewController: UIViewController, UICollectionViewDataSource,
         EventBC.listUserEvents(withSuccessful: { [weak self] (arrayUserEvents, nextPage) in
             guard let viewController = self else { return }
             
-            viewController.show(events: arrayUserEvents, emptyErrorMessage: "No events found".localized)
+            viewController.show(events: arrayUserEvents, emptyErrorMessage: "No_events_found".localized)
             viewController.clvEvents.alpha = 1.0
             
         }) { [weak self] (title, message) in

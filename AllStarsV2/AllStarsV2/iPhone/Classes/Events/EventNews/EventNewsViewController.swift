@@ -39,7 +39,7 @@ class EventNewsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func listEventNews() {
         if self.arrayEventActivities.count == 0 {
-            self.loadingView.iniciarLoading(conMensaje: "get_event_news_list".localized, conAnimacion: true)
+            self.loadingView.iniciarLoading(conMensaje: "get_event_list".localized, conAnimacion: true)
         }
         
         EventBC.listEventActivities(toEvent: self.objEvent, withSuccess: { (arrayActivities) in
