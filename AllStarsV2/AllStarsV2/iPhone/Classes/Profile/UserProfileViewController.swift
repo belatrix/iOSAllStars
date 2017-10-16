@@ -28,6 +28,7 @@ class UserProfileViewController: SWFrontGenericoViewController, UIScrollViewDele
     @IBOutlet weak var constraintHeightData     : NSLayoutConstraint!
     @IBOutlet weak var viewScoreData            : UIView!
     @IBOutlet weak var viewHeader               : UIView!
+    @IBOutlet weak var btnKudos                 : UIButton?
     
     var allowRevealController                   = true
     var controllerCategories                    : CategoriesViewController!
@@ -200,6 +201,7 @@ class UserProfileViewController: SWFrontGenericoViewController, UIScrollViewDele
             
         }
         
+        self.btnKudos?.alpha = UserBE.shareInstance?.user_pk == self.objUser?.user_pk ? 0 : 1
     }
     
     override func viewDidAppear(_ animated: Bool) {

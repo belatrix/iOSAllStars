@@ -696,6 +696,7 @@
                         <viewLayoutGuide key="safeArea" id="Leq-ZJ-Bfv"/>
                     </view>
                     <connections>
+                        <outlet property="btnKudos" destination="vcs-dr-ah9" id="2ZW-L5-d7U"/>
                         <outlet property="btnLocation" destination="glu-qy-XLV" id="gbZ-ZA-YHL"/>
                         <outlet property="btnMail" destination="emM-S4-WaE" id="dhq-PJ-R2s"/>
                         <outlet property="btnSkype" destination="KS0-1w-u1R" id="3LJ-AP-hgJ"/>
