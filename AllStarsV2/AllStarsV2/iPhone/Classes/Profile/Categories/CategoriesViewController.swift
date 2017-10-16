@@ -50,7 +50,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     func listCategories(){
         
         if self.arrayCategories.count == 0 {
-            self.loadingView.iniciarLoading(conMensaje: "get_category_list", conAnimacion: true)
+            self.loadingView.iniciarLoading(conMensaje: "get_category_list".localized, conAnimacion: true)
         }
         
         CategoryBC.listCategories(toUser: self.objUser, withSuccessful: { (arrayCategories) in
@@ -62,7 +62,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.loadingView.detenerLoading()
             }
             else {
-                self.loadingView.mostrarError(conMensaje: "no_categories", conOpcionReintentar: false)
+                self.loadingView.mostrarError(conMensaje: "no_categories".localized, conOpcionReintentar: false)
             }
             
         }) { (title, message) in

@@ -52,6 +52,7 @@
 "No_local_events_found" = "No local events found";
 "No_other_events_found" = "No other events found";
 "No_events_found" = "No events found";
+"no_categories" = "No categories found";
 
 "Remove_from_Calender" = "Remove from Calendar";
 "Add_to_Calender" = "Add to Calendar";
