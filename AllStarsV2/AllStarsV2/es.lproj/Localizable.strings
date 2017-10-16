@@ -1,9 +1,75 @@
-/* 
-  Localizable.strings
-  AllStarsV2
+/*
+ Localizable.strings
+ AllStarsV2
+ 
+ Created by Kenyi Rodriguez Vergara on 16/10/17.
+ Copyright © 2017 Kenyi Rodriguez Vergara. All rights reserved.
+ */
 
-  Created by Kenyi Rodriguez Vergara on 16/10/17.
-  Copyright © 2017 Kenyi Rodriguez Vergara. All rights reserved.
-*/
+"app_name" = "Belatrix Connect";
+"generic_title_problem" = "Opps! Encontramos un problema...";
+"token_invalid" = "Token inválido";
+"server_error" = "Tienes problemas con tu conexión. Intentalo en unos minutos";
+"ok" = "OK";
+"Accept" = "Aceptar";
+"de" = "de";
+"logout" = "Cerrar sesión";
+"yes" = "si";
+"cancel" = "cancelar";
+"skip" = "saltar";
+"go" = "ir";
+"no_email_setup" = "No tienes un correo configurado en tu dispositivo";
+"email_subject" = "por definir";
 
 "username_empty" = "Ingresa tu nombre de usuario";
+"select_image_profile" = "Selecciona una imagen para tu perfil";
+"first_name_empty" = "Ingresa tu nombre";
+"last_name_empty" = "Ingresa tu apellido";
+"skype_is_empty" = "Necesitas ingresar tu Skype Id";
+"location_empty" = "Selecciona tu ubicación!";
+"old_password_empty" = "Necesitas ingresar tu antigua contraseña";
+"new_password_empty" = "Ingresa tu nueva contraseña";
+"new_password_match" = "Repite tu nueva contraseña";
+"new_password_length" = "Tu contraseña debe ser de al menos %@ caracteres";
+"email_is_empty" = "Ingresa tu correo";
+"password_empty" = "Ingresa tu contraseña";
+"sent_mail_correct" = "Correo enviado correctamente";
+"sent_mail_incorrect" = "No hemos podido enviar correctamente el correo";
+
+
+"select_keyword" = "Selecciona un tag";
+"select_category" = "Seleccionar un categoría";
+
+"see_more" = "Ver más";
+"see_less" = "ver menos";
+
+"select_type_photo" = "Selecciona una imagen";
+"library" = "Elige una foto";
+"camera" = "Toma una foto";
+
+"get_event_list" = "Cargando eventos...";
+"get_achievements_list" = "Cargando logros... ";
+"no_achievements" = "No se encontraron logros";
+"get_category_list" = "Cargando categorías...";
+"no_categories" = "No se encontraron categorías";
+
+"No_local_events_found" = "No se encontraron eventos locales";
+"No_other_events_found" = "No se encontraron otros eventos";
+"No_events_found" = "No se encontraron eventos";
+
+"Remove_from_Calender" = "Eliminar del calendario";
+"Add_to_Calender" = "Agregar al calendario";
+"Event_Added" = "Evento agregado";
+"Event_added_correctly" = "Evento agregado correctamente";
+"Event_Removed" = "Evento eliminado";
+"Event_removed_correctly" = "Evento eliminado correctamente";
+"Need_Permissions" = "Necesitas permisos";
+"permission_use_calendar" = "La aplicación necesita permisos para usar el calendario";
+
+"create_tag" = "+ crear nuevo \"%@\" tag";
+
+"what_text" = "Belatrix Connect intenta motivar la interaccion social y el reconocimiento de los compañeros de equipp a traves de un sistema de puntos de reputacion basado en criterios tecnicos acerca del desarrollo de software, Belatrix Connect tambien servir como conexion social entre personas interesadas en eventos o charlas ortganizadas por Belatrix.";
+"why_text" = "Porque queremos tomar acción y mejorar nuestro ambiente de trabajo. Porque podemos. Porque creemos en la tecnologia y en un mundo móvil.";
+"who_text" = "Belatrix Connect fue creado por personas motivadas haciendo cosas geek y que viven apasionados acerca de la tecnologia móvil.";
+"license_text" = "The MIT License (MIT)\nCopyright © 2016 BELATRIX\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: \n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. \n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
+

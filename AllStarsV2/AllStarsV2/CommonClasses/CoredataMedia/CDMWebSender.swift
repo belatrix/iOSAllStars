@@ -115,7 +115,7 @@ public class CDMWebSender: NSObject {
         
         let sesion = URLSession.init(configuration: sessionConfiguration)
         
-        let escapedUrlString = "\(url)/\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let escapedUrlString = "\(url)\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let urlServicio = URL(string: escapedUrlString)
         let request = NSMutableURLRequest(url: urlServicio!)
         request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
@@ -157,7 +157,7 @@ public class CDMWebSender: NSObject {
         
         let sesion = URLSession.init(configuration: sessionConfiguration)
         
-        let escapedUrlString = "\(url)/\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let escapedUrlString = "\(url)\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let urlServicio = URL(string: escapedUrlString)
         let request = NSMutableURLRequest(url: urlServicio!)
         request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
@@ -249,7 +249,7 @@ public class CDMWebSender: NSObject {
         
         let sesion = URLSession.init(configuration: sessionConfiguration)
         
-        let escapedUrlString = "\(url)/\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let escapedUrlString = "\(url)\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let urlServicio = URL(string: escapedUrlString)
         let request = NSMutableURLRequest(url: urlServicio!)
         request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
@@ -287,7 +287,7 @@ public class CDMWebSender: NSObject {
         
         let sesion = URLSession.init(configuration: sessionConfiguration)
         
-        let escapedUrlString = "\(url)/\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let escapedUrlString = "\(url)\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let urlServicio = URL(string: escapedUrlString)
         let request = NSMutableURLRequest(url: urlServicio!)
         request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
@@ -329,7 +329,7 @@ public class CDMWebSender: NSObject {
         
         let sesion = URLSession.init(configuration: sessionConfiguration)
         
-        let escapedUrlString = "\(url)/\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let escapedUrlString = "\(url)\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let urlServicio = URL(string: escapedUrlString)
         let request = NSMutableURLRequest(url: urlServicio!)
         request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
@@ -373,7 +373,7 @@ public class CDMWebSender: NSObject {
         
         let sesion = URLSession.init(configuration: sessionConfiguration)
         
-        let escapedUrlString = "\(url)/\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let escapedUrlString = "\(url)\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let urlServicio = URL(string: escapedUrlString)
         let request = NSMutableURLRequest(url: urlServicio!)
         request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
@@ -424,7 +424,7 @@ public class CDMWebSender: NSObject {
         
         let sesion = URLSession.init(configuration: sessionConfiguration)
         
-        let escapedUrlString = "\(url)/\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let escapedUrlString = "\(url)\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let urlServicio = URL(string: escapedUrlString)
         let request = NSMutableURLRequest(url: urlServicio!)
         request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
@@ -466,7 +466,7 @@ public class CDMWebSender: NSObject {
         
         let sesion = URLSession.init(configuration: sessionConfiguration)
         
-        let escapedUrlString = "\(url)/\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let escapedUrlString = "\(url)\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let urlServicio = URL(string: escapedUrlString)
         let request = NSMutableURLRequest(url: urlServicio!)
         request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
@@ -509,7 +509,7 @@ public class CDMWebSender: NSObject {
         
         let sesion = URLSession.init(configuration: sessionConfiguration)
         
-        let escapedUrlString = "\(url)/\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let escapedUrlString = "\(url)\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let urlServicio = URL(string: escapedUrlString)
         let request = NSMutableURLRequest(url: urlServicio!)
         request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")

@@ -52,14 +52,14 @@
 "No_local_events_found" = "No local events found";
 "No_other_events_found" = "No other events found";
 "No_events_found" = "No events found";
+"no_categories" = "No categories found";
 
-"Remove_from_Calender" = "Remove from Calender";
-"Add_to_Calender" = "Add to Calender";
+"Remove_from_Calender" = "Remove from Calendar";
+"Add_to_Calender" = "Add to Calendar";
 "Event_Added" = "Event Added";
 "Event_added_correctly" = "Event added correctly";
 "Event_Removed" = "Event Removed";
 "Event_removed_correctly" = "Event removed correctly";
-"Add_To_Calender" = "Add To Calender";
 "Need_Permissions" = "Need Permissions";
 "permission_use_calendar" = "The app needs permission to use calendar";
 
