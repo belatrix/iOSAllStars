@@ -179,6 +179,8 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
         let defaultsAnimationsClosure: (() -> ()) = { [unowned self] in
             self.closeButton.alpha = 1.0
             
+            self.pbImageView.layer.cornerRadius = 0.0
+            
             self.scrollZoom.backgroundColor = UIColor.white.withAlphaComponent(0.75)
             self.statusBarView.backgroundColor = UIColor.white.withAlphaComponent(0.75)
         }

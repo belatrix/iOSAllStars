@@ -22,7 +22,7 @@
 "email_subject" = "por definir";
 
 "username_empty" = "You need enter your username";
-"select_image_profile" = "Please select a image to your profile"
+"select_image_profile" = "Please select a image to your profile";
 "first_name_empty" = "Your firts name is empty";
 "last_name_empty" = "Your last name is empty";
 "skype_is_empty" = "You need put your Skype Id";
