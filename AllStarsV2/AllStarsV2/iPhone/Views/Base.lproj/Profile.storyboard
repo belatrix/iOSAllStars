@@ -426,9 +426,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pL2-k3-0kv" customClass="ImageUserProfile" customModule="AllStarsV2" customModuleProvider="target">
                                         <rect key="frame" x="8" y="15" width="140" height="140"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="pL2-k3-0kv" secondAttribute="height" multiplier="1:1" id="aqO-2C-3ru"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="hqZ-vo-cSb" appends="YES" id="YHz-F2-6P6"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ud1-CZ-MEa">
                                         <rect key="frame" x="153" y="15" width="159" height="60"/>
@@ -712,11 +716,25 @@
                         <outletCollection property="arrayButtonsSection" destination="OoP-A7-hJl" collectionClass="NSMutableArray" id="ybj-tI-Uki"/>
                         <outletCollection property="arrayVistas" destination="cMP-Ns-5Ys" collectionClass="NSMutableArray" id="Fms-pq-Tsi"/>
                         <outletCollection property="arrayVistas" destination="oz3-hS-hqj" collectionClass="NSMutableArray" id="NVX-8F-djZ"/>
+                        <segue destination="6sZ-fz-sKU" kind="presentation" identifier="ImageProfileViewController" animates="NO" id="Xy9-WM-rR2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCg-uT-XkZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hqZ-vo-cSb">
+                    <connections>
+                        <action selector="tapShowImageProfile:" destination="jTd-G1-mA2" id="TCX-dA-jyA"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3090" y="-753.16901408450701"/>
+        </scene>
+        <!--ImageProfileViewController-->
+        <scene sceneID="jAa-Hy-f21">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="ImageProfileViewController" id="6sZ-fz-sKU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HEo-YT-2uq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3798" y="-867"/>
         </scene>
         <!--KudosUserViewController-->
         <scene sceneID="3uN-vK-hjM">
