@@ -22,7 +22,7 @@
 "email_subject" = "por definir";
 
 "username_empty" = "You need enter your username";
-"select_image_profile" = "Please select a image to your profile"
+"select_image_profile" = "Please select a image to your profile";
 "first_name_empty" = "Your firts name is empty";
 "last_name_empty" = "Your last name is empty";
 "skype_is_empty" = "You need put your Skype Id";
@@ -53,13 +53,12 @@
 "No_other_events_found" = "No other events found";
 "No_events_found" = "No events found";
 
-"Remove_from_Calender" = "Remove from Calender";
-"Add_to_Calender" = "Add to Calender";
+"Remove_from_Calender" = "Remove from Calendar";
+"Add_to_Calender" = "Add to Calendar";
 "Event_Added" = "Event Added";
 "Event_added_correctly" = "Event added correctly";
 "Event_Removed" = "Event Removed";
 "Event_removed_correctly" = "Event removed correctly";
-"Add_To_Calender" = "Add To Calender";
 "Need_Permissions" = "Need Permissions";
 "permission_use_calendar" = "The app needs permission to use calendar";
 

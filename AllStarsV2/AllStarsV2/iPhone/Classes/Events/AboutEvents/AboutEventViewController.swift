@@ -93,7 +93,7 @@ class AboutEventViewController: UIViewController {
                         
                         self.eventExists = false
                         UIView.animate(withDuration: 0.3, animations: {
-                            self.btnAddEvent.setTitle("Add_To_Calender".localized, for: .normal)
+                            self.btnAddEvent.setTitle("Add_to_Calender".localized, for: .normal)
                             self.view.layoutIfNeeded()
                         })
                     }
