@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class EditProfileViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegate, SelectLocationViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -90,10 +92,25 @@ class EditProfileViewController: UIViewController, UIScrollViewDelegate, UITextF
         
         CDMUserAlerts.showActionSheet(withTitle: "", withMessage: "select_type_photo".localized, withButtons: ["library".localized, "camera".localized], withCancelButton: "cancel".localized, inController: self, withSelectionButtonIndex: { (index) in
             
-            let picker = UIImagePickerController()
-            picker.delegate = self
-            picker.sourceType = index == 0 ? UIImagePickerControllerSourceType.savedPhotosAlbum : UIImagePickerControllerSourceType.camera
-            self.present(picker, animated: true, completion: nil)
+            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (granted) in
+                
+                if granted{
+                    
+                    let picker = UIImagePickerController()
+                    picker.delegate = self
+                    picker.sourceType = index == 0 ? UIImagePickerControllerSourceType.savedPhotosAlbum : UIImagePickerControllerSourceType.camera
+                    self.present(picker, animated: true, completion: nil)
+                    
+                }else{
+                    
+                    CDMUserAlerts.showSimpleAlert(title: "app_name".localized, withMessage: "ou do not have permissions enabled for this.", withAcceptButton: "accept".localized, withController: self, withCompletion: {
+                        
+                        let url = URL(string: UIApplicationOpenSettingsURLString)
+                        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                        
+                    })
+                }
+            })
             
         }, withActionCancel: nil)
         
