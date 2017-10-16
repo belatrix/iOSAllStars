@@ -19,6 +19,7 @@
 
 
 -(IBAction)clicBtnReveal:(id)sender{
+    [self.view endEditing:true];
     
     if (self.revealViewController) {
     

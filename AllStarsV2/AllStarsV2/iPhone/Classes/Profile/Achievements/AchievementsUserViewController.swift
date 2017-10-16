@@ -50,14 +50,21 @@ class AchievementsUserViewController: UIViewController, UICollectionViewDelegate
     
     func listAchievementsUser(){
         
-        self.loadingView.iniciarLoading(conMensaje: "get_achievements_list", conAnimacion: true)
+        if self.arrayAchievements.isEmpty == true {
+            self.loadingView.iniciarLoading(conMensaje: "get_achievements_list", conAnimacion: true)
+        }
         
         AchievementBC.listAchievementsToUser(self.objUser!, withSuccessful: { (arrayAchievements) in
             
-            self.arrayAchievements = arrayAchievements
-            self.clvAchievements.reloadSections(IndexSet(integer: 0))
-            
-            self.loadingView.detenerLoading()
+            if arrayAchievements.count > 0 {
+                self.arrayAchievements = arrayAchievements
+                self.clvAchievements.reloadSections(IndexSet(integer: 0))
+                
+                self.loadingView.detenerLoading()
+            }
+            else {
+                self.loadingView.mostrarError(conMensaje: "no_achievements".localized, conOpcionReintentar: false)
+            }
             
         }) { (title, message) in
             
