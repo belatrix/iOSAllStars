@@ -109,7 +109,7 @@
                                             <constraint firstItem="qni-bN-NKt" firstAttribute="centerX" secondItem="uBZ-9m-du8" secondAttribute="centerX" id="zql-Pn-vWt"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-SP-W43">
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-SP-W43">
                                         <rect key="frame" x="158" y="81" width="153" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="2Eu-Vu-EAs"/>
@@ -119,7 +119,7 @@
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="-" image="iconMail"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6V6-43-lqS">
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6V6-43-lqS">
                                         <rect key="frame" x="158" y="108" width="153" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="ruM-pl-b3a"/>
@@ -129,7 +129,7 @@
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="-" image="iconSkype"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQl-9B-73t">
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQl-9B-73t">
                                         <rect key="frame" x="158" y="135" width="153" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="w4H-LB-JER"/>
@@ -487,7 +487,7 @@
                                             <constraint firstItem="2Hp-lt-7uJ" firstAttribute="leading" secondItem="Ud1-CZ-MEa" secondAttribute="leading" id="zfZ-Kx-sFY"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emM-S4-WaE">
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emM-S4-WaE">
                                         <rect key="frame" x="158" y="81" width="153" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="rOI-kj-xfX"/>
@@ -497,7 +497,7 @@
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="-" image="iconMail"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KS0-1w-u1R">
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KS0-1w-u1R">
                                         <rect key="frame" x="158" y="108" width="153" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Uqu-AE-3MO"/>
@@ -507,7 +507,7 @@
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="-" image="iconSkype"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glu-qy-XLV">
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glu-qy-XLV">
                                         <rect key="frame" x="158" y="135" width="153" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="rqa-L6-qjl"/>

@@ -1,0 +1,42 @@
+
+/* Class = "UILabel"; text = "Support"; ObjectID = "4RN-nN-edT"; */
+"4RN-nN-edT.text" = "Support";
+
+/* Class = "UILabel"; text = "[License]"; ObjectID = "E9B-pZ-CYx"; */
+"E9B-pZ-CYx.text" = "[License]";
+
+/* Class = "UILabel"; text = "[Nombre]"; ObjectID = "Pow-jg-pKR"; */
+"Pow-jg-pKR.text" = "[Nombre]";
+
+/* Class = "UIButton"; normalTitle = "mobilelab@belatrixsf.com"; ObjectID = "VcR-VI-04e"; */
+"VcR-VI-04e.normalTitle" = "mobilelab@belatrixsf.com";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "Wew-Ak-wwi"; */
+"Wew-Ak-wwi.text" = "About";
+
+/* Class = "UILabel"; text = "[What]"; ObjectID = "adc-rw-lRq"; */
+"adc-rw-lRq.text" = "[What]";
+
+/* Class = "UILabel"; text = "[Who]"; ObjectID = "bHq-M9-eRk"; */
+"bHq-M9-eRk.text" = "[Who]";
+
+/* Class = "UILabel"; text = "Why?"; ObjectID = "dQ9-PN-eKk"; */
+"dQ9-PN-eKk.text" = "Why?";
+
+/* Class = "UILabel"; text = "License"; ObjectID = "e3T-JR-U5v"; */
+"e3T-JR-U5v.text" = "License";
+
+/* Class = "UILabel"; text = "What?"; ObjectID = "jFF-pK-PYf"; */
+"jFF-pK-PYf.text" = "What?";
+
+/* Class = "UILabel"; text = "Who?"; ObjectID = "qe0-GK-fd3"; */
+"qe0-GK-fd3.text" = "Who?";
+
+/* Class = "UILabel"; text = "Collaborators"; ObjectID = "v3K-uT-pMn"; */
+"v3K-uT-pMn.text" = "Collaborators";
+
+/* Class = "UILabel"; text = "Bx Connect"; ObjectID = "vMw-mv-Y4x"; */
+"vMw-mv-Y4x.text" = "Bx Connect";
+
+/* Class = "UILabel"; text = "[Why]"; ObjectID = "wB9-Qq-h0R"; */
+"wB9-Qq-h0R.text" = "[Why]";

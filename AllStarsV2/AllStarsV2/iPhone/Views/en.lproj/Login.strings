@@ -1,0 +1,84 @@
+
+/* Class = "UILabel"; text = "@belatrixsf.com"; ObjectID = "0JC-zP-epi"; */
+"0JC-zP-epi.text" = "@belatrixsf.com";
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "14z-fM-puK"; */
+"14z-fM-puK.placeholder" = "Password";
+
+/* Class = "UITextField"; text = "belatrix"; ObjectID = "14z-fM-puK"; */
+"14z-fM-puK.text" = "belatrix";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password?"; ObjectID = "1dI-Yv-8qT"; */
+"1dI-Yv-8qT.normalTitle" = "Forgot Password?";
+
+/* Class = "UILabel"; text = "Belatrix Connect"; ObjectID = "2cq-So-zZn"; */
+"2cq-So-zZn.text" = "Belatrix Connect";
+
+/* Class = "UITextField"; placeholder = "New password"; ObjectID = "4hg-TP-Lwy"; */
+"4hg-TP-Lwy.placeholder" = "New password";
+
+/* Class = "UITextField"; text = "ak3589"; ObjectID = "4hg-TP-Lwy"; */
+"4hg-TP-Lwy.text" = "ak3589";
+
+/* Class = "UILabel"; text = "Change your password"; ObjectID = "8Fm-GV-geA"; */
+"8Fm-GV-geA.text" = "Change your password";
+
+/* Class = "UILabel"; text = "Let's get started"; ObjectID = "9Qs-qx-uf3"; */
+"9Qs-qx-uf3.text" = "Let's get started";
+
+/* Class = "UITextField"; placeholder = "Repeat new password"; ObjectID = "A4L-1n-A9c"; */
+"A4L-1n-A9c.placeholder" = "Repeat new password";
+
+/* Class = "UITextField"; text = "ak3589"; ObjectID = "A4L-1n-A9c"; */
+"A4L-1n-A9c.text" = "ak3589";
+
+/* Class = "UIButton"; normalTitle = "Change Password"; ObjectID = "ByA-fa-uDI"; */
+"ByA-fa-uDI.normalTitle" = "Change Password";
+
+/* Class = "UILabel"; text = "Enter your email address to recive your temporary password"; ObjectID = "Cmu-Np-ZW1"; */
+"Cmu-Np-ZW1.text" = "Enter your email address to recive your temporary password";
+
+/* Class = "UILabel"; text = "New password"; ObjectID = "JSX-iU-nHN"; */
+"JSX-iU-nHN.text" = "New password";
+
+/* Class = "UIButton"; normalTitle = "Log In"; ObjectID = "Jqd-cf-ggL"; */
+"Jqd-cf-ggL.normalTitle" = "Log In";
+
+/* Class = "UILabel"; text = "@belatrixsf.com"; ObjectID = "Tz2-Kq-5Rp"; */
+"Tz2-Kq-5Rp.text" = "@belatrixsf.com";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "V5m-nE-JPN"; */
+"V5m-nE-JPN.normalTitle" = "Sign Up";
+
+/* Class = "UILabel"; text = "Change your password, so you can remember it."; ObjectID = "VZp-Ve-0vv"; */
+"VZp-Ve-0vv.text" = "Change your password, so you can remember it.";
+
+/* Class = "UIButton"; normalTitle = "Create New Account"; ObjectID = "be2-7E-74i"; */
+"be2-7E-74i.normalTitle" = "Create New Account";
+
+/* Class = "UITextField"; placeholder = "username"; ObjectID = "bxq-C4-QOt"; */
+"bxq-C4-QOt.placeholder" = "username";
+
+/* Class = "UITextField"; text = "kenyi"; ObjectID = "bxq-C4-QOt"; */
+"bxq-C4-QOt.text" = "kenyi";
+
+/* Class = "UIButton"; normalTitle = "Request New Password"; ObjectID = "d5p-zk-Moc"; */
+"d5p-zk-Moc.normalTitle" = "Request New Password";
+
+/* Class = "UITextField"; placeholder = "Current password"; ObjectID = "dhp-Du-Sm0"; */
+"dhp-Du-Sm0.placeholder" = "Current password";
+
+/* Class = "UITextField"; text = "belatrix"; ObjectID = "dhp-Du-Sm0"; */
+"dhp-Du-Sm0.text" = "belatrix";
+
+/* Class = "UILabel"; text = "@belatrixsf.com"; ObjectID = "dp9-9c-XBn"; */
+"dp9-9c-XBn.text" = "@belatrixsf.com";
+
+/* Class = "UITextField"; placeholder = "username"; ObjectID = "tb3-dH-vel"; */
+"tb3-dH-vel.placeholder" = "username";
+
+/* Class = "UILabel"; text = "Enter your email address to request your new password"; ObjectID = "wmd-81-OW5"; */
+"wmd-81-OW5.text" = "Enter your email address to request your new password";
+
+/* Class = "UITextField"; placeholder = "username"; ObjectID = "xdd-3U-ueK"; */
+"xdd-3U-ueK.placeholder" = "username";

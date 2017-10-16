@@ -1,0 +1,99 @@
+
+/* Class = "UILabel"; text = "Other Events"; ObjectID = "0FJ-jL-69Z"; */
+"0FJ-jL-69Z.text" = "Otros eventos";
+
+/* Class = "UILabel"; text = "Event Time and Date"; ObjectID = "0ri-0b-OfP"; */
+"0ri-0b-OfP.text" = "Hora y fecha del evento";
+
+/* Class = "UILabel"; text = "No local events found"; ObjectID = "1EQ-xW-i27"; */
+"1EQ-xW-i27.text" = "No se encontraron eventos locales";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "32Z-Sh-j0s"; */
+"32Z-Sh-j0s.text" = "Title";
+
+/* Class = "UILabel"; text = "No other events found"; ObjectID = "4wu-Zx-zQp"; */
+"4wu-Zx-zQp.text" = "No se encontraron otros eventos";
+
+/* Class = "UIButton"; normalTitle = "News"; ObjectID = "5Jt-ox-6nj"; */
+"5Jt-ox-6nj.normalTitle" = "Noticias";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "96V-10-sSS"; */
+"96V-10-sSS.text" = "Label";
+
+/* Class = "UILabel"; text = "Date:"; ObjectID = "9Nu-AF-OO1"; */
+"9Nu-AF-OO1.text" = "Fecha:";
+
+/* Class = "UILabel"; text = "My upcoming events"; ObjectID = "CZZ-i9-cPH"; */
+"CZZ-i9-cPH.text" = "Mis próximos eventos";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "DUH-4y-cIU"; */
+"DUH-4y-cIU.text" = "Ubicación";
+
+/* Class = "UILabel"; text = "Events"; ObjectID = "JHw-OV-FaS"; */
+"JHw-OV-FaS.text" = "Eventos";
+
+/* Class = "UILabel"; text = "Detail body "; ObjectID = "KlL-bd-Ylr"; */
+"KlL-bd-Ylr.text" = "Detalle";
+
+/* Class = "UILabel"; text = "Label Label Label Label Label Label"; ObjectID = "O2m-36-IeG"; */
+"O2m-36-IeG.text" = "Label Label Label Label Label Label";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "OXI-49-Su5"; */
+"OXI-49-Su5.normalTitle" = "Registrar";
+
+/* Class = "UIButton"; normalTitle = "About"; ObjectID = "OYJ-nK-zbJ"; */
+"OYJ-nK-zbJ.normalTitle" = "Información";
+
+/* Class = "UILabel"; text = "Details"; ObjectID = "Ofv-8x-eeb"; */
+"Ofv-8x-eeb.text" = "Detalles";
+
+/* Class = "UILabel"; text = "Loading..."; ObjectID = "PiE-Jk-hNr"; */
+"PiE-Jk-hNr.text" = "Cargando...";
+
+/* Class = "UILabel"; text = "No events found"; ObjectID = "RId-ua-FVX"; */
+"RId-ua-FVX.text" = "No se encontraron eventos";
+
+/* Class = "UILabel"; text = "Events"; ObjectID = "UUw-yc-0Cj"; */
+"UUw-yc-0Cj.text" = "Eventos";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Vqd-Dv-v74"; */
+"Vqd-Dv-v74.text" = "Label";
+
+/* Class = "UILabel"; text = "Label Label Label Label Label Label"; ObjectID = "WnW-ec-HiD"; */
+"WnW-ec-HiD.text" = "Label Label Label Label Label Label";
+
+/* Class = "UILabel"; text = "Location:"; ObjectID = "eMu-Zm-NAw"; */
+"eMu-Zm-NAw.text" = "Ubicación:";
+
+/* Class = "UILabel"; text = "Label Label Label Label Label Label"; ObjectID = "eU6-tw-1Dc"; */
+"eU6-tw-1Dc.text" = "Label Label Label Label Label Label";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "gbI-eI-TRz"; */
+"gbI-eI-TRz.text" = "Hora";
+
+/* Class = "UIButton"; normalTitle = "Add to Calender"; ObjectID = "gvS-Ze-2Rz"; */
+"gvS-Ze-2Rz.normalTitle" = "Agregar al calendario";
+
+/* Class = "UILabel"; text = "Event Title!"; ObjectID = "iR2-ed-vZP"; */
+"iR2-ed-vZP.text" = "Título del evento!";
+
+/* Class = "UIButton"; normalTitle = "See all"; ObjectID = "jjU-2S-vla"; */
+"jjU-2S-vla.normalTitle" = "Ver todo";
+
+/* Class = "UIButton"; normalTitle = "See all"; ObjectID = "mlv-iG-78J"; */
+"mlv-iG-78J.normalTitle" = "Ver todo";
+
+/* Class = "UIButton"; normalTitle = "See all"; ObjectID = "qOJ-DQ-UDp"; */
+"qOJ-DQ-UDp.normalTitle" = "Ver todo";
+
+/* Class = "UITabBarItem"; title = "Events"; ObjectID = "sh4-nZ-yXY"; */
+"sh4-nZ-yXY.title" = "Eventos";
+
+/* Class = "UILabel"; text = "Local Events"; ObjectID = "sha-Ky-krA"; */
+"sha-Ky-krA.text" = "Eventos locales";
+
+/* Class = "UILabel"; text = "Event"; ObjectID = "uCI-l0-F9p"; */
+"uCI-l0-F9p.text" = "Evento";
+
+/* Class = "UILabel"; text = "Loading..."; ObjectID = "yMb-BS-WZB"; */
+"yMb-BS-WZB.text" = "Cargando...";
