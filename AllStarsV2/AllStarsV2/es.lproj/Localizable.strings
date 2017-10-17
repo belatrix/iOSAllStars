@@ -14,10 +14,10 @@
 "Accept" = "Aceptar";
 "de" = "de";
 "logout" = "Cerrar sesión";
-"yes" = "si";
-"cancel" = "cancelar";
-"skip" = "saltar";
-"go" = "ir";
+"yes" = "Si";
+"cancel" = "Cancelar";
+"skip" = "Saltar";
+"go" = "Ir";
 "no_email_setup" = "No tienes un correo configurado en tu dispositivo";
 "email_subject" = "por definir";
 
@@ -48,10 +48,11 @@
 "camera" = "Toma una foto";
 
 "get_event_list" = "Cargando eventos...";
+
 "get_achievements_list" = "Cargando logros... ";
 "no_achievements" = "No se encontraron logros";
-"get_category_list" = "Cargando categorías...";
-"no_categories" = "No se encontraron categorías";
+"get_category_list" = "Cargando agredecimientos...";
+"no_categories" = "No se encontraron agredecimientos";
 
 "No_local_events_found" = "No se encontraron eventos locales";
 "No_other_events_found" = "No se encontraron otros eventos";
