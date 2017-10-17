@@ -1787,10 +1787,10 @@
                                                                 <constraint firstAttribute="height" constant="50" id="X5r-lH-WDM"/>
                                                             </constraints>
                                                         </view>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OoM-DF-z15">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="OoM-DF-z15">
                                                             <rect key="frame" x="70" y="12" width="184" height="20"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="20" id="r2s-PS-yS4"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="r2s-PS-yS4"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                             <state key="normal" title="Label">
@@ -1883,7 +1883,7 @@
                                                                 <constraint firstAttribute="width" constant="50" id="nMe-Bg-rMB"/>
                                                             </constraints>
                                                         </view>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pej-Cw-IGD">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="pej-Cw-IGD">
                                                             <rect key="frame" x="70" y="12" width="184" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" id="YSg-9e-Aj9"/>

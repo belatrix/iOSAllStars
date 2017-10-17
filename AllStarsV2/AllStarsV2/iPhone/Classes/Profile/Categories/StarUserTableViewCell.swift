@@ -25,6 +25,12 @@ class StarUserTableViewCell: UITableViewCell {
     
     var delegate : StarUserTableViewCellDelegate!
     
+    lazy var tapViewProfile : UITapGestureRecognizer = {
+       
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.clickNameUser(_:)))
+        return tap
+    }()
+    
     var objStar : StarUserBE! {
         
         didSet{
@@ -40,14 +46,16 @@ class StarUserTableViewCell: UITableViewCell {
         self.delegate.starUserTableViewCell(self, selectStar: self.objStar)
     }
     
-    @IBAction func clickNameUser(_ sender: UIButton){
+    @objc @IBAction func clickNameUser(_ sender: UIButton?){
         self.delegate.starUserTableViewCell(self, selectNameUserFrom: self.objStar.star_fromUser)
     }
     
     override func draw(_ rect: CGRect) {
         
+        self.imgUser.addGestureRecognizer(self.tapViewProfile)
         self.imgUser.setInitialVisualConfiguration()
         self.imgUser.borderImage = 0
+        
     }
     
     func updateData(){
