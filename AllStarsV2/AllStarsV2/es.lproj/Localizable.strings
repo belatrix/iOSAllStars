@@ -7,7 +7,7 @@
  */
 
 "app_name" = "Belatrix Connect";
-"generic_title_problem" = "Opps! Encontramos un problema...";
+"generic_title_problem" = "Opp! Encontramos un problema...";
 "token_invalid" = "Token inválido";
 "server_error" = "Tienes problemas con tu conexión. Intentalo en unos minutos";
 "ok" = "OK";
@@ -17,7 +17,7 @@
 "yes" = "si";
 "cancel" = "cancelar";
 "skip" = "saltar";
-"go" = "ir";
+"go" = "¡comenzar!";
 "no_email_setup" = "No tienes un correo configurado en tu dispositivo";
 "email_subject" = "por definir";
 
@@ -65,11 +65,19 @@
 "Event_removed_correctly" = "Evento eliminado correctamente";
 "Need_Permissions" = "Necesitas permisos";
 "permission_use_calendar" = "La aplicación necesita permisos para usar el calendario";
+"older_event_title" = "Evento antiguo";
+"older_event_message" = "El evento es anterior a la fecha actual";
+"event_added_error_title" = "Error";
+"event_added_error_message" = "Ops! Encontramos un problem...";
+"event_removed_error_title" = "Error";
+"event_removed_error_message" = "Ops! Encontramos un problem...";
+"calendar_restricted" = "Restricciones de calendario";
+"calendar_restricted_message" = "El uso de los calendarios está restringido para esta aplicación";
 
 "create_tag" = "+ crear nuevo \"%@\" tag";
 
 "what_text" = "Belatrix Connect intenta motivar la interaccion social y el reconocimiento de los compañeros de equipp a traves de un sistema de puntos de reputacion basado en criterios tecnicos acerca del desarrollo de software, Belatrix Connect tambien servir como conexion social entre personas interesadas en eventos o charlas ortganizadas por Belatrix.";
 "why_text" = "Porque queremos tomar acción y mejorar nuestro ambiente de trabajo. Porque podemos. Porque creemos en la tecnologia y en un mundo móvil.";
 "who_text" = "Belatrix Connect fue creado por personas motivadas haciendo cosas geek y que viven apasionados acerca de la tecnologia móvil.";
-"license_text" = "The MIT License (MIT)\nCopyright © 2016 BELATRIX\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: \n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. \n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
+"license_text" = "The MIT License (MIT)\nCopyright © 2016 BELATRIX\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions= \n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. \n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
 

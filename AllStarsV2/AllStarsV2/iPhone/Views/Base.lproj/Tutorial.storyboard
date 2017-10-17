@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -115,11 +115,10 @@
                                     <action selector="clicBtnReveal:" destination="fKk-dP-mCO" eventType="touchUpInside" id="TSb-fe-vmg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLc-dT-IPy" userLabel="Skip Button">
-                                <rect key="frame" x="260" y="20" width="60" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLc-dT-IPy" userLabel="Skip Button">
+                                <rect key="frame" x="271" y="20" width="39" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="2Eh-Df-cLG"/>
-                                    <constraint firstAttribute="width" constant="60" id="XgO-NB-KZL"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="2Eh-Df-cLG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                 <color key="tintColor" red="0.99607843139999996" green="0.46274509800000002" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -161,10 +160,11 @@
                             <constraint firstItem="Okt-Ud-jw2" firstAttribute="centerX" secondItem="1dB-Vk-3up" secondAttribute="centerX" id="A6v-To-jES"/>
                             <constraint firstItem="e9f-rh-stg" firstAttribute="width" secondItem="FIe-7O-b53" secondAttribute="width" id="BDS-Z8-HY1"/>
                             <constraint firstItem="e9f-rh-stg" firstAttribute="centerX" secondItem="1dB-Vk-3up" secondAttribute="centerX" id="QeN-hF-8yq"/>
+                            <constraint firstItem="PLc-dT-IPy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FIe-7O-b53" secondAttribute="leading" constant="20" symbolic="YES" id="Ulf-y3-6S9"/>
                             <constraint firstItem="Oyf-rM-thh" firstAttribute="centerX" secondItem="1dB-Vk-3up" secondAttribute="centerX" id="ZUN-pa-pAm"/>
                             <constraint firstItem="Oyf-rM-thh" firstAttribute="top" secondItem="KK4-aa-EE3" secondAttribute="bottom" id="dzw-KQ-Qt8"/>
                             <constraint firstItem="Oyf-rM-thh" firstAttribute="width" secondItem="1dB-Vk-3up" secondAttribute="width" id="eCO-md-0Dy"/>
-                            <constraint firstItem="1dB-Vk-3up" firstAttribute="trailing" secondItem="PLc-dT-IPy" secondAttribute="trailing" id="jNX-Lv-X3m"/>
+                            <constraint firstItem="1dB-Vk-3up" firstAttribute="trailing" secondItem="PLc-dT-IPy" secondAttribute="trailing" constant="10" id="jNX-Lv-X3m"/>
                             <constraint firstItem="KK4-aa-EE3" firstAttribute="leading" secondItem="Oyf-rM-thh" secondAttribute="leading" id="nhk-Ea-VBN"/>
                             <constraint firstItem="KK4-aa-EE3" firstAttribute="top" secondItem="Okt-Ud-jw2" secondAttribute="bottom" constant="1" id="sgg-yO-QRV"/>
                             <constraint firstItem="1dB-Vk-3up" firstAttribute="bottom" secondItem="Oyf-rM-thh" secondAttribute="bottom" constant="25" id="uCg-Cr-47I"/>

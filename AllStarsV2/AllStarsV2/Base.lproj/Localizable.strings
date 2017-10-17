@@ -7,7 +7,7 @@
 */
 
 "app_name" = "Belatrix Connect";
-"generic_title_problem" = "Opps! We found a problem...";
+"generic_title_problem" = "Ops! We found a problem...";
 "token_invalid" = "Invalid token";
 "server_error" = "You have problems with your connection. Try again in few minutes";
 "ok" = "OK";
@@ -17,7 +17,7 @@
 "yes" = "yes";
 "cancel" = "cancel";
 "skip" = "skip";
-"go" = "go";
+"go" = "go!";
 "no_email_setup" = "no email setup";
 "email_subject" = "por definir";
 
@@ -62,6 +62,14 @@
 "Event_removed_correctly" = "Event removed correctly";
 "Need_Permissions" = "Need Permissions";
 "permission_use_calendar" = "The app needs permission to use calendar";
+"older_event_title" = "Older event";
+"older_event_message" = "This event is older than today";
+"event_added_error_title" = "Error";
+"event_added_error_message" = "Ops! We found a problem...";
+"event_removed_error_title" = "Error";
+"event_removed_error_message" = "Ops! We found a problem...";
+"calendar_restricted" = "Calendar restricted";
+"calendar_restricted_message" = "The use of calendars is restricted to this app";
 
 "create_tag" = "+ create new \"%@\" tag";
 
