@@ -28,9 +28,9 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>Necesitamos acceso a su calender </string>
 	<key>NSCameraUsageDescription</key>
-	<string>Necesitamos acceso a la cámara para capturas sus facturas</string>
+	<string>Necesitamos acceso a la cámara para capturas sus fotos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Necesitamos acceso a su libreria de fotos para obtener una captura de sus facturas</string>
+	<string>Necesitamos acceso a su libreria de fotos para obtener una captura de sus fotos</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

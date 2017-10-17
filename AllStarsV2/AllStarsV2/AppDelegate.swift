@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         AppInformationBC.getAppInformation()
-        CDMKeyChain.eliminarKeychain()
+//        CDMKeyChain.eliminarKeychain()
         GMSServices.provideAPIKey("AIzaSyAPN91Fur0N3HtQPlGpbxydc9wTACkmzpg")
         
         UIApplication.shared.statusBarStyle = .lightContent

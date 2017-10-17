@@ -158,6 +158,24 @@ class UserBC: NSObject {
     }
     
     
+    class func createUserWithEmail(_ user_email: String?, withSuccessful success : @escaping Success, withAlertInformation alertInformation : @escaping AlertInformation) {
+        
+        if (user_email == nil || user_email == "") {
+            alertInformation("app_name".localized, "email_is_empty".localized)
+            return
+        }
+        
+        UserWebModel.createUserWithEmail("\(user_email!)@\(AppInformationBC.sharedInstance.appInformation.appInformation_emailDomain)", withSuccessful: { (isCorrect) in
+            
+            success(isCorrect)
+            
+        }) { (errorResponse) in
+            
+            alertInformation("generic_title_problem".localized, errorResponse.message)
+        }
+    }
+    
+    
     class func logInUsername(_ username: String?, withPassword password: String?, withSuccessful success : @escaping UserSession, sessionProfileIncomplete profileIcomplete: @escaping UserSession, sessionNeedResetPassword resetPassword: @escaping UserSession, withError error : @escaping AlertInformation){
         
         if username == nil || username!.trim().isEmpty {

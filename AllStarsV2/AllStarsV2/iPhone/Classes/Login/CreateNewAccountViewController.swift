@@ -47,11 +47,13 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
     //MARK: -
     
     func starLoading(){
+        
         self.view.isUserInteractionEnabled = false
         self.activityPassword.startAnimating()
     }
     
     func stopLoading(){
+        
         self.view.isUserInteractionEnabled = true
         self.activityPassword.stopAnimating()
     }
@@ -66,6 +68,30 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
     @IBAction func clickBtnPassword(_ sender: Any?) {
         
         self.tapToCloseKeyboard(nil)
+        
+        self.activityPassword.startAnimating()
+        self.view.isUserInteractionEnabled = false
+        
+        UserBC.createUserWithEmail(self.txtUserName.text, withSuccessful: { (isCorrect) in
+            
+            self.activityPassword.stopAnimating()
+            self.view.isUserInteractionEnabled = true
+            
+            if isCorrect {
+                
+                CDMUserAlerts.showSimpleAlert(title: "app_name".localized, withMessage: "sent_mail_correct".localized, withAcceptButton: "Accept".localized, withController: self, withCompletion:nil)
+                
+            }else{
+                CDMUserAlerts.showSimpleAlert(title: "generic_title_problem".localized, withMessage: "sent_mail_incorrect".localized, withAcceptButton: "Accept".localized, withController: self, withCompletion: nil)
+            }
+            
+        }) { (title, messageError) in
+            
+            self.activityPassword.stopAnimating()
+            self.view.isUserInteractionEnabled = true
+            
+            CDMUserAlerts.showSimpleAlert(title: title, withMessage: messageError, withAcceptButton: "Accept".localized, withController: self, withCompletion: nil)
+        }
     }
     
     @IBAction func changeText(_ sender: Any) {

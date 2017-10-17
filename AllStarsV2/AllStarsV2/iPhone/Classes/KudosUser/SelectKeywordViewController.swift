@@ -54,7 +54,7 @@ class SelectKeywordViewController: UIViewController, UITableViewDelegate, UITabl
             self.arrayKeywordsTable = self.arrayKeywords
         }else{
 
-            self.arrayKeywordsTable = self.arrayKeywords.filter({return $0.keyword_name.contains(searchText)})
+            self.arrayKeywordsTable = self.arrayKeywords.filter({return $0.keyword_name.lowercased().contains(searchText.lowercased())})
             if arrayKeywordsTable.count == 0{
                 self.arrayKeywordsTable.append(searchText)
             }
@@ -118,8 +118,8 @@ class SelectKeywordViewController: UIViewController, UITableViewDelegate, UITabl
         if cell is KeywordTableViewCell {
             
             (cell as! KeywordTableViewCell).selectCell(true)
-            self.objKeywordSelected = self.arrayKeywords[indexPath.row]
-            self.delegate.selectKeywordViewController(self, selectKeyword: self.arrayKeywords[indexPath.row])
+            self.objKeywordSelected = (self.arrayKeywordsTable[indexPath.row] as! KeywordBE)
+            self.delegate.selectKeywordViewController(self, selectKeyword: (self.arrayKeywordsTable[indexPath.row] as! KeywordBE))
             
         }else{
             

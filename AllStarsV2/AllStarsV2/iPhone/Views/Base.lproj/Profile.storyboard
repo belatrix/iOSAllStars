@@ -696,6 +696,7 @@
                         <viewLayoutGuide key="safeArea" id="Leq-ZJ-Bfv"/>
                     </view>
                     <connections>
+                        <outlet property="btnKudos" destination="vcs-dr-ah9" id="2ZW-L5-d7U"/>
                         <outlet property="btnLocation" destination="glu-qy-XLV" id="gbZ-ZA-YHL"/>
                         <outlet property="btnMail" destination="emM-S4-WaE" id="dhq-PJ-R2s"/>
                         <outlet property="btnSkype" destination="KS0-1w-u1R" id="3LJ-AP-hgJ"/>
@@ -1124,7 +1125,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="JBO-3Z-uWx" id="LuK-U2-eXy"/>
                                                 </connections>
@@ -1145,7 +1146,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="JBO-3Z-uWx" id="Yd0-Bh-OIV"/>
                                                 </connections>
@@ -1786,10 +1787,10 @@
                                                                 <constraint firstAttribute="height" constant="50" id="X5r-lH-WDM"/>
                                                             </constraints>
                                                         </view>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OoM-DF-z15">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="OoM-DF-z15">
                                                             <rect key="frame" x="70" y="12" width="184" height="20"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="20" id="r2s-PS-yS4"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="r2s-PS-yS4"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                             <state key="normal" title="Label">
@@ -1882,7 +1883,7 @@
                                                                 <constraint firstAttribute="width" constant="50" id="nMe-Bg-rMB"/>
                                                             </constraints>
                                                         </view>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pej-Cw-IGD">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="pej-Cw-IGD">
                                                             <rect key="frame" x="70" y="12" width="184" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" id="YSg-9e-Aj9"/>

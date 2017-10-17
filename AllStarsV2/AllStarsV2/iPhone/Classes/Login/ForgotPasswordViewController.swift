@@ -73,7 +73,6 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         
         self.tapToCloseKeyboard(nil)
         
-        
         self.activityPassword.startAnimating()
         self.view.isUserInteractionEnabled = false
         
