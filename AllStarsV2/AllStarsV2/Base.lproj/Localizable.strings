@@ -66,7 +66,7 @@
 "Event_removed_correctly" = "Event removed correctly";
 "Need_Permissions" = "Need Permissions";
 "permission_use_calendar" = "The app needs permission to use calendar";
-"older_event_title" = "Older event";
+"older_event_title" = "Older event";
 "older_event_message" = "This event is older than today";
 "event_added_error_title" = "Error";
 "event_added_error_message" = "Ops! We found a problem...";

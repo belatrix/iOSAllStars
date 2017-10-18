@@ -20,6 +20,7 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var userProfileImageViewCenterYConstraint    : NSLayoutConstraint!
     @IBOutlet weak var userProfileImageViewWidthConstraint      : NSLayoutConstraint!
     @IBOutlet weak var userProfileImageViewHeightConstraint     : NSLayoutConstraint!
+    @IBOutlet weak var doubleTapGestureRecognizer               : UITapGestureRecognizer!
     
     var objUser: UserBE!
     var initialImageViewFrame: CGRect       = CGRect.zero
@@ -35,10 +36,12 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
     @objc func doubleTap(_ gesture: UIGestureRecognizer) {
         if self.scrollZoom.zoomScale <= 1.0 { /* Hacer zoom... */
             let maxZoomScale = (self.scrollZoom.maximumZoomScale / 2.0)
-            self.scrollZoom.setZoomScale(maxZoomScale, animated: true)
+            self.scrollZoom.setZoomScale(maxZoomScale,
+                                         animated: true)
         }
         else { /* Quitar zoom... */
-            self.scrollZoom.setZoomScale(1.0, animated: true)
+            self.scrollZoom.setZoomScale(1.0,
+                                         animated: true)
         }
     }
     
@@ -54,23 +57,24 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
         let defaultsAnimationsClosure: (() -> ()) = { [unowned self] in
             self.closeButton.alpha = 0.0
             
-            self.scrollZoom.backgroundColor = UIColor.white.withAlphaComponent(0.0)
-            self.statusBarView.backgroundColor = UIColor.white.withAlphaComponent(0.0)
+            self.scrollZoom.backgroundColor     = UIColor.white.withAlphaComponent(0.0)
+            self.statusBarView.backgroundColor  = UIColor.white.withAlphaComponent(0.0)
             
             self.pbImageView.layer.cornerRadius = (self.initialImageViewFrame.width / 2.0)
         }
         
         let animationDuration = 0.5
         
-        let colorAnimation = CABasicAnimation(keyPath: "borderColor");
-        colorAnimation.fromValue = UIColor.white.withAlphaComponent(0.0).cgColor
-        colorAnimation.toValue = UIColor.white.cgColor
-        colorAnimation.beginTime = (CACurrentMediaTime() + (0.75 * animationDuration))
-        colorAnimation.duration = (0.25 * animationDuration)
-        colorAnimation.repeatCount = 1
-        colorAnimation.fillMode = kCAFillModeForwards
+        let colorAnimation          = CABasicAnimation(keyPath: "borderColor");
+        colorAnimation.fromValue    = UIColor.white.withAlphaComponent(0.0).cgColor
+        colorAnimation.toValue      = UIColor.white.cgColor
+        colorAnimation.beginTime    = (CACurrentMediaTime() + (0.75 * animationDuration))
+        colorAnimation.duration     = (0.25 * animationDuration)
+        colorAnimation.repeatCount  = 1
+        colorAnimation.fillMode     = kCAFillModeForwards
         colorAnimation.isRemovedOnCompletion = false
-        self.pbImageView.layer.add(colorAnimation, forKey: "BorderColorAnimationKey");
+        self.pbImageView.layer.add(colorAnimation,
+                                   forKey: "BorderColorAnimationKey");
         
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: animationDuration,
@@ -85,8 +89,10 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
             self.view.layoutIfNeeded()
         }, completion: { (_) in
             UIApplication.shared.statusBarStyle = .lightContent
+            self.doubleTapGestureRecognizer.isEnabled = false
             
-            self.dismiss(animated: false, completion: nil)
+            self.dismiss(animated: false,
+                         completion: nil)
         })
     }
     
@@ -105,9 +111,9 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
             self.closeButton.alpha = 0.0
             
             if let image = self.pbImageView.image {
-                let ratioW = (self.pbImageView.frame.width / image.size.width)
-                let ratioH = (self.pbImageView.frame.height / image.size.height)
-                let ratio = (ratioW < ratioH) ? ratioW : ratioH
+                let ratioW  = (self.pbImageView.frame.width / image.size.width)
+                let ratioH  = (self.pbImageView.frame.height / image.size.height)
+                let ratio   = (ratioW < ratioH) ? ratioW : ratioH
                 
                 let newWidth    = (image.size.width * ratio)
                 let newHeight   = (image.size.height * ratio)
@@ -134,9 +140,11 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
         self.view.layoutIfNeeded()
 
         // Configuraciones adicionales.
-        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.doubleTap(_:)))
-        doubleTapGestureRecognizer.numberOfTapsRequired = 2
-        self.scrollZoom.addGestureRecognizer(doubleTapGestureRecognizer)
+        self.doubleTapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                 action: #selector(self.doubleTap(_:)))
+        self.doubleTapGestureRecognizer.numberOfTapsRequired = 2
+        self.doubleTapGestureRecognizer.isEnabled = false
+        self.scrollZoom.addGestureRecognizer(self.doubleTapGestureRecognizer)
         
         self.closeButton.alpha = 0.0
 
@@ -153,7 +161,10 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
         self.pbImageView.contentMode = .scaleAspectFill
         
         self.view.layoutIfNeeded()
-        CDMImageDownloaded.descargarImagen(enURL: self.objUser.user_avatar, paraImageView: nil, conPlaceHolder: nil) { [weak self] (isCorrect, urlImage, image) in
+        CDMImageDownloaded.descargarImagen(enURL: self.objUser.user_avatar,
+                                           paraImageView: nil,
+                                           conPlaceHolder: nil) { [weak self] (isCorrect, urlImage, image) in
+                                            
             self?.pbImageView.image = image
         }
     }
@@ -181,8 +192,8 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
             
             self.pbImageView.layer.cornerRadius = 0.0
             
-            self.scrollZoom.backgroundColor = UIColor.white.withAlphaComponent(0.75)
-            self.statusBarView.backgroundColor = UIColor.white.withAlphaComponent(0.75)
+            self.scrollZoom.backgroundColor     = UIColor.white.withAlphaComponent(0.75)
+            self.statusBarView.backgroundColor  = UIColor.white.withAlphaComponent(0.75)
         }
         
         self.view.layoutIfNeeded()
@@ -196,7 +207,9 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
             customAnimationsClosure()
             
             self.view.layoutIfNeeded()
-        }, completion: nil)
+        }, completion: { (_) in
+            self.doubleTapGestureRecognizer.isEnabled = true
+        })
     }
     
     override func didReceiveMemoryWarning() {

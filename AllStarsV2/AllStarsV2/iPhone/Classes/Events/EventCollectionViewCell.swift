@@ -21,8 +21,11 @@ class EventCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    override func draw(_ rect: CGRect) {
+    override func prepareForReuse() {
+        self.imgEvent.image = nil
+    }
     
+    override func draw(_ rect: CGRect) {
         
         self.viewImgContainer.layer.cornerRadius = 8
         self.viewImgContainer.layer.shadowRadius = 2
@@ -40,7 +43,10 @@ class EventCollectionViewCell: UICollectionViewCell {
     func updateData(){
   
         self.lblEventName.text = "\(self.objEvent.event_name)"
-        CDMImageDownloaded.descargarImagen(enURL: objEvent.event_image, paraImageView: self.imgEvent, conPlaceHolder: self.imgEvent.image) { (isCorrect, urlImage, image) in
+        CDMImageDownloaded.descargarImagen(enURL: objEvent.event_image,
+                                           paraImageView: self.imgEvent,
+                                           conPlaceHolder: self.imgEvent.image) { (isCorrect, urlImage, image) in
+                                            
             if urlImage == self.objEvent.event_image{
                 self.imgEvent.image = image
             }

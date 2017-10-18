@@ -23,6 +23,10 @@ class EventCategoryDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var imgEvent: UIImageView!
     @IBOutlet weak var viewImgContainer: UIView!
     
+    override func prepareForReuse() {
+        self.imgEvent.image = nil
+    }
+    
     override func draw(_ rect: CGRect) {
         self.viewImgContainer.layer.cornerRadius = 8
         self.viewImgContainer.layer.shadowRadius = 3

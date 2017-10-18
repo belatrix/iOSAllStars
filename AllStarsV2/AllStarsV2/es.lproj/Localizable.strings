@@ -59,14 +59,14 @@
 "No_events_found" = "No se encontraron eventos";
 
 "Remove_from_Calender" = "Eliminar del calendario";
-"Add_to_Calender" = "Agregar al calendario";
+"Add_to_Calender" = "Agregar al Calendario";
 "Event_Added" = "Evento agregado";
 "Event_added_correctly" = "Evento agregado correctamente";
 "Event_Removed" = "Evento eliminado";
 "Event_removed_correctly" = "Evento eliminado correctamente";
 "Need_Permissions" = "Necesitas permisos";
 "permission_use_calendar" = "La aplicación necesita permisos para usar el calendario";
-"older_event_title" = "Evento antiguo";
+"older_event_title" = "Evento antiguo";
 "older_event_message" = "El evento es anterior a la fecha actual";
 "event_added_error_title" = "Error";
 "event_added_error_message" = "Ops! Encontramos un problem...";
