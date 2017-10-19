@@ -18,8 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        let userDefault = UserDefaults.standard
+        let versionApp = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        
+        if userDefault.object(forKey: "isFirtsTime_v\(versionApp)") == nil {
+            
+            CDMKeyChain.eliminarKeychain()
+            userDefault.set("1", forKey: "isFirtsTime_v\(versionApp)")
+            userDefault.synchronize()
+        }
+        
         AppInformationBC.getAppInformation()
-//        CDMKeyChain.eliminarKeychain()
         GMSServices.provideAPIKey("AIzaSyAPN91Fur0N3HtQPlGpbxydc9wTACkmzpg")
         
         UIApplication.shared.statusBarStyle = .lightContent

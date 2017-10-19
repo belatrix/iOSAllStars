@@ -19,13 +19,13 @@ class KudosBC: NSObject {
             return
         }
         
-        if keyword == nil{
-            alertInformation("app_name".localized, "select_keyword".localized)
+        if category == nil{
+            alertInformation("app_name".localized, "select_category".localized)
             return
         }
         
-        if category == nil{
-            alertInformation("app_name".localized, "select_category".localized)
+        if keyword == nil{
+            alertInformation("app_name".localized, "select_keyword".localized)
             return
         }
         
