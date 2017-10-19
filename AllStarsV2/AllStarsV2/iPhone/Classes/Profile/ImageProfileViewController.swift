@@ -20,14 +20,22 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var userProfileImageViewCenterYConstraint    : NSLayoutConstraint!
     @IBOutlet weak var userProfileImageViewWidthConstraint      : NSLayoutConstraint!
     @IBOutlet weak var userProfileImageViewHeightConstraint     : NSLayoutConstraint!
-    @IBOutlet weak var doubleTapGestureRecognizer               : UITapGestureRecognizer!
+    
+    lazy var doubleTapGestureRecognizer : UITapGestureRecognizer = {
+        
+        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.doubleTap(_:)))
+        doubleTapGestureRecognizer.numberOfTapsRequired = 2
+        doubleTapGestureRecognizer.isEnabled = false
+        self.scrollZoom.addGestureRecognizer(doubleTapGestureRecognizer)
+        
+        return doubleTapGestureRecognizer
+    }()
+    
     
     var objUser: UserBE!
     var initialImageViewFrame: CGRect       = CGRect.zero
     var initialImageViewCenter: CGPoint     = CGPoint.zero
     var newProfileImageViewHeight: CGFloat  = 0.0
-    
-    
     
     
     
@@ -136,18 +144,14 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - ImageProfileViewController's methods
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.layoutIfNeeded()
-
-        // Configuraciones adicionales.
-        self.doubleTapGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                                 action: #selector(self.doubleTap(_:)))
-        self.doubleTapGestureRecognizer.numberOfTapsRequired = 2
-        self.doubleTapGestureRecognizer.isEnabled = false
-        self.scrollZoom.addGestureRecognizer(self.doubleTapGestureRecognizer)
+        super.viewDidLoad()       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         self.closeButton.alpha = 0.0
-
+        
         let centerX: CGFloat = (self.initialImageViewCenter.x <= 0.0) ? 86.0     : self.initialImageViewCenter.x
         let centerY: CGFloat = (self.initialImageViewCenter.y <= 0.0) ? 164.0    : self.initialImageViewCenter.y
         self.userProfileImageViewCenterXConstraint.constant = (((UIScreen.main.bounds.width / 2.0) * -1.0) + (centerX - 8.0))
@@ -160,20 +164,23 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
         self.pbImageView.layer.borderWidth  = 5.0
         self.pbImageView.contentMode = .scaleAspectFill
         
-        self.view.layoutIfNeeded()
+        
         CDMImageDownloaded.descargarImagen(enURL: self.objUser.user_avatar,
                                            paraImageView: nil,
-                                           conPlaceHolder: nil) { [weak self] (isCorrect, urlImage, image) in
+                                           conPlaceHolder: nil) {(isCorrect, urlImage, image) in
                                             
-            self?.pbImageView.image = image
+                                            self.pbImageView.image = image
+                                            self.aditionalSettings()
         }
+        
+        
+        
+        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.view.layoutIfNeeded()
+    
+    func aditionalSettings(){
         
-        // Configuraciones adicionales.
         guard let _ = self.pbImageView.image else { return }
         
         UIApplication.shared.statusBarStyle = .default
@@ -203,13 +210,15 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
                        initialSpringVelocity: 0.5,
                        options: .curveEaseInOut,
                        animations: {
-            defaultsAnimationsClosure()
-            customAnimationsClosure()
-            
-            self.view.layoutIfNeeded()
+                        defaultsAnimationsClosure()
+                        customAnimationsClosure()
+                        
+                        self.view.layoutIfNeeded()
         }, completion: { (_) in
+            
             self.doubleTapGestureRecognizer.isEnabled = true
         })
+
     }
     
     override func didReceiveMemoryWarning() {

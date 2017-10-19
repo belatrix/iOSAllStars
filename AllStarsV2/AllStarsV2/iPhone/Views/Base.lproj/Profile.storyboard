@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -717,7 +717,7 @@
                         <outletCollection property="arrayButtonsSection" destination="OoP-A7-hJl" collectionClass="NSMutableArray" id="ybj-tI-Uki"/>
                         <outletCollection property="arrayVistas" destination="cMP-Ns-5Ys" collectionClass="NSMutableArray" id="Fms-pq-Tsi"/>
                         <outletCollection property="arrayVistas" destination="oz3-hS-hqj" collectionClass="NSMutableArray" id="NVX-8F-djZ"/>
-                        <segue destination="6sZ-fz-sKU" kind="presentation" identifier="ImageProfileViewController" animates="NO" id="Xy9-WM-rR2"/>
+                        <segue destination="6sZ-fz-sKU" kind="presentation" identifier="ImageProfileViewController" animates="NO" modalPresentationStyle="overCurrentContext" id="Xy9-WM-rR2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCg-uT-XkZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1176,7 +1176,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="JBO-3Z-uWx" id="kqx-2x-mK3"/>
                                                 </connections>
