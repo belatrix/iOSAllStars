@@ -193,7 +193,6 @@ class AboutViewController: SWFrontGenericoViewController {
         let mailComposeViewController = MFMailComposeViewController()
         mailComposeViewController.mailComposeDelegate = self
         mailComposeViewController.setToRecipients(["mobilelab@belatrixsf.com"])
-        mailComposeViewController.setSubject("email_subject".localized)
         self.present(mailComposeViewController,
                      animated: true,
                      completion: nil)
