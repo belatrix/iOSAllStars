@@ -30,6 +30,13 @@ class AchievementDetailViewController: UIViewController {
         _ = self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func clickBtnShare(_ sender: Any) {
+     
+        let data = self.objAchievement.achievement_badge.badge_description.data(using: .utf8)!
+        let activityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -62,7 +62,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
             }else{
                 
                 UserBC.saveSession(self.objSession)
-                //TODO: mostrar aplicacion
+                self.performSegue(withIdentifier: "RevealViewController", sender: nil)
             }
             
         }) { (title, message) in

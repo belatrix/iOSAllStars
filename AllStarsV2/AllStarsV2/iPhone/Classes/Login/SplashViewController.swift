@@ -10,7 +10,8 @@ import UIKit
 
 class SplashViewController: UIViewController {
 
-    @IBOutlet weak var imgLogo: UIImageView!
+    @IBOutlet weak var imgLogo          : UIImageView!
+    @IBOutlet weak var loadingActivity  : UIActivityIndicatorView!
     
     var initialColor : UIColor!
     
@@ -20,25 +21,35 @@ class SplashViewController: UIViewController {
         self.initialColor = self.view.backgroundColor
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        
-        super.viewDidAppear(animated)
+    func loadDataInformation(){
         
         if let objSession = UserBC.getUserSession(){
             
+            self.loadingActivity.startAnimating()
+            
             UserBC.getUserInformationById(objSession.session_user_id.intValue, withSuccessful: { (objUser) in
                 
+                self.loadingActivity.stopAnimating()
                 UserBE.shareInstance = objUser
                 self.performSegue(withIdentifier: "RevealViewController", sender: nil)
                 
             }) { (title, message) in
                 
-                CDMUserAlerts.showSimpleAlert(title: title, withMessage: message, withAcceptButton: "ok".localized, withController: self, withCompletion: nil)
+                self.loadingActivity.stopAnimating()
+                CDMUserAlerts.showSimpleAlert(title: title, withMessage: message, withAcceptButton: "ok".localized, withController: self, withCompletion: {
+                    self.loadDataInformation()
+                })
             }
             
         }else{
             self.performSegue(withIdentifier: "LoginViewController", sender: nil)
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        self.loadDataInformation()
     }
     
     override func didReceiveMemoryWarning() {

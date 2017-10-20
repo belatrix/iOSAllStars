@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,17 +33,27 @@
                                     <constraint firstAttribute="height" constant="152" id="VAW-p2-HfS"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="8p0-nW-fEw">
+                                <rect key="frame" x="150" y="376" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="NLU-ad-dLy"/>
+                                    <constraint firstAttribute="height" constant="20" id="t0k-rZ-gCB"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843139999996" green="0.46274509800000002" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="8p0-nW-fEw" firstAttribute="top" secondItem="VW8-BU-ecg" secondAttribute="bottom" constant="16" id="3g4-2U-EoX"/>
                             <constraint firstItem="VW8-BU-ecg" firstAttribute="centerX" secondItem="fzV-7X-p8y" secondAttribute="centerX" id="5zy-D9-UMM"/>
                             <constraint firstItem="VW8-BU-ecg" firstAttribute="centerY" secondItem="fzV-7X-p8y" secondAttribute="centerY" id="AiN-b9-Cry"/>
+                            <constraint firstItem="8p0-nW-fEw" firstAttribute="centerX" secondItem="VW8-BU-ecg" secondAttribute="centerX" id="wTb-dv-693"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OKP-VQ-Zeg"/>
                     </view>
                     <navigationItem key="navigationItem" id="gWZ-SL-rwD"/>
                     <connections>
                         <outlet property="imgLogo" destination="VW8-BU-ecg" id="lZ8-TD-03e"/>
+                        <outlet property="loadingActivity" destination="8p0-nW-fEw" id="uSk-sI-z53"/>
                         <segue destination="Wxg-L8-UBq" kind="show" identifier="LoginViewController" id="ANx-YU-8mc"/>
                         <segue destination="myL-W8-1Gd" kind="show" identifier="RevealViewController" id="a7G-pj-jet"/>
                     </connections>
@@ -145,10 +155,10 @@
                                             <constraint firstAttribute="height" constant="107" id="hXg-zp-4VR"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belatrix Connect" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cq-So-zZn">
-                                        <rect key="frame" x="42" y="228.5" width="236" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belatrix Connect" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cq-So-zZn">
+                                        <rect key="frame" x="42" y="228.5" width="236" height="28"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="iEb-iD-DUi"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" id="iEb-iD-DUi"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                         <color key="textColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -652,6 +662,7 @@
                         <outlet property="viewFormUser" destination="E8f-0o-PoY" id="rPP-CF-spV"/>
                         <outlet property="viewLogo" destination="rKZ-Ar-Hqm" id="skK-eE-DCF"/>
                         <segue destination="1T3-Tb-xiu" kind="show" identifier="CompleteProfileViewController" id="4ai-cu-B0k"/>
+                        <segue destination="jir-Rg-b9D" kind="show" identifier="RevealViewController" id="NJq-mi-wPE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzW-uS-ABk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -669,7 +680,7 @@
                 <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="CompleteProfileViewController" id="1T3-Tb-xiu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bbb-B0-njG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2635" y="543"/>
+            <point key="canvasLocation" x="2672" y="472"/>
         </scene>
         <!--RevealViewController-->
         <scene sceneID="S2g-yE-8On">
@@ -897,6 +908,14 @@
                 </customObject>
             </objects>
             <point key="canvasLocation" x="-403" y="90"/>
+        </scene>
+        <!--RevealViewController-->
+        <scene sceneID="Kgy-t3-ksM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainReveal" referencedIdentifier="RevealViewController" id="jir-Rg-b9D" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vVk-X2-Ynj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2618" y="616"/>
         </scene>
     </scenes>
     <resources>
