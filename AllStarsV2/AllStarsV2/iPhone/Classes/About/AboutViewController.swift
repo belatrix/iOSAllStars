@@ -35,31 +35,31 @@ class AboutViewController: SWFrontGenericoViewController {
 
     // MARK: - Properties
     
-    @IBOutlet fileprivate weak var headerViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet fileprivate weak var scrollViewContentTopConstraint: NSLayoutConstraint!
-    @IBOutlet fileprivate weak var titleLabelLeftConstraint: NSLayoutConstraint!
-    @IBOutlet fileprivate weak var titleLabelBottomConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var menuButtonWidthConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var collaboratorsScrollViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet fileprivate weak var headerView: UIView!
-    @IBOutlet fileprivate weak var menuButton: UIButton!
-    @IBOutlet fileprivate weak var titleLabel: UILabel!
-    @IBOutlet private weak var collaboratorsCollectionView: UICollectionView!
-    @IBOutlet private weak var whatLabel: UILabel!
-    @IBOutlet private weak var whyLabel: UILabel!
-    @IBOutlet private weak var whoLabel: UILabel!
-    @IBOutlet private weak var licenseLabel: UILabel!
-    @IBOutlet private weak var emailButton: UIButton!
+    @IBOutlet fileprivate weak var headerViewHeightConstraint           : NSLayoutConstraint!
+    @IBOutlet fileprivate weak var scrollViewContentTopConstraint       : NSLayoutConstraint!
+    @IBOutlet fileprivate weak var titleLabelLeftConstraint             : NSLayoutConstraint!
+    @IBOutlet fileprivate weak var titleLabelBottomConstraint           : NSLayoutConstraint!
+    @IBOutlet private weak var menuButtonWidthConstraint                : NSLayoutConstraint!
+    @IBOutlet private weak var collaboratorsScrollViewHeightConstraint  : NSLayoutConstraint!
+    @IBOutlet fileprivate weak var headerView                           : UIView!
+    @IBOutlet fileprivate weak var menuButton                           : UIButton!
+    @IBOutlet fileprivate weak var titleLabel                           : UILabel!
+    @IBOutlet private weak var collaboratorsCollectionView              : UICollectionView!
+    @IBOutlet private weak var whatLabel                                : UILabel!
+    @IBOutlet private weak var whyLabel                                 : UILabel!
+    @IBOutlet private weak var whoLabel                                 : UILabel!
+    @IBOutlet private weak var licenseLabel                             : UILabel!
+    @IBOutlet private weak var emailButton                              : UIButton!
     
-    fileprivate var collaborators: [Collaborator]?
-    fileprivate var maxHeightForHeaderView: CGFloat = 0.0
-    fileprivate var maxLeftForTitleLabel: CGFloat = 0.0
-    fileprivate var maxBottomForTitleLabel: CGFloat = 0.0
-    fileprivate var maxTitleLabelFontSize: CGFloat = 0.0
-    fileprivate var minHeightForHeaderView: CGFloat = 64.0
-    fileprivate var minLeftForTitleLabel: CGFloat = 0.0
-    fileprivate var minBottomForTitleLabel: CGFloat = 0.0
-    fileprivate var minTitleLabelFontSize: CGFloat = 19.0
+    fileprivate var collaborators           : [Collaborator]?
+    fileprivate var maxHeightForHeaderView  : CGFloat = 0.0
+    fileprivate var maxLeftForTitleLabel    : CGFloat = 0.0
+    fileprivate var maxBottomForTitleLabel  : CGFloat = 0.0
+    fileprivate var maxTitleLabelFontSize   : CGFloat = 0.0
+    fileprivate var minHeightForHeaderView  : CGFloat = 64.0
+    fileprivate var minLeftForTitleLabel    : CGFloat = 0.0
+    fileprivate var minBottomForTitleLabel  : CGFloat = 0.0
+    fileprivate var minTitleLabelFontSize   : CGFloat = 19.0
     
     
     
