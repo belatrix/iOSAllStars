@@ -47,7 +47,7 @@ class AchievementDetailViewController: UIViewController {
         self.lblName.text = self.objAchievement.achievement_badge.badge_name
         self.lblDescription.text = self.objAchievement.achievement_badge.badge_description
         
-        CDMImageDownloaded.descargarImagen(enURL: self.objAchievement.achievement_badge.badge_icon, paraImageView: self.imgIcon, conPlaceHolder: self.imgIcon.image) { (isCorrect, urlImage, image) in
+        CDMImageDownloaded.descargarImagen(enURL: self.objAchievement.achievement_badge.badge_icon, paraImageView: self.imgIcon, conPlaceHolder: #imageLiteral(resourceName: "userPlaceHolder")) { (isCorrect, urlImage, image) in
             
             self.imgIcon.image = image
         }

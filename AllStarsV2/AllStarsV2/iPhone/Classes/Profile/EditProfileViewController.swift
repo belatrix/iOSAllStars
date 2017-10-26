@@ -46,7 +46,7 @@ class EditProfileViewController: UIViewController, UIScrollViewDelegate, UITextF
             self.txtLastname.text = objUser.user_last_name!
             self.txtName.text = objUser.user_first_name!
             
-            CDMImageDownloaded.descargarImagen(enURL: self.objUser.user_avatar, paraImageView: self.imgBackgroundUser, conPlaceHolder: self.imgBackgroundUser.image) { (isCorrect, urlImage, image) in
+            CDMImageDownloaded.descargarImagen(enURL: self.objUser.user_avatar, paraImageView: self.imgBackgroundUser, conPlaceHolder: #imageLiteral(resourceName: "userPlaceHolder")) { (isCorrect, urlImage, image) in
                 self.imgBackgroundUser.image = image
             }
             

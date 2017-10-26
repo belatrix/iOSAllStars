@@ -42,7 +42,7 @@ class ImageUserProfile: UIView {
             
             self.backgroundColor = self.objUser.user_color
             
-            CDMImageDownloaded.descargarImagen(enURL: self.objUser.user_avatar, paraImageView: self.imgUser, conPlaceHolder: self.imgUser.image) { (isCorrect, urlImage, image) in
+            CDMImageDownloaded.descargarImagen(enURL: self.objUser.user_avatar, paraImageView: self.imgUser, conPlaceHolder: #imageLiteral(resourceName: "userPlaceHolder")) { (isCorrect, urlImage, image) in
                 
                 if urlImage == self.objUser.user_avatar{
                     self.image = image

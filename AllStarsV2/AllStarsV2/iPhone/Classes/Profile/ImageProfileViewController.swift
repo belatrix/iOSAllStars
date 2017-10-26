@@ -167,7 +167,7 @@ class ImageProfileViewController: UIViewController, UIScrollViewDelegate {
         
         CDMImageDownloaded.descargarImagen(enURL: self.objUser.user_avatar,
                                            paraImageView: nil,
-                                           conPlaceHolder: nil) {(isCorrect, urlImage, image) in
+                                           conPlaceHolder: #imageLiteral(resourceName: "userPlaceHolder")) {(isCorrect, urlImage, image) in
                                             
                                             self.pbImageView.image = image
                                             self.aditionalSettings()
