@@ -94,7 +94,7 @@ class AboutViewController: SWFrontGenericoViewController {
         
         // Obtener colaboradores.
         self.collaborators = [Collaborator]()
-        let numberOfCollaborators = 11
+        let numberOfCollaborators = 12
         for id in 1...numberOfCollaborators { /* Cambiar '11' por el número real de colaboradores. */
             let picture = self.pictureForCollaboratorID(id)
             let name = self.nameForCollaboratorID(id)
@@ -143,6 +143,7 @@ class AboutViewController: SWFrontGenericoViewController {
             case 9:  return #imageLiteral(resourceName: "Sergio Infante")
             case 10: return #imageLiteral(resourceName: "Kenyi Rodriguez")
             case 11: return #imageLiteral(resourceName: "Javier Siancas")
+            case 12: return #imageLiteral(resourceName: "Yanina Giraldo")
             default: return nil
         }
     }
@@ -165,6 +166,7 @@ class AboutViewController: SWFrontGenericoViewController {
             case 9:  return "Sergio Infante"
             case 10 : return "Kenyi Rodriguez"
             case 11 : return "Javier Siancas"
+            case 12 : return "Yanina Giraldo"
             default: return nil
         }
     }
