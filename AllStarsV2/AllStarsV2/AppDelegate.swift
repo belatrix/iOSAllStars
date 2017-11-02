@@ -8,7 +8,8 @@
 
 import UIKit
 import CoreData
-import GoogleMaps
+import Firebase
+//import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,7 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         AppInformationBC.getAppInformation()
-        GMSServices.provideAPIKey("AIzaSyAPN91Fur0N3HtQPlGpbxydc9wTACkmzpg")
+//        GMSServices.provideAPIKey("AIzaSyAPN91Fur0N3HtQPlGpbxydc9wTACkmzpg")
+        
+        FirebaseApp.configure()
         
         UIApplication.shared.statusBarStyle = .lightContent
         

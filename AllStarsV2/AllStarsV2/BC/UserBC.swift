@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+
 
 class UserBC: NSObject {
 
@@ -139,6 +141,24 @@ class UserBC: NSObject {
         
     }
     
+    
+    class func registerDevice(withSuccessful success : @escaping Success, withAlertInformation alertInformation : @escaping AlertInformation){
+        
+        let objSession = UserBC.getUserSession()
+        
+        if objSession == nil || objSession!.session_token == "" {
+            alertInformation("app_name".localized, "token_invalid".localized)
+        }
+        
+        UserWebModel.registerDevice("", toSession: objSession!, withSuccessful: { (isCorrect) in
+            
+            success(isCorrect)
+            
+        }) { (errorResponse) in
+            
+            alertInformation("generic_title_problem".localized, errorResponse.message)
+        }
+    }
     
     class func forgotPasswordToEmail(_ user_email: String?, withSuccessful success : @escaping Success, withAlertInformation alertInformation : @escaping AlertInformation) {
     

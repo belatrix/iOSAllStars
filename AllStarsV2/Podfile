@@ -6,7 +6,7 @@ target 'AllStarsV2' do
   use_frameworks!
 
   pod 'Alamofire', '~> 4.0'
-  pod 'GoogleMaps'
+  pod 'Firebase/Core'
 
   # Pods for AllStarsV2
 

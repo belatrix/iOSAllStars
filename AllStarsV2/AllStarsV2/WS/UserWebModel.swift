@@ -147,4 +147,17 @@ class UserWebModel: NSObject {
             }
         }
     }
+    
+    class func registerDevice(_ idDevice: String, toSession session: SessionBE, withSuccessful success : @escaping Success, withError error : @escaping ErrorResponse) {
+        
+        let path = "api/employee/\(session.session_user_id)/register/device/"
+        let dic : [String : Any] = ["employee_id" : session.session_user_id,
+                                    "android_device" : "",
+                                    "ios_device" : idDevice]
+        
+        CDMWebSender.doPOSTTokenToURL(Constants.WEB_SERVICES, withPath: path, withParameter: dic, withToken: session.session_token) { (response) in
+            
+        }
+    }
+    
 }

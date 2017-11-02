@@ -133,6 +133,7 @@
 		96F2060B1F462B870089E3E6 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2060A1F462B870089E3E6 /* RankingViewController.swift */; };
 		96F2619C1F3A5F540038103B /* AchievementBE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2619B1F3A5F540038103B /* AchievementBE.swift */; };
 		96F2619E1F3A5F6D0038103B /* BadgeBE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2619D1F3A5F6D0038103B /* BadgeBE.swift */; };
+		96F38C041FAB501B0086E04B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96F38C031FAB501B0086E04B /* GoogleService-Info.plist */; };
 		96F47A951F82BCC600E01575 /* SelectCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F47A941F82BCC600E01575 /* SelectCategoryTableViewCell.swift */; };
 		979DCC4DCD5CD1576D39675A /* Pods_AllStarsV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F17947B2D076243FFBBDAB /* Pods_AllStarsV2.framework */; };
 /* End PBXBuildFile section */
@@ -295,6 +296,7 @@
 		96F2060A1F462B870089E3E6 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		96F2619B1F3A5F540038103B /* AchievementBE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementBE.swift; sourceTree = "<group>"; };
 		96F2619D1F3A5F6D0038103B /* BadgeBE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeBE.swift; sourceTree = "<group>"; };
+		96F38C031FAB501B0086E04B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		96F47A941F82BCC600E01575 /* SelectCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -476,6 +478,7 @@
 			children = (
 				9679830C1F1E6A79005C58BF /* AppDelegate.swift */,
 				96AD291F1F4CC0050004468E /* AllStarsV2-Bridging-Header.h */,
+				96F38C031FAB501B0086E04B /* GoogleService-Info.plist */,
 				96535E5D1F1E90AC00E97EE9 /* CommonClasses */,
 				969D2EDE1F1F8ADA00916B54 /* iPhone */,
 				969D2EE21F1F8B0900916B54 /* BC */,
@@ -774,6 +777,7 @@
 				968504201F914BF900AFFF85 /* Events.storyboard in Resources */,
 				9685044A1F914C6400AFFF85 /* About.storyboard in Resources */,
 				2F18E0FC1F8ED43600A02EB8 /* Collaborators.xcassets in Resources */,
+				96F38C041FAB501B0086E04B /* GoogleService-Info.plist in Resources */,
 				96D8BE401F1F935D002331C4 /* Login.xcassets in Resources */,
 				968504511F914C8D00AFFF85 /* Tutorial.storyboard in Resources */,
 				96836F491F506E1F00FE1EB0 /* Menu.xcassets in Resources */,
@@ -830,10 +834,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AllStarsV2/Pods-AllStarsV2-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
