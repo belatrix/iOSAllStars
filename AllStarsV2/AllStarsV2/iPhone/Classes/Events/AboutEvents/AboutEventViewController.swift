@@ -29,7 +29,7 @@ class AboutEventViewController: UIViewController {
     
     func updateEventInfo() {
         self.lblDetailBody.text = self.objEvent.event_description
-        let eventAddress        = (self.objEvent.event_address.characters.isEmpty == true) ? "" : ", \(self.objEvent.event_address)"
+        let eventAddress        = (self.objEvent.event_address.isEmpty == true) ? "" : ", \(self.objEvent.event_address)"
         self.lblLocation.text   = "\(self.objEvent.event_location!.location_name)\(eventAddress)" /* Si valor de 'eventAddress' no es vacío, se muestra junto con la coma (,). */
     }
     

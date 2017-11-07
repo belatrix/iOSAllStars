@@ -40,7 +40,7 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if textField == self.txtUserName{
-            self.txtUserName.placeholder = self.txtUserName.text?.characters.count == 0 ? self.initialPlaceHolderUser : ""
+            self.txtUserName.placeholder = self.txtUserName.text?.count == 0 ? self.initialPlaceHolderUser : ""
         }
     }
     
@@ -107,7 +107,7 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         
         let result = string.replace(" ", withString: "")
-        return result.characters.count == string.characters.count
+        return result.count == string.count
     }
     
     //MARK: - Keyboard Notifications

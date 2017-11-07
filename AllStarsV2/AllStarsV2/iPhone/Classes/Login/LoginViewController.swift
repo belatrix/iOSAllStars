@@ -51,14 +51,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if textField == self.txtUserName{
-            self.txtUserName.placeholder = self.txtUserName.text?.characters.count == 0 ? self.initialPlaceHolderUser : ""
+            self.txtUserName.placeholder = self.txtUserName.text?.count == 0 ? self.initialPlaceHolderUser : ""
         }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
     
         let result = string.replace(" ", withString: "")
-        return result.characters.count == string.characters.count
+        return result.count == string.count
     }
     
     //MARK: -
@@ -92,7 +92,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func loginUser(){
+    func loginUser() {
         
         self.startLoading()
         
@@ -100,6 +100,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             self.stopLoading()
             self.getUserInformation(withSession: objSession)
+            
+            
+            /*** Register FCM device token ***/
+            guard let fcmToken = (UIApplication.shared.delegate as! AppDelegate).fcmToken else { return }
+            guard let session = SessionBE.sharedInstance else { return }
+            
+            UserWebModel.registerDevice(fcmToken, toSession: session, withSuccessful: { (success) in
+                print("Register FCM device token? \(success ? "Yes!" : "No")")
+            }, withError: { (error) in
+                //...
+            })
+            /*********************************/
+            
             
         }, sessionProfileIncomplete: { (objSession) in
             

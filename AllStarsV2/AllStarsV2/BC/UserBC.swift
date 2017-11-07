@@ -117,7 +117,7 @@ class UserBC: NSObject {
             return
         }
         
-        if (newPassword!.characters.count < Constants.MIN_PASSWORD_LENGTH) {
+        if (newPassword!.count < Constants.MIN_PASSWORD_LENGTH) {
             let message = String.init(format: "new_password_length".localized, Constants.MIN_PASSWORD_LENGTH)
             alertInformation("app_name".localized,  message)
             return
@@ -215,12 +215,14 @@ class UserBC: NSObject {
                 
                 self.saveSession(objSession)
                 
-                if objSession.session_state == SessionBE.SessionState.session_profileComplete{
+                if objSession.session_state == SessionBE.SessionState.session_profileComplete {
                     UserBC.saveSession(objSession)
                     success(objSession)
-                }else if objSession.session_state == SessionBE.SessionState.session_profileIncomplete{
+                }
+                else if objSession.session_state == SessionBE.SessionState.session_profileIncomplete {
                     profileIcomplete(objSession)
-                }else{
+                }
+                else {
                     resetPassword(objSession)
                 }
 

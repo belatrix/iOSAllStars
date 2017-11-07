@@ -50,7 +50,7 @@ class SelectKeywordViewController: UIViewController, UITableViewDelegate, UITabl
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if searchText.characters.count == 0 {
+        if searchText.count == 0 {
             self.arrayKeywordsTable = self.arrayKeywords
         }else{
 

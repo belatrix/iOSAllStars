@@ -155,8 +155,14 @@ class UserWebModel: NSObject {
                                     "android_device" : "",
                                     "ios_device" : idDevice]
         
-        CDMWebSender.doPOSTTokenToURL(Constants.WEB_SERVICES, withPath: path, withParameter: dic, withToken: session.session_token) { (response) in
+        CDMWebSender.doPOSTTokenToURL(Constants.WEB_SERVICES,
+                                      withPath: path,
+                                      withParameter: dic,
+                                      withToken: session.session_token) { (response) in
             
+            let isSuccess = (response.statusCode == 202 || response.statusCode == 200) ? true : false
+            success(isSuccess)
+                                        
         }
     }
     

@@ -14,7 +14,7 @@ class ContactWebModel: NSObject {
         
         var path = "api/employee/list/"
 
-        if searchText.characters.count != 0{
+        if searchText.count != 0{
             path = "\(path)?search=\(searchText)"
         }
 

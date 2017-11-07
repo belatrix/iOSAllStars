@@ -81,7 +81,7 @@ class ContactsViewController: SWFrontGenericoViewController, UISearchBarDelegate
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        if (self.nextPage.characters.count != 0 && self.isDownload == false && scrollView.contentOffset.y + scrollView.frame.size.height  > scrollView.contentSize.height + 40) {
+        if (self.nextPage.count != 0 && self.isDownload == false && scrollView.contentOffset.y + scrollView.frame.size.height  > scrollView.contentSize.height + 40) {
             
             self.listAnyPageContacts()
         }

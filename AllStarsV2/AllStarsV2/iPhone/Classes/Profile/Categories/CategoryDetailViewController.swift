@@ -69,7 +69,7 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
         
         let objStar = self.arrayStars[indexPath.row]
         
-        let cellIdentifier = objStar.star_comment.characters.count == 0 ? "StarUserTableViewCell1" : "StarUserTableViewCell2"
+        let cellIdentifier = objStar.star_comment.count == 0 ? "StarUserTableViewCell1" : "StarUserTableViewCell2"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! StarUserTableViewCell
         
         cell.delegate = self

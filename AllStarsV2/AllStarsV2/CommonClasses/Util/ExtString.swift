@@ -19,7 +19,7 @@ extension String {
     }
     
     subscript (i: Int) -> Character {
-        return self[self.characters.index(self.startIndex, offsetBy: i)]
+        return self[self.index(self.startIndex, offsetBy: i)]
     }
     
     subscript (i: Int) -> String {
