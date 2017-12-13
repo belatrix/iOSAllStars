@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Carlos Monzón.jpg",
+      "filename" : "carlos@1x-1.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Carlos Monzón@2x.jpg",
+      "filename" : "carlos@2x-1.jpg",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Carlos Monzón@3x.jpg",
+      "filename" : "carlos@3x-1.jpg",
       "scale" : "3x"
     }
   ],
